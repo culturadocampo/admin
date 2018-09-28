@@ -1,53 +1,53 @@
 <?php
 
-class Database{
-    # Variável que guarda a conexão PDO.
+class Database {
+
     protected static $db;
-    # Private construct - garante que a classe só possa ser instanciada internamente.
-    private function __construct(){
-        # Informações sobre o banco de dados:
+
+    private function __construct() {
         $db_host = "localhost";
         $db_nome = "CdoC";
         $db_usuario = "root";
         $db_senha = "infodmz626";
         $db_driver = "mysql";
-        # Informações sobre o sistema:
+        # InformaÃ§Ãµes sobre o sistema:
         $sistema_titulo = "Cultura do Campo";
         $sistema_email = "app.culturadocampo@gmail.com";
-       
-        try{
-            # Atribui o objeto PDO à variável $db.
+
+        try {
+            # Atribui o objeto PDO Ã  variÃ¡vel $db.
             self::$db = new PDO("$db_driver:host=$db_host; dbname=$db_nome", $db_usuario, $db_senha);
-            # Garante que o PDO lance exceções durante erros.
+            # Garante que o PDO lance exceï¿½ï¿½es durante erros.
             self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            # Garante que os dados sejam armazenados com codificação UFT-8.
+            # Garante que os dados sejam armazenados com codificaï¿½ï¿½o UFT-8.
             self::$db->exec('SET NAMES utf8');
-        }
-        catch (PDOException $e){
-            # Envia um e-mail para o e-mail oficial do sistema, em caso de erro de conexão.
+        } catch (PDOException $e) {
+            # Envia um e-mail para o e-mail oficial do sistema, em caso de erro de conexï¿½o.
             mail($sistema_email, "PDOException em $sistema_titulo", $e->getMessage());
-            # Então não carrega nada mais da página.
+            # EntÃ£o nÃ£o carrega nada mais da pÃ¡gina.
             die("Connection Error: " . $e->getMessage());
         }
     }
-    # Método estático - acessível sem instanciação.
-    public static function conexao(){
-        # Garante uma única instância. Se não existe uma conexão, criamos uma nova.
-        if (!self::$db){
+
+    # Mï¿½todo estï¿½tico - acessï¿½vel sem instanciaï¿½ï¿½o.
+
+    public static function conexao() {
+        # Garante uma ï¿½nica instÃ¢ncia. Se nÃ£o existe uma conexÃ£o, criamos uma nova.
+        if (!self::$db) {
             new Database();
         }
-        # Retorna a conexão.
+        # Retorna a conexÃ£o.
         return self::$db;
     }
-    public static function fetch($query){
+
+    public static function fetch($query) {
         $db = Database::conexao();
-        $db = $db->query($query);  
-        if($db->fetch()){
+        $db = $db->query($query);
+        if ($db->fetch()) {
             return $db->fetch();
-        }else{
+        } else {
             return false;
         }
     }
-}
 
- 
+}
