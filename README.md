@@ -40,34 +40,43 @@
 Todos os produtos devem possuir, ao menos, uma imagem na plataforma. Cada imagem deve ser exclusiva da plataforma (ou seja, nada de Google Imagens), e devem seguir as seguintes regras:
 
 - Resolucão de **960x540**;
-- Possuir, de forma discreta, o logo marca da **Cultura do Campo**;
+- Todas devem ter um fundo transparente (png);
 
-##Base de dados
-Descrição de todas as tabelas e seus relacionamentos.
-
-> - tb_usuarios
- - id_usuario [int, 10, pk]
- - nome [varchar, 30]
- - email [varchar, 50]
- - senha [varchar, 100]
- - data_cadastro [timestamp]
-
-##Interface
+## Interface
 
 Toda a interface da plataforma foi baseada no seguinte tema Bootstrap:
 
 [QuantumPro - Bootstrap 4 Dashboard & UI Kit](http://https://themeforest.net/item/quantumpro-bootstrap-4-dashboard-ui-kit/22102521 "QuantumPro - Bootstrap 4 Dashboard & UI Kit")
 
+## Base de dados
+Há regras e padrões a serem seguidos ao criar tabelas e atributos:
+1. Nomes de tabelas devem estar sempre no plural (~~usuario~~ -> usuarios);
+2. O chave primária da tabela deve conter a descrição da entidade no singular;
+	Ex: A chave primária da tabela `usuarios` deve ser descrita como `id_usuario`, nunca como `id`
+
+Descrição de todas as tabelas e seus relacionamentos.
+
+#### 1. usuarios
+
+    id_usuario [int, 10, pk]
+    nome [varchar, 30]
+    email [varchar, 50]
+    senha [varchar, 100]
+    data_cadastro [timestamp]
+    status [tinyint, 0/1]
+
+
 ## Ideias
-> **1. A imagem de cada produto deve ter um tamanho diferente para a plataforma web e e dispositivos móveis.**
+*1. A imagem de cada produto deve ter um tamanho diferente para a plataforma web e e dispositivos móveis.*
+
 
 ## Dúvidas
->**1. Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores no pior caso), como a logística de entrega vai funcionar?**
+*1. Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
 
-##Próximos passos
+## Próximos passos
 
 - Criar banco de dados
-- Criar logotipo **Cultura do Campo**
+- Criar logotipo
 
 ## Bugs
 
