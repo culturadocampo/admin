@@ -1,380 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>ProCampo | Ecommerce Dashboard</title>
-        <!-- ================== GOOGLE FONTS ==================-->
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
-        <!-- ======================= GLOBAL VENDOR STYLES ========================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/vendor/bootstrap.css">
-        <link rel="stylesheet" href="UIKit/dist/assets/vendor/metismenu/dist/metisMenu.css">
-        <link rel="stylesheet" href="UIKit/dist/assets/vendor/switchery-npm/index.css">
-        <link rel="stylesheet" href="UIKit/dist/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
-        <!-- ======================= LINE AWESOME ICONS ===========================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/icons/line-awesome.min.css">
-        <!-- ======================= DRIP ICONS ===================================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/icons/dripicons.min.css">
-        <!-- ======================= MATERIAL DESIGN ICONIC FONTS =================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/icons/material-design-iconic-font.min.css">
-        <!-- ======================= PAGE LEVEL VENDOR STYLES ========================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/vendor/rateYo/jquery.rateyo.min.css">
-        <!-- ======================= GLOBAL COMMON STYLES ============================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/common/main.bundle.css">
-        <!-- ======================= LAYOUT TYPE ===========================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/core/main.css">
-        <!-- ======================= MENU TYPE ===========================================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/menu-type/overlay.css">
-        <!-- ======================= THEME COLOR STYLES ===========================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-j.css">
-    </head>
-    <body class="overlay-menu layout-fixed">
+    <?php include 'App/Views/Base/b_head.php'; ?>
+
+    <body class="content-menu pace-done content-menu-close">
         <!-- CONTENT WRAPPER -->
         <div id="app">
-            <?php //include aside menu aqui ?>
+            <?php include 'App/Views/Base/b_navbar.php'; ?>
+
             <div class="content-wrapper">
-                <!-- TOP TOOLBAR WRAPPER -->
-                <nav class="top-toolbar navbar navbar-mobile navbar-tablet">
-                    <ul class="navbar-nav nav-left">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" data-toggle-state="aside-left-open">
-                                <i class="icon dripicons-align-left"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav nav-center site-logo">
-                        <li>
-                            <a href="index.html">
-                                <div class="logo_mobile">
-                                    <svg id="logo_mobile" width="27" height="27" viewBox="0 0 54.03 56.55">
-                                    <defs>
-                                    <linearGradient id="logo_background_mobile_color">
-                                    <stop class="stop1" offset="0%"/>
-                                    <stop class="stop2" offset="50%"/>
-                                    <stop class="stop3" offset="100%"/>
-                                    </linearGradient>
-                                    </defs>
-                                    <path id="logo_path_mobile" class="cls-2" d="M90.32,0c14.2-.28,22.78,7.91,26.56,18.24a39.17,39.17,0,0,1,1,4.17l.13,1.5A15.25,15.25,0,0,1,118.1,29v.72l-.51,3.13a30.47,30.47,0,0,1-3.33,8,15.29,15.29,0,0,1-2.5,3.52l.06.07c.57.88,1.43,1.58,2,2.41,1.1,1.49,2.36,2.81,3.46,4.3.41.55,1,1,1.41,1.56.68.92,1.16,1.89.32,3.06-.08.12-.08.24-.19.33a2.39,2.39,0,0,1-2.62.07,4.09,4.09,0,0,1-.7-.91c-.63-.85-1.41-1.61-2-2.48-1-1.42-2.33-2.67-3.39-4.1a16.77,16.77,0,0,1-1.15-1.37c-.11,0-.06,0-.13.07-.41.14-.65.55-1,.78-.72.54-1.49,1.08-2.24,1.56A29.5,29.5,0,0,1,97.81,53c-.83.24-1.6.18-2.5.39a16.68,16.68,0,0,1-3.65.26H90.58L88,53.36A36.87,36.87,0,0,1,82.71,52a27.15,27.15,0,0,1-15.1-14.66c-.47-1.1-.7-2.17-1.09-3.39-1-3-1.45-8.86-.51-12.38a29,29,0,0,1,2.56-7.36c3.56-6,7.41-9.77,14.08-12.57a34.92,34.92,0,0,1,4.8-1.3Zm.13,4.1c-.45.27-1.66.11-2.24.26a32.65,32.65,0,0,0-4.74,1.37A23,23,0,0,0,71,18.7,24,24,0,0,0,71.13,35c2.78,6.66,7.2,11.06,14.21,13.42,1.16.39,2.52.59,3.84.91l1.47.07a7.08,7.08,0,0,0,2.43,0H94c.89-.21,1.9-.28,2.75-.46V48.8A7.6,7.6,0,0,1,95.19,47c-.78-1-1.83-1.92-2.62-3s-1.86-1.84-2.62-2.87c-2-2.7-4.45-5.1-6.66-7.62-.57-.66-1.14-1.32-1.66-2-.22-.29-.59-.51-.77-.85a2.26,2.26,0,0,1,.58-2.61,2.39,2.39,0,0,1,2.24-.2,4.7,4.7,0,0,1,1.22,1.3l.51.46c.5.68,1,1.32,1.6,2,2.07,2.37,4.38,4.62,6.27,7.17.94,1.26,2.19,2.3,3.14,3.58l1,1c.82,1.1,1.8,2,2.62,3.13.26.35.65.6.9,1A23.06,23.06,0,0,0,105,45c.37-.27,1-.51,1.15-1h-.06c-.18-.51-.73-.83-1-1.24-.74-1-1.64-1.88-2.37-2.87-1.8-2.44-3.89-4.6-5.7-7-.61-.82-1.44-1.52-2-2.34-.85-1.16-3.82-3.73-1.54-5.41a2.27,2.27,0,0,1,1.86-.26c.9.37,2.33,2.43,2.94,3.26s1.27,1.31,1.79,2c1.44,1.95,3.11,3.66,4.54,5.6.41.55,1,1,1.41,1.56.66.89,1.46,1.66,2.11,2.54.29.39.61,1.06,1.09,1.24.54-1,1.34-1.84,1.92-2.8a25.69,25.69,0,0,0,2.5-6.32c1.27-4.51.32-10.37-1.15-13.81A22.48,22.48,0,0,0,100.75,5.94a35.12,35.12,0,0,0-6.08-1.69A20.59,20.59,0,0,0,90.45,4.11Z" transform="translate(-65.5)" fill="url(#logo_background_mobile_color)"/>
-                                    </svg>
-                                </div>
-                                <span class="brand-text">QuantumPro</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav nav-right">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" data-toggle-state="mobile-topbar-toggle">
-                                <i class="icon dripicons-dots-3 rotate-90"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <nav class="top-toolbar navbar navbar-desktop flex-nowrap">
-                    <ul class="navbar-nav nav-left">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" data-toggle-state="overlay-menu-open">
-                                <i class="icon dripicons-align-left"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item nav-text dropdown dropdown-menu-md">
-                            <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span>
-                                    Ponta Grossa
-                                </span>
-                                <i class="la la-angle-down menu-arrow-down"></i>
-                            </a>
-                            <div class="dropdown-menu menu-icons dropdown-menu-left">
-                                <div class="form-group form-filter">
-                                    <input type="text" placeholder="Filter location..." class="form-control filter-input" data-search-trigger="open">
-                                    <i data-q-action="clear-filter" class="icon dripicons-cross clear-filter"></i>
-                                    <ul class="list-reset filter-list" data-scroll="minimal-dark">
-                                        <li><a class="dropdown-item" href="#">Palmeira</a></li>
-                                        <li><a class="dropdown-item" href="#">Castro</a></li>
-                                        <li><a class="dropdown-item" href="#">Carambeí</a></li>
-                                        <li><a class="dropdown-item" href="#">Telêmaco Borba</a></li>
 
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
 
-                    </ul>
-                    <ul class="site-logo">
-                        <li>
-                            <!-- START LOGO -->
-                            <a href="index.html">
-                                <div class="logo">
-                                    <svg id="logo" width="25" height="25" viewBox="0 0 54.03 56.55">
-                                    <defs>
-                                    <linearGradient id="logo_background_color">
-                                    <stop class="stop1" offset="0%"/>
-                                    <stop class="stop2" offset="50%"/>
-                                    <stop class="stop3" offset="100%"/>
-                                    </linearGradient>
-                                    </defs>
-                                    <path id="logo_path" class="cls-2" d="M90.32,0c14.2-.28,22.78,7.91,26.56,18.24a39.17,39.17,0,0,1,1,4.17l.13,1.5A15.25,15.25,0,0,1,118.1,29v.72l-.51,3.13a30.47,30.47,0,0,1-3.33,8,15.29,15.29,0,0,1-2.5,3.52l.06.07c.57.88,1.43,1.58,2,2.41,1.1,1.49,2.36,2.81,3.46,4.3.41.55,1,1,1.41,1.56.68.92,1.16,1.89.32,3.06-.08.12-.08.24-.19.33a2.39,2.39,0,0,1-2.62.07,4.09,4.09,0,0,1-.7-.91c-.63-.85-1.41-1.61-2-2.48-1-1.42-2.33-2.67-3.39-4.1a16.77,16.77,0,0,1-1.15-1.37c-.11,0-.06,0-.13.07-.41.14-.65.55-1,.78-.72.54-1.49,1.08-2.24,1.56A29.5,29.5,0,0,1,97.81,53c-.83.24-1.6.18-2.5.39a16.68,16.68,0,0,1-3.65.26H90.58L88,53.36A36.87,36.87,0,0,1,82.71,52a27.15,27.15,0,0,1-15.1-14.66c-.47-1.1-.7-2.17-1.09-3.39-1-3-1.45-8.86-.51-12.38a29,29,0,0,1,2.56-7.36c3.56-6,7.41-9.77,14.08-12.57a34.92,34.92,0,0,1,4.8-1.3Zm.13,4.1c-.45.27-1.66.11-2.24.26a32.65,32.65,0,0,0-4.74,1.37A23,23,0,0,0,71,18.7,24,24,0,0,0,71.13,35c2.78,6.66,7.2,11.06,14.21,13.42,1.16.39,2.52.59,3.84.91l1.47.07a7.08,7.08,0,0,0,2.43,0H94c.89-.21,1.9-.28,2.75-.46V48.8A7.6,7.6,0,0,1,95.19,47c-.78-1-1.83-1.92-2.62-3s-1.86-1.84-2.62-2.87c-2-2.7-4.45-5.1-6.66-7.62-.57-.66-1.14-1.32-1.66-2-.22-.29-.59-.51-.77-.85a2.26,2.26,0,0,1,.58-2.61,2.39,2.39,0,0,1,2.24-.2,4.7,4.7,0,0,1,1.22,1.3l.51.46c.5.68,1,1.32,1.6,2,2.07,2.37,4.38,4.62,6.27,7.17.94,1.26,2.19,2.3,3.14,3.58l1,1c.82,1.1,1.8,2,2.62,3.13.26.35.65.6.9,1A23.06,23.06,0,0,0,105,45c.37-.27,1-.51,1.15-1h-.06c-.18-.51-.73-.83-1-1.24-.74-1-1.64-1.88-2.37-2.87-1.8-2.44-3.89-4.6-5.7-7-.61-.82-1.44-1.52-2-2.34-.85-1.16-3.82-3.73-1.54-5.41a2.27,2.27,0,0,1,1.86-.26c.9.37,2.33,2.43,2.94,3.26s1.27,1.31,1.79,2c1.44,1.95,3.11,3.66,4.54,5.6.41.55,1,1,1.41,1.56.66.89,1.46,1.66,2.11,2.54.29.39.61,1.06,1.09,1.24.54-1,1.34-1.84,1.92-2.8a25.69,25.69,0,0,0,2.5-6.32c1.27-4.51.32-10.37-1.15-13.81A22.48,22.48,0,0,0,100.75,5.94a35.12,35.12,0,0,0-6.08-1.69A20.59,20.59,0,0,0,90.45,4.11Z" transform="translate(-65.5)" fill="url(#logo_background_color)"/>
-                                    </svg>
-                                </div>
-                                <span class="brand-text">QuantumPro</span>
-                            </a>
-                            <!-- END LOGO -->
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav nav-right">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="open-search-button" data-q-action="open-site-search">
-                                <i class="icon dripicons-search"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown dropdown-menu-lg">
-                            <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon dripicons-view-apps"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right p-0">
-                                <div class="dropdown-menu-grid">
-                                    <div class="menu-grid-row">
-                                        <div><a class="dropdown-item  border-bottom border-right" href="apps.mail.html"><i class="icon dripicons-mail"></i><span>Mail</span></a></div>
-                                        <div><a class="dropdown-item  border-bottom" href="apps.messages.html"><i class="icon dripicons-message"></i><span>Messages</span></a></div>
+                <div class="content container-fluid">
+                    <section class="page-content container-fluid">
+                        <header class="text-center m-b-30 m-t-30">
+                            <h1>Olá, o que você está precisando?</h1>
+                        </header>
+                        <div class="row">
+                            <div class="col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+                                <form>
+                                    <div class="search-wrapper page-search">
+                                        <button class="search-button-submit" type="submit"><i class="icon dripicons-search"></i></button>
+                                        <input type="text" class="search-input" placeholder="Digite para localizar...">
                                     </div>
-                                    <div class="menu-grid-row">
-                                        <div><a class="dropdown-item  border-right" href="apps.contacts.html"><i class="icon dripicons-archive"></i><span>Contacts</span></a></div>
-                                        <div> <a class="dropdown-item" href="apps.calendar.html"><i class="icon dripicons-calendar"></i><span>Calendar</span></a></div>
-                                    </div>
-                                </div>
+                                </form>
+                                <p class="text-center m-t-50">
+                                    Ou veja nossos detaques abaixo
+                                </p>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown dropdown-notifications dropdown-menu-lg">
-                            <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon dripicons-bell"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="card card-notification">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Notifications</h5>
-                                        <ul class="actions top-right">
-                                            <li>
-                                                <a href="javascript:void(0);" data-q-action="open-notifi-config">
-                                                    <i class="icon dripicons-gear"></i>
-                                                </a>
+                        </div>
+
+
+                    </section>
+                    <section class="page-content container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+                                <div class="card card-menu">
+                                    <div class="card-header">Categorias</div>
+                                    <div class="card-body p-10">
+                                        <ul class="nav metismenu">
+                                            <li class="nav-dropdown">
+                                                <a class="has-arrow" href="#" aria-expanded="false"><span>Careais</span></a>
+                                                <ul class="collapse nav-sub" aria-expanded="false">
+                                                    <li><a href="javascript:void(0)"><span>Dresses</span></a></li>
+                                                    <li class=""><a href="javascript:void(0)"><span>Active Wear</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Coats &amp; Jackets</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Shoes</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-dropdown">
+                                                <a class="has-arrow" href="#" aria-expanded="false"><span>Frutas</span></a>
+                                                <ul class="collapse nav-sub" aria-expanded="false">
+                                                    <li><a href="javascript:void(0)"><span>Jeans</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Shirts</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Shorts</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Sneakers</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-dropdown">
+                                                <a class="has-arrow" href="#" aria-expanded="false"><span>Hortaliças</span></a>
+                                                <ul class="collapse nav-sub" aria-expanded="false">
+                                                    <li><a href="javascript:void(0)"><span>Bedding Sets</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Rugs</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Smart Home</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Speakers &amp; Home Audio</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Wall Decor &amp; Mirrors</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-dropdown">
+                                                <a class="has-arrow" href="#" aria-expanded="false"><span>Legumes</span></a>
+                                                <ul class="collapse nav-sub" aria-expanded="false">
+                                                    <li><a href="javascript:void(0)"><span>Bedding Sets</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Rugs</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Smart Home</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Speakers &amp; Home Audio</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Wall Decor &amp; Mirrors</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-dropdown">
+                                                <a class="has-arrow" href="#" aria-expanded="false"><span>Outros</span></a>
+                                                <ul class="collapse nav-sub" aria-expanded="false">
+                                                    <li><a href="javascript:void(0)"><span>Bedding Sets</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Rugs</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Smart Home</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Speakers &amp; Home Audio</span></a></li>
+                                                    <li><a href="javascript:void(0)"><span>Wall Decor &amp; Mirrors</span></a></li>
+                                                </ul>
                                             </li>
                                         </ul>
                                     </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Preço</div>
                                     <div class="card-body">
-                                        <div class="card-container-wrapper">
-                                            <div class="card-container">
-                                                <div class="timeline timeline-border">
-                                                    <div class="timeline-list">
-                                                        <div class="timeline-info">
-                                                            <div>Prep for bi-weekly meeting with <a href="javascript:void(0)"><strong>Steven Weinberg</strong></a> </div>
-                                                            <small class="text-muted">07/05/18, 2:00 PM</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-list timeline-border timeline-primary">
-                                                        <div class="timeline-info">
-                                                            <div>Skype call with development team</div>
-                                                            <small class="text-muted">07/07/18, 1:00 PM</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-list  timeline-border timeline-accent">
-                                                        <div class="timeline-info">
-                                                            <div>Programming control system</div>
-                                                            <small class="text-muted">07/09/18, 10:00 AM - 6:00 PM</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-list  timeline-border timeline-success">
-                                                        <div class="timeline-info">
-                                                            <div>Lunch with Peter Higgs</div>
-                                                            <small class="text-muted">07/10/18, 12:00 PM</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-list  timeline-border timeline-warning">
-                                                        <div class="timeline-info">
-                                                            <div><a href="#"><strong>Approve Request</strong></a> for new training material by</div>
-                                                            <small class="text-muted">07/11/18, 9:00 AM</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-list  timeline-border timeline-info">
-                                                        <div class="timeline-info">
-                                                            <div><a href="#"><strong>RSVP</strong></a> for this year's hackathon.</div>
-                                                            <small class="text-muted">07/11/18, 1:30 PM</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div id="slider-range" class="slider slider-primary"></div>
                                             </div>
-                                            <div class="card-container">
-                                                <h6 class="p-0 m-0">
-                                                    Show notifications from:
-                                                </h6>
-                                                <div class="row m-b-20 m-t-30">
-                                                    <div class="col-10"><span class="title"><i class="icon dripicons-calendar"></i>Calendar</span></div>
-                                                    <div class="col-2"><input type="checkbox" class="js-switch" checked /></div>
-                                                </div>
-                                                <div class="row m-b-20">
-                                                    <div class="col-10"><span class="title"><i class="icon dripicons-mail"></i>Email</span></div>
-                                                    <div class="col-2"><input type="checkbox" class="js-switch" checked/></div>
-                                                </div>
-                                                <div class="row m-b-20">
-                                                    <div class="col-10"><span class="title"><i class="icon dripicons-message"></i>Messages</span></div>
-                                                    <div class="col-2"><input type="checkbox" class="js-switch" /></div>
-                                                </div>
-                                                <div class="row m-b-20">
-                                                    <div class="col-10"><span class="title"><i class="icon dripicons-stack"></i>Projects</span></div>
-                                                    <div class="col-2"><input type="checkbox" class="js-switch" checked/></div>
-                                                </div>
+                                        </div>
+                                        <div class="row slider-labels">
+                                            <div class="col-sm-6 caption m-t-15">
+                                                <span id="slider-range-value1"></span>
+                                            </div>
+                                            <div class="col-sm-6 text-right caption  m-t-15">
+                                                <span id="slider-range-value2"></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <img src="UIKit/dist/assets/img/avatars/1.jpg" class="w-35 rounded-circle" alt="Albert Einstein">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
-                                <div class="dropdown-header pb-3">
-                                    <div class="media d-user">
-                                        <img class="align-self-center mr-3 w-40 rounded-circle" src="UIKit/dist/assets/img/avatars/1.jpg" alt="Albert Einstein">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-0">Albert Einstein</h5>
-                                            <span>support@authenticgoods.co</span>
+                                <div class="card">
+                                    <div class="card-header">Subcategorias</div>
+                                    <div class="card-body">
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="regular_xs">
+                                            <label class="custom-control-label" for="regular_xs">Regular XS</label>
+                                        </div>
+
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="regular_s">
+                                            <label class="custom-control-label" for="regular_s">Regular S</label>
+                                        </div>
+
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="regular_m">
+                                            <label class="custom-control-label" for="regular_m">Regular M</label>
+                                        </div>
+
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="regular_l">
+                                            <label class="custom-control-label" for="regular_l">Regular L</label>
+                                        </div>
+
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="regular_xl">
+                                            <label class="custom-control-label" for="regular_xl">Regular XL</label>
+                                        </div>
+
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="tall_m">
+                                            <label class="custom-control-label" for="tall_m">Tall M</label>
+                                        </div>
+
+                                        <div class="custom-control checkbox-primary custom-checkbox m-b-5">
+                                            <input type="checkbox" class="custom-control-input " id="tall_l">
+                                            <label class="custom-control-label" for="tall_l">Tall L</label>
                                         </div>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="apps.messages.html"><i class="icon dripicons-mail"></i> Message <span class="badge badge-accent rounded-circle w-15 h-15 p-0 font-size-10">4</span></a>
-                                <a class="dropdown-item" href="pages.profile.html"><i class="icon dripicons-user"></i> Profile</a>
-                                <a class="dropdown-item" href="pages.my-account.html"><i class="icon dripicons-gear"></i> Account Settings </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="icon dripicons-lock"></i> Lock Account</a>
-                                <a class="dropdown-item" href="auth.sign-in.html"><i class="icon dripicons-lock-open"></i> Sign Out</a>
+
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" data-toggle-state="aside-right-open">
-                                <i class="icon dripicons-align-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <form role="search" action="pages.search.html" class="navbar-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Search and press enter..." class="form-control navbar-search" autocomplete="off">
-                            <i data-q-action="close-site-search" class="icon dripicons-cross close-search"></i>
-                        </div>
-                        <button type="submit" class="d-none">Submit</button>
-                    </form>
-                </nav>
-                <!-- END TOP TOOLBAR WRAPPER -->
-                <div class="content">
-                    <header class="page-header fit-mobile">
-                        <div class="d-flex align-items-center">
-                            <div class="mr-auto">
-                                <h1 class="separator">Plataforma PróCampo</h1>
-                                <nav class="breadcrumb-wrapper" aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html"><i class="icon dripicons-home"></i></a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0)">Cultura do Campo</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Pró Campo</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                            <ul class="actions top-right">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)" class="btn btn-fab" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="la la-ellipsis-h"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-icon-menu dropdown-menu-right">
-                                        <div class="dropdown-header">
-                                            Quick Actions
-                                        </div>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="icon dripicons-clockwise"></i> Refresh
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="icon dripicons-gear"></i> Manage Widgets
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="icon dripicons-cloud-download"></i> Export
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="icon dripicons-help"></i> Support
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </header>
-                    
-                    <section class="page-content container-fluid">
-                    
-                        <div class="row">
-                        
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-9 col-xxl-10">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2 ">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
+                                                <li><a href="javascript:void(0)"><i class="icon dripicons-basket"></i></a></li>
+
                                             </ul>
                                             <a href="javascript:void(0)">
-                                                <img class="m-t-50" src="Public/Images/apple.jpg" alt="">
+                                                <img class="card-img-top m-t-30" src="Public/Images/apple_png.png" alt="">
                                             </a>
                                             <div class="card-body p-10">
                                                 <div id="product-id_10" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5 m-b-5">Maça nacional</h5>
-                                                <p class="card-text"><span class="text-muted m-r-5">R$ 4.00 ~ 4.75 / Kg</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <p class="card-text"><span class="text-muted m-r-5">R$ 4.00 ~ 4.65 / Kg</span></p>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="Public/Images/apple2.jpg" alt="">
+                                            <img class="card-img-top m-t-30" src="Public/Images/banana.png" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_25" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Close, Mini, Maxi</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$25.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-left">
-                                                <li><span class="badge badge-accent">NOVO</span></li>
+                                                <li><span class="badge badge-accent">NEW</span></li>
                                             </ul>
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="Public/Images/apple3.jpg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-57.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_57" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Lake Sunset</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$18.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-42.jpeg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-42.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_42" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Outta Time</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$22.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-left">
                                                 <li><span class="badge badge-accent">NEW</span></li>
                                             </ul>
@@ -382,116 +223,116 @@
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
                                             <a href="javascript:void(0)">
-                                                <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-38.jpeg" alt="">
+                                                <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-38.jpeg" alt="">
                                             </a>
                                             <div class="card-body p-10">
                                                 <div id="product-id_38" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5 m-b-5">Sleep When You're Dead</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$35.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-32.jpg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-32.jpg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_32" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">AMPERSANDS</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$25.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-11.jpeg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-11.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_11" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Water Life</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$18.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-100.jpeg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-100.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_100" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Alignment</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$22.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
                                             <a href="javascript:void(0)">
-                                                <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-101.jpeg" alt="">
+                                                <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-101.jpeg" alt="">
                                             </a>
                                             <div class="card-body p-10">
                                                 <div id="product-id_101" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5 m-b-5">Minimal Sunset</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$35.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-102.jpeg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-102.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_102" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">With Purpose</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$25.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-103.jpeg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-103.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_103" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">The Zone</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$18.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-6 col-xl-3 col-xxl-2">
-                                        <div class="card text-center ">
+                                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="card text-center p-20">
                                             <ul class="actions top-left">
                                                 <li><span class="badge badge-accent">NEW</span></li>
                                             </ul>
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
                                             </ul>
-                                            <img class="m-t-50" src="UIKit/dist/assets/img/ecom/product-104.jpeg" alt="">
+                                            <img class="card-img-top m-t-30" src="UIKit/dist/assets/img/ecom/product-104.jpeg" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_104" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Mollusca Cephalopoda</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$22.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block btn-outline" data-toggle="modal" data-target=".modal-xl">QUICK VIEW</button>
+                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -510,15 +351,15 @@
                                 <li class="nav-item" role="presentation"><a href="#sidebar-contact" class="nav-link" data-toggle="tab" aria-expanded="true">Contacts</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane  fadeIn active" id="sidebar-settings">
-                                    <section class="sidebar-settings-wrapper">
+                                <div class="tab-pane fadeIn active" id="sidebar-settings">
+                                    <div class="sidebar-settings-wrapper">
                                         <h5 class="m-t-30 m-b-20">Colors with dark sidebar</h5>
                                         <div class="row m-0">
                                             <div class="col-6 col-md-3 p-5 m-b-10">
                                                 <div class="color-option-check">
                                                     <h6 class="title text-center">theme-a.css</h6><label data-load-css="UIKit/dist/assets/css/layouts/vertical/themes/theme-a.css">
                                                         <input type="radio" name="setting-theme" checked="checked">
-                                                        <span class="icon-check"></span>
+                                                        <span class="icon-check dark"></span>
                                                         <span class="split">
                                                             <span class="color bg-menu-dark"></span>
                                                             <span class="color bg-theme-a"></span>
@@ -710,8 +551,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </section>
-                                    <section>
+                                    </div>
+                                    <div>
                                         <h5 class="m-t-30 m-b-20">Layouts</h5>
                                         <ul class="list-reset">
                                             <li>
@@ -727,9 +568,10 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </section>
+                                    </div>
                                 </div>
                                 <div class="tab-pane" id="sidebar-contact">
+                                    <!--START SEARCH WRAPPER -->
                                     <div class="search-wrapper m-b-30">
                                         <button type="submit" class="search-button-submit"><i class="icon dripicons-search site-search-icon"></i></button>
                                         <input type="text" class="form-control search-input no-focus-border" placeholder="Search contacts...">
@@ -737,7 +579,9 @@
                                             <i class="icon dripicons-cross site-search-close-icon"></i>
                                         </a>
                                     </div>
-                                    <section class="qt-scroll" data-scroll="minimal-dark">
+                                    <!--END START SEARCH WRAPPER -->
+                                    <!--START RIGHT SIDEBAR CONTACT LIST -->
+                                    <div class="qt-scroll" data-scroll="minimal-dark">
                                         <div class="list-view-group-header">a</div>
                                         <ul class="list-group p-0">
                                             <li class="list-group-item" data-chat="open" data-chat-name="John Smith">
@@ -996,9 +840,9 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </section>
+                                    </div>
+                                    <!--END RIGHT SIDEBAR CONTACT LIST -->
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1007,8 +851,8 @@
             </div>
         </div>
         <!-- END CONTENT WRAPPER -->
-        <!-- START QUICK VIEW MODAL -->
-        <div class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <!-- START VER OFERTAS MODAL -->
+        <div class="modal fade modal-xl" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header no-border">
@@ -1020,7 +864,7 @@
                         <div class="card-body p-t-0">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <section class="text-center">
+                                    <div class="text-center">
                                         <figure>
                                             <img class="w-400" src="UIKit/dist/assets/img/ecom/product-66.jpeg" alt="">
                                         </figure>
@@ -1029,13 +873,13 @@
                                             <li><a href="javascript:void(0)"><img class="w-100" src="UIKit/dist/assets/img/ecom/product-66.jpeg" alt=""></a></li>
                                             <li><a href="javascript:void(0)"><img class="w-100" src="UIKit/dist/assets/img/ecom/product-67.jpeg" alt=""></a></li>
                                         </ul>
-                                    </section>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <h2 class="card-title font-size-30">Pixel Heart</h2>
                                     <div id="product-id_65" class="m-t-10 m-b-10"></div>
                                     <p class="card-text font-size-18">$35.00</p>
-                                    <p class="card-text  bg-light">Everyday carry consectetur ennui est swag, meh ut. Chicharrones roof party ea try-hard celiac sustainable poutine cred. Art party vape thundercats irony, pug man braid raw denim chambray. Gochujang tofu shoreditch meh next level fingerstache farm-to-table
+                                    <p class="card-text p-20 bg-light">Everyday carry consectetur ennui est swag, meh ut. Chicharrones roof party ea try-hard celiac sustainable poutine cred. Art party vape thundercats irony, pug man braid raw denim chambray. Gochujang tofu shoreditch meh next level fingerstache farm-to-table
                                         flannel heirloom glossier.
                                     </p>
                                     <form>

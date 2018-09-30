@@ -8,16 +8,16 @@ class Database{
         if($_SERVER["HTTP_HOST"] == "localhost") {
             # Informações sobre o banco de dados local:
             $db_host = "localhost";
-            $db_nome = "CdoC";
+            $db_nome = "db_cultura";
             $db_usuario = "root";
-            $db_senha = "infodmz616";
+            $db_senha = "";
             $db_driver = "mysql";   
         }else{
             # Informações sobre o banco de dados produção:
             $db_host = "localhost";
-            $db_nome = "CdoC";
+            $db_nome = "db_cultura";
             $db_usuario = "root";
-            $db_senha = "infodmz616";
+            $db_senha = "";
             $db_driver = "mysql";  
         }
         try{
