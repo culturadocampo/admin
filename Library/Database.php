@@ -5,16 +5,21 @@ class Database{
     protected static $db;
     # Private construct - garante que a classe só possa ser instanciada internamente.
     private function __construct(){
-        # Informações sobre o banco de dados:
-        $db_host = "localhost";
-        $db_nome = "CdoC";
-        $db_usuario = "root";
-        $db_senha = "infodmz626";
-        $db_driver = "mysql";
-        # Informações sobre o sistema:
-        $sistema_titulo = "Cultura do Campo";
-        $sistema_email = "app.culturadocampo@gmail.com";
-       
+        if($_SERVER["HTTP_HOST"] == "localhost") {
+            # Informações sobre o banco de dados local:
+            $db_host = "localhost";
+            $db_nome = "CdoC";
+            $db_usuario = "root";
+            $db_senha = "infodmz616";
+            $db_driver = "mysql";   
+        }else{
+            # Informações sobre o banco de dados produção:
+            $db_host = "localhost";
+            $db_nome = "CdoC";
+            $db_usuario = "root";
+            $db_senha = "infodmz616";
+            $db_driver = "mysql";  
+        }
         try{
             # Atribui o objeto PDO à variável $db.
             self::$db = new PDO("$db_driver:host=$db_host; dbname=$db_nome", $db_usuario, $db_senha);
@@ -24,9 +29,6 @@ class Database{
             self::$db->exec('SET NAMES utf8');
         }
         catch (PDOException $e){
-            # Envia um e-mail para o e-mail oficial do sistema, em caso de erro de conexão.
-            mail($sistema_email, "PDOException em $sistema_titulo", $e->getMessage());
-            # Então não carrega nada mais da página.
             die("Connection Error: " . $e->getMessage());
         }
     }
@@ -39,15 +41,46 @@ class Database{
         # Retorna a conexão.
         return self::$db;
     }
+    #Insert, Update, Delete e testa se o retorno é um objeto, para ter certeza que gravou no banco.
+    public static function action($query){
+        $db = Database::conexao();
+        $sth = $db->prepare($query);
+        $sth->execute();     
+        return Database::test_is_object($sth);
+    }
+    #Uso com apenas um array de resposta.
     public static function fetch($query){
         $db = Database::conexao();
-        $db = $db->query($query);  
-        if($db->fetch()){
-            return $db->fetch();
+        $db = $db->query($query); 
+        return $db->fetch();
+    }
+    #Uso com vários arrays de resposta.
+    public static function fetchAll($query){
+        $db = Database::conexao();
+        $db = $db->query($query); 
+        return $db->fetchAll();
+    } 
+    #Uso com apenas um array de resposta, podendo escolher uma coluna por parametro int (0,1,2,3).
+    public static function fetchColumn($query,$coluna = false){
+        $db = Database::conexao();
+        $db = $db->query($query); 
+        return $db->fetchColumn($coluna);
+    } 
+    #Retorna a quantidade de linhas na busca.
+    public static function rowCount($query){
+        $db = Database::conexao();
+        $db = $db->query($query); 
+        return $db->rowCount();
+    }
+    #Testa se o retorno é um objeto, para ter certeza que gravou no banco.
+    public static function test_is_object($result){
+        if(is_object($result)){
+            return TRUE;
         }else{
-            return false;
+            return FALSE;
         }
     }
+    
 }
 
  
