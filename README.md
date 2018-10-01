@@ -67,11 +67,11 @@ Descrição de todas as tabelas e seus relacionamentos.
 
 
 ## Ideias
-*- A imagem de cada produto deve ter um tamanho diferente para a plataforma web e e dispositivos móveis.*
-*- Bundle de produtos por menor preço.*
+- *A imagem de cada produto deve ter um tamanho diferente para a plataforma web e e dispositivos móveis.*
+- *Bundle de produtos por menor preço.*
 
 ## Dúvidas
-*- Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
+- *Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
 
 ## Próximos passos
 
