@@ -203,7 +203,7 @@
                                     <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
                                         <div class="card text-center p-20">
                                             <ul class="actions top-left">
-                                                <li><span class="badge badge-accent">NEW</span></li>
+                                                <li><span class="badge badge-accent">NOVO</span></li>
                                             </ul>
                                             <ul class="actions top-right">
                                                 <li><a href="javascript:void(0)"><i class="icon dripicons-heart"></i></a></li>
