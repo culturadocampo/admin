@@ -55,19 +55,19 @@ class Database{
         return $db->fetch();
     }
     #Uso com vários arrays de resposta.
-    public static function fetchAll($query){
+    public static function fetch_all($query){
         $db = Database::conexao();
         $db = $db->query($query); 
         return $db->fetchAll();
     } 
     #Uso com apenas um array de resposta, podendo escolher uma coluna por parametro int (0,1,2,3).
-    public static function fetchColumn($query,$coluna = false){
+    public static function fetch_column($query,$coluna = false){
         $db = Database::conexao();
         $db = $db->query($query); 
         return $db->fetchColumn($coluna);
     } 
     #Retorna a quantidade de linhas na busca.
-    public static function rowCount($query){
+    public static function row_count($query){
         $db = Database::conexao();
         $db = $db->query($query); 
         return $db->rowCount();
