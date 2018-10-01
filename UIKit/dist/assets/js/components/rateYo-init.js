@@ -2,8 +2,9 @@
     "use strict";
   $(function() {
     $("#product-id_10").rateYo({
-      rating: 2.5,
       "starWidth": "20px",
+            rating: 4.1,
+
       "normalFill":QuantumPro.APP_COLORS.grey200,
       "ratedFill": QuantumPro.APP_COLORS.primary
     });

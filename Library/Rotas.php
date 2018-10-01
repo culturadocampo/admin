@@ -23,7 +23,7 @@ class Rotas {
 
         if ($rota === "dashboard") {
             $base = 'App/Views/Base/b_dashboard.php';
-            $content = 'App/Views/Content/v_dashboard.php';
+            $content = 'App/Views/Content/c_dashboard.php';
             include $base;
             exit;
         }

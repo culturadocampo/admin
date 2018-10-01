@@ -39,7 +39,7 @@
 
 Todos os produtos devem possuir, ao menos, uma imagem na plataforma. Cada imagem deve ser exclusiva da plataforma (ou seja, nada de Google Imagens), e devem seguir as seguintes regras:
 
-- Resolucão de **960x540**;
+- Todas devem ser quadradas e com exatamente o mesmo tamanho(e.g. 600x600);
 - Todas devem ter um fundo transparente (png);
 
 ## Interface
@@ -68,7 +68,7 @@ Descrição de todas as tabelas e seus relacionamentos.
 
 ## Ideias
 *1. A imagem de cada produto deve ter um tamanho diferente para a plataforma web e e dispositivos móveis.*
-
+*2. Bundle de produtos por menor preço.*
 
 ## Dúvidas
 *1. Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
