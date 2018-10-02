@@ -69,6 +69,11 @@ Descrição de todas as tabelas e seus relacionamentos.
 ## Ideias
 - *A imagem de cada produto deve ter um tamanho diferente para a plataforma web e dispositivos móveis.*
 - *Bundle de produtos por menor preço.*
+- *Avisar que uma área não está coberta*
+- *Ranking do produtor*
+- *História do produtor*
+- *Rastreabilidade*
+- *QR Code*
 
 ## Dúvidas
 - *Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
