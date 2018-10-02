@@ -84,6 +84,10 @@ Descrição de todas as tabelas e seus relacionamentos.
 - Mini estúdio fotográfico
 - Preencher formulário 'Desenvolvimento do cliente'
 
+## Reuniões
+
+- 11 de outubro de 2018
+
 ## Bugs
 
 
