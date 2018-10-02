@@ -81,7 +81,8 @@ Descrição de todas as tabelas e seus relacionamentos.
 ## Próximos passos
 
 - Criar banco de dados
-- Criar logotipo
+- Mini estúdio fotográfico
+- Preencher formulário 'Desenvolvimento do cliente'
 
 ## Bugs
 
