@@ -12,18 +12,18 @@ class Rotas {
         $rota = self::get_rota();
         
         if ($rota === "login") {
-            include 'App/Views/Content/v_login.php';
+            include 'Core/Views/Content/v_login.php';
             exit;
         }
 
         if ($rota === "do-login") {
-            include 'App/Controllers/login/do_login.php';
+            include 'Core/Controllers/login/do_login.php';
             exit;
         }
 
         if ($rota === "dashboard") {
-            $base = 'App/Views/Base/b_dashboard.php';
-            $content = 'App/Views/Content/c_dashboard.php';
+            $base = 'Core/Views/Base/b_dashboard.php';
+            $content = 'Core/Views/Content/c_dashboard.php';
             include $base;
             exit;
         }
@@ -31,7 +31,7 @@ class Rotas {
         if (preg_match("^produto\/[0-9]+\/editar^", $rota)) {
             $params = explode("/", $rota);
             $id = $params[1];
-            include 'App/Views/Content/editar_produto.php';
+            include 'Core/Views/Content/editar_produto.php';
             exit;
         }
 
