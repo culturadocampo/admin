@@ -25,5 +25,5 @@
         <!-- ======================= MENU TYPE ===========================================-->
         <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/menu-type/content.css">
         <!-- ======================= THEME COLOR STYLES ===========================-->
-        <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-j.css">
+        <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-n.css">
     </head>
