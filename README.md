@@ -74,6 +74,9 @@ Descrição de todas as tabelas e seus relacionamentos.
 - *História do produtor*
 - *Rastreabilidade*
 - *QR Code*
+- *Limitação de compras pendentes se pagamento em espécie*
+- *Compartilhamento em rede social*
+
 
 ## Dúvidas
 - *Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
@@ -95,4 +98,4 @@ Descrição de todas as tabelas e seus relacionamentos.
 
 Quem quiser usar o editor `markdown` para editar este arquivo, acesse o seguinte link:
 
-[Editor.md - Open source online Markdown editor](http://https://pandao.github.io/editor.md/en.html "Edit.md - Open source online Markdown editor")
+[Editor.md - Open source online Markdown editor](https://pandao.github.io/editor.md/en.html "Edit.md - Open source online Markdown editor")
