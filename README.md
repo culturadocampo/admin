@@ -76,6 +76,7 @@ Descrição de todas as tabelas e seus relacionamentos.
 - *QR Code*
 - *Limitação de compras pendentes se pagamento em espécie*
 - *Compartilhamento em rede social*
+- *Valores devem ser trabalhados em centavos, nunca com ponto flutuante*
 
 
 ## Dúvidas
