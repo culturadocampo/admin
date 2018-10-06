@@ -52,13 +52,13 @@ class Database{
     public static function fetch($query){
         $db = Database::conexao();
         $db = $db->query($query); 
-        return $db->fetch();
+        return $db->fetch(PDO::FETCH_ASSOC);
     }
     #Uso com vários arrays de resposta.
     public static function fetch_all($query){
         $db = Database::conexao();
         $db = $db->query($query); 
-        return $db->fetchAll();
+        return $db->fetchAll(PDO::FETCH_ASSOC);
     } 
     #Uso com apenas um array de resposta, podendo escolher uma coluna por parametro int (0,1,2,3).
     public static function fetch_column($query,$coluna = false){
