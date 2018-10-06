@@ -48,6 +48,8 @@ Toda a interface da plataforma foi baseada no seguinte tema Bootstrap:
 
 [QuantumPro - Bootstrap 4 Dashboard & UI Kit](http://https://themeforest.net/item/quantumpro-bootstrap-4-dashboard-ui-kit/22102521 "QuantumPro - Bootstrap 4 Dashboard & UI Kit")
 
+## Rotas de acesso
+
 ## Base de dados
 Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 1. Nomes de tabelas devem estar sempre no plural (~~usuario~~ -> usuarios);
