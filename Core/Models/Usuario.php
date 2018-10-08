@@ -8,7 +8,7 @@ class Usuario {
     
     
     function select_usuario_login(){
-        $query = "";
+        
     }
     
     

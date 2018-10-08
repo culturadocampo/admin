@@ -69,8 +69,8 @@ Descrição de todas as tabelas e seus relacionamentos.
 
 
 ## Ideias
-- *A imagem de cada produto deve ter um tamanho diferente para a plataforma web e dispositivos móveis.*
-- *Bundle de produtos por menor preço.*
+- *A imagem de cada produto deve ter um tamanho diferente para a plataforma web e dispositivos móveis*
+- *Bundle de produtos por menor preço*
 - *Avisar que uma área não está coberta*
 - *Ranking do produtor*
 - *História do produtor*
@@ -92,7 +92,9 @@ Descrição de todas as tabelas e seus relacionamentos.
 
 ## Reuniões
 
-- 11 de outubro de 2018
+- 11 de outubro de 2018 [Salão de festa do condomínio]
+    - Discussão sobre as entidades do BD
+    - Testes com o mini estúdio de fotografia
 
 ## Bugs
 

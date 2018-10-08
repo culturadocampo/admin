@@ -1,8 +1,15 @@
 <?php
+/**
+ * INFORMATIVO
+ * Esta página é chamada diretamente, 
+ * portanto, não usa o fluxo normal pelo start.php
+ * 
+ */
 
-//ajax
-//logica login
+
+require '../../Models/Usuario.php'; 
 print_r($_POST);
+
 $m_usuario = new Usuario();
 
 $m_usuario->set_usuario($_POST['usuario']);

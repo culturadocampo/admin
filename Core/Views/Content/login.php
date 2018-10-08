@@ -69,11 +69,12 @@
             $(document).ready(function () {
                 $('#submit_login').click(function () {
                     $.ajax({
-                        url: 'do-login',
+                        url: 'dologin',
                         type: 'post',
                         data: $('.sign-in-form').serialize(),
                         success: function (data) {
-                            window.location.replace("dashboard");
+                            alert(data);
+                            //window.location.replace("dashboard");
                         }
                     });
                 });

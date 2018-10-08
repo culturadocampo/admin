@@ -52,16 +52,33 @@
         </li>
     </ul>
     <ul class="navbar-nav nav-right">
-               <li class="nav-item nav-text dropdown dropdown-menu-md">
+          <li class="nav-item nav-text dropdown dropdown-menu-md">
             <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span>
-                    Categorias
+                    <strong>Admin</strong>
                 </span>
                 <i class="la la-angle-down menu-arrow-down"></i>
             </a>
             <div class="dropdown-menu menu-icons dropdown-menu-left">
                 <div class="form-group form-filter">
-                        <input type="text" placeholder="Filtrar..." class="form-control filter-input" data-search-trigger="open">
+                    <input type="text" placeholder="Filtrar..." class="form-control filter-input" data-search-trigger="open">
+                    <i data-q-action="clear-filter" class="icon dripicons-cross clear-filter"></i>
+                    <ul class="list-reset filter-list" data-scroll="minimal-dark">
+                        <li><a class="dropdown-item" href="rotas-de-acesso">Rotas de acesso</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item nav-text dropdown dropdown-menu-md">
+            <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span>
+                     <strong>Categorias</strong>
+                </span>
+                <i class="la la-angle-down menu-arrow-down"></i>
+            </a>
+            <div class="dropdown-menu menu-icons dropdown-menu-left">
+                <div class="form-group form-filter">
+                    <input type="text" placeholder="Filtrar..." class="form-control filter-input" data-search-trigger="open">
                     <i data-q-action="clear-filter" class="icon dripicons-cross clear-filter"></i>
                     <ul class="list-reset filter-list" data-scroll="minimal-dark">
                         <li><a class="dropdown-item" href="#">Cereais</a></li>
@@ -74,14 +91,12 @@
         </li>
         <li class="nav-item nav-text dropdown dropdown-menu-md">
             <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span>
-                    Ponta Grossa
-                </span>
+             <strong>Ponta Grossa</strong>
                 <i class="la la-angle-down menu-arrow-down"></i>
             </a>
             <div class="dropdown-menu menu-icons dropdown-menu-left">
                 <div class="form-group form-filter">
-                        <input type="text" placeholder="Filtrar..." class="form-control filter-input" data-search-trigger="open">
+                    <input type="text" placeholder="Filtrar..." class="form-control filter-input" data-search-trigger="open">
                     <i data-q-action="clear-filter" class="icon dripicons-cross clear-filter"></i>
                     <ul class="list-reset filter-list" data-scroll="minimal-dark">
                         <li><a class="dropdown-item" href="#">Castro</a></li>

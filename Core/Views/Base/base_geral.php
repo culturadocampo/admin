@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <?php include 'Core/Views/Base/b_head.php'; ?>
+    <?php include 'Core/Views/Base/Includes/b_head.php'; ?>
 
     <body class="content-menu pace-done content-menu-close">
         <!-- CONTENT WRAPPER -->
         <div id="app">
-            <?php include 'Core/Views/Base/b_navbar.php'; ?>
+            <?php include 'Core/Views/Base/Includes/b_navbar.php'; ?>
 
             <div class="content-wrapper">
 
 
-                <div class="content container-fluid">
-                    <?php include $content; ?>
+                <div class="content container">
+                    <?php include "Core/Views/Conteudo/{$rota['conteudo']}"; ?>
                 </div>
                 <!-- SIDEBAR QUICK PANNEL WRAPPER -->
                 <aside class="sidebar sidebar-right">
@@ -524,7 +524,6 @@
         </div>
         <!-- END CONTENT WRAPPER -->
 
-        <?php include 'Core/Views/Base/b_scripts.php'; ?>
+        <?php include 'Core/Views/Base/Includes/b_scripts.php'; ?>
     </body>
-
 </html>

@@ -14,7 +14,8 @@
 class Application {
 
     static function start() {
-        Rotas::include_file();
+        $o_roteador = new Roteador();
+        $o_roteador->include_file();
     }
 
  
