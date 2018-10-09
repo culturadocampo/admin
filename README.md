@@ -55,19 +55,8 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 1. Nomes de tabelas devem estar sempre no plural (~~usuario~~ -> usuarios);
 2. O chave primária da tabela deve conter a descrição da entidade no singular;
 	Ex: A chave primária da tabela `usuarios` deve ser descrita como `id_usuario`, nunca como `id`
-3. Colocar *timestamp* em todas as tabelas
-4. Colocar campo *ativo* em todas as tabelas
-
-Descrição de todas as tabelas e seus relacionamentos.
-
-#### 1. usuarios
-
-    id_usuario [int, 10, pk]
-    nome [varchar, 30]
-    email [varchar, 50]
-    senha [varchar, 100]
-    data_cadastro [timestamp]
-    status [tinyint, 0/1]
+3. Colocar *data* [timestamp] em todas as tabelas, com *default* CURRENT_TIMESTAMP
+4. Colocar campo *ativo* [int] em todas as tabelas
 
 
 ## Ideias
