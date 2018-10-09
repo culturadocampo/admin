@@ -56,7 +56,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 2. O chave primária da tabela deve conter a descrição da entidade no singular;
 	Ex: A chave primária da tabela `usuarios` deve ser descrita como `id_usuario`, nunca como `id`
 3. Colocar *timestamp* em todas as tabelas
-4 Colocar campo *ativo* em todas as tabelas
+4. Colocar campo *ativo* em todas as tabelas
 
 Descrição de todas as tabelas e seus relacionamentos.
 
