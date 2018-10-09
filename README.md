@@ -79,6 +79,7 @@ Descrição de todas as tabelas e seus relacionamentos.
 - *Limitação de compras pendentes se pagamento em espécie*
 - *Compartilhamento em rede social*
 - *Valores devem ser trabalhados em centavos, nunca com ponto flutuante*
+- *Colocar timestamp em todas as tabelas*
 
 
 ## Dúvidas
