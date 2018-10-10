@@ -18,3 +18,5 @@
 <script src="UIKit/dist/assets/js/components/rateYo-init.js"></script>
 <script src="UIKit/dist/assets/vendor/select2/select2.min.js"></script>
 <script src="UIKit/dist/assets/vendor/switchery-npm/index.js"></script>
+<script src="UIKit/dist/assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+

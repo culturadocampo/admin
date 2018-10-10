@@ -14,17 +14,7 @@ class Database {
         $db_usuario = "root";
         $db_senha = "INFODMZ626";
         $db_driver = "mysql";
-//        if($_SERVER["HTTP_HOST"] == "localhost") {
-//            # Informações sobre o banco de dados local:
-//    
-//        }else{
-//            # Informações sobre o banco de dados produção:
-//            $db_host = "localhost";
-//            $db_nome = "db_cultura";
-//            $db_usuario = "root";
-//            $db_senha = "qwerty";
-//            $db_driver = "mysql";  
-//        }
+
         try {
             # Atribui o objeto PDO à variável $db.
             self::$db = new PDO("$db_driver:host=$db_host; dbname=$db_nome", $db_usuario, $db_senha);

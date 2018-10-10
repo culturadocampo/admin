@@ -1,37 +1,34 @@
 <?php
 
-/**
- * Aprenda a criar uma rota de acesso em:
- * https://github.com/app-culturadocampo/pro_campo#rotas-de-acesso
- */
 class Roteador {
 
-    public function include_file() {
+    public function include_file($request) {
         $o_rota = new Rota();
-        $o_rota->set_url($_GET['url']);
+        $o_rota->set_url($request);
         $rota = $o_rota->select_rota();
-        include "Core/Views/Base/{$rota['base']}";
+
+        /**
+         * Verifica se a sessão do usuário é válida
+         * ou a rota requisitada não é privada.
+         * Caso false, redireciona para o login
+         */
+        if ($this->is_session_valid() || !$rota['privado']) {
+            $conteudo = "Core/{$rota['conteudo']}";
+            if ($rota['ajax']) {
+                include $conteudo;
+            } else {
+                include "Core/Views/Base/{$rota['base']}";
+            }
+        } else {
+            $o_rota->set_url("login");
+            $rota = $o_rota->select_rota();
+            $conteudo = "Core/{$rota['conteudo']}";
+            include "Core/Views/Base/{$rota['base']}";
+        }
     }
 
-//    function login() {
-//        include 'Core/Views/Content/v_login.php';
-//    }
-//
-//    function do_login() {
-//        include 'Core/Controllers/login/do_login.php';
-//    }
-//
-//    function dashboard() {
-//        $base = 'Core/Views/Base/b_dashboard.php';
-//        $content = 'Core/Views/Content/dashboard.php';
-//        include $base;
-//    }
-//
-//    function meu_nome() {
-//        echo "Seu nome é {$_GET['nome']} e seu número é {$_GET['id']}";
-//        //$base = 'Core/Views/Base/b_dashboard.php';
-//        // $content = 'Core/Views/Content/enviar_nome.php';
-//        //include $base;
-//    }
+    private function is_session_valid() {
+        return false;
+    }
 
 }

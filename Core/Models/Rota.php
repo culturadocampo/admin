@@ -21,8 +21,9 @@ class Rota {
             SELECT
                 base,
                 conteudo,
-                privado 
-            FROM adm_rotas 
+                privado,
+                ajax
+            FROM rotas 
             WHERE TRUE
                 AND url = '{$this->get_url()}'
                 AND ativo = '1'
@@ -58,7 +59,7 @@ class Rota {
         $query = "
             SELECT
                 id_rota
-            FROM adm_rotas 
+            FROM rotas 
             WHERE TRUE
                 AND conteudo = '{$this->get_conteudo()}'
                 AND ativo = '1'
