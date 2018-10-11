@@ -14,20 +14,21 @@
 class Application {
 
     static function start() {
-        $o_roteador = new Roteador();
         $request = self::get_request();
-        $o_roteador->include_file($request);
+        Roteador::include_file($request);
     }
 
     private static function get_request() {
         $host = $_SERVER['HTTP_HOST'];
         $request = $_SERVER['REDIRECT_URL'];
+        $request = explode("/", $request);
+
         if ($host == "localhost") {
-            $request = explode("/", $request);
-            return $request[2];
+            $request = $request[2] ? $request[2] : 'inicio';
         } else {
-            return $request[0];
+            $request = $request[0] ? $request[0] : 'inicio';
         }
+        return $request;
     }
 
 }

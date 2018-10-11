@@ -20,6 +20,7 @@ class Rota {
         $query = "
             SELECT
                 base,
+                path,
                 conteudo,
                 privado,
                 ajax
@@ -29,6 +30,19 @@ class Rota {
                 AND ativo = '1'
         ";
         return Database::fetch($query);
+    }
+
+    function select_all_permissoes() {
+        $query = "
+          SELECT
+            id_permissao,
+            descricao,
+            COUNT(*) as qtde_rotas
+        FROM permissoes
+	INNER JOIN rotas ON id_permissao = fk_permissao
+        GROUP BY id_permissao
+        ";
+        return Database::fetch_all($query);
     }
 
     function get_arquivos_base() {

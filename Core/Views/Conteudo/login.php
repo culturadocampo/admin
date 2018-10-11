@@ -46,18 +46,15 @@
                         swal({
                             type: 'error',
                             title: response.message,
-                            text: 'Verifique e tente novamente',
-                            //  footer: '<a href>Why do I have this issue?</a>'
+                            text: 'Verifique e tente novamente'
                         });
                     }
                 },
                 error: function (error) {
-                    console.log(error);
                     swal({
                         type: 'error',
                         title: 'Resposta inesperada',
-                        text: 'Entre em contato com o supoorte (COD: L001)',
-                        // footer: '<a href>Why do I have this issue?</a>'
+                        text: 'Entre em contato com o supoorte (COD: L001)'
                     });
                 }
             });

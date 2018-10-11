@@ -1,6 +1,8 @@
 <?php
 $o_rota = new Rota();
 
+$all_rotas = $o_rota->select_all_permissoes();
+
 $arquivos_base = $o_rota->get_arquivos_base();
 $arquivos_conteudo = $o_rota->get_arquivos_conteudo();
 
@@ -15,6 +17,42 @@ if ($arquivos_conteudo) {
     $arquivos_conteudo = array_values($arquivos_conteudo);
 }
 ?>
+<section class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h5 class="card-header">Data Tables</h5>
+                <div class="card-body">
+                    <table id="rotas_table" class="table table-borderless table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descrição</th>
+                                <th>Qtde. Rotas</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($all_rotas as $rota) { ?>
+                                <tr>
+                                    <td><?php echo $rota['id_permissao']; ?></td>
+                                    <td><?php echo $rota['descricao']; ?></td>
+                                    <td><?php echo $rota['qtde_rotas']; ?></td>
+
+
+                                </tr>
+                            <?php } ?>
+
+
+                            </tfoot>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <header class="page-header">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
@@ -152,6 +190,7 @@ if ($arquivos_conteudo) {
                         </div>
                     </div>
 
+
                 </div>
                 <div class="card-footer bg-light">
                     <div class="form-actions">
@@ -164,6 +203,33 @@ if ($arquivos_conteudo) {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h5 class="card-header">Borderless table</h5>
+                <div class="card-body">
+                    <p>Add <code class="highlighter-rouge">.table-borderless</code> for a table without borders.</p>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>Population</th>
+                                    <th>Yearly Change</th>
+                                    <th>Net Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>China</td>
+                                    <td>1,415,045,928</td>
+                                    <td>0.39 %</td>
+                                    <td>5,528,531</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -194,7 +260,7 @@ if ($arquivos_conteudo) {
                 <div class="form-group row">
                     <label class="control-label text-right col-md-3">Parâmetros</label>
                     <div id="lista_parametros" class="col-7">
-                        
+
                     </div>
                 </div>
             </div>
@@ -219,6 +285,9 @@ if ($arquivos_conteudo) {
 
 <script>
     $(document).ready(function () {
+
+        $('#rotas_table').DataTable();
+
 
         let parametros_array = [];
 

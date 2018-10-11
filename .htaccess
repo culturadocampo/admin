@@ -1,7 +1,7 @@
 rewriteEngine on
 rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
-
+Options -Indexes
 
 #Cadastro de rotas
 rewriteRule ^rotas-de-acesso ./start.php [NC]
@@ -9,7 +9,9 @@ rewriteRule ^rotas-de-acesso ./start.php [NC]
 rewriteRule ^login$ ./start.php [NC]
 # Login
 rewriteRule ^do-login$ ./start.php [NC]
-
+# Dashboard
+rewriteRule ^inicio$ ./start.php [NC]
+rewriteRule ^$ ./start.php [NC]
 
 # Página de login
 # Validação das credenciais

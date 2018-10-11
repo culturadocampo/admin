@@ -37,7 +37,7 @@
                                                 <div id="product-id_10" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5 m-b-5">Maça nacional</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">R$ 4.00 ~ 4.65 / Kg</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -49,9 +49,9 @@
                                             <img class="card-img-top m-t-30" src="Public/Images/banana.png" alt="">
                                             <div class="card-body p-10">
                                                 <div id="product-id_25" class="m-auto"></div>
-                                                <h5 class="card-title p-t-20 m-b-5">Banan maça</h5>
+                                                <h5 class="card-title p-t-20 m-b-5">Banana maça</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">R$ 2.00 / Cacho</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                                 <div id="product-id_57" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Morango</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">R$ 7.00 / Kg</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
                                                 <div id="product-id_42" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Uvas</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">R$ 9.50 / Kg</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                                 <div id="product-id_38" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5 m-b-5">Melancia</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">R$ 6.00 / Kg</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                                 <div id="product-id_32" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">AMPERSANDS</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$25.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@
                                                 <div id="product-id_11" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Water Life</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$18.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                                 <div id="product-id_100" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Alignment</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$22.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@
                                                 <div id="product-id_101" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5 m-b-5">Minimal Sunset</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$35.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                                 <div id="product-id_102" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">With Purpose</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$25.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                                 <div id="product-id_103" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">The Zone</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$18.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                                                 <div id="product-id_104" class="m-auto"></div>
                                                 <h5 class="card-title p-t-20 m-b-5">Mollusca Cephalopoda</h5>
                                                 <p class="card-text"><span class="text-muted m-r-5">$22.00</span></p>
-                                                <button type="button" class="btn btn-primary btn-rounded btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
+                                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".modal-xl">VER OFERTAS</button>
                                             </div>
                                         </div>
                                     </div>
