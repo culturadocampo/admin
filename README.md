@@ -56,7 +56,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 2. O chave primária da tabela deve conter a descrição da entidade no singular;
 	Ex: A chave primária da tabela `usuarios` deve ser descrita como `id_usuario`, nunca como `id`
 3. Colocar *data* [timestamp] em todas as tabelas, com *default* CURRENT_TIMESTAMP
-4. Colocar campo *ativo* [int] em todas as tabelas
+4. Colocar campo *ativo* [int] (se necessário)
 
 
 ## Ideias
@@ -76,17 +76,21 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 ## Dúvidas
 - *Se um cliente comprar, por exemplo, 10 produtos diferentes e vier de mais de 1 produtor (neste exemplo, 10 produtores seria o pior caso), como a logística de entrega vai funcionar?*
 
-## Próximos passos
-
-- Criar banco de dados
-- Mini estúdio fotográfico
-- Preencher formulário 'Desenvolvimento do cliente'
-
 ## Reuniões
 
-- 11 de outubro de 2018 [Salão de festa do condomínio]
-    - Discussão sobre as entidades do BD
-    - Testes com o mini estúdio de fotografia
+- 11 de outubro de 2018 [Apto. do Marlon]
+    - Discussão sobre o MVP
+        - Campo de cadastro de usuario
+        - O que um usuário comum precisa fazer para ser um vendedor?
+        - Lista completa de produtos
+        - Login funcional
+        - Cadastro de anúncios
+        - Cadastro de produtos
+        - Android/iOS para o MVP
+        - Nome da plataforma
+        - Qual vai ser a parte "premium" da plataforma? (como vamos ganhar?)
+        - Fluxo de pagamento (sem pagamento, sem investimento)
+        - Quem vai ser responsável pelo o que neste MVP?
 
 ## Bugs
 
