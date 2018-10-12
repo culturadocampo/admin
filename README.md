@@ -90,7 +90,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
         - Nome da plataforma
         - Qual vai ser a parte "premium" da plataforma? (como vamos ganhar?)
         - Fluxo de pagamento (sem pagamento, sem investimento)
-        - Quem vai ser responsável pelo o que neste MVP?
+        - Quem vai ser responsável pelo o que neste MVP?:
 
 ## Bugs
 
