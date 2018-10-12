@@ -78,7 +78,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 
 ## Reuniões
 
-- 11 de outubro de 2018 [Apto. do Marlon]
+- 11 de outubro de 2018 [Apto. do Marlon - 14h30min]
     - Discussão sobre o MVP
         - Campo de cadastro de usuario
         - O que um usuário comum precisa fazer para ser um vendedor?
