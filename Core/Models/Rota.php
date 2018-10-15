@@ -19,11 +19,9 @@ class Rota {
     function select_rota() {
         $query = "
             SELECT
-                base,
-                path,
+                matriz,
                 conteudo,
-                privado,
-                ajax
+                publico
             FROM rotas 
             WHERE TRUE
                 AND url = '{$this->get_url()}'
@@ -35,12 +33,12 @@ class Rota {
     function select_all_permissoes() {
         $query = "
           SELECT
-            id_permissao,
-            descricao,
-            COUNT(*) as qtde_rotas
-        FROM permissoes
-	INNER JOIN rotas ON id_permissao = fk_permissao
-        GROUP BY id_permissao
+              id_permissao,
+              descricao,
+              COUNT(*) as qtde_rotas
+          FROM permissoes
+          INNER JOIN rotas ON id_permissao = fk_permissao
+          GROUP BY id_permissao
         ";
         return Database::fetch_all($query);
     }

@@ -7,28 +7,19 @@ class Roteador {
         $o_rota->set_url($request);
         $rota = $o_rota->select_rota();
 
-        /**
-         * Verifica se a sessão do usuário é válida
-         * ou a rota requisitada não é privada.
-         * Caso false, redireciona para o login
-         */
-        if (self::is_session_valid() || !$rota['privado']) {
-            $conteudo = "Core/{$rota['path']}/{$rota['conteudo']}";
-            if ($rota['ajax']) {
-                include $conteudo;
+        if (Application::is_logged() || $rota['publico']) {
+            $conteudo = "Core/Rotas/{$rota['conteudo']}";
+            if ($rota['matriz']) {
+                include "Public/Matriz/{$rota['matriz']}";
             } else {
-                include "Core/Views/Base/{$rota['base']}";
+                include $conteudo;
             }
         } else {
             $o_rota->set_url("login");
             $rota = $o_rota->select_rota();
-            $conteudo = "Core/{$rota['path']}/{$rota['conteudo']}";
-            include "Core/Views/Base/{$rota['base']}";
-        }
-    }
-
-    private static function is_session_valid() {
-        return true;
+            $conteudo = "Core/Rotas/{$rota['conteudo']}";
+            include "Public/Matriz/{$rota['matriz']}";
+         }
     }
 
     public function include_rota($id_rota) {

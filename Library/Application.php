@@ -20,15 +20,31 @@ class Application {
 
     private static function get_request() {
         $host = $_SERVER['HTTP_HOST'];
-        $request = $_SERVER['REDIRECT_URL'];
-        $request = explode("/", $request);
+        $request = explode("/", $_SERVER['REDIRECT_URL']);
 
         if ($host == "localhost") {
-            $request = $request[2] ? $request[2] : 'inicio';
+            $request = $request[2] ? $request[2] : 'pagina-inicial';
         } else {
-            $request = $request[0] ? $request[0] : 'inicio';
+            $request = $request[0] ? $request[0] : 'pagina-inicial';
         }
         return $request;
+    }
+
+    /**
+     * Verifica se a sessão do usuário é válida
+     * ou a rota requisitada não é privada.
+     * Caso false, redireciona para o login
+     */
+    public static function is_logged() {
+        if (isset($_SESSION['id']) && isset($_SESSION['nome'])) {
+            if ($_SESSION['id'] > 0 && !empty($_SESSION['nome'])) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
 }

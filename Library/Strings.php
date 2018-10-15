@@ -3,7 +3,7 @@
 /**
  * FILTER
  */
-class Filtro {
+class Strings {
 
     static function limpar($str) {
         $striped_str = addslashes(strip_tags(trim($str)));
@@ -54,23 +54,41 @@ class Filtro {
         return str_replace($a, $b, $str);
     }
 
-    static function is_valid_name($name) {
-        $pattern = "/^[ a-zA-Z]+$/";
-        $result = preg_match($pattern, $name);
-        return $result;
-    }
-
-    static function is_valid_phone($phone) {
+    static function is_telefone_valido($phone) {
         $pattern = "/^(?=.*[0-9])[- +()0-9]+$/";
         $result = preg_match($pattern, $phone);
         return $result;
     }
 
-    static function is_valid_email($email) {
+    static function is_email_valido($email) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    static function is_nome_valido($nome) {
+        if (preg_match('/^[a-z .\-\']+$/i', $nome)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static function is_usuario_valido($senha) {
+        if (preg_match("/\\s/", $senha)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    static function is_senha_valida($senha) {
+        if (preg_match("/\\s/", $senha)) {
+            return false;
+        } else {
+            return true;
         }
     }
 

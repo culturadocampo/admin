@@ -9,6 +9,8 @@ $usuario = $m_usuario->select_usuario_login();
 
 if ($usuario) {
     $response['result'] = true;
+    $_SESSION['id'] = $usuario['id_usuario'];
+    $_SESSION['nome'] = $usuario['nome'];
 } else {
     $response['result'] = false;
     $response['message'] = "Login inválido";

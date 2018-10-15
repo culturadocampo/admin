@@ -8,6 +8,7 @@ function autoload($class) {
         include(dirname(__FILE__) . './Library/' . $class . ".php");
     }
 }
+
 spl_autoload_register("autoload");
 session_start();
 

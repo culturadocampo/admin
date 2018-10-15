@@ -40,7 +40,7 @@ class Database {
 
     #Insert, Update, Delete e testa se o retorno é um objeto, para ter certeza que gravou no banco.
 
-    public static function action($query) {
+    public static function execute($query) {
         $db = Database::conexao();
         $sth = $db->prepare($query);
         $sth->execute();
