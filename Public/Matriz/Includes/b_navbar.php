@@ -28,7 +28,7 @@
         </li>
     </ul>
 </nav>
-<nav class="top-toolbar navbar navbar-desktop flex-nowrap">
+<nav class="top-toolbar navbar navbar-desktop flex-nowrap" style="box-shadow: none">
 
     <ul class="site-logo">
         <li>
@@ -58,10 +58,10 @@
 
     <ul class="navbar-nav nav-right">
 
-        <li class="nav-item nav-text dropdown dropdown-menu-md m-t-15  d-none d-lg-block" style="width: 500px;">
+<!--        <li class="nav-item nav-text dropdown dropdown-menu-md m-t-15  d-none d-lg-block" style="width: 500px;">
             <div class="form-group">
                 <div class="input-group mb-3">
-                    <input style="background: rgba(255,255,255,0.75)" type="text" class="form-control input-rounded p-l-35" placeholder="Buscar produtos..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input style="background: rgba(255,255,255,0.90)" type="text" class="form-control input- p-l-25" placeholder="Buscar produtos..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append input-group-sm">
                         <button class="btn btn-light btn-icon" type="button">              
                             <i class="icon dripicons-search"></i>
@@ -69,8 +69,12 @@
                     </div>
                 </div>
             </div>
-        </li>
-
+        </li>-->
+<li class="nav-item">
+							<a href="javascript:void(0)" class="open-search-button" data-q-action="open-site-search">
+								<i class="icon dripicons-search"></i>
+							</a>
+						</li>
         <?php if (Application::is_logged()) { ?>
             <li class="nav-item nav-text dropdown dropdown-menu-md">
                 <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
