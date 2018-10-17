@@ -21,11 +21,10 @@ class Application {
     private static function get_request() {
         $host = $_SERVER['HTTP_HOST'];
         $request = explode("/", $_SERVER['REDIRECT_URL']);
-
         if ($host == "localhost") {
-            $request = $request[2] ? $request[2] : 'pagina-inicial';
+            $request = $request[2] ? $request[2] : self::rota_default();
         } else {
-            $request = $request[0] ? $request[0] : 'pagina-inicial';
+            $request = $request[0] ? $request[0] : self::rota_default();
         }
         return $request;
     }
@@ -44,6 +43,18 @@ class Application {
             }
         } else {
             return false;
+        }
+    }
+
+    private static function rota_default() {
+        if (isset($_SESSION['tipo_usuario'])) {
+            if ($_SESSION['tipo_usuario'] == "1") {
+                return 'dashboard';
+            } else {
+                return 'pagina-inicial';
+            }
+        } else {
+            return 'pagina-inicial';
         }
     }
 

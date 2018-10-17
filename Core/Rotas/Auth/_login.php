@@ -11,6 +11,8 @@ if ($usuario) {
     $response['result'] = true;
     $_SESSION['id'] = $usuario['id_usuario'];
     $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['tipo_usuario'] = $usuario['fk_tipo_usuario'];
+
 } else {
     $response['result'] = false;
     $response['message'] = "Login inválido";

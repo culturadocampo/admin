@@ -12,7 +12,8 @@ class Usuario {
             SELECT
                 id_usuario,
                 nome,
-                email
+                email,
+                fk_tipo_usuario
             FROM usuarios
             WHERE TRUE
                 AND ativo = 1
@@ -56,10 +57,13 @@ class Usuario {
         Database::execute($query);
     }
 
-    function is_new_usuario($usuario) {
+    function select_usuario($usuario) {
         $query = "
             SELECT 
-                id_usuario 
+                id_usuario,
+                nome,
+                email,
+                fk_tipo_usuario
             FROM usuarios 
             WHERE TRUE 
                 AND usuario = '{$usuario}'

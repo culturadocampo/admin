@@ -19,6 +19,10 @@ rewriteRule ^executa-cadastro-google/?$ ./index.php [NC]
 rewriteRule ^pagina-inicial/?$ ./index.php [NC]
 rewriteRule ^/?$ ./index.php [NC]
 
+#dashboard
+rewriteRule ^dashboard/?$ ./index.php [NC]
+
+
 
 
 
