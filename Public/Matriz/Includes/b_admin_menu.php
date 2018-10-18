@@ -34,7 +34,7 @@
         <nav class="main-menu" data-scroll="minimal-light">
             <ul class="nav metismenu">
                 <li class="sidebar-header"><span>NAVEGAÇÃO</span></li>
-                <li><a href="#"><i class="icon dripicons-message"></i><span>Rotas de acesso</span></a></li>
+                <li><a href="rotas-acesso"><i class="icon dripicons-message"></i><span>Rotas de acesso</span></a></li>
                 <li><a href="#"><i class="icon dripicons-mail"></i><span>Controle de produtos</span></a></li>
                 <li><a href="#"><i class="icon dripicons-"></i><span>Produtores</span></a></li>
             </ul>

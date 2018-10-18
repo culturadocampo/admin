@@ -44,7 +44,7 @@ class Rota {
     }
 
     function get_arquivos_base() {
-        $dir = "Core/Views/Base/";
+        $dir = "Public/Matriz/";
         $filelist = scandir($dir);
         foreach ($filelist as $key => $file) {
             if (!is_file($dir . $file)) {

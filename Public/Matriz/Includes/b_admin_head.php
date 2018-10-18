@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="UIKit/dist/assets/css/vendor/bootstrap.css">
     <link rel="stylesheet" href="UIKit/dist/assets/vendor/metismenu/dist/metisMenu.css">
     <link rel="stylesheet" href="UIKit/dist/assets/vendor/switchery-npm/index.css">
-    <link rel="stylesheet" href="UIKit/dist/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <!-- ======================= LINE AWESOME ICONS ===========================-->
     <link rel="stylesheet" href="UIKit/dist/assets/css/icons/line-awesome.min.css">
     <!-- ======================= DRIP ICONS ===================================-->
@@ -25,7 +24,12 @@
     <!-- ======================= MENU TYPE ===========================================-->
     <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/menu-type/default.css">
     <!-- ======================= THEME COLOR STYLES ===========================-->
-    <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-f.css">
+    <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-c.css">
+    <link rel="stylesheet" href="./UIKit/dist/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
