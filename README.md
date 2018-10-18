@@ -92,6 +92,23 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
         - Fluxo de pagamento (sem pagamento, sem investimento)
         - Quem vai ser responsável pelo o que neste MVP?:
 
+## Tarefas
+
+- Transformar usuário em vendedor
+- Normalização de produtos
+- Cadastro de produtos artesanais
+- Gerenciador de anúncios
+- Carrinho de compras
+- Pedidos de novos produtos
+- API de pagamentos
+- Recuperação de senha e criptografia das senhas
+- Exibição de anúncios na página inicial
+- Área do perfil do usuário
+- Classe de mensagens
+- Cadastro de rotas
+- Vínculo de permissões->tipo_usuario
+- Certificado SSL
+
 ## Bugs
 
 
