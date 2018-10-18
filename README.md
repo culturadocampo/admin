@@ -97,17 +97,26 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 - Transformar usuário em vendedor
 - Normalização de produtos
 - Cadastro de produtos artesanais
+- Exibição de anúncios (filtro, pesquisa)
 - Gerenciador de anúncios
 - Carrinho de compras
+- Comunicação pedido<>produtor
+- Normalização dos requisitos mínimos para a compra (endereço, CPF, etc.)
 - Pedidos de novos produtos
 - API de pagamentos
+- Mapa e controle de entrega
+- Avaliação geral/produto
 - Recuperação de senha e criptografia das senhas
-- Exibição de anúncios na página inicial
 - Área do perfil do usuário
 - Classe de mensagens
 - Cadastro de rotas
 - Vínculo de permissões->tipo_usuario
 - Certificado SSL
+- Área de notificação
+- CNPJ
+- Suporte / Área de sugestões
+- Logotipo
+
 
 ## Bugs
 
