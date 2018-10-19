@@ -4,17 +4,17 @@ $o_rota = new Rota();
 //$all_rotas = $o_rota->select_all_permissoes();
 
 $arquivos_base = $o_rota->get_arquivos_base();
-//$arquivos_conteudo = $o_rota->get_arquivos_conteudo();
-//if ($arquivos_conteudo) {
-//    foreach ($arquivos_conteudo as $key => $arquivo_conteudo) {
-//        $o_rota->set_conteudo($arquivo_conteudo);
-//        $has_conteudo = $o_rota->select_conteudo();
-//        if ($has_conteudo) {
-//            unset($arquivos_conteudo[$key]);
-//        }
-//    }
-//    $arquivos_conteudo = array_values($arquivos_conteudo);
-//}
+$arquivos_conteudo = $o_rota->get_arquivos_conteudo();
+if ($arquivos_conteudo) {
+    foreach ($arquivos_conteudo as $key => $arquivo_conteudo) {
+        $o_rota->set_conteudo($arquivo_conteudo);
+        $has_conteudo = $o_rota->select_conteudo();
+        if ($has_conteudo) {
+            unset($arquivos_conteudo[$key]);
+        }
+    }
+    $arquivos_conteudo = array_values($arquivos_conteudo);
+}
 ?>
 
 <!--<header class="page-header">
@@ -38,7 +38,7 @@ $arquivos_base = $o_rota->get_arquivos_base();
             <div class="card">
                 <h5 class="card-header">Cadastro de rotas de acesso</h5>
                 <div class="card-body">
-                    <form id="horizontal-wizard" action="#">
+                    <form id="form_rotas">
                         <h3>Estrutura</h3>
                         <section>
 
@@ -50,18 +50,16 @@ $arquivos_base = $o_rota->get_arquivos_base();
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-icon-addon1">.com.br/</span>
                                             </div>
-                                            <input id="input_url" type="text" class="form-control" placeholder="Nome do caminho">
+                                            <input name="url" id="input_url" type="text" class="form-control" placeholder="Nome do caminho">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Acesso *</label>
-                                        <select class="form-control" id="">
-                                            <option selected>Privado</option>
-                                            <option selected>Público</option>
-
-
+                                        <select name="publico" class="form-control" id="">
+                                            <option selected value="0">Privado</option>
+                                            <option value="1" >Público</option>
                                         </select>
                                     </div>
                                 </div>
@@ -71,7 +69,7 @@ $arquivos_base = $o_rota->get_arquivos_base();
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Matriz *</label>
-                                        <select class="form-control" id="">
+                                        <select name="matriz" class="form-control " id="">
                                             <option selected>Sem matriz (Ajax/Load)</option>
 
                                             <?php if ($arquivos_base) { ?>
@@ -86,12 +84,13 @@ $arquivos_base = $o_rota->get_arquivos_base();
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="confirm">Conteúdo</label>
-                                        <select class="form-control" id="">
+                                        <select name="conteudo" class="form-control" id="">
                                             <?php if ($arquivos_conteudo) { ?>
                                                 <?php foreach ($arquivos_conteudo as $arquivo) { ?>
-                                                    <option></option>
                                                     <option><?php echo $arquivo; ?></option>
                                                 <?php } ?>
+                                            <?php } else { ?>
+                                                <option>Nenhum novo conteúdo disponível</option>
                                             <?php } ?>
 
                                         </select>
@@ -167,7 +166,7 @@ $arquivos_base = $o_rota->get_arquivos_base();
         let parametros_array = [];
 
 
-        var form = $("#horizontal-wizard").show();
+        var form = $("#form_rotas").show();
         form.steps({
             headerTag: "h3",
             bodyTag: "section",
@@ -185,11 +184,21 @@ $arquivos_base = $o_rota->get_arquivos_base();
                 return true;
             },
             onFinished: function (event, currentIndex) {
-                swal({
-                    type: "success",
-                    title: "Registration Complete!",
-                    showConfirmButton: false,
-                    timer: 1500
+                var formData = $("#form_rotas").serialize();
+                $.ajax({
+                    type: "post",
+                    url: "executa-cadastro-rota",
+                    data: formData,
+                    success: function (response) {
+                    alert(response);
+                    },
+                    error: function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Resposta inesperada',
+                            text: 'Entre em contato com o supoorte (COD: L001)'
+                        });
+                    }
                 });
             }
         });

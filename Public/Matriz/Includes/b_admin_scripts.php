@@ -16,7 +16,7 @@
 <!-- ================== PAGE LEVEL APP SCRIPTS ==================-->
 <script src="UIKit/dist/assets/js/components/ecom-dashboard-slider-init.js"></script>
 <script src="UIKit/dist/assets/js/components/rateYo-init.js"></script>
-<script src="UIKit/dist/assets/vendor/select2/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
 <script src="UIKit/dist/assets/vendor/switchery-npm/index.js"></script>
 <script src="UIKit/dist/assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
