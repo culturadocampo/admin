@@ -17,143 +17,177 @@ if ($arquivos_conteudo) {
 }
 ?>
 
-<!--<header class="page-header">
-    <div class="d-flex align-items-center">
-        <div class="mr-auto">
-            <h1 class="separator">Cadastro de rotas de acesso</h1>
-            <nav class="breadcrumb-wrapper" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="icon dripicons-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Criar rotas</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</header>-->
-
 <section class="page-content">
+
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <h5 class="card-header">Cadastro de rotas de acesso</h5>
+            <div class="card card-tabs">
+                <div class="card-header p-0 no-border">
+                    <ul class="nav nav-tabs primary-tabs p-l-30 m-0">
+                        <li class="nav-item" role="presentation"><a href="#table-rotas" class="nav-link active show" data-toggle="tab" aria-expanded="true">Cadastro de rotas</a></li>
+                        <li class="nav-item" role="presentation"><a href="#cadastro-rotas" class="nav-link" data-toggle="tab" aria-expanded="true">Rotas disponíveis</a></li>
+                    </ul>
+                </div>
                 <div class="card-body">
-                    <form id="form_rotas">
-                        <h3>Estrutura</h3>
-                        <section>
+                    <div class="tab-content">
+                        <div class="tab-pane fadeIn active" id="table-rotas">
+                            <form id="form_rotas" action="#">
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password">URL *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-icon-addon1">.com.br/</span>
+                                <div class="profile-wrapper p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="password">URL *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-icon-addon1">.com.br/</span>
+                                                        </div>
+                                                        <input name="url" id="input_url" type="text" class="form-control" placeholder="Nome do caminho">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <input name="url" id="input_url" type="text" class="form-control" placeholder="Nome do caminho">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="password">Acesso *</label>
+                                                    <select id="publico" name="publico" class="form-control" id="">
+                                                        <option selected value="0">Privado</option>
+                                                        <option value="1" >Público</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password">Acesso *</label>
-                                        <select name="publico" class="form-control" id="">
-                                            <option selected value="0">Privado</option>
-                                            <option value="1" >Público</option>
-                                        </select>
+                                    <div class="col-md-12">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="password">Matriz *</label>
+                                                    <select name="matriz" class="form-control " id="select_matriz">
+                                                        <option selected value="0">Sem matriz (Ajax/Load)</option>
+
+                                                        <?php if ($arquivos_base) { ?>
+                                                            <?php foreach ($arquivos_base as $arquivo) { ?>
+                                                                <option value="<?php echo $arquivo; ?>"><?php echo $arquivo; ?></option>
+                                                            <?php } ?>
+                                                        <?php } ?>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="confirm">Conteúdo</label>
+                                                    <select name="conteudo" class="form-control" id="select_conteudo">
+                                                        <?php if ($arquivos_conteudo) { ?>
+                                                            <?php foreach ($arquivos_conteudo as $arquivo) { ?>
+                                                                <option><?php echo $arquivo; ?></option>
+                                                            <?php } ?>
+                                                        <?php } else { ?>
+                                                            <option>Nenhum novo conteúdo disponível</option>
+                                                        <?php } ?>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password">Matriz *</label>
-                                        <select name="matriz" class="form-control " id="">
-                                            <option selected>Sem matriz (Ajax/Load)</option>
+                                    <div id="div_parametros" style="display: none" class="col-md-12 m-t-50">
+                                        <h3>Parâmetros</h3>
+                                        <hr>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="parametros">
+                                                            <option value="1">Expressão regular</option>
+                                                            <option value="2">Palavra fixa</option>
+                                                        </select>
+                                                    </div>
+                                                    <div id="expressao_regular">
 
-                                            <?php if ($arquivos_base) { ?>
-                                                <?php foreach ($arquivos_base as $arquivo) { ?>
-                                                    <option><?php echo $arquivo; ?></option>
-                                                <?php } ?>
-                                            <?php } ?>
+                                                        <div class="form-group">
+                                                            <label>Tipo</label>
+                                                            <select class="form-control" id="expressao_select">
+                                                                <option type="string" value="([a-zA-Z]+)">Somente letras</option>
+                                                                <option type="int" value="(\d+)">Somente números</option>
+                                                            </select>
+                                                        </div>
 
-                                        </select>
+                                                        <div class="form-group">
+                                                            <label>Nome</label>
+                                                            <div class="input-group mb-3">
+                                                                <input id="nome_parametro" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="palavra_fixa" style="display: none">
+
+                                                        <div class="form-group">
+                                                            <label>Palavra</label>
+                                                            <div class="input-group mb-3">
+                                                                <input id="palavra_url" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)" value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" id="add_parametro" class="btn btn-success">Adicionar parâmetro</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <div class="table-responsive">
+                                                        <table id="tabela_de_parametros" class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-right">Parâmetro</th>
+                                                                    <th class="text-left">Valor</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr><td colspan="2" class="text-center">Nenhum parâmetro adicionado</td></tr>
+
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="confirm">Conteúdo</label>
-                                        <select name="conteudo" class="form-control" id="">
-                                            <?php if ($arquivos_conteudo) { ?>
-                                                <?php foreach ($arquivos_conteudo as $arquivo) { ?>
-                                                    <option><?php echo $arquivo; ?></option>
-                                                <?php } ?>
-                                            <?php } else { ?>
-                                                <option>Nenhum novo conteúdo disponível</option>
-                                            <?php } ?>
 
-                                        </select>
-                                    </div>
                                 </div>
+                                <div class="card-footer text-right">
+                                    <button type="button" id="cadastrar_rota" class="btn btn-primary">Cadastrar</button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="tab-pane fadeIn" id="cadastro-rotas">
+                            <div class="profile-wrapper p-t-20">
+                                <h5 class="card-title">Nada aqui, por enquanto</h5>
+
                             </div>
-
-
-
-                        </section>
-                        <h3>Parâmetros</h3>
-                        <section>
-
-
-
-
-
-                            <div class="form-group">
-                                <label for="name">Parâmetros</label>
-                                <select class="form-control" id="parametros">
-                                    <option value="1">Expressão regular</option>
-                                    <option value="2">Palavra fixa</option>
-                                </select>
+                            <div class="profile-wrapper">
+                               
                             </div>
-                            <div id="expressao_regular">
-
-                                <div class="form-group">
-                                    <label for="surname">Expressão</label>
-                                    <select class="form-control" id="expressao_select2">
-                                        <option type="string" value="([a-zA-Z]+)">Somente letras</option>
-                                        <option type="int" value="(\d+)">Somente números</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Nome</label>
-                                    <div class="input-group mb-3">
-                                        <input id="nome_parametro" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)">
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="palavra_fixa" style="display: none">
-
-                                <div class="form-group">
-                                    <label for="address">Palavra</label>
-                                    <div class="input-group mb-3">
-                                        <input id="palavra_url" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)" value="">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </section>
-                        <h3>Permissões</h3>
-                        <section>
-
-                        </section>
-                        <h3>Resumo</h3>
-                        <section>
-
-                        </section>
-                    </form>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
+
 
 </section>
 
@@ -163,46 +197,56 @@ if ($arquivos_conteudo) {
 
     $(document).ready(function () {
 
-        let parametros_array = [];
+        var parametros_array = [];
 
 
-        var form = $("#form_rotas").show();
-        form.steps({
-            headerTag: "h3",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            stepsOrientation: "vertical",
-            onStepChanging: function (event, currentIndex, newIndex) {
-                return true;
-            },
-            onStepChanged: function (event, currentIndex, priorIndex) {
-                if (currentIndex === 2 && priorIndex === 3) {
-                    form.steps("previous");
-                }
-            },
-            onFinishing: function (event, currentIndex) {
-                return true;
-            },
-            onFinished: function (event, currentIndex) {
-                var formData = $("#form_rotas").serialize();
-                $.ajax({
-                    type: "post",
-                    url: "executa-cadastro-rota",
-                    data: formData,
-                    success: function (response) {
-                    alert(response);
-                    },
-                    error: function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Resposta inesperada',
-                            text: 'Entre em contato com o supoorte (COD: L001)'
-                        });
-                    }
-                });
-            }
+
+        $("#cadastrar_rota").on("click", function () {
+            //var data = $("#form_rotas").serialize();
+            var url = $("#input_url").val();
+            var publico = $("#publico").val();
+            var matriz = $("#select_matriz").val();
+            var conteudo = $("#select_conteudo").val();
+            $.post('executa-cadastro-rota', {url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array}, function (response) {
+                alert(response);
+            });
+
         });
 
+        $("#add_parametro").on("click", function () {
+            var tipo_parametro = $("#parametros").val();
+            var array_parametro = [];
+
+            if (tipo_parametro === "1") {
+                array_parametro = {expressao: $("#expressao_select").val(), nome: $("#nome_parametro").val(), tipo: tipo_parametro};
+            } else {
+                array_parametro = {palavra: $("#palavra_url").val(), tipo: tipo_parametro};
+            }
+            parametros_array.push(array_parametro);
+
+            $("#tabela_de_parametros tbody").html("");
+
+            $.each(parametros_array, function (key, value) {
+                if (value.tipo === "1") {
+                    $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.nome + "']</td><td class='text-center'>" + value.expressao + "</td></tr>");
+                } else {
+                    $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>-</td><td class='text-center'>/" + value.palavra + "</td></tr>");
+                }
+            });
+
+        });
+
+
+
+        $("#select_matriz").on("change", function () {
+            if (this.value === "0") {
+                $("#div_parametros").fadeOut();
+
+            } else {
+                $("#div_parametros").fadeIn();
+            }
+
+        });
 
         $("#parametros").on("change", function () {
             if (this.value === "1") {
@@ -221,7 +265,7 @@ if ($arquivos_conteudo) {
             // Allow controls such as backspace, tab etc.
             var arr = [8, 9, 16, 17, 20, 35, 36, 37, 38, 39, 40, 45, 46, 173, 109];
 
-            // Allow letters
+            // Allow varters
             for (var i = 65; i <= 90; i++) {
                 arr.push(i);
             }
@@ -248,7 +292,7 @@ if ($arquivos_conteudo) {
             // Allow controls such as backspace, tab etc.
             var arr = [8, 9, 16, 17, 20, 35, 36, 37, 38, 39, 40, 45, 46, 189];
 
-            // Allow letters
+            // Allow varters
             for (var i = 65; i <= 90; i++) {
                 arr.push(i);
             }

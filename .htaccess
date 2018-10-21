@@ -29,4 +29,3 @@ rewriteRule ^/?$ ./index.php [NC]
 #dashboard
 rewriteRule ^dashboard/?$ ./index.php [NC]
 rewriteRule ^executa-cadastro-rota/?$ ./index.php [NC]
-
