@@ -89,7 +89,7 @@ class Rota {
         Database::execute($query);
     }
 
-    function save_on_htaccess($params = []) {
+    function save_on_htaccess($params = array()) {
 
         $expressoes = "";
         $query_string = "";
