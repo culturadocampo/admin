@@ -18,9 +18,3 @@ rewriteRule ^\/?$ .\/index.php [NC]
 #dashboard
 rewriteRule ^dashboard\/?$ .\/index.php [NC]
 rewriteRule ^executa-cadastro-rota\/?$ .\/index.php [NC]
-
-rewriteRule ^produto\/(\d+)\/editar\/?$ ./index.php?id=$1 [NC]
-rewriteRule ^produtos\/?$ ./index.php [NC]
-rewriteRule ^produto\/(\d+)\/?$ ./index.php?id_produto=$1 [NC]
-rewriteRule ^produto\/(\d+)\/editar\/?$ ./index.php?id_produto=$1 [NC]
-rewriteRule ^teste\/?$ ./index.php [NC]
