@@ -53,8 +53,9 @@ class Rota {
         $dir = "Core/Rotas/";
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
         foreach ($iterator as $file) {
-            if ($file->isDir())
+            if ($file->isDir()) {
                 continue;
+            }
             $path = str_replace("\\", "/", $file->getPathname());
             $path = str_replace("Core/Rotas/", "", $path);
             array_push($conteudo, $path);
@@ -109,6 +110,7 @@ class Rota {
         $regex_final = "^{$this->get_url()}{$expressoes}\/?$";
         $data = PHP_EOL . "rewriteRule $regex_final ./index.php{$query_string} [NC]";
         $fp = fopen('.htaccess', 'a');
+//        $data = str_replace("//", "/", $data);
         fwrite($fp, $data);
         return $regex_final;
     }
@@ -150,7 +152,7 @@ class Rota {
     }
 
     function set_expressao($expressao) {
-        $this->expressao = Strings::limpar($expressao);
+        $this->expressao = $expressao;
     }
 
 }
