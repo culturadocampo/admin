@@ -1,4 +1,6 @@
 <!-- ================== GLOBAL VENDOR SCRIPTS ==================-->
+<script src="Public/Scripts/helper.js"></script>
+
 <script src="UIKit/dist/assets/vendor/modernizr/modernizr.custom.js"></script>
 <script src="UIKit/dist/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="UIKit/dist/assets/vendor/js-storage/js.storage.js"></script>
@@ -16,11 +18,15 @@
 <!-- ================== PAGE LEVEL APP SCRIPTS ==================-->
 <script src="UIKit/dist/assets/js/components/ecom-dashboard-slider-init.js"></script>
 <script src="UIKit/dist/assets/js/components/rateYo-init.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
 <script src="UIKit/dist/assets/vendor/switchery-npm/index.js"></script>
 <script src="UIKit/dist/assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
+
+
+<script>
+
+</script>
 
 

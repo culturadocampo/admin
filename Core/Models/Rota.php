@@ -1,35 +1,26 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Rota
- *
- * @author Notheros
- */
 class Rota {
 
     private $url;
     private $conteudo;
     private $matriz;
     private $publico;
+    private $expressao;
 
     function select_rota() {
         $query = "
             SELECT
                 matriz,
                 conteudo,
-                publico
+                publico,
+                expressao
             FROM rotas 
             WHERE TRUE
                 AND url = '{$this->get_url()}'
                 AND ativo = '1'
         ";
-        return Database::fetch($query);
+        return Database::fetch_all($query);
     }
 
     function select_all_permissoes() {
@@ -86,15 +77,40 @@ class Rota {
     function insert_rota() {
         $query = "
             INSERT INTO rotas
-            (url, matriz, conteudo, publico)
+            (url, matriz, conteudo, publico, expressao)
             VALUES(
                 '{$this->get_url()}',
                 '{$this->get_matriz()}',
                 '{$this->get_conteudo()}',
-                '{$this->get_publico()}'
+                '{$this->get_publico()}',
+                '{$this->get_expressao()}'
             )
         ";
         Database::execute($query);
+    }
+
+    function save_on_htaccess($params = []) {
+
+        $expressoes = "";
+        $query_string = "";
+        if ($params) {
+            $query_index = 1;
+            foreach ($params as $param) {
+                if ($param['tipo'] == "1") {
+                    $query_string = empty($query_string) ? "?" : "{$query_string}&";
+                    $expressoes .= "\/{$param['expressao']}";
+                    $query_string .= $param['nome'] . '=$' . ($query_index);
+                    $query_index++;
+                } else {
+                    $expressoes .= "\/{$param['palavra']}";
+                }
+            }
+        }
+        $regex_final = "^{$this->get_url()}{$expressoes}\/?$";
+        $data = PHP_EOL . "rewriteRule $regex_final ./index.php{$query_string} [NC]";
+        $fp = fopen('.htaccess', 'a');
+        fwrite($fp, $data);
+        return $regex_final;
     }
 
     function get_url() {
@@ -127,6 +143,14 @@ class Rota {
 
     function set_publico($publico) {
         $this->publico = $publico;
+    }
+
+    function get_expressao() {
+        return $this->expressao;
+    }
+
+    function set_expressao($expressao) {
+        $this->expressao = Strings::limpar($expressao);
     }
 
 }

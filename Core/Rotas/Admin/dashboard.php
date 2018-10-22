@@ -12,6 +12,6 @@
 
     </div>
 </header>
-<section class="page-content container-fluid">
+<section class="page-content">
 
 </section>

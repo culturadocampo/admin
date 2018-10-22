@@ -1,31 +1,26 @@
 rewriteEngine on
 rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
-#Options -Indexes
-# Página de login
-# Validação das credenciais
-#rewriteRule ^dologin$ ./Core/Controllers/Login/do_login.php [NC]
-#rewriteRule ^dashboard ./index.php?function=dashboard [NC]
-#rewriteRule meu-nome/([a-zA-Z]+)/(\d+) ./index.php?function=meu_nome&nome=$1&id=$2 [NC]
-#rewriteRule produto/(\d+)/editar$ ./index.php?function=editar_produto&id=$1 [NC]
-#rewriteRule dologin/([a-zA-Z0-9]+)/([a-zA-Z0-9]+) ./index.php?function=do_login&usuario=$1&senha=$2 [NC]
-
 #Cadastro de rotas
-rewriteRule ^rotas-acesso/?$ ./index.php [NC]
+rewriteRule ^rotas-acesso\/?$ ./index.php [NC]
 # Auth
-rewriteRule ^login/?$ ./index.php [NC]
-rewriteRule ^executa-login/?$ ./index.php [NC]
-rewriteRule ^executa-logout/?$ ./index.php [NC]
-rewriteRule ^novo-usuario/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-usuario/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-google/?$ ./index.php [NC]
-
-
+rewriteRule ^login\/?$ .\/index.php [NC]
+rewriteRule ^executa-login\/?$ .\/index.php [NC]
+rewriteRule ^executa-logout\/?$ .\/index.php [NC]
+rewriteRule ^novo-usuario\/?$ .\/index.php [NC]
+rewriteRule ^executa-cadastro-usuario\/?$ .\/index.php [NC]
+rewriteRule ^executa-cadastro-google\/?$ .\/index.php [NC]
 
 # Inicio
-rewriteRule ^pagina-inicial/?$ ./index.php [NC]
-rewriteRule ^/?$ ./index.php [NC]
+rewriteRule ^pagina-inicial\/?$ .\/index.php [NC]
+rewriteRule ^\/?$ .\/index.php [NC]
 
 #dashboard
-rewriteRule ^dashboard/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-rota/?$ ./index.php [NC]
+rewriteRule ^dashboard\/?$ .\/index.php [NC]
+rewriteRule ^executa-cadastro-rota\/?$ .\/index.php [NC]
+
+rewriteRule ^produto\/(\d+)\/editar\/?$ ./index.php?id=$1 [NC]
+rewriteRule ^produtos\/?$ ./index.php [NC]
+rewriteRule ^produto\/(\d+)\/?$ ./index.php?id_produto=$1 [NC]
+rewriteRule ^produto\/(\d+)\/editar\/?$ ./index.php?id_produto=$1 [NC]
+rewriteRule ^teste\/?$ ./index.php [NC]
