@@ -1,11 +1,10 @@
-<!-- MENU SIDEBAR WRAPPER -->
 <aside class="sidebar sidebar-left">
     <div class="sidebar-content">
         <div class="aside-toolbar">
             <ul class="site-logo">
                 <li>
                     <!-- START LOGO -->
-                    <a href="index.html">
+                    <a href="./">
                         <div class="logo">
                             <svg id="logo" width="25" height="25" viewBox="0 0 54.03 56.55">
                             <defs>
@@ -33,13 +32,21 @@
         </div>
         <nav class="main-menu" data-scroll="minimal-light">
             <ul class="nav metismenu">
-                <li class="sidebar-header"><span>NAVEGAÇÃO</span></li>
-                <li><a href="rotas-acesso"><i class="icon dripicons-message"></i><span>Rotas de acesso</span></a></li>
-                <li><a href="#"><i class="icon dripicons-mail"></i><span>Controle de produtos</span></a></li>
-                <li><a href="#"><i class="icon dripicons-"></i><span>Produtores</span></a></li>
-            </ul>
+                <li class="sidebar-header"><span>PLATAFORMA</span></li>
+                <li class="nav-dropdown">
+                    <a class="" href="./" aria-expanded="false"><i class="icon dripicons-home"></i><span>Painel de controle</span></a>
+                 
+                </li>
+                <li class="nav-dropdown">
+                    <a class="" href="rotas-acesso" aria-expanded="false"><i class="icon dripicons-browser"></i><span>Rotas de acesso</span></a>
+                 
+                </li>
+           
+                <li class="sidebar-header"><span>OUTROS</span></li>
+          
+         
+               
             </ul>
         </nav>
     </div>
 </aside>
-<!-- END MENU SIDEBAR WRAPPER -->

@@ -120,7 +120,7 @@ if ($arquivos_conteudo) {
                                                     <div class="form-group">
                                                         <label>Tipo</label>
                                                         <select class="form-control" id="expressao_select">
-                                                            <option type="string" value="([a-zA-Z]+)">Somente letras</option>
+                                                            <option type="string" value="([a-zA-Z\-]+)">Somente letras</option>
                                                             <option type="int" value="(\d+)">Somente números</option>
                                                         </select>
                                                     </div>
