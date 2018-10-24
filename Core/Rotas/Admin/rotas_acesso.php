@@ -44,22 +44,23 @@ if ($arquivos_conteudo) {
 
                                             <?php } ?>
 
-                                            <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="conteudo" class="form-control" id="select_conteudo">
+                                            <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="conteudo" class="form-control" id="select_conteudo">
                                                 <?php if ($arquivos_conteudo) { ?>
                                                     <?php foreach ($arquivos_conteudo as $arquivo) { ?>
                                                         <option><?php echo $arquivo; ?></option>
                                                     <?php } ?>
                                                 <?php } else { ?>
-                                                    <option>Crie um arquivo antes de criar a rota</option>
+                                                    <option>Nenhum novo arquivo disponível</option>
                                                 <?php } ?>
 
                                             </select>
+                                            <small class="form-text text-muted">Arquivo .php com o conteúdo e/ou ação</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="password">Matriz *</label>
-                                            <select name="matriz" class="form-control " id="select_matriz">
+                                            <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control " id="select_matriz">
                                                 <option selected value="0">Sem matriz (Ajax/Load)</option>
 
                                                 <?php if ($arquivos_base) { ?>
@@ -69,6 +70,8 @@ if ($arquivos_conteudo) {
                                                 <?php } ?>
 
                                             </select>
+                                            <small class="form-text text-muted">HTML base de construção da página</small>
+
                                         </div>
                                     </div>
 
@@ -81,22 +84,26 @@ if ($arquivos_conteudo) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="password">URL base *</label>
-                                                <div class="input-group mb-3">
+                                                <label for="password">URI*</label>
+                                                <div class="input-group ">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-icon-addon1">.com.br/</span>
                                                     </div>
-                                                    <input name="url" id="input_url" type="text" class="form-control" placeholder="Nome do caminho">
+                                                    <input <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="url" id="input_url" type="text" class="form-control" placeholder="Nome do caminho (Somente letras)">
+
                                                 </div>
+                                                <small class="form-text text-muted">URI identificador da página (ex: perfil, anuncios)</small>
+
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="password">Acesso *</label>
-                                                <select id="publico" name="publico" class="form-control" id="">
-                                                    <option selected value="0">Privado</option>
-                                                    <option value="1" >Público</option>
+                                                <label for="password">Precisa estar logado? *</label>
+                                                <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> id="publico" name="publico" class="form-control" id="">
+                                                    <option selected value="0">Sim, precisa de uma sessão ativa</option>
+                                                    <option value="1" >Não importa, qualquer um pode acessar</option>
                                                 </select>
+
                                             </div>
                                         </div>
                                     </div>
@@ -227,7 +234,10 @@ if ($arquivos_conteudo) {
                             response = JSON.parse(response);
                             swal(response.message);
                             if (response.result) {
-                                location.reload(true);
+                                setTimeout(function () {
+                                    location.reload(true);
+                                }, 1500);
+
                             }
                         }
                     });

@@ -95,7 +95,7 @@
                                         url: "executa-cadastro-google",
                                         data: user_info,
                                         success: function (json) {
-                                            window.location = ""; // vazio = pagina-inicial
+                                            window.location = "./"; // vazio = pagina-inicial
                                         },
                                         error: function (error) {
                                             swal({
@@ -129,7 +129,7 @@
                 success: function (json) {
                     var response = JSON.parse(json);
                     if (response.result) {
-                        window.location = ""; // vazio = pagina-inicial
+                        window.location = "./"; // vazio = pagina-inicial
                     } else {
                         swal({
                             type: 'error',

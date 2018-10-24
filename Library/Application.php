@@ -34,7 +34,7 @@ class Application {
      * ou a rota requisitada não é privada.
      * Caso false, redireciona para o login
      */
-    public static function is_logged() {
+    static function is_logged() {
         if (isset($_SESSION['id']) && isset($_SESSION['nome'])) {
             if ($_SESSION['id'] > 0 && !empty($_SESSION['nome'])) {
                 return true;
@@ -55,6 +55,17 @@ class Application {
             }
         } else {
             return 'pagina-inicial';
+        }
+    }
+
+    static function get_url_base() {
+        $host = $_SERVER['HTTP_HOST'];
+        if ($host == "localhost") {
+            $folder = explode('/', $_SERVER['REQUEST_URI'])[1];
+            $base_url = "$host/$folder";
+            return $base_url;
+        } else {
+            return $host;
         }
     }
 

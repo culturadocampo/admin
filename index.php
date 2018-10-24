@@ -9,6 +9,7 @@ function autoload($class) {
     }
 }
 
+
 spl_autoload_register("autoload");
 session_start();
 Application::start();
