@@ -22,7 +22,7 @@
             </div>
             <button id="submit_login" class="btn btn-primary btn-block" type="button">Acessar plataforma</button>
 
-            <p class="text-muted m-t-25 m-b-0 p-0">Ainda não possui uma conta?<a href="#"> Crie uma agora!</a></p>
+            <p class="text-muted m-t-25 m-b-0 p-0">Ainda não possui uma conta?<a href="novo-usuario"> Crie uma agora!</a></p>
         </div>
         <div class="card-footer">
             <a>
@@ -31,13 +31,16 @@
                     Google
                 </span>
             </a>
-            <a href="#">
-                <span href="#" class="btn-face m-b-10 col-md-12">
-                    <i class="fa fa-facebook-official"></i>
-                    Facebook
-                </span>
-            </a>
-
+            <?php if(false){ ?>
+                <a href="#">
+                    <span href="#" class="btn-face m-b-10 col-md-12">
+                        <i class="fa fa-facebook-official"></i>
+                        Facebook
+                    </span>
+                </a>
+            <?php } ?>
+            <!-- Desabilitado login por Faceboock -->
+            
             <div class="col-md-12 text-center">
                 <p class="text-muted m-t-25 m-b-0 p-0"><a href="#">Esqueceu sua senha?</a></p>
 
