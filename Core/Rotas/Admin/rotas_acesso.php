@@ -1,7 +1,7 @@
 <?php
 $o_rota = new Rota();
 
-//$all_rotas = $o_rota->select_all_permissoes();
+$all_rotas = $o_rota->select_all_permissoes();
 
 $arquivos_base = $o_rota->get_arquivos_base();
 $arquivos_conteudo = $o_rota->get_arquivos_conteudo();
@@ -61,11 +61,11 @@ if ($arquivos_conteudo) {
                                         <div class="form-group">
                                             <label for="password">Matriz *</label>
                                             <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control " id="select_matriz">
-                                                <option selected value="0">Sem matriz (Ajax/Load)</option>
+                                                <option selected value="0">Arquivo load/ajax</option>
 
                                                 <?php if ($arquivos_base) { ?>
                                                     <?php foreach ($arquivos_base as $arquivo) { ?>
-                                                        <option value="<?php echo $arquivo; ?>"><?php echo $arquivo; ?></option>
+                                                        <option value="<?php echo $arquivo['arquivo']; ?>"><?php echo $arquivo['nome']; ?></option>
                                                     <?php } ?>
                                                 <?php } ?>
 
@@ -194,13 +194,11 @@ if ($arquivos_conteudo) {
 
                     </div>
                     <div class="tab-pane fadeIn" id="cadastro-rotas">
-                        <div class="profile-wrapper p-t-20">
-                            <h5 class="card-title">Nada aqui, por enquanto</h5>
+                        <div class="profile-wrapper p-t-20" id="tabela_rotas">
+
 
                         </div>
-                        <div class="profile-wrapper">
 
-                        </div>
                     </div>
                 </div>
             </div>
@@ -218,6 +216,9 @@ if ($arquivos_conteudo) {
     $(document).ready(function () {
 
         var parametros_array = [];
+
+        $("#tabela_rotas").load("tabela-rotas")
+
 
 
         $("#cadastrar_rota").on("click", function () {

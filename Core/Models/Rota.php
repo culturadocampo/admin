@@ -45,7 +45,27 @@ class Rota {
             }
         }
         $filelist = array_values($filelist);
-        return $filelist;
+        return $this->organize_matriz_array($filelist);
+    }
+
+    function organize_matriz_array($arquivos_base) {
+        if ($arquivos_base) {
+            foreach ($arquivos_base as $key => $base) {
+                $arquivo['arquivo'] = $base;
+
+                if ($base == "base_admin.php") {
+                    $arquivo['nome'] = "Página de administração";
+                    $arquivos_base[$key] = $arquivo;
+                } else if ($base == "base_geral.php") {
+                    $arquivo['nome'] = "Página do site";
+                    $arquivos_base[$key] = $arquivo;
+                } else {
+                    unset($arquivos_base[$key]);
+                }
+            }
+            $arquivos_base = array_values($arquivos_base);
+        }
+        return $arquivos_base;
     }
 
     function get_arquivos_conteudo() {
