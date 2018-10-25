@@ -71,6 +71,8 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 - *Compartilhamento em rede social*
 - *Valores devem ser trabalhados em centavos, nunca com ponto flutuante*
 - *Escambo*
+- *Colocar descrições dos produtos e beneficios a saúde*
+- *Probabilidade de entregadores ser um tipo de usuario*
 
 
 ## Dúvidas
