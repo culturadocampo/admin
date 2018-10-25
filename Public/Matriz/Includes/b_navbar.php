@@ -2,7 +2,7 @@
 
     <ul class="site-logo">
         <li>
-            <a href="index.html">
+            <a href="./">
                 <div class="logo_mobile">
                     <svg id="logo_mobile" width="25" height="25" viewBox="0 0 54.03 56.55">
                     <defs>
@@ -33,7 +33,7 @@
     <ul class="site-logo">
         <li>
             <!-- START LOGO -->
-            <a href="index.html">
+            <a href="./">
                 <div class="logo">
                     <svg id="logo" width="25" height="25" viewBox="0 0 54.03 56.55">
                     <defs>
@@ -58,11 +58,6 @@
 
     <ul class="navbar-nav nav-right">
 
-        <li class="nav-item">
-            <a href="javascript:void(0)" class="open-search-button" data-q-action="open-site-search">
-                <i class="icon dripicons-search"></i>
-            </a>
-        </li>
         <?php if (Application::is_logged()) { ?>
             <li class="nav-item nav-text dropdown dropdown-menu-md">
                 <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -80,38 +75,14 @@
             </li>
         <?php } else { ?>
             <li class="nav-item nav-text">
-                <a href="novo-usuario">
-                    <span>
-                        Crie a sua conta 
-                    </span>
-                </a>
-
-            </li>
-            <li class="nav-item nav-text" style="padding: 0px;">
-                <a>
-                    <span>
-                        |
-                    </span>
-                </a>
-
-            </li>
-            <li class="nav-item nav-text">
                 <a href="login">
                     <span>
-                        Acessar conta 
+                        Acessar sua conta 
                     </span>
                 </a>
 
             </li>
         <?php } ?>
-
-
-
-        <!--        <li class="nav-item">
-                    <a href="javascript:void(0)" class="open-search-button" data-q-action="open-site-search">
-                        <i class="icon dripicons-search"></i>
-                    </a>
-                </li>-->
         <li class="nav-item dropdown dropdown-menu-lg">
             <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="icon dripicons-view-apps"></i>

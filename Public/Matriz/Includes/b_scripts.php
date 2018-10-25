@@ -21,4 +21,5 @@
 <script src="UIKit/dist/assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
