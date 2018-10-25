@@ -9,6 +9,15 @@ function autoload($class) {
     }
 }
 
+/**
+ * A URL de acesso ao localhost deve ser:
+ * 
+ * localhost/pro_campo/
+ * 
+ * Caso contrário, as rotas podem não funcionar.
+ * No servidor isso não é problema.
+ */
+
 
 spl_autoload_register("autoload");
 session_start();

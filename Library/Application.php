@@ -58,15 +58,5 @@ class Application {
         }
     }
 
-    static function get_url_base() {
-        $host = $_SERVER['HTTP_HOST'];
-        if ($host == "localhost") {
-            $folder = explode('/', $_SERVER['REQUEST_URI'])[1];
-            $base_url = "$host/$folder";
-            return $base_url;
-        } else {
-            return $host;
-        }
-    }
 
 }
