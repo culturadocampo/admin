@@ -1,4 +1,6 @@
 <head>
+    
+    <base href="http://localhost/pro_campo/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -25,7 +27,7 @@
     <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/menu-type/default.css">
     <!-- ======================= THEME COLOR STYLES ===========================-->
     <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-b.css">
-    <link rel="stylesheet" href="./UIKit/dist/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="UIKit/dist/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 

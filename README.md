@@ -70,7 +70,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 - *Limitação de compras pendentes se pagamento em espécie*
 - *Compartilhamento em rede social*
 - *Valores devem ser trabalhados em centavos, nunca com ponto flutuante*
-
+- *Escambo*
 
 
 ## Dúvidas
