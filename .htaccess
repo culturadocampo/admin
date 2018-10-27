@@ -1,6 +1,10 @@
 rewriteEngine on
 rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
+
+Options -Indexes 
+
+
 #Cadastro de rotas
 rewriteRule ^rotas-acesso\/?$ ./index.php [NC]
 # Auth
@@ -19,3 +23,4 @@ rewriteRule ^\/?$ .\/index.php [NC]
 rewriteRule ^dashboard\/?$ .\/index.php [NC]
 rewriteRule ^executa-cadastro-rota\/?$ .\/index.php [NC]
 rewriteRule ^tabela-rotas\/?$ ./index.php [NC]
+
