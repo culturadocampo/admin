@@ -24,7 +24,7 @@ class Application {
         if ($host == "localhost") {
             $request = $request[2] ? $request[2] : self::rota_default();
         } else {
-            $request = $request[0] ? $request[0] : self::rota_default();
+            $request = $request[1] ? $request[1] : self::rota_default();
         }
         return $request;
     }

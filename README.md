@@ -120,7 +120,15 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 - Logotipo
 
 
-## Bugs
+## Senhas
+
+- Registro.br
+    - Usuário: Wipes13
+    - Senha: INFODMZ@626
+- Amazon AWS
+    - Usuário: contato@culturadocampo.com.br
+    - Senha: INFODMZ@626
+
 
 
 ------------
