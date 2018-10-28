@@ -18,12 +18,13 @@
 <!-- ================== PAGE LEVEL APP SCRIPTS ==================-->
 <script src="UIKit/dist/assets/js/components/ecom-dashboard-slider-init.js"></script>
 <script src="UIKit/dist/assets/js/components/rateYo-init.js"></script>
-<script src="UIKit/dist/assets/vendor/switchery-npm/index.js"></script>
 <script src="UIKit/dist/assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
 <script src="UIKit/dist/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.animate.js"></script>
 
 <script>
 

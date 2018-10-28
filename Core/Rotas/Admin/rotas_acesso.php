@@ -1,8 +1,6 @@
 <?php
 $o_rota = new Rota();
 
-$all_rotas = $o_rota->select_all_permissoes();
-
 $arquivos_base = $o_rota->get_arquivos_base();
 $arquivos_conteudo = $o_rota->get_arquivos_conteudo();
 if ($arquivos_conteudo) {
@@ -21,15 +19,25 @@ if ($arquivos_conteudo) {
 
     <div class="col-md-12">
         <div class="card card-tabs">
-            <div class="card-header p-0 no-border">
-                <ul class="nav nav-tabs primary-tabs p-l-30 m-0">
-                    <li class="nav-item" role="presentation"><a href="#table-rotas" class="nav-link active show" data-toggle="tab" aria-expanded="true">Cadastro de rotas</a></li>
-                    <li class="nav-item" role="presentation"><a href="#cadastro-rotas" class="nav-link" data-toggle="tab" aria-expanded="true">Rotas disponíveis</a></li>
+            <div class="card-header">
+                <div class="card-title">
+                    Rotas/Permissões
+                </div>
+                <ul class="nav nav-tabs primary-tabs justify-content-end">
+                    <li class="nav-item" role="presentation">
+                        <a href="#rotas" class="nav-link active show" data-toggle="tab" aria-expanded="true">Rotas</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#permissoes" class="nav-link" data-toggle="tab" aria-expanded="true">Permissões</a>
+                    </li>
+
                 </ul>
             </div>
             <div class="card-body">
                 <div class="tab-content">
-                    <div class="tab-pane fadeIn active" id="table-rotas">
+
+                    <div class="tab-pane fadeIn active" id="rotas">
+
                         <form id="form_rotas" action="#">
 
                             <div class="col-md-12">
@@ -191,13 +199,16 @@ if ($arquivos_conteudo) {
                                 </div>
                             <?php } ?>
                         </form>
-
-                    </div>
-                    <div class="tab-pane fadeIn" id="cadastro-rotas">
-                        <div class="profile-wrapper p-t-20" id="tabela_rotas">
+                        <div class="col-md-12 m-t-30">
+                            <h1>Rotas cadastradas</h1>
+                            <hr>
+                        </div>
+                        <div  id="tabela_rotas">
 
 
                         </div>
+                    </div>
+                    <div class="tab-pane fadeIn active" id="permissoes">
 
                     </div>
                 </div>
@@ -217,9 +228,7 @@ if ($arquivos_conteudo) {
 
         var parametros_array = [];
 
-        $("#tabela_rotas").load("tabela-rotas")
-
-
+        $("#tabela_rotas").load("tabela-rotas");
 
         $("#cadastrar_rota").on("click", function () {
             //var data = $("#form_rotas").serialize();

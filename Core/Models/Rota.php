@@ -2,6 +2,7 @@
 
 class Rota {
 
+    private $id;
     private $url;
     private $conteudo;
     private $matriz;
@@ -23,15 +24,19 @@ class Rota {
         return Database::fetch_all($query);
     }
 
-    function select_all_permissoes() {
+    function select_all_rotas() {
         $query = "
-          SELECT
-              id_permissao,
-              descricao,
-              COUNT(*) as qtde_rotas
-          FROM permissoes
-          INNER JOIN rotas ON id_permissao = fk_permissao
-          GROUP BY id_permissao
+            SELECT 
+                id_rota,
+                url,
+                matriz,
+                conteudo,
+                publico,
+                ativo,
+                expressao
+            FROM rotas
+            WHERE TRUE
+            ORDER BY id_rota DESC
         ";
         return Database::fetch_all($query);
     }
@@ -131,6 +136,24 @@ class Rota {
         $fp = fopen('.htaccess', 'a');
         fwrite($fp, $data);
         return $regex_final;
+    }
+
+    function alterar_status_rota() {
+        $query = "
+            UPDATE rotas 
+            SET ativo = !ativo 
+            WHERE TRUE 
+                AND id_rota = '{$this->getId()}'
+        ";
+        Database::execute($query);
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
 
     function get_url() {
