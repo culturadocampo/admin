@@ -7,3 +7,14 @@ function is_json(json) {
         return false;
     }
 }
+
+
+function get_pathname() {
+    var pathname = window.location.pathname;
+    pathname = pathname.replace('/', '');
+    if (pathname !== "") {
+        return pathname;
+    } else {
+        return "/";
+    }
+}
