@@ -24,3 +24,8 @@ rewriteRule ^dashboard\/?$ .\/index.php [NC]
 rewriteRule ^executa-cadastro-rota\/?$ .\/index.php [NC]
 rewriteRule ^tabela-rotas\/?$ ./index.php [NC]
 
+
+rewriteRule ^teste-amazon\/?$ ./index.php [NC]
+rewriteRule ^alterar-status-rota\/?$ ./index.php [NC]
+rewriteRule ^tabela-permissoes\/?$ ./index.php [NC]
+rewriteRule ^vendas-entregas\/?$ ./index.php [NC]

@@ -10,6 +10,9 @@
                 <li class="menu-item">
                     <a href="#" aria-expanded="false"><i class="la la-users"></i><span>Usuários cadastrados</span></a>
                 </li>
+                <li class="menu-item">
+                    <a href="vendas-entregas" aria-expanded="false"><i class="la la-truck"></i><span>Vendas/Entregas</span></a>
+                </li>
 
                 <li class="sidebar-header"><span>SISTEMA</span></li>
                 <li class="menu-item">
@@ -18,6 +21,7 @@
                 <li class="menu-item">
                     <a href="#" aria-expanded="false"><i class="la la-eye"></i><span>Permissões padrão</span></a>
                 </li>
+
             </ul>
     </div>
 </aside>
