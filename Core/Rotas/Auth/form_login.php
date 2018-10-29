@@ -20,8 +20,8 @@
                     <label class="custom-control-label" for="stateCheck1">Manter conectado</label>
                 </div>
             </div>
-            <div class="checkbox m-b-10 m-t-20">
-                <div class="g-recaptcha" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
+            <div class="checkbox m-b-10 m-t-20 ">
+                <div class="g-recaptcha col-md-12" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
             </div>
             <button id="submit_login" class="btn btn-primary btn-block" type="button">Acessar plataforma</button>
 
@@ -34,7 +34,7 @@
                     Google
                 </span>
             </a>
-            <?php if(false){ ?>
+            <?php if(false){ ?> 
                 <a href="#">
                     <span href="#" class="btn-face m-b-10 col-md-12">
                         <i class="fa fa-facebook-official"></i>

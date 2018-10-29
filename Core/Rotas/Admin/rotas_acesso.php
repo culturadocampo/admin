@@ -15,9 +15,8 @@ if ($arquivos_conteudo) {
 }
 ?>
 
-<section class="page-content">
-
-    <div class="col-md-12">
+<section class="page-content animated ">
+    <div class="col-md-12 ">
         <div class="card card-tabs">
             <div class="card-header">
                 <div class="card-title">
@@ -35,9 +34,7 @@ if ($arquivos_conteudo) {
             </div>
             <div class="card-body">
                 <div class="tab-content">
-
                     <div class="tab-pane fadeIn active" id="rotas">
-
                         <form id="form_rotas" action="#">
 
                             <div class="col-md-12">
@@ -205,19 +202,17 @@ if ($arquivos_conteudo) {
                         </div>
                         <div  id="tabela_rotas">
 
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="permissoes">
+                        <div  id="tabela_permissoes">
 
                         </div>
                     </div>
-                    <div class="tab-pane fadeIn active" id="permissoes">
-
-                    </div>
                 </div>
             </div>
-
         </div>
     </div>
-
-
 </section>
 
 
@@ -227,8 +222,9 @@ if ($arquivos_conteudo) {
     $(document).ready(function () {
 
         var parametros_array = [];
+        load_rotas();
+        load_permissoes();
 
-        $("#tabela_rotas").load("tabela-rotas");
 
         $("#cadastrar_rota").on("click", function () {
             //var data = $("#form_rotas").serialize();
@@ -244,10 +240,10 @@ if ($arquivos_conteudo) {
                             response = JSON.parse(response);
                             swal(response.message);
                             if (response.result) {
-                                setTimeout(function () {
-                                    location.reload(true);
-                                }, 1500);
-
+//                                setTimeout(function () {
+//                                    location.reload(true);
+//                                }, 1500);
+                                load_rotas();
                             }
                         }
                     });
@@ -364,4 +360,13 @@ if ($arquivos_conteudo) {
             }
         });
     }
+
+    function load_rotas() {
+        $("#tabela_rotas").load("tabela-rotas");
+    }
+
+    function load_permissoes() {
+        $("#tabela_permissoes").load("tabela-permissoes");
+    }
+
 </script>
