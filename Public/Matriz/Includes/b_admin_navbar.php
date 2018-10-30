@@ -4,7 +4,7 @@
 <!-- TOP TOOLBAR WRAPPER -->
 <nav class="top-toolbar navbar navbar-mobile navbar-tablet">
 
-    <ul class="navbar-nav nav-center site-logo">
+<!--    <ul class="navbar-nav nav-center site-logo">
         <li>
             <a href="index.html">
                 <div class="logo_mobile">
@@ -22,7 +22,7 @@
                 <h1 class="brand-text">Cultura do Campo</h1>
             </a>
         </li>
-    </ul>
+    </ul>-->
     <ul class="navbar-nav nav-right">
         <li class="nav-item">
             <a href="javascript:void(0)" data-toggle-state="mobile-topbar-toggle">
@@ -41,9 +41,9 @@
         </li>
 
     </ul>
-    <ul class="site-logo">
+<!--    <ul class="site-logo">
         <li>
-            <!-- START LOGO -->
+             START LOGO 
             <a href="index.html">
                 <div class="logo">
                     <svg id="logo" width="25" height="25" viewBox="0 0 54.03 56.55">
@@ -59,9 +59,9 @@
                 </div>
                 <h1 class="brand-text">Cultura do Campo</h1>
             </a>
-            <!-- END LOGO -->
+             END LOGO 
         </li>
-    </ul>
+    </ul>-->
     <ul class="navbar-nav nav-right">
 
 

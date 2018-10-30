@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="UIKit/dist/assets/css/common/main.bundle.css">
     <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/core/main.css">
     <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/menu-type/content.css">
-    <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-i.css">
+    <link rel="stylesheet" href="UIKit/dist/assets/css/layouts/vertical/themes/theme-a.css">
     <link rel="stylesheet" href="UIKit/dist/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.css">
