@@ -10,6 +10,12 @@
                 <li class="menu-item">
                     <a href="#" aria-expanded="false"><i class="la la-users"></i><span>Usuários cadastrados</span></a>
                 </li>
+                
+                <li class="nav-dropdown">
+                    <a class="" href="cadastrar-produtor" aria-expanded="false"><i class="icon dripicons-to-do"></i><span>Tornar-se Produtor</span></a>
+
+                </li>
+                
                 <li class="menu-item">
                     <a href="vendas-entregas" aria-expanded="false"><i class="la la-truck"></i><span>Vendas/Entregas</span></a>
                 </li>

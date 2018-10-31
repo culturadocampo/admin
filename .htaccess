@@ -29,3 +29,7 @@ rewriteRule ^teste-amazon\/?$ ./index.php [NC]
 rewriteRule ^alterar-status-rota\/?$ ./index.php [NC]
 rewriteRule ^tabela-permissoes\/?$ ./index.php [NC]
 rewriteRule ^vendas-entregas\/?$ ./index.php [NC]
+
+# Cadastra usuario tipo Produtor
+rewriteRule ^cadastrar-produtor\/?$ ./index.php [NC]
+rewriteRule ^salvar-produtor\/?$ ./index.php [NC]

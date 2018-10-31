@@ -26,8 +26,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.animate.js"></script>
 
-<script>
-
-</script>
-
-
+<!-- ================== Carrega Mask ==================-->
+<script src="UIKit/dist/assets/vendor/jquery-mask/jquery.mask.min.js"></script>
+<script src="UIKit/dist/assets/js/components/jquery-mask-init.js"></script>
