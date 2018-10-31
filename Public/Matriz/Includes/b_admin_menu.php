@@ -22,7 +22,7 @@
 
                 <li class="sidebar-header"><span>SISTEMA</span></li>
                 <li class="menu-item">
-                    <a href="rotas-acesso" aria-expanded="false"><i class="la la-map-signs"></i><span>Rotas/Permissão</span></a>
+                    <a href="rotas" aria-expanded="false"><i class="la la-map-signs"></i><span>Rotas/Permissão</span></a>
                 </li>
                 <li class="menu-item">
                     <a href="#" aria-expanded="false"><i class="la la-eye"></i><span>Permissões padrão</span></a>

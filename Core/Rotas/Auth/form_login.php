@@ -1,10 +1,11 @@
-<form id="form_login" class="sign-in-form animated jackInTheBox">
+<form id="form_login" class="sign-in-form ">
     <div class="card">
         <div class="card-body">
+                        <!--<h5 class="sign-in-heading text-center m-b-20" style="font-size: 24px;">Cultura do campo</h5>-->
+
             <a href="index.html" class="brand text-center d-block m-b-20">
-                <img src="UIKit/dist/assets/img/qt-logo@2x.png" alt="QuantumPro Logo" />
+                <img src="Public/Images/logo4.png" width="125" height="125" class="animated bounceIn"/>
             </a>
-            <h5 class="sign-in-heading text-center m-b-20" style="font-weight: bold!important; font-size: 24px;">Acesse sua conta</h5>
             <div class="form-group">
                 <label for="inputEmail" class="sr-only">Usuário ou e-mail</label>
                 <input type="email" name="usuario" class="form-control" placeholder="Usuário ou endereço de e-mail" required="">

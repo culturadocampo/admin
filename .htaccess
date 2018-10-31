@@ -6,7 +6,7 @@ Options -Indexes
 
 
 #Cadastro de rotas
-rewriteRule ^rotas-acesso\/?$ ./index.php [NC]
+rewriteRule ^rotas\/?$ ./index.php [NC]
 # Auth
 rewriteRule ^login\/?$ .\/index.php [NC]
 rewriteRule ^executa-login\/?$ .\/index.php [NC]

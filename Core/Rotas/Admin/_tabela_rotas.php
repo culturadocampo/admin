@@ -25,9 +25,9 @@ foreach ($rotas as $key => $rota) {
     }
 
     if ($rota['publico']) {
-        $rota['publico'] = "<span class='badge badge-light font-size-14 font-weight-bold'>Público</span>";
+        $rota['publico'] = "<span class='badge badge-light font-size-14'>Público</span>";
     } else {
-        $rota['publico'] = "<span class='badge badge-accent font-size-14 font-weight-bold'>Privado</span>";
+        $rota['publico'] = "<span class='badge badge-dark font-size-14'>Privado</span>";
     }
 
     if ($rota['ativo']) {
@@ -52,6 +52,8 @@ foreach ($rotas as $key => $rota) {
             <th class="font-weight-bold">Conteúdo</th>
             <th class="text-center font-weight-bold">Permissões</th>
             <th class="text-center"></th>
+            <th class="text-center"></th>
+
 
         </tr>
     </thead>
@@ -67,6 +69,8 @@ foreach ($rotas as $key => $rota) {
                     <td class=""><?php echo $value['conteudo']; ?></td>
                     <td class="text-center"><span class="badge badge-light badge-pill font-size-14">0</span></td>
                     <td class="text-center"><button title="Vincular permissão" data-qt-block=".block-el" class="vincular_permissao btn btn-sm btn-outline btn-primary la la-plus font-size-18"></button></td>
+                    <td class="text-center"><a title="Editar permissão" class="editar_permissao btn btn-sm btn-outline btn-accent la la-edit font-size-18 text-accent"></a></td>
+
                 </tr>
             <?php } ?>
 

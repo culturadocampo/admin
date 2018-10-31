@@ -39,7 +39,7 @@
             </a>
 
         </li>
-
+        <img src="Public/Images/logo4.png" class="m-t-5 animated bounceIn" style="width: auto; height: 60px;">
     </ul>
 <!--    <ul class="site-logo">
         <li>
