@@ -69,7 +69,7 @@ foreach ($rotas as $key => $rota) {
                     <td class=""><?php echo $value['conteudo']; ?></td>
                     <td class="text-center"><span class="badge badge-light badge-pill font-size-14">0</span></td>
                     <td class="text-center"><button title="Vincular permissão" data-qt-block=".block-el" class="vincular_permissao btn btn-sm btn-outline btn-primary la la-plus font-size-18"></button></td>
-                    <td class="text-center"><a title="Editar permissão" class="editar_permissao btn btn-sm btn-outline btn-accent la la-edit font-size-18 text-accent"></a></td>
+                    <td class="text-center"><a title="Excluir rota" class="excluir_rota btn btn-sm btn-outline btn-accent la la-remove font-size-18 text-accent"></a></td>
 
                 </tr>
             <?php } ?>
@@ -122,6 +122,7 @@ foreach ($rotas as $key => $rota) {
             });
         });
 
+        $(".vincular_permissao").off("click");
         $(".vincular_permissao").on("click", function () {
             $(".nav-tabs li:nth-child(1) a").removeClass('active');
             $(".nav-tabs li:nth-child(1) a").removeClass('show');
@@ -131,7 +132,13 @@ foreach ($rotas as $key => $rota) {
             $(".tab-content #permissoes").addClass('active');
         });
 
-
+        $(".excluir_rota").off("click");
+        $(".excluir_rota").on("click", function () {
+            var id = $(this).closest('tr').attr('id');
+            $.post("excluir-rota", {id_rota: id}, function (response) {
+                alert(response);
+            });
+        });
 
     });
 </script>

@@ -24,7 +24,7 @@ class Rota {
         return Database::fetch_all($query);
     }
 
-    function select_all_rotas() {
+    function select_all_rotas($order = 'DESC') {
         $query = "
             SELECT 
                 id_rota,
@@ -36,7 +36,7 @@ class Rota {
                 expressao
             FROM rotas
             WHERE TRUE
-            ORDER BY id_rota DESC
+            ORDER BY id_rota $order
         ";
         return Database::fetch_all($query);
     }
@@ -138,11 +138,45 @@ class Rota {
         return $regex_final;
     }
 
+    function rebuild_htaccess() {
+        $all_rotas = $this->select_all_rotas('ASC');
+        $this->clear_htaccess();
+        $fp = fopen('.htaccess', 'a');
+        fwrite($fp, "rewriteEngine on" . PHP_EOL);
+        fwrite($fp, "rewriteEngine on" . PHP_EOL);
+        fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-f" . PHP_EOL);
+        fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-d" . PHP_EOL);
+        fwrite($fp, "Options -Indexes" . PHP_EOL);
+        foreach ($all_rotas as $rota) {
+            $regex_final = "{$rota['expressao']}";
+            $data = PHP_EOL . "rewriteRule $regex_final ./index.php [NC]";
+            fwrite($fp, $data);
+        }
+        fwrite($fp, PHP_EOL . "rewriteRule ^\/?$ .\/index.php [NC]" . PHP_EOL);
+        fclose($fp);
+    }
+
+    function clear_htaccess() {
+        $fp = fopen('.htaccess', 'w');
+        fwrite($fp, "");
+        fclose($fp);
+    }
+
     function alterar_status_rota() {
         $query = "
             UPDATE rotas 
             SET ativo = !ativo 
             WHERE TRUE 
+                AND id_rota = '{$this->getId()}'
+        ";
+        Database::execute($query);
+    }
+
+    function delete_rota() {
+        $query = "
+            DELETE FROM
+            rotas
+            WHERE TRUE
                 AND id_rota = '{$this->getId()}'
         ";
         Database::execute($query);

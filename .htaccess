@@ -1,35 +1,24 @@
 rewriteEngine on
+rewriteEngine on
 rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
+Options -Indexes
 
-Options -Indexes 
-
-
-#Cadastro de rotas
 rewriteRule ^rotas\/?$ ./index.php [NC]
-# Auth
-rewriteRule ^login\/?$ .\/index.php [NC]
-rewriteRule ^executa-login\/?$ .\/index.php [NC]
-rewriteRule ^executa-logout\/?$ .\/index.php [NC]
-rewriteRule ^novo-usuario\/?$ .\/index.php [NC]
-rewriteRule ^executa-cadastro-usuario\/?$ .\/index.php [NC]
-rewriteRule ^executa-cadastro-google\/?$ .\/index.php [NC]
-
-# Inicio
-rewriteRule ^pagina-inicial\/?$ .\/index.php [NC]
-rewriteRule ^\/?$ .\/index.php [NC]
-
-#dashboard
-rewriteRule ^dashboard\/?$ .\/index.php [NC]
-rewriteRule ^executa-cadastro-rota\/?$ .\/index.php [NC]
+rewriteRule ^login\/?$ ./index.php [NC]
+rewriteRule ^executa-login\/?$ ./index.php [NC]
+rewriteRule ^pagina-inicial\/?$ ./index.php [NC]
+rewriteRule ^executa-logout\/?$ ./index.php [NC]
+rewriteRule ^novo-usuario\/?$ ./index.php [NC]
+rewriteRule ^executa-cadastro-usuario\/?$ ./index.php [NC]
+rewriteRule ^executa-cadastro-google\/?$ ./index.php [NC]
+rewriteRule ^dashboard\/?$ ./index.php [NC]
+rewriteRule ^executa-cadastro-rota\/?$ ./index.php [NC]
+rewriteRule ^cadastrar-produtor\/?$ ./index.php [NC]
+rewriteRule ^salvar-produtor\/?$ ./index.php [NC]
 rewriteRule ^tabela-rotas\/?$ ./index.php [NC]
-
-
-rewriteRule ^teste-amazon\/?$ ./index.php [NC]
 rewriteRule ^alterar-status-rota\/?$ ./index.php [NC]
 rewriteRule ^tabela-permissoes\/?$ ./index.php [NC]
 rewriteRule ^vendas-entregas\/?$ ./index.php [NC]
-
-# Cadastra usuario tipo Produtor
-rewriteRule ^cadastrar-produtor\/?$ ./index.php [NC]
-rewriteRule ^salvar-produtor\/?$ ./index.php [NC]
+rewriteRule ^excluir-rota\/?$ ./index.php [NC]
+rewriteRule ^\/?$ .\/index.php [NC]

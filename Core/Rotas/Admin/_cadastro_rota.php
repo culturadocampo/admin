@@ -6,10 +6,8 @@ $o_rota->set_conteudo($_POST['conteudo']);
 $o_rota->set_matriz($_POST['matriz']);
 $o_rota->set_publico($_POST['publico']);
 
-//$is_url_existente = $o_rota->select_rota();
 
 if ($_POST['url']) {
-//    if (!$is_url_existente) {
     if ($_POST['conteudo']) {
 
         if (isset($_POST['params'])) {
@@ -27,10 +25,6 @@ if ($_POST['url']) {
         $response['result'] = false;
         $response['message'] = "Escolha um arquivo de conteúdo";
     }
-//    } else {
-//        $response['result'] = false;
-//        $response['message'] = "Esta URL já existe";
-//    }
 } else {
     $response['result'] = false;
     $response['message'] = "Favor informar a URL base";
