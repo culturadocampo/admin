@@ -14,7 +14,6 @@ if ($arquivos_conteudo) {
     $arquivos_conteudo = array_values($arquivos_conteudo);
 }
 ?>
-
 <section class="page-content animated ">
     <div class="col-md-12 ">
         <div class="card card-tabs">
@@ -189,184 +188,16 @@ if ($arquivos_conteudo) {
                                 </div>
 
                             </div>
-                            <?php if ($arquivos_conteudo) { ?>
 
                                 <div class="card-footer text-right">
-                                    <button type="button" id="cadastrar_rota" class="btn btn-primary">Cadastrar rota</button>
+                                    <button type="button" id="cadastrar_rota" class="btn btn-primary">Alterar rota</button>
                                 </div>
-                            <?php } ?>
                         </form>
-                        <div class="col-md-12 m-t-30">
-                            <h1>Rotas cadastradas</h1>
-                            <hr>
-                        </div>
-                        <div  id="tabela_rotas">
-
-                        </div>
+                      
                     </div>
-                    <div class="tab-pane" id="permissoes">
-                        <div  id="tabela_permissoes">
-
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
-<script>
-
-
-    $(document).ready(function () {
-
-        var parametros_array = [];
-        load_rotas();
-        load_permissoes();
-
-
-        $("#cadastrar_rota").on("click", function () {
-            //var data = $("#form_rotas").serialize();
-            var url = $("#input_url").val();
-            var publico = $("#publico").val();
-            var matriz = $("#select_matriz").val();
-            var conteudo = $("#select_conteudo").val();
-            $.post(
-                    'executa-cadastro-rota',
-                    {url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array},
-                    function (response) {
-                        if (is_json(response)) {
-                            response = JSON.parse(response);
-                            swal(response.message);
-                            if (response.result) {
-//                                setTimeout(function () {
-//                                    location.reload(true);
-//                                }, 1500);
-                                load_rotas();
-                            }
-                        }
-                    });
-
-        });
-
-        $("#add_parametro").on("click", function () {
-            var tipo_parametro = $("#parametros").val();
-            var array_parametro = [];
-
-            if (tipo_parametro === "1") {
-                array_parametro = {expressao: $("#expressao_select").val(), nome: $("#nome_parametro").val(), tipo: tipo_parametro};
-            } else {
-                array_parametro = {palavra: $("#palavra_url").val(), tipo: tipo_parametro};
-            }
-            parametros_array.push(array_parametro);
-            add_on_table(parametros_array);
-        });
-
-
-        $(".remover_parametro").off("click");
-        $(".remover_parametro").on("click", 'button', function () {
-            var key = $(this).attr("id");
-            alert(key);
-        });
-
-
-        $("#select_matriz").on("change", function () {
-            if (this.value === "0") {
-                $("#div_parametros").fadeOut();
-
-            } else {
-                $("#div_parametros").fadeIn();
-            }
-
-        });
-
-        $("#parametros").on("change", function () {
-            if (this.value === "1") {
-                $("#expressao_regular").show();
-                $("#palavra_fixa").hide();
-
-            } else {
-                $("#expressao_regular").hide();
-                $("#palavra_fixa").show();
-            }
-
-        });
-
-
-        $("#input_url").on("keydown", function (event) {
-            // Allow controls such as backspace, tab etc.
-            var arr = [8, 9, 16, 17, 20, 35, 36, 37, 38, 39, 40, 45, 46, 173, 109];
-
-            // Allow varters
-            for (var i = 65; i <= 90; i++) {
-                arr.push(i);
-            }
-
-            // Prevent default if not in array
-            if (jQuery.inArray(event.which, arr) === -1) {
-                event.preventDefault();
-            } else {
-                $(".url").html($("#input_url").val());
-            }
-        });
-
-        $("#input_url").on("input", function () {
-            var regexp = /[^a-zA-Z-]/g;
-            if ($(this).val().match(regexp)) {
-                $(this).val($(this).val().replace(regexp, ''));
-            } else {
-                $(".url").html($("#input_url").val());
-
-            }
-        });
-
-        $(".somente_letras").on("keydown", function (event) {
-            // Allow controls such as backspace, tab etc.
-            var arr = [8, 9, 16, 17, 20, 35, 36, 37, 38, 39, 40, 45, 46, 189];
-
-            // Allow varters
-            for (var i = 65; i <= 90; i++) {
-                arr.push(i);
-            }
-
-            // Prevent default if not in array
-            if (jQuery.inArray(event.which, arr) === -1 && (event.which === 189 && event.shiftKey === true)) {
-                event.preventDefault();
-            } else {
-            }
-        });
-
-        $(".somente_letras").on("input", function () {
-            var regexp = /[^a-zA-Z-_]/g;
-            if ($(this).val().match(regexp)) {
-                $(this).val($(this).val().replace(regexp, ''));
-            } else {
-            }
-        });
-
-
-    });
-
-
-    function add_on_table(parametros_array) {
-        $("#tabela_de_parametros tbody").html("");
-        $.each(parametros_array, function (key, value) {
-            var button_remover_param = "<td class='text-center'><button type='button' id='" + key + "' class='remover_parametro btn btn-danger btn-sm'>Remover</button></td>";
-            if (value.tipo === "1") {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.nome + "']</td> <td class='text-center'>" + value.expressao + "</td></tr>");
-            } else {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>-</td><td class='text-center'>/" + value.palavra + "</td></tr>");
-            }
-        });
-    }
-
-    function load_rotas() {
-        $("#tabela_rotas").load("tabela-rotas");
-    }
-
-    function load_permissoes() {
-        $("#tabela_permissoes").load("tabela-permissoes");
-    }
-
-</script>

@@ -1,4 +1,1 @@
-
-<section class="page-content">
-
-</section>
+<?php
