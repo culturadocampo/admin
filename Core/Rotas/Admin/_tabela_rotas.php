@@ -3,7 +3,7 @@
         border-collapse: collapse!important;
     }
     .table.dataTable tbody tr:hover{
-        background-color: #FFF9C4!important;
+        background-color: #e6f4e5;
     }
     .btn-permissoes i 
 </style>
@@ -64,7 +64,7 @@ foreach ($rotas as $key => $rota) {
                 <tr id="<?php echo $value['id_rota']; ?>">
                     <td class="text-center"><?php echo $value['ativo']; ?></td>
                     <td class="text-center"><?php echo $value['publico']; ?></td>
-                    <td class="text-truncate font-weight-bold" width="20%"><abbr title="<?php echo $value['expressao']; ?>"><?php echo $value['url']; ?></abbr></td>
+                    <td class="text-truncate" width="20%"><abbr title="<?php echo $value['expressao']; ?>"><?php echo $value['url']; ?></abbr></td>
                     <td class=""><?php echo $value['matriz']; ?></td>
                     <td class=""><?php echo $value['conteudo']; ?></td>
                     <td class="text-center"><span class="badge badge-light badge-pill font-size-14">0</span></td>
@@ -107,7 +107,7 @@ foreach ($rotas as $key => $rota) {
             var elems = Array.prototype.slice.call($('.switcher'));
             elems.forEach(function (html) {
                 var switchery = new Switchery(html, {
-                    color: QuantumPro.APP_COLORS.info,
+                    color: QuantumPro.APP_COLORS.success,
                     secondaryColor: QuantumPro.APP_COLORS.grey200,
                     className: "switchery switchery-small"
 

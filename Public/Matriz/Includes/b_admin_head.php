@@ -6,7 +6,7 @@
         <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">
     <?php } ?>
 
-
+<link rel="shortcut icon" type="image/png" href="Public/Images/logo_cc2.png"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

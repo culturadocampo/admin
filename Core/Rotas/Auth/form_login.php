@@ -1,10 +1,10 @@
 <form id="form_login" class="sign-in-form ">
     <div class="card">
         <div class="card-body">
-                        <!--<h5 class="sign-in-heading text-center m-b-20" style="font-size: 24px;">Cultura do campo</h5>-->
+            <!--<h5 class="sign-in-heading text-center m-b-20" style="font-size: 24px;">Cultura do campo</h5>-->
 
             <a href="index.html" class="brand text-center d-block m-b-20">
-                <img src="Public/Images/logo4.png" width="125" height="125" class="animated bounceIn"/>
+                <img src="Public/Images/logo_cc2.png" width="125" height="125" class="animated bounceIn"/>
             </a>
             <div class="form-group">
                 <label for="inputEmail" class="sr-only">Usuário ou e-mail</label>
@@ -35,7 +35,7 @@
                     Google
                 </span>
             </a>
-            <?php if(false){ ?> 
+            <?php if (false) { ?> 
                 <a href="#">
                     <span href="#" class="btn-face m-b-10 col-md-12">
                         <i class="fa fa-facebook-official"></i>
@@ -43,18 +43,10 @@
                     </span>
                 </a>
             <?php } ?>
-            <!-- Desabilitado login por Faceboock -->
-            
             <div class="col-md-12 text-center">
                 <p class="text-muted m-t-25 m-b-0 p-0"><a href="#">Esqueceu sua senha?</a></p>
-
-                <!--<a href="auth.forgot-password.html"></a>-->
-
             </div>
-
-
         </div>
-
     </div>
 </form>
 

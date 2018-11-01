@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<style>
+    body {
+        background-image: url("Public/Images/background.png");
+        background-repeat: repeat;
+    }
+</style>
 <html>
     <?php include 'Public/Matriz/Includes/b_admin_head.php'; ?>
     <body class="content-menu pace-done content-menu-close">
