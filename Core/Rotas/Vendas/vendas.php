@@ -32,8 +32,8 @@
 
 <script>
 
-        var truckLocation = [-50.1468023,-25.1229000];
-        var warehouseLocation = [-50.1464611,-25.1247000];
+         var truckLocation = [-122.4194,37.7749];
+      var warehouseLocation = [-122.4194,37.7749];
         var lastQueryTime = 0;
         var lastAtRestaurant =0;
         var keepTrack =[];
@@ -205,10 +205,10 @@
               .setData(routeGeoJSON);
           }
 
-//          // 
-//          if (data.waypoints.length === 12) {
-//            window.alert('Maximum number of points reached. Read more at mapbox.com/api-documentation/#optimization.');
-//          }
+          // 
+          if (data.waypoints.length === 12) {
+            window.alert('Maximum number of points reached. Read more at mapbox.com/api-documentation/#optimization.');
+          }
         });
       }
 

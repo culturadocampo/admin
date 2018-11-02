@@ -58,11 +58,11 @@
 
     <ul class="navbar-nav nav-right">
 
-        <?php if (Application::is_logged()) { ?>
+        <?php if (APP::is_logged()) { ?>
             <li class="nav-item nav-text dropdown dropdown-menu-md">
                 <a href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <span>
-                        <?php echo Strings::proper_case($_SESSION['nome']); ?>
+                        <?php echo STRINGS::proper_case($_SESSION['nome']); ?>
                     </span>
                     <i class="la la-angle-down menu-arrow-down"></i>
                 </a>

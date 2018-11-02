@@ -1,12 +1,10 @@
 <?php
 
-/**
- * FILTER
- */
-class Strings {
+
+class STRINGS {
 
     static function limpar($str) {
-        $striped_str = addslashes(strip_tags(trim($str)));
+        $striped_str = addslashes(strip_tags($str));
         $striped_str = self::remove_whitespace($striped_str);
         return $striped_str;
     }
@@ -19,22 +17,6 @@ class Strings {
             $out .= ( in_array($ar, $ignorar) ? $ar : ucfirst($ar) ) . ' ';
         }
         return trim($out);
-    }
-
-    static public function utf8_encode_deep(&$input) {
-        if (is_string($input)) {
-            $input = utf8_encode($input);
-        } else if (is_array($input)) {
-            foreach ($input as &$value) {
-                self::utf8_encode_deep($value);
-            }
-            unset($value);
-        } else if (is_object($input)) {
-            $vars = array_keys(get_object_vars($input));
-            foreach ($vars as $var) {
-                self::utf8_encode_deep($input->$var);
-            }
-        }
     }
 
     static function remove_whitespace($string) {

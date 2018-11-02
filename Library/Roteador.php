@@ -9,7 +9,7 @@ class Roteador {
 
         $rota = self::get_rota_apropriada($array_rotas);
 
-        if (Application::is_logged() || $rota['publico']) {
+        if (APP::is_logged() || $rota['publico']) {
             $conteudo = "Core/Rotas/{$rota['conteudo']}";
             if ($rota['matriz']) {
                 include "Public/Matriz/{$rota['matriz']}";
@@ -56,7 +56,7 @@ class Roteador {
             unset($uri[0]);
         }
         $uri = implode("/", $uri);
-        return $uri ? $uri : Application::rota_default();
+        return $uri ? $uri : APP::rota_default();
     }
 
 }

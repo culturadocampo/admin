@@ -25,7 +25,7 @@ $usuario = $m_usuario->select_usuario_login();
 
 if ($usuario && $resultado_chave) {
     $response['result'] = true;
-    $_SESSION['id'] = $usuario['id_usuario'];
+    $_SESSION['id_usuario'] = $usuario['id_usuario'];
     $_SESSION['nome'] = $usuario['nome'];
     $_SESSION['tipo_usuario'] = $usuario['fk_tipo_usuario'];
 

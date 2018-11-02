@@ -12,12 +12,12 @@ $o_usuario->set_email($email);
 $o_usuario->set_usuario($id_gmail); // id_gmail é gravado como usuário
 
 if (!$usuario) {
-    $_SESSION['id'] = $o_usuario->get_usuario();
+    $_SESSION['id_usuario'] = $o_usuario->get_usuario();
     $_SESSION['nome'] = $o_usuario->get_nome();
     $_SESSION['fk_tipo_usuario'] = 2;
     $o_usuario->insert_novo_usuario_google();
 } else {
-    $_SESSION['id'] = $usuario['id_usuario'];
+    $_SESSION['id_usuario'] = $usuario['id_usuario'];
     $_SESSION['nome'] = $usuario['nome'];
     $_SESSION['tipo_usuario'] = $usuario['fk_tipo_usuario'];
 }

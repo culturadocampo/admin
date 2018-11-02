@@ -20,7 +20,7 @@ class Usuario {
                 AND usuario = '{$this->get_usuario()}'
                 AND senha = '{$this->get_senha()}'
         ";
-        return Database::fetch($query);
+        return DATABASE::fetch($query);
     }
 
     function insert_novo_usuario() {
@@ -38,7 +38,7 @@ class Usuario {
             )
         ";
 
-        Database::execute($query);
+        DATABASE::execute($query);
     }
 
     function insert_novo_usuario_google() {
@@ -54,7 +54,7 @@ class Usuario {
                 '{$this->get_email()}'
             )
         ";
-        Database::execute($query);
+        DATABASE::execute($query);
     }
 
     function select_usuario($usuario) {
@@ -68,7 +68,7 @@ class Usuario {
             WHERE TRUE 
                 AND usuario = '{$usuario}'
         ";
-        return Database::fetch($query);
+        return DATABASE::fetch($query);
     }
 
     function get_nome() {
@@ -88,19 +88,19 @@ class Usuario {
     }
 
     function set_nome($nome) {
-        $this->nome = strtoupper(Strings::limpar($nome));
+        $this->nome = strtoupper(STRINGS::limpar($nome));
     }
 
     function set_email($email) {
-        $this->email = Strings::limpar($email);
+        $this->email = STRINGS::limpar($email);
     }
 
     function set_usuario($usuario) {
-        $this->usuario = Strings::limpar($usuario);
+        $this->usuario = STRINGS::limpar($usuario);
     }
 
     function set_senha($senha) {
-        $this->senha = Strings::limpar($senha);
+        $this->senha = STRINGS::limpar($senha);
     }
 
 }

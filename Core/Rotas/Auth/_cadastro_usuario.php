@@ -16,11 +16,11 @@ if($_SERVER['HTTP_HOST'] != 'localhost'){
     $resultado_chave = TRUE;
 }
 
-if (Strings::is_nome_valido($_POST['nome'])) {
-    if (Strings::is_email_valido($_POST['email'])) {
-        if (Strings::is_usuario_valido($_POST['usuario'])) {
+if (STRINGS::is_nome_valido($_POST['nome'])) {
+    if (STRINGS::is_email_valido($_POST['email'])) {
+        if (STRINGS::is_usuario_valido($_POST['usuario'])) {
             if (strlen($_POST['usuario']) >= 5) {
-                if (Strings::is_senha_valida($_POST['senha'])) {
+                if (STRINGS::is_senha_valida($_POST['senha'])) {
                     if (strlen($_POST['senha']) >= 6) {
                         if($_POST['senha'] == $_POST['senha_conf']){
                             if(isset($_POST['conf_termos']) || true){ //prescisa corrigir esta regra.

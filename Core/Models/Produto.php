@@ -30,7 +30,7 @@ class Produto {
             '{$this->is_hidroponico()}'
             )
         ";
-        Database::execute($query);
+        DATABASE::execute($query);
     }
 
     function get_ncm_codigo() {
@@ -46,7 +46,7 @@ class Produto {
     }
 
     function set_ncm_descricao($ncm_descricao) {
-        $this->ncm_descricao = Strings::limpar($ncm_descricao);
+        $this->ncm_descricao = STRINGS::limpar($ncm_descricao);
     }
 
     function is_organico() {

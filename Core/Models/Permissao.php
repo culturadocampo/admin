@@ -22,7 +22,7 @@ class Permissao {
             FROM permissoes
             WHERE TRUE
         ";
-        return Database::fetch_all($query);
+        return DATABASE::fetch_all($query);
     }
 
 }

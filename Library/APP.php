@@ -1,17 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Application
- *
- * @author Notheros
- */
-class Application {
+class APP {
 
     static function start() {
         $request = self::get_request();
@@ -35,8 +24,8 @@ class Application {
      * Caso false, redireciona para o login
      */
     static function is_logged() {
-        if (isset($_SESSION['id']) && isset($_SESSION['nome'])) {
-            if ($_SESSION['id'] > 0 && !empty($_SESSION['nome'])) {
+        if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome'])) {
+            if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome'])) {
                 return true;
             } else {
                 return false;
@@ -58,5 +47,12 @@ class Application {
         }
     }
 
+    static function return_response($result, $message) {
+        $response['result'] = $result;
+        $response['message'] = $message;
+        ARRAYS::utf8_encode_deep($response);
+        echo json_encode($response);
+        exit;
+    }
 
 }

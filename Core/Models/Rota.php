@@ -21,7 +21,7 @@ class Rota {
                 AND url = '{$this->get_url()}'
                 AND ativo = '1'
         ";
-        return Database::fetch_all($query);
+        return DATABASE::fetch_all($query);
     }
 
     function select_all_rotas($order = 'DESC') {
@@ -38,7 +38,7 @@ class Rota {
             WHERE TRUE
             ORDER BY id_rota $order
         ";
-        return Database::fetch_all($query);
+        return DATABASE::fetch_all($query);
     }
 
     function get_arquivos_base() {
@@ -97,7 +97,7 @@ class Rota {
                 AND conteudo = '{$this->get_conteudo()}'
                 AND ativo = '1'
         ";
-        return Database::fetch($query);
+        return DATABASE::fetch($query);
     }
 
     function insert_rota() {
@@ -112,7 +112,7 @@ class Rota {
                 '{$this->get_expressao()}'
             )
         ";
-        Database::execute($query);
+        DATABASE::execute($query);
     }
 
     function save_on_htaccess($params = array()) {
@@ -169,7 +169,7 @@ class Rota {
             WHERE TRUE 
                 AND id_rota = '{$this->getId()}'
         ";
-        Database::execute($query);
+        DATABASE::execute($query);
     }
 
     function delete_rota() {
@@ -179,7 +179,7 @@ class Rota {
             WHERE TRUE
                 AND id_rota = '{$this->getId()}'
         ";
-        Database::execute($query);
+        DATABASE::execute($query);
     }
 
     function getId() {
@@ -227,7 +227,7 @@ class Rota {
     }
 
     function set_expressao($expressao) {
-        $this->expressao = Strings::limpar($expressao);
+        $this->expressao = STRINGS::limpar($expressao);
     }
 
 }

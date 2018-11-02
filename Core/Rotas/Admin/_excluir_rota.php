@@ -13,12 +13,7 @@ if (isset($_POST['id_rota']) && $_POST['id_rota']) {
      */
     $o_rota->rebuild_htaccess();
 
-    $response['result'] = true;
-    $response['message'] = "Rota excluída com sucesso";
+    APP::return_response(true, "Rota excluída com sucesso");
 } else {
-    $response['result'] = false;
-    $response['message'] = "Argumentos inválidos";
+    APP::return_response(false, "Argumentos inválidos");
 }
-
-Strings::utf8_encode_deep($response);
-echo json_encode($response);

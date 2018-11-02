@@ -41,16 +41,16 @@ class Database {
     #Insert, Update, Delete e testa se o retorno é um objeto, para ter certeza que gravou no banco.
 
     public static function execute($query) {
-        $db = Database::conexao();
+        $db = DATABASE::conexao();
         $sth = $db->prepare($query);
         $sth->execute();
-        return Database::test_is_object($sth);
+        return DATABASE::test_is_object($sth);
     }
 
     #Uso com apenas um array de resposta.
 
     public static function fetch($query) {
-        $db = Database::conexao();
+        $db = DATABASE::conexao();
         $db = $db->query($query);
         return $db->fetch(PDO::FETCH_ASSOC);
     }
@@ -58,7 +58,7 @@ class Database {
     #Uso com vários arrays de resposta.
 
     public static function fetch_all($query) {
-        $db = Database::conexao();
+        $db = DATABASE::conexao();
         $db = $db->query($query);
         return $db->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -66,7 +66,7 @@ class Database {
     #Uso com apenas um array de resposta, podendo escolher uma coluna por parametro int (0,1,2,3).
 
     public static function fetch_column($query, $coluna = false) {
-        $db = Database::conexao();
+        $db = DATABASE::conexao();
         $db = $db->query($query);
         return $db->fetchColumn($coluna);
     }
@@ -74,7 +74,7 @@ class Database {
     #Retorna a quantidade de linhas na busca.
 
     public static function row_count($query) {
-        $db = Database::conexao();
+        $db = DATABASE::conexao();
         $db = $db->query($query);
         return $db->rowCount();
     }
