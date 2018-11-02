@@ -5,7 +5,7 @@ $m_usuario = new Usuario();
 $m_usuario->set_usuario($_POST['usuario']);
 $m_usuario->set_senha($_POST['senha']);
 
-//$response['captcha'];
+
 $captcha = $_POST['g-recaptcha-response'];
 
 if (!$captcha) {
@@ -14,16 +14,13 @@ if (!$captcha) {
     echo json_encode($response);
     exit;
 }
-/**
- * defeito
- * Undefined variable: captcha_data
- * comentei pra fazer o login voltar
- */
-//$resposta_captcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Len6HYUAAAAAEar0mmQJgA0mSkGpzQPU21Iu484&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
-//&& $resposta_captcha.success
+
+
+$resposta_captcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Len6HYUAAAAAEar0mmQJgA0mSkGpzQPU21Iu484&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+$resposta_captcha = json_decode($resposta_captcha, true);
 $usuario = $m_usuario->select_usuario_login();
 
-if ($usuario ) {
+if ($usuario && $resposta_captcha['success']) {
     $response['result'] = true;
     $_SESSION['id'] = $usuario['id_usuario'];
     $_SESSION['nome'] = $usuario['nome'];
