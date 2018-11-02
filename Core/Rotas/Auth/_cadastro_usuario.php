@@ -29,8 +29,9 @@ if (Strings::is_nome_valido($_POST['nome'])) {
 
                                     $o_usuario->set_nome($_POST['nome']);
                                     $o_usuario->set_email($_POST['email']);
-                                    $o_usuario->set_usuario($_POST['usuario']);
-                                    $o_usuario->set_senha($_POST['senha']);
+                                    $o_usuario->set_usuario($_POST['usuario']);                                   
+                                    $senha = Seguranca::executar_criptografia($_POST['senha']);                       
+                                    $o_usuario->set_senha($senha);
 
                                     $o_usuario->insert_novo_usuario();
                                     $response['message'] = "Cadastro feito com sucesso, por favor digite seu login e senha no sistema";
