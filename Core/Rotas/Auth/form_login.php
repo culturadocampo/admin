@@ -21,9 +21,11 @@
                     <label class="custom-control-label" for="stateCheck1">Manter conectado</label>
                 </div>
             </div>
-            <div class="checkbox m-b-10 m-t-20 ">
-                <div class="g-recaptcha col-md-12" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
-            </div>
+            <?php if($_SERVER['HTTP_HOST'] != 'localhost'){ ?>
+                <div class="checkbox m-b-10 m-t-20 ">
+                    <div class="g-recaptcha col-md-12" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
+                </div>   
+            <?php } ?>
             <button id="submit_login" class="btn btn-primary btn-block" type="button">Acessar plataforma</button>
 
             <p class="text-muted m-t-25 m-b-0 p-0">Ainda não possui uma conta?<a href="novo-usuario"> Crie uma agora!</a></p>

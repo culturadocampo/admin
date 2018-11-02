@@ -23,14 +23,19 @@
 
             </div>
             <div class="form-group">
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirme sua senha" required="">
+                <input name="senha_conf" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirme sua senha" required="">
             </div>
             <div class="checkbox m-b-10 m-t-15">
                 <div class="custom-control custom-checkbox checkbox-primary form-check">
-                    <input type="checkbox" class="custom-control-input" id="stateCheck1" checked="">
+                    <input nome="conf_termos" type="checkbox" class="custom-control-input" id="stateCheck1" value="on" checked="">
                     <label class="custom-control-label" for="stateCheck1">Eu aceito os <a href="#">termos e condições</a></label>
                 </div>
             </div>
+            <?php if($_SERVER['HTTP_HOST'] != 'localhost'){ ?>
+                <div class="checkbox m-b-10 m-t-20 ">
+                    <div class="g-recaptcha col-md-12" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
+                </div>   
+            <?php } ?>
             <div class="form-group">
                 <button id="submit_cadastro" class="btn btn-primary btn-block" type="button">Criar minha conta</button>
             </div>
@@ -88,7 +93,13 @@
                 success: function (json) {
                     var response = JSON.parse(json);
                     if (response.result) {
-
+                        swal({
+                            type: 'success',
+                            title: 'Alerta',
+                            text: response.message
+                        }).then((value) => {
+                             window.location = "./login"; // vazio = pagina-inicial
+                        });
                     } else {
                         swal({
                             type: 'warning',
