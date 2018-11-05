@@ -1,13 +1,3 @@
-<style>
-    .table.dataTable {
-        border-collapse: collapse!important;
-    }
-    .table.dataTable tbody tr:hover{
-        background-color: #e6f4e5;
-    }
-    .btn-permissoes i 
-</style>
-
 <?php
 $o_rota = new Rota();
 
@@ -39,7 +29,7 @@ foreach ($rotas as $key => $rota) {
     $rotas[$key] = $rota;
 }
 ?>
-<!--<button class="btn btn-accent" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">Tooltip on bottom</button>-->
+
 <table id="rotas-table" class="table table-striped table-bordered table-light block-el ">
 
     <thead>

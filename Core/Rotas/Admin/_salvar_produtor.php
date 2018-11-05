@@ -10,7 +10,8 @@ $o_produtor->set_cpf($_POST['cpf']);
 $o_produtor->set_rg($_POST['rg']);
 $o_produtor->set_cad_pro($_POST['cad_pro']);
 $o_produtor->set_data_nascimento($_POST['data_nascimento']);
-$o_produtor->insert_produtor_usuario();
+
+$o_produtor->insert_produtor_usuario(SESSION::get_id_usuario());
 
 
 /**
@@ -23,8 +24,6 @@ $o_endereco->set_logradouro($_POST['logradouro']);
 $o_endereco->set_numero($_POST['numero']);
 $o_endereco->set_complemento($_POST['complemento']);
 
-$o_endereco->insert_endereco();
+$o_endereco->insert_endereco(SESSION::get_id_usuario());
 
 APP::return_response(true, "Cadastrado com sucesso");
-
-

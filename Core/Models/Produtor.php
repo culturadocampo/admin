@@ -2,7 +2,6 @@
 
 class Produtor {
 
-    private $fk_usuario;
     private $cpf;
     private $rg;
     private $cad_pro;
@@ -18,7 +17,7 @@ class Produtor {
         return DATABASE::fetch_all($query);
     }
 
-    function insert_produtor_usuario() {
+    function insert_produtor_usuario($id_usuario) {
         $query = "
             INSERT INTO produtores
              (
@@ -30,7 +29,7 @@ class Produtor {
              )
              VALUES 
              (
-               '{$this->get_id_usuario()}',
+                '{$id_usuario}',
                 '{$this->get_cpf()}',
                 '{$this->get_rg()}',
                 '{$this->get_cad_pro()}',
@@ -38,14 +37,6 @@ class Produtor {
              )                    
         ";
         DATABASE::execute($query);
-    }
-
-    function get_id_usuario() {
-        if ($_SESSION['id_usuario']) {
-            return STRINGS::limpar($_SESSION['id_usuario']);
-        } else {
-            APP::return_response(false, "Ocorreu um erro. Cód: 001");
-        }
     }
 
     function get_cpf() {

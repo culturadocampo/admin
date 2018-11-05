@@ -18,7 +18,7 @@ class Rota {
                 expressao
             FROM rotas 
             WHERE TRUE
-                AND url = '{$this->get_url()}'
+               
                 AND ativo = '1'
         ";
         return DATABASE::fetch_all($query);

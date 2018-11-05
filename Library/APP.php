@@ -4,7 +4,7 @@ class APP {
 
     static function start() {
         $request = self::get_request();
-        Roteador::include_file($request);
+        ROUTER::include_file($request);
     }
 
     private static function get_request() {
@@ -30,6 +30,14 @@ class APP {
             } else {
                 return false;
             }
+        } else {
+            return false;
+        }
+    }
+
+    static function get_id_tipo_usuario() {
+        if (isset($_SESSION['tipo_usuario'])) {
+            return $_SESSION['tipo_usuario'];
         } else {
             return false;
         }

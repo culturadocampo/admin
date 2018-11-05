@@ -9,7 +9,7 @@ class Endereco {
     private $cidade;
     private $estado;
 
-    function insert_endereco() {
+    function insert_endereco($id_usuario) {
         $query = "
             INSERT INTO enderecos
              (
@@ -21,7 +21,7 @@ class Endereco {
                 complemento
             )
             VALUES (
-                '{$this->get_id_usuario()}',
+                '{$id_usuario}',
                 '{$this->get_cidade()}',
                 '{$this->get_bairro()}',
                 '{$this->get_logradouro()}',
@@ -31,14 +31,17 @@ class Endereco {
         DATABASE::execute($query);
     }
 
-    function get_id_usuario() {
-        if ($_SESSION['id_usuario']) {
-            return STRINGS::limpar($_SESSION['id_usuario']);
-        } else {
-            APP::return_response(false, "Ocorreu um erro. Cód: 001");
-        }
+    function select_enderecos_usuarios($id_usuario) {
+        $query = "
+            SELECT 
+                lng, lat
+            FROM enderecos
+            WHERE TRUE
+                AND fk_usuario = '{$id_usuario}'
+        ";
+        return DATABASE::fetch($query);
     }
-
+    
     function get_numero() {
         return $this->numero;
     }

@@ -3,7 +3,7 @@
 
 class ARRAYS {
 
-    static public function utf8_encode_deep(&$array) {
+    static function utf8_encode_deep(&$array) {
         if (is_string($array)) {
             $array = utf8_encode($array);
         } else if (is_array($array)) {
@@ -17,6 +17,12 @@ class ARRAYS {
                 self::utf8_encode_deep($array->$var);
             }
         }
+    }
+    
+    static function pre_print($array, $die = true){
+        echo "<pre>";
+        print_r($array);
+        echo $die ? die() : "</pre>";
     }
 
 }

@@ -1,10 +1,10 @@
 <?php
 
-class Roteador {
+class ROUTER {
 
     public static function include_file($request) {
         $o_rota = new Rota();
-        $o_rota->set_url($request);
+//        $o_rota->set_url($request);
         $array_rotas = $o_rota->select_rota();
 
         $rota = self::get_rota_apropriada($array_rotas);
@@ -40,7 +40,7 @@ class Roteador {
      * diferente do digitado na navegador
      * @return type
      */
-    private static function get_rota_apropriada($array_rotas, $uri = '') {
+    private static function get_rota_apropriada($array_rotas, $uri = false) {
         $uri = $uri ? $uri : self::get_uri();
         foreach ($array_rotas as $rota) {
             if (preg_match("@{$rota['expressao']}@", $uri)) {

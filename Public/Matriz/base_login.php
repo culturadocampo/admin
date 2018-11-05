@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php include 'Public/Matriz/Includes/b_head.php'; ?>
+    <?php include 'Public/Matriz/Includes/b_head_site.php'; ?>
     <body class="content-menu pace-done content-menu-close">
         <div id="app">
             <div class="content-wrapper">
@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <?php include 'Public/Matriz/Includes/b_scripts.php'; ?>
+        <?php include 'Public/Matriz/Includes/b_scripts_site.php'; ?>
         <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};HandleGoogleApiLibrary()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 
     </body>

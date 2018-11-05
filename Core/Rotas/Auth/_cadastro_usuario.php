@@ -30,7 +30,7 @@ if (STRINGS::is_nome_valido($_POST['nome'])) {
                                     $o_usuario->set_nome($_POST['nome']);
                                     $o_usuario->set_email($_POST['email']);
                                     $o_usuario->set_usuario($_POST['usuario']);                                   
-                                    $senha = Seguranca::executar_criptografia($_POST['senha']);                       
+                                    $senha = SEGURANCA::executar_criptografia($_POST['senha']);                       
                                     $o_usuario->set_senha($senha);
 
                                     $o_usuario->insert_novo_usuario();

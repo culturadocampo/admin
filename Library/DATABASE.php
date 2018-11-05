@@ -1,6 +1,6 @@
 <?php
 
-class Database {
+class DATABASE {
     # Variável que guarda a conexão PDO.
 
     protected static $db;

@@ -2,7 +2,7 @@
 
 $m_usuario = new Usuario();
 
-$senha = Seguranca::executar_criptografia($_POST['senha']); 
+$senha = SEGURANCA::executar_criptografia($_POST['senha']); 
 $m_usuario->set_usuario($_POST['usuario']);
 $m_usuario->set_senha($senha);
 
