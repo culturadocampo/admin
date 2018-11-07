@@ -11,16 +11,16 @@ function initMapbox(data) {
     nothing = turf.featureCollection([]);
     pointHopper = {};
 
-  mapboxgl.accessToken = 'pk.eyJ1IjoiY3VsdHVyYS1kby1jYW1wbyIsImEiOiJjam50cXllYmswNGppM3FucnloNGo4aGI0In0._AJQpBK97KUVkVeVH56GaQ'; // nosso token
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY3VsdHVyYS1kby1jYW1wbyIsImEiOiJjam50cXllYmswNGppM3FucnloNGo4aGI0In0._AJQpBK97KUVkVeVH56GaQ'; // nosso token
 //    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWhrbGVpbnMiLCJhIjoiY2l5b2pmdDNnMDA1bTJ4cGZneDFqMmx1ZyJ9.i8GsZn75pDMDHnFdj6fRuw'; // token surrupiado
 
     map = new mapboxgl.Map({
         container: 'entrega_mapbox', // container id
-       style: 'mapbox://styles/cultura-do-campo/cjo378jak3dbx2rnx6o9cy2eh',
+//        style: 'mapbox://styles/cultura-do-campo/cjo378jak3dbx2rnx6o9cy2eh',
+style: 'mapbox://styles/cultura-do-campo/cjnujd37q111j2sp7xkwa74gh',
 //        style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
         center: localProdutor, // starting position
-        zoom: 12,
-        minZoom: 12
+        zoom: 12.90
     });
 
     map.on('load', function () {
@@ -42,13 +42,39 @@ function initMapbox(data) {
                 'line-cap': 'round'
             },
             paint: {
-                'line-color': '#00cc99',
+                'line-color': '#ff0000',
                 'line-width': {
                     base: 2,
                     stops: [[12, 3], [22, 12]]
                 }
             }
         });
+
+        map.addLayer({
+            id: 'routearrows',
+            type: 'symbol',
+            source: 'route',
+            layout: {
+                'symbol-placement': 'line',
+                'text-field': '▶',
+                'text-size': {
+                    base: 1,
+                    stops: [[12, 24], [22, 60]]
+                },
+                'symbol-spacing': {
+                    base: 1,
+                    stops: [[12, 30], [22, 160]]
+                },
+                'text-keep-upright': false
+            },
+            paint: {
+                'text-color': '#3887be',
+                'text-halo-color': 'hsl(55, 11%, 96%)',
+                'text-halo-width': 3
+            }
+        }, 'waterway-label');
+
+
 
 //        map.on('click', function (e) {
 //            newDropoff(map.unproject(e.point));
@@ -91,10 +117,10 @@ function callMapApi() {
 
             var hours = Math.floor(minutes / 60);
             var minutos = minutes % 60;
-                        $("#distancia").html(km_round + " Km");
+            $("#distancia").html(km_round + " Km");
 
             $("#tempo").html(hours + "h" + Math.round(minutos) + "min");
-                        $("#num_entregas").html(numEntregas + " entregas");
+            $("#num_entregas").html(numEntregas + " entregas");
 
             map.getSource('route').setData(routeGeoJSON);
             updateMarkers(data.waypoints);

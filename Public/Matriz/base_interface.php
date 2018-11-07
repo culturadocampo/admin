@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-
-<style>
-    body {
-        background-image: url("Public/Images/background.png");
-        background-repeat: repeat;
-    }
-</style>
 <html>
-    <?php include 'Public/Matriz/Includes/b_admin_head.php'; ?>
-    <body class="content-menu pace-done content-menu-close">
+    <?php include 'Public/Matriz/Includes/b_head_admin.php'; ?>
+    <body class="layout-horizontal menu-auto-hide">
         <div id="app">
-            <?php include 'Public/Matriz/Includes/b_admin_navbar.php'; ?>
+            <div class="header-wrapper">
+                <?php include 'Public/Matriz/Includes/b_navbar.php'; ?>
+                <?php include 'Public/Matriz/Includes/b_menu.php'; ?>
+            </div>
             <div class="content-wrapper">
-                <?php include 'Public/Matriz/Includes/b_admin_menu.php'; ?>
-                <div class="content ">
+                <div class="content container">
                     <?php include $conteudo; ?>
                 </div>
-                <?php include 'Public/Matriz/Includes/b_admin_themes.php'; ?>
+                <?php include 'Public/Matriz/Includes/b_themes_list.php'; ?>
             </div>
-            <?php include 'Public/Matriz/Includes/b_admin_scripts.php'; ?>
+        </div>
+        <?php include 'Public/Matriz/Includes/b_search.php'; ?>
+        <?php include 'Public/Matriz/Includes/b_scripts_admin.php'; ?>
     </body>
 </html>
