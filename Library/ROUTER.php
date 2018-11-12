@@ -4,7 +4,7 @@ class ROUTER {
 
     public static function include_file($request) {
         $o_rota = new Rota();
-//        $o_rota->set_url($request);
+        $o_rota->set_url($request);
         $array_rotas = $o_rota->select_rota();
 
         $rota = self::get_rota_apropriada($array_rotas);

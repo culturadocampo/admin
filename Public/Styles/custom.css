@@ -2,12 +2,12 @@
     cursor: pointer;
 }
 
-.table.dataTable {
+/*.table.dataTable {
     border-collapse: collapse!important;
 }
 .table.dataTable tbody tr:hover{
     background-color: #e6f4e5;
-}
+}*/
 
 
 #entrega_mapbox {

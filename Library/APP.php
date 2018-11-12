@@ -8,12 +8,16 @@ class APP {
     }
 
     private static function get_request() {
-        $host = $_SERVER['HTTP_HOST'];
-        $request = explode("/", $_SERVER['REDIRECT_URL']);
-        if ($host == "localhost") {
-            $request = $request[2] ? $request[2] : self::rota_default();
+        if (isset($_SERVER['REDIRECT_URL'])) {
+            $host = $_SERVER['HTTP_HOST'];
+            $request = explode("/", $_SERVER['REDIRECT_URL']);
+            if ($host == "localhost") {
+                $request = $request[2] ? $request[2] : self::rota_default();
+            } else {
+                $request = $request[1] ? $request[1] : self::rota_default();
+            }
         } else {
-            $request = $request[1] ? $request[1] : self::rota_default();
+            $request = self::rota_default();
         }
         return $request;
     }
@@ -46,9 +50,9 @@ class APP {
     static function rota_default() {
         if (isset($_SESSION['tipo_usuario'])) {
             if ($_SESSION['tipo_usuario'] == "1") {
-                return 'dashboard';
+                return 'visao-geral';
             } else {
-                return 'pagina-inicial';
+                return 'dashboard';
             }
         } else {
             return 'pagina-inicial';

@@ -18,7 +18,7 @@ class Rota {
                 expressao
             FROM rotas 
             WHERE TRUE
-               
+                AND url = '{$this->get_url()}'
                 AND ativo = '1'
         ";
         return DATABASE::fetch_all($query);
@@ -58,7 +58,7 @@ class Rota {
             foreach ($arquivos_base as $key => $base) {
                 $arquivo['arquivo'] = $base;
 
-                if ($base == "base_admin.php") {
+                if ($base == "base_interface.php") {
                     $arquivo['nome'] = "Página de administração";
                     $arquivos_base[$key] = $arquivo;
                 } else if ($base == "base_geral.php") {

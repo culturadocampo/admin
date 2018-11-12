@@ -29,5 +29,4 @@
 <!-- ================== Carrega Mask ==================-->
 <script src="UIKit/dist/assets/vendor/jquery-mask/jquery.mask.min.js"></script>
 <script src="UIKit/dist/assets/js/components/jquery-mask-init.js"></script>
-<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+

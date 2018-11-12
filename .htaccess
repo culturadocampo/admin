@@ -4,24 +4,38 @@ rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
 Options -Indexes
 
-rewriteRule ^sistema\/rotas\/?$ ./index.php [NC]
-rewriteRule ^login\/?$ ./index.php [NC]
-rewriteRule ^executa-login\/?$ ./index.php [NC]
-rewriteRule ^pagina-inicial\/?$ ./index.php [NC]
-rewriteRule ^executa-logout\/?$ ./index.php [NC]
-rewriteRule ^novo-usuario\/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-usuario\/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-google\/?$ ./index.php [NC]
+rewriteRule ^\/?$ .\/index.php [NC]
 rewriteRule ^dashboard\/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-rota\/?$ ./index.php [NC]
-rewriteRule ^cadastrar-produtor\/?$ ./index.php [NC]
-rewriteRule ^salvar-produtor\/?$ ./index.php [NC]
-rewriteRule ^tabela-rotas\/?$ ./index.php [NC]
+
+rewriteRule ^sistema\/rotas-de-acesso\/adicionar\/?$ ./index.php [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/cadastrar\/?$ ./index.php [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/lista-completa\/?$ ./index.php [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/_tabela_rotas\/?$ ./index.php [NC]
+
+
+
+rewriteRule ^login\/?$ ./index.php [NC]
+rewriteRule ^login\/_login?$ ./index.php [NC]
+rewriteRule ^login/\_google\/?$ ./index.php [NC]
+rewriteRule ^logout\/?$ ./index.php [NC]
+
+
+
+
+
+
+
 rewriteRule ^alterar-status-rota\/?$ ./index.php [NC]
 rewriteRule ^tabela-permissoes\/?$ ./index.php [NC]
 rewriteRule ^excluir-rota\/?$ ./index.php [NC]
 rewriteRule ^entregas\/pendentes\/?$ ./index.php [NC]
-rewriteRule ^\/?$ .\/index.php [NC]
+
 
 rewriteRule ^entregas\/(\d+)\/detalhes\/?$ ./index.php?id_entrega=$1 [NC]
-rewriteRule ^detalhes-entrega\/?$ ./index.php [NC]
+rewriteRule ^entregas\/_informacoes_entrega\/?$ ./index.php [NC]
+
+
+rewriteRule ^cadastrar-produtor\/?$ ./index.php [NC]
+rewriteRule ^salvar-produtor\/?$ ./index.php [NC]
+rewriteRule ^novo-usuario\/?$ ./index.php [NC]
+rewriteRule ^executa-cadastro-usuario\/?$ ./index.php [NC]

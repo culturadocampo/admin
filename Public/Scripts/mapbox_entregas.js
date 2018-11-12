@@ -11,14 +11,14 @@ function initMapbox(data) {
     nothing = turf.featureCollection([]);
     pointHopper = {};
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY3VsdHVyYS1kby1jYW1wbyIsImEiOiJjam50cXllYmswNGppM3FucnloNGo4aGI0In0._AJQpBK97KUVkVeVH56GaQ'; // nosso token
-//    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWhrbGVpbnMiLCJhIjoiY2l5b2pmdDNnMDA1bTJ4cGZneDFqMmx1ZyJ9.i8GsZn75pDMDHnFdj6fRuw'; // token surrupiado
+//    mapboxgl.accessToken = 'pk.eyJ1IjoiY3VsdHVyYS1kby1jYW1wbyIsImEiOiJjam50cXllYmswNGppM3FucnloNGo4aGI0In0._AJQpBK97KUVkVeVH56GaQ'; // nosso token
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWhrbGVpbnMiLCJhIjoiY2l5b2pmdDNnMDA1bTJ4cGZneDFqMmx1ZyJ9.i8GsZn75pDMDHnFdj6fRuw'; // token surrupiado
 
     map = new mapboxgl.Map({
         container: 'entrega_mapbox', // container id
 //        style: 'mapbox://styles/cultura-do-campo/cjo378jak3dbx2rnx6o9cy2eh',
-style: 'mapbox://styles/cultura-do-campo/cjnujd37q111j2sp7xkwa74gh',
-//        style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+//style: 'mapbox://styles/cultura-do-campo/cjnujd37q111j2sp7xkwa74gh',
+        style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
         center: localProdutor, // starting position
         zoom: 12.90
     });
