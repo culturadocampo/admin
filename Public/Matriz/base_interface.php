@@ -33,6 +33,8 @@
         <script src="Public/Scripts/helper.js" type="text/javascript"></script>
         <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/amcharts/3.21.14/amcharts.js" rel="stylesheet" type="text/css" />
+
     </head>
 
     <body class="m-page--fluid m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">

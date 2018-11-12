@@ -64,6 +64,25 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle" title=""><span class="m-menu__link-text">Vendas</span><i
+                                    class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                <ul class="m-menu__subnav">
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle" title=""><span class="m-menu__link-text">Anúncios</span><i
+                                    class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                <ul class="m-menu__subnav">
+                                </ul>
+                            </div>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
