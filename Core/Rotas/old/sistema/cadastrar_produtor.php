@@ -4,10 +4,23 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
+                <p id="demo">Clique no botão para receber sua localização em Latitude e Longitude:</p>
+                <button onclick="getLocation()">Clique Aqui</button>
                 <form id="form_cadastro" class="form-horizontal">
                     <div class="form-body">
                         <div class="inputs">
-
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <input type="hidden" placeholder="" class="form-control" id="longitude" name="longitude" value="">
+                                </div>
+                            </div>
+                
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <input type="hidden" placeholder="" class="form-control" id="latitude" name="latitude" value="">
+                                </div>
+                            </div>
+                            
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">CPF</label>
                                 <div class="col-md-5">
@@ -32,7 +45,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">Data Nascimento</label>
                                 <div class="col-md-5">
-                                    <input type="text" placeholder="" class="form-control" id="data_nascimento" name="data_nascimento">
+                                    <input type="date" placeholder="" class="form-control" id="data_nascimento" name="data_nascimento">
                                 </div>
                             </div>
 
@@ -170,3 +183,21 @@
         });
     });
 </script>
+<script>
+    var x=document.getElementById("demo");
+    function getLocation(){
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }else{
+            x.innerHTML="O seu navegador não suporta Geolocalização.";
+        }
+    }
+    function showPosition(position){
+        x.innerHTML="Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude; 
+
+        $("#longitude").val(position.coords.latitude);
+        $("#latitude").val(position.coords.longitude);
+    }
+</script>
+

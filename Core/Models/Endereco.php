@@ -8,6 +8,8 @@ class Endereco {
     private $bairro;
     private $cidade;
     private $estado;
+    private $lat;
+    private $long;
 
     function insert_endereco($id_usuario) {
         $query = "
@@ -18,7 +20,9 @@ class Endereco {
                 bairro, 
                 rua, 
                 numero,
-                complemento
+                complemento,
+                lng,
+                lat
             )
             VALUES (
                 '{$id_usuario}',
@@ -26,7 +30,9 @@ class Endereco {
                 '{$this->get_bairro()}',
                 '{$this->get_logradouro()}',
                 '{$this->get_numero()}',
-                '{$this->get_complemento()}'
+                '{$this->get_complemento()}',
+                '{$this->get_lat()}',
+                '{$this->get_long()}'
              )";
         DATABASE::execute($query);
     }
@@ -40,6 +46,14 @@ class Endereco {
                 AND fk_usuario = '{$id_usuario}'
         ";
         return DATABASE::fetch($query);
+    }
+    
+    function get_lat() {
+        return $this->lat;
+    }
+    
+    function get_long() {
+        return $this->long;
     }
     
     function get_numero() {
@@ -64,6 +78,14 @@ class Endereco {
 
     function get_estado() {
         return $this->estado;
+    }
+    
+    function set_lat($lat) {
+        $this->lat = STRINGS::limpar($lat);
+    }
+    
+    function set_long($long) {
+        $this->long = STRINGS::limpar($long);
     }
 
     function set_numero($numero) {

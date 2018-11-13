@@ -23,6 +23,8 @@ $o_endereco->set_bairro($_POST['bairro']);
 $o_endereco->set_logradouro($_POST['logradouro']);
 $o_endereco->set_numero($_POST['numero']);
 $o_endereco->set_complemento($_POST['complemento']);
+$o_endereco->set_lat($_POST['latitude']);
+$o_endereco->set_long($_POST['longitude']);
 
 $o_endereco->insert_endereco(SESSION::get_id_usuario());
 
