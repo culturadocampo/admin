@@ -66,5 +66,14 @@ class APP {
         echo json_encode($response);
         exit;
     }
+    
+    static function get_base_url(){
+        $host = $_SERVER['HTTP_HOST'];
+        if ($host == "localhost") {
+            return "http://localhost/pro_campo";
+        } else {
+            return "http://culturadocampo.com.br";
+        }
+    }
 
 }

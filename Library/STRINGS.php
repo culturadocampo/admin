@@ -1,6 +1,5 @@
 <?php
 
-
 class STRINGS {
 
     static function limpar($str) {
@@ -72,6 +71,14 @@ class STRINGS {
         } else {
             return true;
         }
+    }
+
+    static function string_to_uri($string) {
+        $string = self::remove_accents($string);
+        $string = strtolower($string);
+        $string = preg_replace("/[^\w]+/", "-", $string);
+        $string = trim($string, "-");
+        return $string;
     }
 
 }

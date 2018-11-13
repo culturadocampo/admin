@@ -33,6 +33,44 @@ class Produto {
         DATABASE::execute($query);
     }
 
+    function select_produtos() {
+        $query = "
+            SELECT
+                id_produto,
+                nome,
+                ncm_codigo,
+                organico,
+                hidroponico,
+                categoria
+            FROM produtos
+            INNER JOIN categorias ON id_categoria = fk_categoria
+            WHERE TRUE
+                AND produtos.ativo = 1
+                AND nome IS NOT NULL
+            LIMIT 50
+        ";
+        return DATABASE::fetch_all($query);
+    }
+    
+    function select_um_produto(){
+         $query = "
+            SELECT
+                id_produto,
+                nome,
+                ncm_codigo,
+                organico,
+                hidroponico,
+                categoria
+            FROM produtos
+            INNER JOIN categorias ON id_categoria = fk_categoria
+            WHERE TRUE
+                AND produtos.ativo = 1
+                AND nome IS NOT NULL
+                AND ncm_codigo = '{$this->get_ncm_codigo()}'
+        ";
+        return DATABASE::fetch($query);
+    }
+
     function get_ncm_codigo() {
         return $this->ncm_codigo;
     }

@@ -7,7 +7,7 @@
             <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">
         <?php } ?>
         <meta charset="utf-8" />
-        <title>CdC | Administrativo</title>
+        <title>Agribox | Cultura do Campo</title>
         <meta name="description" content="Blank inner page examples">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
