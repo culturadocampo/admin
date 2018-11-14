@@ -11,9 +11,6 @@ $o_produtor->set_rg($_POST['rg']);
 $o_produtor->set_cad_pro($_POST['cad_pro']);
 $o_produtor->set_data_nascimento($_POST['data_nascimento']);
 
-$o_produtor->insert_produtor_usuario(SESSION::get_id_usuario());
-
-
 /**
  * Cadastra endereço
  */
@@ -26,6 +23,8 @@ $o_endereco->set_complemento($_POST['complemento']);
 $o_endereco->set_lat($_POST['latitude']);
 $o_endereco->set_long($_POST['longitude']);
 
+// Depois de validar todos os campos acima basta inserir no banco. 
 $o_endereco->insert_endereco(SESSION::get_id_usuario());
+$o_produtor->insert_produtor_usuario(SESSION::get_id_usuario());
 
 APP::return_response(true, "Cadastrado com sucesso");

@@ -1,3 +1,11 @@
+<?php
+    $retorno = Produtor::verifica_cadastro_produtor();
+    
+    if($retorno ){
+        header('Location: anunciar'); 
+    }
+?>
+
 <!-- CONTENT WRAPPER -->
 
 <section class="page-content animated fadeIn ">
@@ -5,7 +13,7 @@
         <div class="card">
             <div class="card-body">
                 <p id="demo">Clique no botão para receber sua localização em Latitude e Longitude:</p>
-                <button onclick="getLocation()">Clique Aqui</button>
+                <button onclick="getLocation()">Gerar</button>
                 <form id="form_cadastro" class="form-horizontal">
                     <div class="form-body">
                         <div class="inputs">
@@ -90,7 +98,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Logradouro</label>
+                                <label class="control-label text-right col-md-3">Rua</label>
                                 <div class="col-md-5">
                                     <input type="text" placeholder="" class="form-control" id="logradouro" name="logradouro">
                                 </div>
@@ -164,6 +172,7 @@
                             title: 'Sucesso',
                             text: response.message
                         });
+                        window.location.href = "anunciar";
                     } else {
                         swal({
                             type: 'warning',
@@ -184,7 +193,7 @@
     });
 </script>
 <script>
-    var x=document.getElementById("demo");
+    let x=document.getElementById("demo");
     function getLocation(){
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(showPosition);
@@ -196,8 +205,8 @@
         x.innerHTML="Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude; 
 
-        $("#longitude").val(position.coords.latitude);
-        $("#latitude").val(position.coords.longitude);
+        $("#latitude").val(position.coords.latitude);
+        $("#longitude").val(position.coords.longitude);
     }
 </script>
 

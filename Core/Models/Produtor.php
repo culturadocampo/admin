@@ -80,12 +80,21 @@ class Produtor {
     }
 
     function set_data_nascimento($data_nascimento) {
-        if (VALIDA::data($data_nascimento)) {
-            $data_nascimento = STRINGS::limpar($data_nascimento);
-            $data_nascimento = DATA::date_to_mysql($data_nascimento);
-            $this->data_nascimento = $data_nascimento;
+        if ($data_nascimento) {
+            $this->data_nascimento = STRINGS::limpar($data_nascimento);
         } else {
             APP::return_response(false, "Por favor, preencha o campo DATA DE NASCIMENTO corretamente");
+        }
+    }
+    
+    public static function verifica_cadastro_produtor(){
+        $query = "SELECT fk_usuario FROM produtores WHERE fk_usuario = '$_SESSION[id_usuario]' ";
+        $retorno_prod =  DATABASE::row_count($query);
+        
+        if($retorno_prod != 0){
+            return true;
+        } else {
+            return false; 
         }
     }
 

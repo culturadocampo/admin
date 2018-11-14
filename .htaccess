@@ -41,3 +41,5 @@ rewriteRule ^novo-usuario\/?$ ./index.php [NC]
 rewriteRule ^executa-cadastro-usuario\/?$ ./index.php [NC]
 rewriteRule ^produtos\/rastreabilidade\/?$ ./index.php [NC]
 rewriteRule ^produtos\/rastreabilidade\/(\d+)\/([a-zA-Z\-]+)\/?$ ./index.php?ncm=$1&produto=$2 [NC]
+
+rewriteRule ^anunciar\/?$ ./index.php [NC]

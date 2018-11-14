@@ -81,15 +81,27 @@ class Endereco {
     }
     
     function set_lat($lat) {
-        $this->lat = STRINGS::limpar($lat);
+         if($lat){
+            $this->lat = STRINGS::limpar($lat);
+        } else {
+             APP::return_response(false, "Favor clique no botão GERAR");
+        }
     }
     
     function set_long($long) {
-        $this->long = STRINGS::limpar($long);
+        if($long){
+            $this->long = STRINGS::limpar($long);
+        } else {
+             APP::return_response(false, "Favor clique no botão GERAR");
+        }
     }
 
     function set_numero($numero) {
-        $this->numero = STRINGS::limpar($numero);
+        if($numero){
+            $this->numero = STRINGS::limpar($numero);
+        } else {
+            APP::return_response(false, "Favor informar o Nº");
+        }
     }
 
     function set_complemento($complemento) {
@@ -105,7 +117,11 @@ class Endereco {
     }
 
     function set_bairro($bairro) {
-        $this->bairro = STRINGS::limpar($bairro);
+        if($bairro){
+            $this->bairro = STRINGS::limpar($bairro);
+        } else {
+            APP::return_response(false, "Favor informar o BAIRRO");
+        }
     }
 
     function set_cidade($cidade) {

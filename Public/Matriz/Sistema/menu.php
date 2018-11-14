@@ -69,7 +69,7 @@
                             <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                 <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                 <ul class="m-menu__subnav">
-                                    <li class="m-menu__item"><a href="cadastrar-produtor" class="m-menu__link"><i class="m-menu__link-icon flaticon-graphic-2"></i><span class="m-menu__link-text">Anunciar</span></a></li>
+                                    <li class="m-menu__item"><a href="anunciar" class="m-menu__link"><i class="m-menu__link-icon flaticon-graphic-2"></i><span class="m-menu__link-text">Anunciar</span></a></li>
                                 </ul>
                             </div>
                         </li>
