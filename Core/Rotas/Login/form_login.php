@@ -1,13 +1,13 @@
 <div class="m-login__container">
     <div class="m-login__logo">
         <a href="#">
-            <img src="Public/Images/new_logo.png" style="width: 128px; height: auto;">
+            <img src="Public/Images/logo_letra_c.png" style="width: 128px; height: auto;">
         </a>
     </div>
     <div class="m-login__signin">
-        <div class="m-login__head">
+<!--        <div class="m-login__head">
             <h3 class="m-login__title"><small>CULTURA DO CAMPO</small></h3>
-        </div>
+        </div>-->
         <div class="alert alert-danger m--margin-top-30 bounceIn " id="alert_login_invalido" role="alert" style="display: none">
 
         </div>

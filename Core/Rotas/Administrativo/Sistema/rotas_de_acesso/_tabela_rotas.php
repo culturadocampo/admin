@@ -14,17 +14,26 @@ foreach ($rotas as $key => $rota) {
         $rota['matriz'] = "Ajax/Load";
     }
 
-    if ($rota['publico']) {
-        $rota['publico'] = "<span class='badge badge-light font-size-14'>Público</span>";
-    } else {
-        $rota['publico'] = "<span class='badge badge-dark font-size-14'>Privado</span>";
-    }
 
-    if ($rota['ativo']) {
-        $rota['ativo'] = "<abbr title='Clique para desativar'><input class='tgl tgl-light switcher' type='checkbox' checked=''></abbr>";
-    } else {
-        $rota['ativo'] = "<abbr title='Clique para ativar'><input class='tgl tgl-light switcher'  type='checkbox'></abbr>";
-    }
+
+    $rota['expressao'] = str_replace("^", "", $rota['expressao']);
+    $rota['expressao'] = str_replace("\/", "/", $rota['expressao']);
+    $rota['expressao'] = str_replace("?$", "", $rota['expressao']);
+    $rota['expressao'] = str_replace("(\d+)", "{int}", $rota['expressao']);
+    $rota['expressao'] = str_replace("([a-zA-Z\-]+)", "{string}", $rota['expressao']);
+
+//
+//    if ($rota['publico']) {
+//        $rota['publico'] = "<span class='badge badge-light font-size-14'>Público</span>";
+//    } else {
+//        $rota['publico'] = "<span class='badge badge-dark font-size-14'>Privado</span>";
+//    }
+//
+//    if ($rota['ativo']) {
+//        $rota['ativo'] = "<abbr title='Clique para desativar'><input class='tgl tgl-light switcher' type='checkbox' checked=''></abbr>";
+//    } else {
+//        $rota['ativo'] = "<abbr title='Clique para ativar'><input class='tgl tgl-light switcher'  type='checkbox'></abbr>";
+//    }
 
     $rotas[$key] = $rota;
 }
@@ -36,40 +45,32 @@ foreach ($rotas as $key => $rota) {
 <div class="m-portlet__body">
 
     <!--begin: Datatable -->
-    <table class="table table-striped- table-bordered table-hover table-checkable" id="rotas-table">
+    <table class="table table- table-bordered table-hover table-checkable table-" id="rotas_table">
         <thead>
-               <tr>
-            <th class="text-center"></th>
-            <th class="text-center font-weight-bold">Acesso</th>
+            <tr>
+         <!--<th class="text-center"></th>-->
+                <th class="text-center ">ID</th>
 
-            <th class="font-weight-bold">URI</th>
-            <th class="font-weight-bold">Tipo</th>
-            <th class="font-weight-bold">Conteúdo</th>
-            <th class="text-center font-weight-bold">Permissões</th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-
-
-        </tr>
+                <th class="">URI</th>
+                <th class="text-center">Tipo</th>
+                <th class="">Conteúdo</th>
+ 
+            </tr>
         </thead>
         <tbody>
-             <?php if ($rotas) { ?>
+            <?php if ($rotas) { ?>
 
-            <?php foreach ($rotas as $value) { ?>
-                <tr id="<?php echo $value['id_rota']; ?>">
-                    <td class="text-center"><?php echo $value['ativo']; ?></td>
-                    <td class="text-center"><?php echo $value['publico']; ?></td>
-                    <td class="text-truncate" width="20%"><abbr title="<?php echo $value['expressao']; ?>"><?php echo $value['url']; ?></abbr></td>
-                    <td class=""><?php echo $value['matriz']; ?></td>
-                    <td class=""><?php echo $value['conteudo']; ?></td>
-                    <td class="text-center"><span class="badge badge-light badge-pill font-size-14">0</span></td>
-                    <td class="text-center"><button title="Vincular permissão" data-qt-block=".block-el" class="vincular_permissao btn btn-sm btn-outline btn-primary la la-plus font-size-18"></button></td>
-                    <td class="text-center"><a title="Excluir rota" class="excluir_rota btn btn-sm btn-outline btn-accent la la-remove font-size-18 text-accent"></a></td>
+                <?php foreach ($rotas as $value) { ?>
+                    <tr href="sistema/rotas-de-acesso/<?php echo $value['id_rota'];?>/informacoes/" class="pointer" id="<?php echo $value['id_rota']; ?>">
+                        <td class="text-center"><?php echo $value['id_rota']; ?></td>
+                        <td class="text-truncate font-weight-bold" width="20%"><?php echo $value['expressao']; ?></td>
+                        <td class="text-center"><?php echo $value['matriz']; ?></td>
+                        <td class=""><?php echo $value['conteudo']; ?></td>
 
-                </tr>
+                    </tr>
+                <?php } ?>
+
             <?php } ?>
-
-        <?php } ?>
 
         </tbody>
     </table>
@@ -95,9 +96,13 @@ foreach ($rotas as $key => $rota) {
         }
 
 
-        $('#rotas-table').DataTable({
+        $('#rotas_table').DataTable({
             "order": [],
-            "paging": false
+            "paging": true
+        });
+        
+         $("#rotas_table tbody").on("click", "tr", function () {
+            window.location = $(this).attr("href");
         });
 
 

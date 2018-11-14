@@ -20,18 +20,18 @@ if ($arquivos_conteudo) {
             <h3 class="m-subheader__title m-subheader__title--separator">Nova rota</h3>
             <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                 <li class="m-nav__item m-nav__item--home">
-                    <a href="#" class="m-nav__link m-nav__link--icon">
-                        <i class="m-nav__link-icon la la-home"></i>
+                    <a class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon flaticon-add"></i>
                     </a>
                 </li>
                 <li class="m-nav__item">
-                    <a href="" class="m-nav__link">
+                    <a class="m-nav__link">
                         <span class="m-nav__link-text">Sistema</span>
                     </a>
                 </li>
-                <li class="m-nav__separator">-</li>
+                <li class="m-nav__separator">|</li>
                 <li class="m-nav__item">
-                    <a href="" class="m-nav__link">
+                    <a class="m-nav__link">
                         <span class="m-nav__link-text">Rotas de acesso</span>
                     </a>
                 </li>
@@ -42,28 +42,15 @@ if ($arquivos_conteudo) {
     </div>
 </div>
 <div class="m-content">
-    <div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi m--padding-top-15" m-portlet="true">
+    <div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi" m-portlet="true">
 
         <!--begin::Form-->
         <form id="form_rotas" class="m-form m-form--fit m-form--label-align-right">
-            <div class="m-portlet__head">
-                <div class="m-portlet__head-caption">
-                  
-                       			
-                </div>
-                <div class="m-portlet__head-tools">
-                    <ul class="m-portlet__nav">
-                        <li class="m-portlet__nav-item">
-                            <a href="" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-refresh text-muted fa-"></i></a>	
-                        </li>						
-                     
-                    </ul>
-                </div>
-            </div>
+           
             <div class="m-portlet__body">
                 <div class="form-group m-form__group m--margin-top-10">
-                    <div class="alert m-alert m-alert--default" role="alert">
-                        Crie uma rota de acesso através de um arquivo vazio. Defina sua URI e configure o acesso.
+                    <div class="alert m-alert m-alert--info alert-success font-weight-bold" role="alert">
+                        Crie uma rota de acesso através de um arquivo vazio.Defina sua URI e configure o acesso.
                     </div>
                 </div>
 

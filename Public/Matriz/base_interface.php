@@ -8,7 +8,6 @@
         <?php } ?>
         <meta charset="utf-8" />
         <title>Agribox | Cultura do Campo</title>
-        <meta name="description" content="Blank inner page examples">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script>
@@ -25,8 +24,7 @@
         <link href="Metronic/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet" type="text/css" />
         <link href="Public/Styles/custom.css" rel="stylesheet" type="text/css" />
-
-        <link rel="shortcut icon" href="Public/Images/new_logo.png" />
+        <link rel="shortcut icon" href="Public/Images/logo_letra_c.png" />
         <script src="Metronic/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
         <script src="Metronic/assets/demo/demo10/base/scripts.bundle.js" type="text/javascript"></script>
         <script src="Metronic/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>

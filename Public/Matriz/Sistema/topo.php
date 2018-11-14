@@ -7,8 +7,8 @@
                 <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a href="./" class="m-brand__logo-wrapper">
-                            <img alt="" src="Public/Images/new_logo.png" style="width: 45px; height: auto;" class="m-brand__logo-desktop" />
-                            <img alt="" src="Public/Images/new_logo.png" style="width: 45px; height: auto;" class="m-brand__logo-mobile" />
+                            <img alt="" src="Public/Images/logo_letra_c.png" style="width: 50px; height: auto;" class="m-brand__logo-desktop" />
+                            <img alt="" src="Public/Images/logo_letra_c.png" style="width: 45px; height: auto;" class="m-brand__logo-mobile" />
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">

@@ -55,7 +55,7 @@ class APP {
                 return 'dashboard';
             }
         } else {
-            return 'pagina-inicial';
+            return 'dashboard';
         }
     }
 

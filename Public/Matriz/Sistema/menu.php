@@ -13,7 +13,7 @@
                                 <ul class="m-menu__subnav">
                                     <li class="m-menu__item"><a href="#" class="m-menu__link"><i class="m-menu__link-icon flaticon-paper-plane"></i><span class="m-menu__link-text">Dashboard</span></a></li>
                                     <li class="m-menu__item m-menu__item--submenu m-menu__item--rel m-menu__item--submenu-tabs" m-menu-submenu-toggle="click" aria-haspopup="true">
-                                        <a href="javascript:;" class="m-menu__link m-menu__toggle" title=""><i class="m-menu__link-icon flaticon-add"></i><span class="m-menu__link-text">Rotas de acesso</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                        <a href="javascript:;" class="m-menu__link m-menu__toggle" title=""><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Rotas de acesso</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                                         <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
                                             <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 70.5px;"></span>
                                             <ul class="m-menu__subnav">
@@ -24,9 +24,9 @@
                                                     </a>
                                                 </li>
                                                 <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-                                                    <a href="sistema/rotas-de-acesso/lista-completa" class="m-menu__link ">
-                                                        <i class="m-menu__link-icon flaticon-diagram"></i>
-                                                        <span class="m-menu__link-text">Lista completa</span>
+                                                    <a href="sistema/rotas-de-acesso/lista" class="m-menu__link ">
+                                                        <i class="m-menu__link-icon flaticon-file"></i>
+                                                        <span class="m-menu__link-text">Lista</span>
                                                     </a>
                                                 </li>
                                                 <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">

@@ -13,14 +13,14 @@ if ($array_produtos) {
 ?>
 
 <div class="m-portlet__body">
-    <table class="table table-striped- table-bordered table-hover table-checkable" id="produtos_table">
+    <table class="table table-striped- table-bordered table-hover table-sm" id="produtos_table">
         <thead>
             <tr>
                 <th>NCM</th>
                 <th>Produto</th>
                 <th>Categoria</th>
-                <th>Orgânico</th>
-                <th>Hidropônico</th>
+                <th class="text-center">Orgânico</th>
+                <th class="text-center">Hidropônico</th>
             </tr>
         </thead>
         <tbody>
@@ -30,8 +30,20 @@ if ($array_produtos) {
                         <td><?php echo $value['ncm_codigo']; ?></td>
                         <td><?php echo $value['nome']; ?></td>
                         <td><?php echo $value['categoria']; ?></td>
-                        <td><?php echo $value['organico']; ?></td>
-                        <td><?php echo $value['hidroponico']; ?></td>
+                        <td class="text-center">
+                            <?php if ($value['organico']) { ?>
+                                <span class="la la-check text-success"></span>
+                            <?php } else { ?>
+                                <span class="la la-close text-danger"></span>
+                            <?php } ?>
+                        </td>
+                        <td class="text-center">
+                            <?php if ($value['hidroponico']) { ?>
+                                <span class="la la-check text-success"></span>
+                            <?php } else { ?>
+                                <span class="la la-close text-danger"></span>
+                            <?php } ?>
+                        </td>
                     </tr>
                 <?php } ?>
 
