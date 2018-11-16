@@ -14,186 +14,193 @@ if ($arquivos_conteudo) {
     $arquivos_conteudo = array_values($arquivos_conteudo);
 }
 ?>
-<div class="m-subheader ">
-    <div class="d-flex align-items-center">
-        <div class="mr-auto">
-            <h3 class="m-subheader__title m-subheader__title--separator">Nova rota</h3>
-            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-                <li class="m-nav__item m-nav__item--home">
-                    <a class="m-nav__link m-nav__link--icon">
-                        <i class="m-nav__link-icon flaticon-add"></i>
-                    </a>
-                </li>
-                <li class="m-nav__item">
-                    <a class="m-nav__link">
-                        <span class="m-nav__link-text">Sistema</span>
-                    </a>
-                </li>
-                <li class="m-nav__separator">|</li>
-                <li class="m-nav__item">
-                    <a class="m-nav__link">
-                        <span class="m-nav__link-text">Rotas de acesso</span>
-                    </a>
-                </li>
+<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
 
-            </ul>
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">Nova rota</h3>
+                <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                    <li class="m-nav__item m-nav__item--home">
+                        <a class="m-nav__link m-nav__link--icon">
+                            <i class="m-nav__link-icon flaticon-add"></i>
+                        </a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="m-nav__link">
+                            <span class="m-nav__link-text">Sistema</span>
+                        </a>
+                    </li>
+                    <li class="m-nav__separator">|</li>
+                    <li class="m-nav__item">
+                        <a class="m-nav__link">
+                            <span class="m-nav__link-text">Rotas de acesso</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
         </div>
-
     </div>
-</div>
-<div class="m-content">
-    <div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi" m-portlet="true">
+    <div class="m-content">
+        <div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi" m-portlet="true">
 
-        <!--begin::Form-->
-        <form id="form_rotas" class="m-form m-form--fit m-form--label-align-right">
-           
-            <div class="m-portlet__body">
-                <div class="form-group m-form__group m--margin-top-10">
-                    <div class="alert m-alert m-alert--info alert-success font-weight-bold" role="alert">
-                        Crie uma rota de acesso através de um arquivo vazio.Defina sua URI e configure o acesso.
+            <!--begin::Form-->
+            <form id="form_rotas" class="m-form m-form--fit m-form--label-align-right">
+
+                <div class="m-portlet__body">
+                    <div class="form-group m-form__group m--margin-top-10">
+                        <div class="alert m-alert m-alert--info alert-info font-weight-" role="alert">
+                            Use o HTML abaixo dentro do arquivo que você criou para iniciar o template<br>
+                            <code>&lt;div class="m-grid__item m-grid__item--fluid m-wrapper"&gt;<br>
+                                &nbsp;&nbsp;&nbsp;<!--Conteúdo aqui--><br>
+                                &lt;/div&gt;</code>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group m-form__group">
+                    <div class="form-group m-form__group">
 
 
-                    <div class="row m--padding-bottom-20">
-                        <div class="col-md-6 ">
-                            <div class="form-group">
-                                <?php if ($arquivos_conteudo) { ?>
-                                    <label for="confirm">Conteúdo</label>
-                                <?php } else { ?>
-                                    <label class="text-danger" for="confirm">Conteúdo</label>
-
-                                <?php } ?>
-
-                                <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="conteudo" class="form-control selectpicker" id="select_conteudo">
+                        <div class="row m--padding-bottom-20">
+                            <div class="col-md-6 ">
+                                <div class="form-group">
                                     <?php if ($arquivos_conteudo) { ?>
-                                        <?php foreach ($arquivos_conteudo as $arquivo) { ?>
-                                            <option><?php echo $arquivo; ?></option>
-                                        <?php } ?>
+                                        <label for="confirm">Conteúdo</label>
                                     <?php } else { ?>
-                                        <option>Nenhum novo arquivo disponível</option>
+                                        <label class="text-danger" for="confirm">Conteúdo</label>
+
                                     <?php } ?>
 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="password">Matriz *</label>
-                                <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control selectpicker" id="select_matriz">
-                                    <option selected value="0">Arquivo load/ajax</option>
-
-                                    <?php if ($arquivos_base) { ?>
-                                        <?php foreach ($arquivos_base as $arquivo) { ?>
-                                            <option value="<?php echo $arquivo['arquivo']; ?>"><?php echo $arquivo['nome']; ?></option>
+                                    <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="conteudo" class="form-control selectpicker" id="select_conteudo">
+                                        <?php if ($arquivos_conteudo) { ?>
+                                            <?php foreach ($arquivos_conteudo as $arquivo) { ?>
+                                                <option><?php echo $arquivo; ?></option>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <option>Nenhum novo arquivo disponível</option>
                                         <?php } ?>
-                                    <?php } ?>
 
-                                </select>
-
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">Matriz *</label>
+                                    <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control selectpicker" id="select_matriz">
+                                        <option selected value="0">Arquivo load/ajax</option>
 
-                    </div>
+                                        <?php if ($arquivos_base) { ?>
+                                            <?php foreach ($arquivos_base as $arquivo) { ?>
+                                                <option value="<?php echo $arquivo['arquivo']; ?>"><?php echo $arquivo['nome']; ?></option>
+                                            <?php } ?>
+                                        <?php } ?>
 
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="password">URI*</label>
-                                <div class="input-group ">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-icon-addon1">.com.br/</span>
-                                    </div>
-                                    <input <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="url" id="input_url" type="text" class="form-control m-input" placeholder="Nome do caminho (Somente letras)">
+                                    </select>
 
                                 </div>
-                                <small class="form-text text-muted">URI identificador da página (ex: perfil, anuncios)</small>
-
                             </div>
+
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="password">Precisa estar logado? *</label>
-                                <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> id="publico" name="publico" class="form-control selectpicker" id="">
-                                    <option selected value="0">Sim, precisa de uma sessão ativa</option>
-                                    <option value="1" >Não importa, qualquer um pode acessar</option>
-                                </select>
 
-                            </div>
-                        </div>
-                    </div>
 
-                    <div id="div_parametros" style="display: none" class="col-md-12 m-t-50">
-                        <br>
-                        <hr class="m--margin-bottom-20 m--margin-top-20">
-                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">URI*</label>
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-icon-addon1">.com.br/</span>
+                                        </div>
+                                        <input <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="url" id="input_url" type="text" class="form-control m-input" placeholder="Nome do caminho (Somente letras)">
 
-                        <div class="">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <select class="form-control selectpicker" id="parametros">
-                                            <option value="1">Expressão regular</option>
-                                            <option value="2">Palavra fixa</option>
-                                        </select>
                                     </div>
-                                    <div id="expressao_regular">
+                                    <small class="form-text text-muted">URI identificador da página (ex: perfil, anuncios)</small>
 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">Precisa estar logado? *</label>
+                                    <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> id="publico" name="publico" class="form-control selectpicker" id="">
+                                        <option selected value="0">Sim, precisa de uma sessão ativa</option>
+                                        <option value="1" >Não importa, qualquer um pode acessar</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="div_parametros" style="display: none" class="col-md-12 m-t-50">
+                            <br>
+                            <hr class="m--margin-bottom-20 m--margin-top-20">
+                            <br>
+
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Tipo</label>
-                                            <select class="form-control selectpicker" id="expressao_select">
-                                                <option type="string" value="([a-zA-Z\-]+)">Somente letras</option>
-                                                <option type="int" value="(\d+)">Somente números</option>
+                                            <select class="form-control selectpicker" id="parametros">
+                                                <option value="1">Expressão regular</option>
+                                                <option value="2">Palavra fixa</option>
                                             </select>
                                         </div>
+                                        <div id="expressao_regular">
 
-                                        <div class="form-group">
-                                            <label>Nome</label>
-                                            <div class="input-group mb-3">
-                                                <input id="nome_parametro" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)">
+                                            <div class="form-group">
+                                                <label>Tipo</label>
+                                                <select class="form-control selectpicker" id="expressao_select">
+                                                    <option type="string" value="([a-zA-Z\-]+)">Somente letras</option>
+                                                    <option type="int" value="(\d+)">Somente números</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Nome</label>
+                                                <div class="input-group mb-3">
+                                                    <input id="nome_parametro" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div id="palavra_fixa" style="display: none">
+                                        <div id="palavra_fixa" style="display: none">
 
-                                        <div class="form-group">
-                                            <label>Palavra</label>
-                                            <div class="input-group mb-3">
-                                                <input id="palavra_url" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)" value="">
+                                            <div class="form-group">
+                                                <label>Palavra</label>
+                                                <div class="input-group mb-3">
+                                                    <input id="palavra_url" type="text" class="form-control somente_letras" placeholder="Nome do parâmetro (e.g. id, nome, valor)" value="">
+                                                </div>
                                             </div>
+                                        </div>
+
+
+                                        <div class="col-md-12 text-right">
+                                            <button type="button" id="add_parametro" class="btn btn-success">Adicionar parâmetro</button>
                                         </div>
                                     </div>
 
+                                    <div class="col-md-6">
 
-                                    <div class="col-md-12 text-right">
-                                        <button type="button" id="add_parametro" class="btn btn-success">Adicionar parâmetro</button>
+                                        <div class="table-responsive">
+                                            <table id="tabela_de_parametros" class="table table-bordered">
+                                                <thead>
+                                                    <tr style="background: rgba(0,0,0,0.025)">
+                                                        <th class="text-center">Parâmetro</th>
+                                                        <th class="text-center">Valor</th>
+                                                        <!--<th class="text-center"></th>-->
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td colspan="3" class="text-center">Nenhum parâmetro adicionado</td></tr>
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-
-                                    <div class="table-responsive">
-                                        <table id="tabela_de_parametros" class="table table-bordered">
-                                            <thead>
-                                                <tr style="background: rgba(0,0,0,0.025)">
-                                                    <th class="text-center">Parâmetro</th>
-                                                    <th class="text-center">Valor</th>
-                                                    <!--<th class="text-center"></th>-->
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr><td colspan="3" class="text-center">Nenhum parâmetro adicionado</td></tr>
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
@@ -201,23 +208,22 @@ if ($arquivos_conteudo) {
                     </div>
 
                 </div>
-
-            </div>
-            <div class="m-portlet__foot m-portlet__foot--fit text-right">
-                <div class="m-form__actions ">
-                    <button type="button" id="cadastrar_rota" class="btn btn-outline-success m-btn m-btn--icon">
-                        <span>
-                            <i class="la la-check"></i>
-                            <span>Confirmar</span>
-                        </span>
-                    </button>
+                <div class="m-portlet__foot m-portlet__foot--fit text-right">
+                    <div class="m-form__actions ">
+                        <button type="button" id="cadastrar_rota" class="btn btn-outline-success m-btn m-btn--icon">
+                            <span>
+                                <i class="la la-check"></i>
+                                <span>Confirmar</span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <!--end::Form-->	
+            </form>
+            <!--end::Form-->	
+        </div>
     </div>
-</div>
 
+</div>
 
 
 
@@ -354,7 +360,7 @@ if ($arquivos_conteudo) {
     function add_on_table(parametros_array) {
         $("#tabela_de_parametros tbody").html("");
         $.each(parametros_array, function (key, value) {
-           // var button_remover_param = "<td class='text-center'><button type='button' id='" + key + "' class='remover_parametro btn btn-danger btn-sm'>Remover</button></td>";
+            // var button_remover_param = "<td class='text-center'><button type='button' id='" + key + "' class='remover_parametro btn btn-danger btn-sm'>Remover</button></td>";
             if (value.tipo === "1") {
                 $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.nome + "']</td> <td class='text-center'>" + value.expressao + "</td></tr>");
             } else {

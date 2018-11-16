@@ -51,9 +51,9 @@ class Produto {
         ";
         return DATABASE::fetch_all($query);
     }
-    
-    function select_um_produto(){
-         $query = "
+
+    function select_um_produto() {
+        $query = "
             SELECT
                 id_produto,
                 nome,
@@ -69,6 +69,20 @@ class Produto {
                 AND ncm_codigo = '{$this->get_ncm_codigo()}'
         ";
         return DATABASE::fetch($query);
+    }
+
+    function select_produtos_com_imagens() {
+        $query = "
+            SELECT
+                ncm_codigo,
+                ncm_descricao,
+                url AS imagem
+            FROM produtos
+            INNER JOIN produtos_imagens ON fk_produto = id_produto 
+            WHERE TRUE 
+                AND produtos.ativo = 1
+        ";
+        return DATABASE::fetch_all($query);
     }
 
     function get_ncm_codigo() {
