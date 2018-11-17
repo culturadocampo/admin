@@ -3,46 +3,49 @@ $o_entrega = new Entrega();
 $array_entregas = $o_entrega->select_minhas_entregas_pendentes();
 ?>
 
+<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
 
-<section class="page-content animated ">
-    <div class="col-md-12 ">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">
-                    Entregas pendentes
+    <section class="page-content animated ">
+        <div class="col-md-12 ">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Entregas pendentes
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <table id="entregas-table" class="table table-striped table-bordered table-light block-el ">
+                <div class="card-body">
+                    <table id="entregas-table" class="table table-striped table-bordered table-light block-el ">
 
-                    <thead>
-                        <tr>
-                            <th class="text-center"></th>
-                            <th class="text-center"></th>
+                        <thead>
+                            <tr>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
 
-                            <th class="text-center font-weight-bold">Acesso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if ($array_entregas) { ?>
+                                <th class="text-center font-weight-bold">Acesso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if ($array_entregas) { ?>
 
-                            <?php foreach ($array_entregas as $value) { ?>
-                                <tr class="pointer" id="<?php echo $value['id_entrega']; ?>">
-                                    <td class="text-center"><?php echo $value['id_entrega']; ?></td>
-                                    <td class="text-center"><?php echo $value['data_saida']; ?></td>
-                                    <td class="text-center"><?php echo $value['status']; ?></td>
-                                </tr>
+                                <?php foreach ($array_entregas as $value) { ?>
+                                    <tr class="pointer" id="<?php echo $value['id_entrega']; ?>">
+                                        <td class="text-center"><?php echo $value['id_entrega']; ?></td>
+                                        <td class="text-center"><?php echo $value['data_saida']; ?></td>
+                                        <td class="text-center"><?php echo $value['status']; ?></td>
+                                    </tr>
+                                <?php } ?>
+
                             <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
 
-                        <?php } ?>
-                    </tbody>
-                </table>
             </div>
 
         </div>
-
-    </div>
+    </section>
 </div>
+
 
 
 

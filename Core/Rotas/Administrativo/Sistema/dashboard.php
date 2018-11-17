@@ -1,3 +1,5 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
+
 <div class="m-portlet">
     <div class="m-portlet__body  m-portlet__body--no-padding">
         <div class="row m-row--no-padding m-row--col-separator-xl">			
@@ -93,6 +95,7 @@
                 <!--end:: Widgets/Profit Share-->			</div>
         </div>
     </div>
+</div>
 </div>
 
 <script>

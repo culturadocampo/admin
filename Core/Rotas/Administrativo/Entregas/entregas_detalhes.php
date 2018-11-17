@@ -6,6 +6,7 @@ $array_clientes = $o_entrega->select_clientes_entrega();
 ?>
 
 <script src='Public/Scripts/mapbox_entregas.js'></script>
+<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
 
 <section class="page-content animated ">
     <div class="row">
@@ -142,6 +143,7 @@ $array_clientes = $o_entrega->select_clientes_entrega();
         </div>
     </div>
 </section>
+    </div>
 
 
 <script>
