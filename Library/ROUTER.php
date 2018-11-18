@@ -10,6 +10,9 @@ class ROUTER {
         $rota = self::get_rota_apropriada($array_rotas);
 
         if (APP::is_logged() || $rota['publico']) {
+            if (!$rota['publico'] || APP::is_logged()) {
+                self::insert_acesso($rota['id_rota']);
+            }
             $conteudo = "Core/Rotas/{$rota['conteudo']}";
             if ($rota['matriz']) {
                 include "Public/Matriz/{$rota['matriz']}";
@@ -57,6 +60,11 @@ class ROUTER {
         }
         $uri = implode("/", $uri);
         return $uri ? $uri : APP::rota_default();
+    }
+
+    private static function insert_acesso($id_rota) {
+        $o_acesso = new Acesso();
+        $o_acesso->insert_acesso($id_rota);
     }
 
 }

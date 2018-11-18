@@ -1,3 +1,4 @@
+
 <?php
     $retorno = Produtor::verifica_cadastro_produtor();
     
@@ -5,4 +6,8 @@
         header('Location: cadastrar-produtor'); 
     }
 
-    die("Você já é Produtor pode anunciar !!!");
+?>
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+   
+</div>

@@ -12,6 +12,7 @@ class Rota {
     function select_rota() {
         $query = "
             SELECT
+                id_rota,
                 matriz,
                 conteudo,
                 publico,
