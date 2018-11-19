@@ -28,11 +28,11 @@
     </div>
 </div>
 <div class="m-content">
-    <div class="m-portlet m-portlet--first m-portlet--bordered-semi m--padding-top-15" m-portlet="true">
+    <!--<div class="m-portlet m-portlet--first m-portlet--bordered-semi m--padding-top-15" m-portlet="true">-->
         <div  id="tabela_rotas">
 
         </div>
-    </div>
+    <!--</div>-->
 </div>
 </div>
 

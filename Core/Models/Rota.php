@@ -2,7 +2,7 @@
 
 class Rota {
 
-    private $id;
+    private $id_rota;
     private $url;
     private $conteudo;
     private $matriz;
@@ -23,6 +23,22 @@ class Rota {
                 AND ativo = '1'
         ";
         return DATABASE::fetch_all($query);
+    }
+
+    function select_rota_from_id() {
+        $query = "
+            SELECT
+                id_rota,
+                matriz,
+                conteudo,
+                publico,
+                expressao,
+                url
+            FROM rotas
+            WHERE TRUE
+                AND id_rota = '{$this->get_id_rota()}'
+        ";
+        return DATABASE::fetch($query);
     }
 
     function select_all_rotas($order = 'DESC') {
@@ -123,6 +139,13 @@ class Rota {
             $query_index = 1;
             foreach ($params as $param) {
                 if ($param['tipo'] == "1") {
+
+                    if ($param['expressao'] == "INT") {
+                        $param['expressao'] = "(\d+)";
+                    } else {
+                        $param['expressao'] = "([a-zA-Z0-9\-]+)";
+                    }
+
                     $query_string = empty($query_string) ? "?" : "{$query_string}&";
                     $expressoes .= "\/{$param['expressao']}";
                     $query_string .= $param['nome'] . '=$' . ($query_index);
@@ -183,12 +206,28 @@ class Rota {
         DATABASE::execute($query);
     }
 
-    function getId() {
-        return $this->id;
+    /**
+     * Eu não criei um modelo 'Parametro' porque
+     * parâmetro é um entidade fraca 
+     * (depende de outra entidade pra existir, 'Rota' neste caso)
+     * por isso não há necessidade de criar outro modelo.
+     */
+    function select_parametros() {
+        $query = "
+            SELECT 
+                indice, parametro, tipo
+            FROM rotas_parametros
+            WHERE fk_rota = '{$this->get_id_rota()}'
+        ";
+        return Database::fetch_all($query);
     }
 
-    function setId($id) {
-        $this->id = $id;
+    function get_id_rota() {
+        return $this->id_rota;
+    }
+
+    function set_id_rota($id_rota) {
+        $this->id_rota = $id_rota;
     }
 
     function get_url() {

@@ -43,5 +43,6 @@ rewriteRule ^produtos\/rastreabilidade\/?$ ./index.php [NC]
 rewriteRule ^produtos\/rastreabilidade\/(\d+)\/([a-zA-Z\-]+)\/?$ ./index.php?ncm=$1&produto=$2 [NC]
 
 rewriteRule ^anunciar\/?$ ./index.php [NC]
-rewriteRule ^sistema\/rotas-de-acesso\/(\d+)\/informacoes\/?$ ./index.php?id_rota=$1 [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/(\d+)\/detalhes\/?$ ./index.php?id_rota=$1 [NC]
 rewriteRule ^produtos\/criar-cesta\/?$ ./index.php [NC]
+rewriteRule ^rotas-de-acesso\/editar\/?$ ./index.php [NC]

@@ -66,14 +66,23 @@ class APP {
         echo json_encode($response);
         exit;
     }
-    
-    static function get_base_url(){
+
+    static function get_base_url() {
         $host = $_SERVER['HTTP_HOST'];
         if ($host == "localhost") {
             return "http://localhost/pro_campo";
         } else {
             return "http://culturadocampo.com.br";
         }
+    }
+
+    static function get_origem_request() {
+        if (array_key_exists('HTTP_REFERER', $_SERVER)) {
+            $origem = $_SERVER['HTTP_REFERER'];
+        } else {
+            $origem = $_SERVER['REMOTE_ADDR'];
+        }
+        return $origem;
     }
 
 }

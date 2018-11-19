@@ -15,11 +15,10 @@ if ($arquivos_conteudo) {
 }
 ?>
 <div class="m-grid__item m-grid__item--fluid m-wrapper" > 
-
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="m-subheader__title m-subheader__title--separator">Nova rota</h3>
+                <h3 class="m-subheader__title m-subheader__title--separator font-weight-500">Nova rota</h3>
                 <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                     <li class="m-nav__item m-nav__item--home">
                         <a class="m-nav__link m-nav__link--icon">
@@ -44,20 +43,12 @@ if ($arquivos_conteudo) {
         </div>
     </div>
     <div class="m-content">
-        <div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi" m-portlet="true">
+        <div class="m- m-portlet--creative m-portlet--first " m-portlet="true">
 
             <!--begin::Form-->
             <form id="form_rotas" class="m-form m-form--fit m-form--label-align-right">
 
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group m--margin-top-10">
-                        <div class="alert m-alert m-alert--info alert-info font-weight-" role="alert">
-                            Use o HTML abaixo dentro do arquivo que você criou para iniciar o template<br>
-                            <code>&lt;div class="m-grid__item m-grid__item--fluid m-wrapper"&gt;<br>
-                                &nbsp;&nbsp;&nbsp;<!--Conteúdo aqui--><br>
-                                &lt;/div&gt;</code>
-                        </div>
-                    </div>
 
                     <div class="form-group m-form__group">
 
@@ -131,15 +122,16 @@ if ($arquivos_conteudo) {
                             </div>
                         </div>
 
-                        <div id="div_parametros" style="display: none" class="col-md-12 m-t-50">
-                            <br>
-                            <hr class="m--margin-bottom-20 m--margin-top-20">
-                            <br>
-
+                        <div id="div_parametros" class="m--margin-top-50">
+                            <div id="alerta_parametros" class="m-alert m-alert--outline m-alert--square alert alert-info" role="alert">
+                                <strong>Atenção!</strong> Em arquivos <strong>load/ajax</strong> não é necessário adicionar parâmetros porque o dados podem ser passados por POST. Caso seja adicionado, todos os parâmetros devem ser passado por GET.
+                            </div>
                             <div class="">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="form-group">
+                                            <label>Categoria</label>
+
                                             <select class="form-control selectpicker" id="parametros">
                                                 <option value="1">Expressão regular</option>
                                                 <option value="2">Palavra fixa</option>
@@ -148,10 +140,10 @@ if ($arquivos_conteudo) {
                                         <div id="expressao_regular">
 
                                             <div class="form-group">
-                                                <label>Tipo</label>
+                                                <label>Tipo regex</label>
                                                 <select class="form-control selectpicker" id="expressao_select">
-                                                    <option type="string" value="([a-zA-Z\-]+)">Somente letras</option>
-                                                    <option type="int" value="(\d+)">Somente números</option>
+                                                    <option type="string" value="STRING">Somente letras ou números</option>
+                                                    <option type="int" value="INT">Somente números</option>
                                                 </select>
                                             </div>
 
@@ -172,29 +164,25 @@ if ($arquivos_conteudo) {
                                             </div>
                                         </div>
 
-
-                                        <div class="col-md-12 text-right">
-                                            <button type="button" id="add_parametro" class="btn btn-success">Adicionar parâmetro</button>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="text-center m--margin-top-50">
+                                            <button type="button" id="add_parametro" class="btn btn-info btn-outline-info"><span class="la la-arrow-right"></span></button>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
-
                                         <div class="table-responsive">
                                             <table id="tabela_de_parametros" class="table table-bordered">
                                                 <thead>
                                                     <tr style="background: rgba(0,0,0,0.025)">
                                                         <th class="text-center">Parâmetro</th>
-                                                        <th class="text-center">Valor</th>
+                                                        <th class="text-center">Tipo</th>
                                                         <!--<th class="text-center"></th>-->
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr><td colspan="3" class="text-center">Nenhum parâmetro adicionado</td></tr>
-
-
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -204,9 +192,13 @@ if ($arquivos_conteudo) {
                             </div>
 
                         </div>
+                        <div id="alerta_interface" class="m-alert m-alert--outline m-alert--square alert alert-info" style="display: none" role="alert">
+                            <strong>Base da interface (CTRL+C / CTRL + V):</strong> <br>&lt;div class="m-grid__item m-grid__item--fluid m-wrapper"&gt;<br>&lt;/div&gt;
+                        </div>
+
+
 
                     </div>
-
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit text-right">
                     <div class="m-form__actions ">
@@ -234,11 +226,9 @@ if ($arquivos_conteudo) {
 
         var parametros_array = [];
         load_rotas();
-        load_permissoes();
-
+      //  load_permissoes();
 
         $("#cadastrar_rota").on("click", function () {
-            //var data = $("#form_rotas").serialize();
             var url = $("#input_url").val();
             var publico = $("#publico").val();
             var matriz = $("#select_matriz").val();
@@ -261,30 +251,28 @@ if ($arquivos_conteudo) {
         $("#add_parametro").on("click", function () {
             var tipo_parametro = $("#parametros").val();
             var array_parametro = [];
-
-            if (tipo_parametro === "1") {
-                array_parametro = {expressao: $("#expressao_select").val(), nome: $("#nome_parametro").val(), tipo: tipo_parametro};
+            var nome_parametro = $("#nome_parametro").val();
+            if (nome_parametro.length > 0 || tipo_parametro !== "1") {
+                if (tipo_parametro === "1") {
+                    array_parametro = {expressao: $("#expressao_select").val(), nome: nome_parametro, tipo: tipo_parametro};
+                } else {
+                    array_parametro = {palavra: $("#palavra_url").val(), tipo: tipo_parametro};
+                }
+                parametros_array.push(array_parametro);
+                add_on_table(parametros_array);
             } else {
-                array_parametro = {palavra: $("#palavra_url").val(), tipo: tipo_parametro};
+                swal("Informe o nome do parâmetro");
             }
-            parametros_array.push(array_parametro);
-            add_on_table(parametros_array);
         });
-
-
-        $(".remover_parametro").off("click");
-        $(".remover_parametro").on("click", 'button', function () {
-            var key = $(this).attr("id");
-            alert(key);
-        });
-
 
         $("#select_matriz").on("change", function () {
             if (this.value === "0") {
-                $("#div_parametros").fadeOut();
-
+                $("#alerta_interface").hide();
+                $("#alerta_parametros").show();
             } else {
-                $("#div_parametros").fadeIn();
+                $("#alerta_interface").show();
+                $("#alerta_parametros").hide();
+
             }
 
         });
@@ -356,15 +344,24 @@ if ($arquivos_conteudo) {
 
     });
 
+    function add_on_table(parametros_array) {
+        $("#tabela_de_parametros tbody").html("");
+        $.each(parametros_array, function (key, value) {
+            if (value.tipo === "INT" || value.tipo === "STRING") {
+                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.parametro + "']</td> <td class='text-center'>" + value.tipo + "</td></tr>");
+            } else {
+                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>"+value.parametro+"</td><td class='text-center'>" + value.tipo + "</td></tr>");
+            }
+        });
+    }
 
     function add_on_table(parametros_array) {
         $("#tabela_de_parametros tbody").html("");
         $.each(parametros_array, function (key, value) {
-            // var button_remover_param = "<td class='text-center'><button type='button' id='" + key + "' class='remover_parametro btn btn-danger btn-sm'>Remover</button></td>";
             if (value.tipo === "1") {
                 $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.nome + "']</td> <td class='text-center'>" + value.expressao + "</td></tr>");
             } else {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>-</td><td class='text-center'>/" + value.palavra + "</td></tr>");
+                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>"+value.palavra+"</td><td class='text-center'>Palavra fixa</td></tr>");
             }
         });
     }
