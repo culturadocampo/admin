@@ -60,5 +60,23 @@ class VALIDA {
             return false;
         }
     }
+    
+    static function existe_cpf($cpf){
+        $query = "
+            SELECT 
+                cpf
+            FROM 
+                produtores
+            WHERE TRUE
+                AND cpf = '{$cpf}'
+        ";
+        $row_cpf = DATABASE::row_count($query);
+        
+        if( $row_cpf != 0 ){
+            return true;
+        } else { 
+            return false;
+        }
+    }
 
 }

@@ -45,19 +45,51 @@ if ($retorno) {
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">CAD PRO</label>
-                                    <div class="col-md-5">
-                                        <input type="text" placeholder="" class="form-control" id="cad_pro" name="cad_pro">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Data Nascimento</label>
                                     <div class="col-md-5">
                                         <input type="date" placeholder="" class="form-control" id="data_nascimento" name="data_nascimento">
                                     </div>
                                 </div>
+                                
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Sexo</label>
+                                    <div>
+                                        <input type="radio" name="sexo" id="masculino" value="M">
+                                        <label>Masculino</label>
 
+                                        <input type="radio" name="sexo" id="femenino" value="F">
+                                        <label>Femenino</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">CAD PRO</label>
+                                    <div class="col-md-5">
+                                        <input type="text" placeholder="" class="form-control" id="cad_pro" name="cad_pro">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Cel. Principal</label>
+                                    <div class="col-md-5">
+                                        <input type="text" placeholder="" class="form-control" id="complemento" name="cel_principal">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Cel. Secundario</label>
+                                    <div class="col-md-5">
+                                        <input type="text" placeholder="" class="form-control" name="cel_secundario">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Tel. Fixo</label>
+                                    <div class="col-md-5">
+                                        <input type="text" placeholder="" class="form-control" name="tel_fixo">
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Estado</label>
                                     <div class="col-md-5">
@@ -90,7 +122,14 @@ if ($retorno) {
                                         </select>
                                     </div>
                                 </div>
-
+                                
+                                 <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">CEP</label>
+                                    <div class="col-md-5">
+                                        <input type="text" placeholder="" class="form-control" id="cep" name="cep">
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Bairro</label>
                                     <div class="col-md-5">

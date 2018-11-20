@@ -1,9 +1,10 @@
 <?php
-
+    
 class Produtor {
 
     private $cpf;
     private $rg;
+    private $sexo;
     private $cad_pro;
     private $data_nascimento;
 
@@ -25,7 +26,8 @@ class Produtor {
                  cpf, 
                  rg, 
                  cadpro, 
-                 data_nascimento
+                 data_nascimento,
+                 sexo
              )
              VALUES 
              (
@@ -33,7 +35,8 @@ class Produtor {
                 '{$this->get_cpf()}',
                 '{$this->get_rg()}',
                 '{$this->get_cad_pro()}',
-                '{$this->get_data_nascimento()}'
+                '{$this->get_data_nascimento()}',
+                '{$this->get_sexo()}'
              )                    
         ";
         DATABASE::execute($query);
@@ -46,7 +49,11 @@ class Produtor {
     function get_rg() {
         return $this->rg;
     }
-
+    
+    function get_sexo() {
+        return $this->sexo;
+    }
+    
     function get_cad_pro() {
         return $this->cad_pro;
     }
@@ -56,11 +63,15 @@ class Produtor {
     }
 
     function set_cpf($cpf) {
-        if (VALIDA::cpf($_POST['cpf'])) {
-            $this->cpf = STRINGS::limpar($cpf);
-        } else {
+        if (VALIDA::cpf($_POST['cpf']) != true) {
             APP::return_response(false, "Por favor, preencha o campo CPF corretamente");
         }
+        
+        if(VALIDA::existe_cpf($cpf)){
+            APP::return_response(false, "O CPF digitado já encontra-se cadastrado, por favor digite outro");
+        }    
+        
+        $this->cpf = STRINGS::limpar($cpf);
     }
 
     function set_rg($rg) {
@@ -68,6 +79,18 @@ class Produtor {
             $this->rg = STRINGS::limpar($rg);
         } else {
             APP::return_response(false, "Por favor, preencha o campo RG corretamente");
+        }
+    }
+    
+    function set_sexo($sexo) {
+        if(isset($sexo)){
+            if ($sexo) {
+                $this->sexo = STRINGS::limpar($sexo);
+            } else {
+                APP::return_response(false, "Por favor, preencha o campo SEXO corretamente");
+            }
+        }else {
+            APP::return_response(false, "Por favor, preencha o campo SEXO corretamente");
         }
     }
 

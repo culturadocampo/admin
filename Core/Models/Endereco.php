@@ -5,6 +5,7 @@ class Endereco {
     private $numero;
     private $complemento;
     private $logradouro;
+    private $cep;
     private $bairro;
     private $cidade;
     private $estado;
@@ -17,6 +18,7 @@ class Endereco {
              (
                 fk_usuario, 
                 fk_cidade, 
+                cep,
                 bairro, 
                 rua, 
                 numero,
@@ -27,6 +29,7 @@ class Endereco {
             VALUES (
                 '{$id_usuario}',
                 '{$this->get_cidade()}',
+                '{$this->get_cep()}',
                 '{$this->get_bairro()}',
                 '{$this->get_logradouro()}',
                 '{$this->get_numero()}',
@@ -50,6 +53,10 @@ class Endereco {
     
     function get_lat() {
         return $this->lat;
+    }
+    
+    function get_cep(){
+        return $this->cep;
     }
     
     function get_long() {
@@ -78,6 +85,14 @@ class Endereco {
 
     function get_estado() {
         return $this->estado;
+    }
+    
+    function set_cep($cep) {
+         if($cep){
+            $this->cep = STRINGS::limpar($cep);
+        } else {
+             APP::return_response(false, "Favor informar o CEP");
+        }
     }
     
     function set_lat($lat) {
