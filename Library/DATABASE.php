@@ -89,4 +89,10 @@ class DATABASE {
         }
     }
 
+    public static function last_id() {
+        $db = DATABASE::conexao();
+        $stmt = $db->query("SELECT LAST_INSERT_ID()");
+        return $stmt->fetchColumn();
+    }
+
 }
