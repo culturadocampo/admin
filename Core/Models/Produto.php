@@ -43,7 +43,7 @@ class Produto {
                 hidroponico,
                 categoria
             FROM produtos
-            INNER JOIN categorias ON id_categoria = fk_categoria
+            INNER JOIN categorias_produtos ON id_categoria = fk_categoria
             WHERE TRUE
                 AND produtos.ativo = 1
                 AND nome IS NOT NULL
@@ -62,7 +62,7 @@ class Produto {
                 hidroponico,
                 categoria
             FROM produtos
-            INNER JOIN categorias ON id_categoria = fk_categoria
+            INNER JOIN categorias_produtos ON id_categoria = fk_categoria
             WHERE TRUE
                 AND produtos.ativo = 1
                 AND nome IS NOT NULL

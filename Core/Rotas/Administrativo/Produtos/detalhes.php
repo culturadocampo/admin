@@ -6,7 +6,7 @@ $produto_uri = STRINGS::string_to_uri($produto['nome']);
 $base_url = APP::get_base_url();
 
 if ($produto) {
-    if ($produto_uri !== $_GET['produto']) {
+    if ($produto_uri !== $_GET['nome']) {
         header("Location: {$base_url}/produtos/rastreabilidade/{$produto['ncm_codigo']}/{$produto_uri}", true, 301);
     }
 } else {
