@@ -2,12 +2,10 @@
     cursor: pointer;
 }
 
-/*.table.dataTable {
-    border-collapse: collapse!important;
-}
-.table.dataTable tbody tr:hover{
-    background-color: #e6f4e5;
-}*/
+
+    .m-page--fluid .m-page .m-page__container{
+        padding: 0 40px;
+    }
 
 
 #entrega_mapbox {

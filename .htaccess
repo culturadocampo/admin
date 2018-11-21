@@ -4,45 +4,31 @@ rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
 Options -Indexes
 
-rewriteRule ^\/?$ .\/index.php [NC]
-rewriteRule ^dashboard\/?$ ./index.php [NC]
-
-rewriteRule ^sistema\/rotas-de-acesso\/adicionar\/?$ ./index.php [NC]
-rewriteRule ^sistema\/rotas-de-acesso\/cadastrar\/?$ ./index.php [NC]
-rewriteRule ^sistema\/rotas-de-acesso\/lista\/?$ ./index.php [NC]
-rewriteRule ^sistema\/rotas-de-acesso\/_tabela_rotas\/?$ ./index.php [NC]
-
-
-
-rewriteRule ^login\/?$ ./index.php [NC]
-rewriteRule ^login\/_login?$ ./index.php [NC]
-rewriteRule ^login\/_google\/?$ ./index.php [NC]
-rewriteRule ^logout\/?$ ./index.php [NC]
-
-
-
-
-
-
-
-rewriteRule ^alterar-status-rota\/?$ ./index.php [NC]
-rewriteRule ^tabela-permissoes\/?$ ./index.php [NC]
-rewriteRule ^excluir-rota\/?$ ./index.php [NC]
-rewriteRule ^entregas\/pendentes\/?$ ./index.php [NC]
-
-
+rewriteRule ^sistema\/rotas-de-acesso/adicionar\/?$ ./index.php? [NC]
+rewriteRule ^login\/?$ ./index.php? [NC]
+rewriteRule ^login\/_login?$ ./index.php? [NC]
+rewriteRule ^dashboard\/?$ ./index.php? [NC]
+rewriteRule ^logout\/?$ ./index.php? [NC]
+rewriteRule ^novo-usuario\/?$ ./index.php? [NC]
+rewriteRule ^executa-cadastro-usuario\/?$ ./index.php? [NC]
+rewriteRule ^login\/_google\/?$ ./index.php? [NC]
+rewriteRule ^dashboard\/?$ ./index.php? [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/cadastrar\/?$ ./index.php? [NC]
+rewriteRule ^cadastrar-produtor\/?$ ./index.php? [NC]
+rewriteRule ^salvar-produtor\/?$ ./index.php? [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/_tabela_rotas\/?$ ./index.php? [NC]
+rewriteRule ^alterar-status-rota\/?$ ./index.php? [NC]
+rewriteRule ^tabela-permissoes\/?$ ./index.php? [NC]
+rewriteRule ^excluir-rota\/?$ ./index.php? [NC]
+rewriteRule ^entregas\/pendentes\/?$ ./index.php? [NC]
 rewriteRule ^entregas\/(\d+)\/detalhes\/?$ ./index.php?id_entrega=$1 [NC]
-rewriteRule ^entregas\/_informacoes_entrega\/?$ ./index.php [NC]
-
-
-rewriteRule ^cadastrar-produtor\/?$ ./index.php [NC]
-rewriteRule ^salvar-produtor\/?$ ./index.php [NC]
-rewriteRule ^novo-usuario\/?$ ./index.php [NC]
-rewriteRule ^executa-cadastro-usuario\/?$ ./index.php [NC]
-rewriteRule ^produtos\/rastreabilidade\/?$ ./index.php [NC]
-rewriteRule ^produtos\/rastreabilidade\/(\d+)\/([a-zA-Z\-]+)\/?$ ./index.php?ncm=$1&produto=$2 [NC]
-
-rewriteRule ^anunciar\/?$ ./index.php [NC]
+rewriteRule ^entregas\/_informacoes_entrega\/?$ ./index.php? [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/lista\/?$ ./index.php? [NC]
+rewriteRule ^produtos\/rastreabilidade\/?$ ./index.php? [NC]
+rewriteRule ^produtos\/rastreabilidade\/(\d+)\/([a-zA-Z\-]+)\/?$ ./index.php?ncm=$1&nome=$2 [NC]
+rewriteRule ^anunciar\/?$ ./index.php? [NC]
 rewriteRule ^sistema\/rotas-de-acesso\/(\d+)\/detalhes\/?$ ./index.php?id_rota=$1 [NC]
-rewriteRule ^produtos\/criar-cesta\/?$ ./index.php [NC]
-rewriteRule ^rotas-de-acesso\/editar\/?$ ./index.php [NC]
+rewriteRule ^produtos\/criar-cesta\/?$ ./index.php? [NC]
+rewriteRule ^sistema\/rotas-de-acesso\/editar\/?$ ./index.php? [NC]
+rewriteRule ^sistemas\/rotas-de-acesso\/excluir\/?$ ./index.php? [NC]
+rewriteRule ^\/?$ .\/index.php [NC]

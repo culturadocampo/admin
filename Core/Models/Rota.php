@@ -53,6 +53,7 @@ class Rota {
                 expressao
             FROM rotas
             WHERE TRUE
+                AND ativo = 1
             ORDER BY id_rota $order
         ";
         return DATABASE::fetch_all($query);
@@ -130,6 +131,20 @@ class Rota {
             )
         ";
         DATABASE::execute($query);
+        return DATABASE::last_id();
+    }
+
+    function update_rota() {
+        $query = "
+            UPDATE rotas
+            SET
+                url = '{$this->get_url()}',
+                matriz = '{$this->get_matriz()}',
+                publico = '{$this->get_publico()}',
+                expressao = '{$this->get_expressao()}'
+            WHERE id_rota = '{$this->get_id_rota()}'
+        ";
+        DATABASE::execute($query);
     }
 
     function save_on_htaccess($params = array()) {
@@ -138,7 +153,7 @@ class Rota {
         if ($params) {
             $query_index = 1;
             foreach ($params as $param) {
-                if ($param['tipo'] == "1") {
+                if ($param['categoria'] == "1") {
 
                     if ($param['expressao'] == "INT") {
                         $param['expressao'] = "(\d+)";
@@ -151,7 +166,7 @@ class Rota {
                     $query_string .= $param['nome'] . '=$' . ($query_index);
                     $query_index++;
                 } else {
-                    $expressoes .= "\/{$param['palavra']}";
+                    $expressoes .= "\/{$param['nome']}";
                 }
             }
         }
@@ -163,6 +178,7 @@ class Rota {
     }
 
     function rebuild_htaccess() {
+        $o_parametro = new Parametro();
         $all_rotas = $this->select_all_rotas('ASC');
         $this->clear_htaccess();
         $fp = fopen('.htaccess', 'a');
@@ -172,8 +188,19 @@ class Rota {
         fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-d" . PHP_EOL);
         fwrite($fp, "Options -Indexes" . PHP_EOL);
         foreach ($all_rotas as $rota) {
+            $parametros = $o_parametro->select_parametros($rota['id_rota']);
+            $query_string = "";
+            if ($parametros) {
+                $query_string = array();
+                foreach ($parametros as $key => $value) {
+                    $index = $key + 1;
+                    array_push($query_string, "{$value['nome']}=$" . $index);
+                }
+                $query_string = implode("&", $query_string);
+            }
+
             $regex_final = "{$rota['expressao']}";
-            $data = PHP_EOL . "rewriteRule $regex_final ./index.php [NC]";
+            $data = PHP_EOL . "rewriteRule $regex_final ./index.php?{$query_string} [NC]";
             fwrite($fp, $data);
         }
         fwrite($fp, PHP_EOL . "rewriteRule ^\/?$ .\/index.php [NC]" . PHP_EOL);
@@ -196,30 +223,14 @@ class Rota {
         DATABASE::execute($query);
     }
 
-    function delete_rota() {
+    function desativar_rota() {
         $query = "
-            DELETE FROM
-            rotas
+            UPDATE rotas
+            SET ativo = 0
             WHERE TRUE
-                AND id_rota = '{$this->getId()}'
+                AND id_rota = '{$this->get_id_rota()}'
         ";
         DATABASE::execute($query);
-    }
-
-    /**
-     * Eu não criei um modelo 'Parametro' porque
-     * parâmetro é um entidade fraca 
-     * (depende de outra entidade pra existir, 'Rota' neste caso)
-     * por isso não há necessidade de criar outro modelo.
-     */
-    function select_parametros() {
-        $query = "
-            SELECT 
-                indice, parametro, tipo
-            FROM rotas_parametros
-            WHERE fk_rota = '{$this->get_id_rota()}'
-        ";
-        return Database::fetch_all($query);
     }
 
     function get_id_rota() {

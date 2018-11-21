@@ -1,6 +1,8 @@
 <?php
 
+//ARRAYS::pre_print($_POST);
 $o_rota = new Rota();
+$o_parametro = new Parametro();
 $o_rota->set_url($_POST['url']);
 $o_rota->set_conteudo($_POST['conteudo']);
 $o_rota->set_matriz($_POST['matriz']);
@@ -17,8 +19,19 @@ if ($_POST['url']) {
         }
 
         $o_rota->set_expressao($expressao);
-        $o_rota->insert_rota();
+        $id_rota = $o_rota->insert_rota();
 
+        if ($_POST['params']) {
+            foreach ($_POST['params'] as $key => $value) {
+                if ($value['categoria'] == "1"){
+                    $o_parametro->set_parametro($value['nome']);
+                    $o_parametro->set_tipo($value['expressao']);
+                    $o_parametro->set_indice($key+1);
+                    $o_parametro->insert_parametro($id_rota);
+                }
+            }
+        }
+        
         $response['result'] = true;
         $response['message'] = "Rota cadastrada com sucesso";
     } else {

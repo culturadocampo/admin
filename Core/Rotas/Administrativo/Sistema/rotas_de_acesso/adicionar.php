@@ -132,7 +132,7 @@ if ($arquivos_conteudo) {
                                         <div class="form-group">
                                             <label>Categoria</label>
 
-                                            <select class="form-control selectpicker" id="parametros">
+                                            <select class="form-control selectpicker" id="categoria">
                                                 <option value="1">Expressão regular</option>
                                                 <option value="2">Palavra fixa</option>
                                             </select>
@@ -237,6 +237,7 @@ if ($arquivos_conteudo) {
                     'sistema/rotas-de-acesso/cadastrar',
                     {url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array},
                     function (response) {
+                        alert(response);
                         if (is_json(response)) {
                             response = JSON.parse(response);
                             swal(response.message);
@@ -249,14 +250,14 @@ if ($arquivos_conteudo) {
         });
 
         $("#add_parametro").on("click", function () {
-            var tipo_parametro = $("#parametros").val();
+            var categoria = $("#categoria").val();
             var array_parametro = [];
             var nome_parametro = $("#nome_parametro").val();
-            if (nome_parametro.length > 0 || tipo_parametro !== "1") {
-                if (tipo_parametro === "1") {
-                    array_parametro = {expressao: $("#expressao_select").val(), nome: nome_parametro, tipo: tipo_parametro};
+            if (nome_parametro.length > 0 || categoria !== "1") {
+                if (categoria === "1") {
+                    array_parametro = {expressao: $("#expressao_select").val(), nome: nome_parametro, categoria: categoria};
                 } else {
-                    array_parametro = {palavra: $("#palavra_url").val(), tipo: tipo_parametro};
+                    array_parametro = {expressao: "Palavra fixa", nome: $("#palavra_url").val(), categoria: categoria};
                 }
                 parametros_array.push(array_parametro);
                 add_on_table(parametros_array);
@@ -277,7 +278,7 @@ if ($arquivos_conteudo) {
 
         });
 
-        $("#parametros").on("change", function () {
+        $("#categoria").on("change", function () {
             if (this.value === "1") {
                 $("#expressao_regular").show();
                 $("#palavra_fixa").hide();
@@ -347,21 +348,10 @@ if ($arquivos_conteudo) {
     function add_on_table(parametros_array) {
         $("#tabela_de_parametros tbody").html("");
         $.each(parametros_array, function (key, value) {
-            if (value.tipo === "INT" || value.tipo === "STRING") {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.parametro + "']</td> <td class='text-center'>" + value.tipo + "</td></tr>");
-            } else {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>"+value.parametro+"</td><td class='text-center'>" + value.tipo + "</td></tr>");
-            }
-        });
-    }
-
-    function add_on_table(parametros_array) {
-        $("#tabela_de_parametros tbody").html("");
-        $.each(parametros_array, function (key, value) {
-            if (value.tipo === "1") {
+            if (value.categoria === "1") {
                 $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.nome + "']</td> <td class='text-center'>" + value.expressao + "</td></tr>");
             } else {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>"+value.palavra+"</td><td class='text-center'>Palavra fixa</td></tr>");
+                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>"+value.nome+"</td><td class='text-center'>Palavra fixa</td></tr>");
             }
         });
     }

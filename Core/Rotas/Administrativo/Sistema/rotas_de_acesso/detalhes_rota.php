@@ -1,20 +1,17 @@
 <?php
 $o_rota = new Rota();
-
+$o_parametro = new Parametro();
 $o_rota->set_id_rota($_GET['id_rota']);
 $rota = $o_rota->select_rota_from_id();
-$parametros_get = $o_rota->select_parametros();
-
-
+$parametros_get = $o_parametro->select_parametros($_GET['id_rota']);
 
 $arquivos_base = $o_rota->get_arquivos_base();
-
 $array_parametros = explode("/", $rota['expressao']);
 
-
 foreach ($array_parametros as $key => $value) {
-    $array['parametro'] = STRINGS::string_to_uri($value);
-    $array['tipo'] = "Palavra fixa";
+    $array['nome'] = STRINGS::string_to_uri($value);
+
+    $array['expressao'] = "Palavra fixa";
     if (!isset($array_parametros[$key])) {
         $array_parametros[$key] = array();
     }
@@ -23,13 +20,30 @@ foreach ($array_parametros as $key => $value) {
 
 foreach ($parametros_get as $value) {
     $index = $value['indice'];
-    $array_parametros[$index]['parametro'] = $value['parametro'];
-    $array_parametros[$index]['tipo'] = $value['tipo'];
+    $array_parametros[$index]['nome'] = $value['nome'];
+    $array_parametros[$index]['expressao'] = $value['expressao'];
 }
-array_pop($array_parametros); // json e adicionar na tabela usando json, nao php
+
+foreach ($array_parametros as $key => $value) {
+    if ($value['expressao'] == "STRING" || $value['expressao'] == "INT") {
+        $value['categoria'] = "1";
+    } else {
+        $value['categoria'] = "2";
+    }
+    $array_parametros[$key] = $value;
+}
+
+array_pop($array_parametros);
 $json_parametros = json_encode($array_parametros);
-//ARRAYS::pre_print($array_parametros);
 ?>
+<style>
+    .m-wrapper{
+        padding: 0px!important;
+    }
+    .m-portlet{
+        box-shadow: none!important;
+    }
+</style>
 <div class="m-grid__item m-grid__item--fluid m-wrapper" > 
     <div class="m-subheader ">
         <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
@@ -39,32 +53,27 @@ $json_parametros = json_encode($array_parametros);
                 </div>
                 <div class="m-portlet__head-wrapper">
                     <div class="m-portlet__head-caption">
-                        <a href="<?php echo APP::get_origem_request(); ?>" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
-                            <span>
-                                <i class="la la-arrow-left"></i>
-                                <span>Voltar</span>
-                            </span>
-                        </a>
+
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Detalhes da rota #<?php echo $rota['id_rota'] ?>
+                                Rota #<?php echo $rota['id_rota'] ?>
                             </h3>
+
                         </div>
                     </div>
                     <div class="m-portlet__head-tools">
 
                         <div class="btn-group">
                             <div class="m-portlet__head-tools">
-                                                            <small class="text-danger m--margin-right-50">Em fase de testes ainda. Não em xinguem se der problema.</small>
 
-                                <button class="btn btn-warning btn-outline-warning m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                                <button id="excluir_rota" id_rota="<?php echo $rota['id_rota'];?>" class="btn btn-danger btn-outline-danger m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
                                     <span>
                                         <i class="la la-trash"></i>
-                                        <span>Excluir rota</span>
+                                        <span>Desativar rota</span>
                                     </span>
                                 </button>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-success btn-outline-success  m-btn m-btn--icon m-btn--wide m-btn--md">
+                                    <button id="salvar_alteracoes" type="button" class="btn btn-info btn-outline-info m-btn m-btn--icon m-btn--wide m-btn--md">
                                         <span>
                                             <i class="la la-check"></i>
                                             <span>Salvar alterações</span>
@@ -80,6 +89,8 @@ $json_parametros = json_encode($array_parametros);
                 <!--begin: Form Body -->
                 <div class="m-portlet__body">
                     <form id="form_rotas" class="m-form m-form--fit m-form--label-align-right">
+                        <input readonly="" type="hidden" id="id_rota" class="form-control" value="<?php echo $rota['id_rota']; ?>">
+
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group">
                                 <div class="row m--padding-bottom-20">
@@ -139,7 +150,7 @@ $json_parametros = json_encode($array_parametros);
                                             <div class="form-group">
                                                 <label>Categoria</label>
 
-                                                <select class="form-control selectpicker" id="parametros">
+                                                <select class="form-control selectpicker" id="categoria">
                                                     <option value="1">Expressão regular</option>
                                                     <option value="2">Palavra fixa</option>
                                                 </select>
@@ -209,20 +220,42 @@ $json_parametros = json_encode($array_parametros);
     $(document).ready(function () {
         var parametros_array = '<?php echo $json_parametros ?>';
         parametros_array = JSON.parse(parametros_array);
+        parametros_array.shift();
         add_on_table(parametros_array);
+
+        $("#salvar_alteracoes").on("click", function () {
+            var id_rota = $("#id_rota").val();
+
+            var url = $("#input_url").val();
+            var publico = $("#publico").val();
+            var matriz = $("#select_matriz").val();
+            var conteudo = $("#select_conteudo").val();
+            $.post(
+                    'sistema/rotas-de-acesso/editar',
+                    {id_rota: id_rota, url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array},
+                    function (response) {
+                        alert(response);
+//                        if (is_json(response)) {
+//                            response = JSON.parse(response);
+//                            swal(response.message);
+//                            if (response.result) {
+//                                load_rotas();
+//                            }
+//                        }
+                    });
+
+        });
 
 
         $("#add_parametro").on("click", function () {
-            var categoria = $("#parametros").val();
-            var tipo_parametro = $("#expressao_select").val();
+            var categoria = $("#categoria").val();
             var array_parametro = [];
             var nome_parametro = $("#nome_parametro").val();
-
-            if ((nome_parametro.length > 0 || (tipo_parametro !== "STRING" && tipo_parametro !== "INT"))) {
-                if (categoria === "1" && (tipo_parametro === "STRING" || tipo_parametro === "INT")) {
-                    array_parametro = {parametro: nome_parametro, tipo: tipo_parametro};
+            if (nome_parametro.length > 0 || categoria !== "1") {
+                if (categoria === "1") {
+                    array_parametro = {expressao: $("#expressao_select").val(), nome: nome_parametro, categoria: categoria};
                 } else {
-                    array_parametro = {parametro: $("#palavra_url").val(), tipo: "Palavra fixa"};
+                    array_parametro = {expressao: "Palavra fixa", nome: $("#palavra_url").val(), categoria: categoria};
                 }
                 parametros_array.push(array_parametro);
                 add_on_table(parametros_array);
@@ -232,7 +265,7 @@ $json_parametros = json_encode($array_parametros);
         });
 
 
-        $("#parametros").on("change", function () {
+        $("#categoria").on("change", function () {
             if (this.value === "1") {
                 $("#expressao_regular").show();
                 $("#palavra_fixa").hide();
@@ -296,6 +329,14 @@ $json_parametros = json_encode($array_parametros);
             }
         });
 
+        $("#excluir_rota").off("click");
+        $("#excluir_rota").on("click", function () {
+            var id = $(this).attr('id_rota');
+            $.post("sistemas/rotas-de-acesso/excluir", {id_rota: id}, function (response) {
+                alert(response);
+            });
+        });
+
 
     });
 
@@ -303,10 +344,10 @@ $json_parametros = json_encode($array_parametros);
     function add_on_table(parametros_array) {
         $("#tabela_de_parametros tbody").html("");
         $.each(parametros_array, function (key, value) {
-            if (value.tipo === "INT" || value.tipo === "STRING") {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.parametro + "']</td> <td class='text-center'>" + value.tipo + "</td></tr>");
+            if (value.categoria === "1") {
+                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>$_GET['" + value.nome + "']</td> <td class='text-center'>" + value.expressao + "</td></tr>");
             } else {
-                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>" + value.parametro + "</td><td class='text-center'>" + value.tipo + "</td></tr>");
+                $("#tabela_de_parametros tbody").append("<tr><td class='text-center'>" + value.nome + "</td><td class='text-center'>Palavra fixa</td></tr>");
             }
         });
     }

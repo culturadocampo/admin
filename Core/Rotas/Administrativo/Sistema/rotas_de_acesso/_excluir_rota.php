@@ -3,11 +3,8 @@
 $o_rota = new Rota();
 
 if (isset($_POST['id_rota']) && $_POST['id_rota']) {
-    /**
-     * Exclui a rota
-     */
-//    $o_rota->setId($_POST['id_rota']);
-//    $o_rota->delete_rota();
+    $o_rota->set_id_rota($_POST['id_rota']);
+    $o_rota->desativar_rota();
     /**
      * Reconstroi o htaccess
      */

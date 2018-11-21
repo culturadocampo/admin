@@ -118,13 +118,7 @@ foreach ($rotas as $key => $rota) {
             $(".tab-content #permissoes").addClass('active');
         });
 
-        $(".excluir_rota").off("click");
-        $(".excluir_rota").on("click", function () {
-            var id = $(this).closest('tr').attr('id');
-            $.post("excluir-rota", {id_rota: id}, function (response) {
-                alert(response);
-            });
-        });
+
 
     });
 </script>
