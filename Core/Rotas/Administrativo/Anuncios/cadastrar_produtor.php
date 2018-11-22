@@ -180,7 +180,7 @@ if ($retorno) {
         $("#estado").on("change", function () {
             let uf = $("#estado").val();
 
-            $.post("buscaCidades",{uf: uf},function(data){
+            $.post("buscar-cidades",{uf: uf},function(data){
                 let cidades = JSON.parse(data);
                     
                     cidades.forEach(name => console.log(name));
