@@ -32,3 +32,6 @@ rewriteRule ^produtos\/criar-cesta\/?$ ./index.php? [NC]
 rewriteRule ^sistema\/rotas-de-acesso\/editar\/?$ ./index.php? [NC]
 rewriteRule ^sistemas\/rotas-de-acesso\/excluir\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
+
+rewriteRule ^buscaCidades\/?$ ./index.php [NC]
+rewriteRule ^buscaCidades\/?$ ./index.php [NC]

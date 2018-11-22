@@ -99,7 +99,7 @@ if ($retorno) {
                                             $produtor = new Produtor;
                                             $estados = $produtor->estados();
                                             foreach ($estados as $estado) {
-                                                ?><option class="estado" value="<?php echo $estado['id_estado'] ?>"><?php echo $estado['uf'] ?></option> <?php
+                                                ?><option class="estado" value="<?php echo $estado['uf'] ?>"><?php echo $estado['uf'] ?></option> <?php
                                             }
                                             ?>
                                         </select>
@@ -111,14 +111,7 @@ if ($retorno) {
                                     <label class="control-label text-right col-md-3">Cidade</label>
                                     <div class="col-md-5">
                                         <select class="form-control" name="cidade" id="cidade">
-                                            <option value="" selected="selected">Selecione</option>
-                                            <?php
-                                            $o_produtor = new Produtor;
-                                            $cidades = $o_produtor->cidades();
-                                            foreach ($cidades as $cidade) {
-                                                ?><option class="cidade" value="<?php echo $cidade['id_municipio'] ?>"><?php echo $cidade['nome'] ?></option> <?php
-                                            }
-                                            ?>
+                                            <option value="">Selecione</option>
                                         </select>
                                     </div>
                                 </div>
@@ -181,22 +174,33 @@ if ($retorno) {
     </section>
 </div>
 <script>
-    function estados() {
-        $("#cidade").hide();
-        $('#estado').on('change', function () {
-            var estado = $(this).val();
-            if (estado !== "" && estado !== null) {
-                $("#cidade").show();
-            } else {
-                $("#cidade").hide();
-            }
+    
+    function busca_cidades(){
+        $("#estado").off("change");
+        $("#estado").on("change", function () {
+            let uf = $("#estado").val();
+
+            $.post("buscaCidades",{uf: uf},function(data){
+                let cidades = JSON.parse(data);
+                    
+                    cidades.forEach(name => console.log(name));
+                    
+                    // console.log( cidades['cidades']);
+
+                
+            });
+           
+
         });
     }
+    
+                                        
+    
 </script>
 
 <script>
     $(document).ready(function () {
-        estados();
+        busca_cidades();
 
         $('#submit_cadastro').on('click', function () {
             var formData = $("#form_cadastro").serialize();
