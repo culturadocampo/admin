@@ -150,6 +150,7 @@ $array_clientes = $o_entrega->select_clientes_entrega();
     $(document).ready(function () {
         $.post('entregas/_informacoes_entrega', {id_entrega: '<?php echo $_GET['id_entrega']; ?>'}, function (response) {
             if (is_json(response)) {
+                alert(response);
                 var data = JSON.parse(response);
                 initMapbox(data);
             }

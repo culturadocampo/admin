@@ -1,3 +1,10 @@
+<?php 
+/**
+ * Serve para redirecionar o pós-login para a página requisitada
+ */
+$request_anterior = isset($_SESSION['login_request']) ? $_SESSION['login_request'] : "./"; 
+unset($_SESSION['login_request']);
+?>
 <div class="m-login__container">
     <div class="m-login__logo">
         <a href="#">
@@ -120,7 +127,7 @@
                                         url: "login/_google",
                                         data: user_info,
                                         success: function (json) {
-                                            window.location = "./";
+                                            window.location = '<?php echo $request_anterior; ?>';
                                         },
                                         error: function (error) {
                                             alert("Erro: Entre em contato com o suporte (COD: L001)");
@@ -150,7 +157,7 @@
                 success: function (json) {
                     var response = JSON.parse(json);
                     if (response.result) {
-                        window.location = "./";
+                        window.location = '<?php echo $request_anterior; ?>';
                     } else {
                         $("#alert_login_invalido").html(response.message);
                         $("#alert_login_invalido").show();

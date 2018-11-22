@@ -20,6 +20,7 @@ class ROUTER {
                 include $conteudo;
             }
         } else {
+            $_SESSION['login_request'] = self::get_uri();
             $o_rota->set_url("login");
             $array_rotas = $o_rota->select_rota();
             $rota = self::get_rota_apropriada($array_rotas, $o_rota->get_url());
