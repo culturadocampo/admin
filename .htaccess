@@ -34,4 +34,3 @@ rewriteRule ^sistemas\/rotas-de-acesso\/excluir\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
 
 rewriteRule ^buscaCidades\/?$ ./index.php [NC]
-rewriteRule ^buscaCidades\/?$ ./index.php [NC]
