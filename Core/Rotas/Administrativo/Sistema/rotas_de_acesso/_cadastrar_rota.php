@@ -12,7 +12,7 @@ $o_rota->set_publico($_POST['publico']);
 if ($_POST['url']) {
     if ($_POST['conteudo']) {
 
-        if (isset($_POST['params'])) {
+        if (isset($_POST['params']) && !empty($_POST['params'])) {
             $expressao = $o_rota->save_on_htaccess($_POST['params']);
         } else {
             $expressao = $o_rota->save_on_htaccess();
@@ -21,17 +21,17 @@ if ($_POST['url']) {
         $o_rota->set_expressao($expressao);
         $id_rota = $o_rota->insert_rota();
 
-        if ($_POST['params']) {
+        if (isset($_POST['params']) && !empty($_POST['params'])) {
             foreach ($_POST['params'] as $key => $value) {
-                if ($value['categoria'] == "1"){
+                if ($value['categoria'] == "1") {
                     $o_parametro->set_parametro($value['nome']);
                     $o_parametro->set_tipo($value['expressao']);
-                    $o_parametro->set_indice($key+1);
+                    $o_parametro->set_indice($key + 1);
                     $o_parametro->insert_parametro($id_rota);
                 }
             }
         }
-        
+
         $response['result'] = true;
         $response['message'] = "Rota cadastrada com sucesso";
     } else {

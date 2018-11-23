@@ -66,14 +66,14 @@ $json_parametros = json_encode($array_parametros);
                         <div class="btn-group">
                             <div class="m-portlet__head-tools">
 
-                                <button id="excluir_rota" id_rota="<?php echo $rota['id_rota'];?>" class="btn btn-danger btn-outline-danger m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                                <button id="excluir_rota" id_rota="<?php echo $rota['id_rota'];?>" class="btn btn-danger m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
                                     <span>
                                         <i class="la la-trash"></i>
                                         <span>Desativar rota</span>
                                     </span>
                                 </button>
                                 <div class="btn-group">
-                                    <button id="salvar_alteracoes" type="button" class="btn btn-info btn-outline-info m-btn m-btn--icon m-btn--wide m-btn--md">
+                                    <button id="salvar_alteracoes" type="button" class="btn btn-success m-btn m-btn--icon m-btn--wide m-btn--md">
                                         <span>
                                             <i class="la la-check"></i>
                                             <span>Salvar alterações</span>

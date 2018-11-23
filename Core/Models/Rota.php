@@ -150,7 +150,7 @@ class Rota {
     function save_on_htaccess($params = array()) {
         $expressoes = "";
         $query_string = "";
-        if ($params) {
+        if (!empty($params)) {
             $query_index = 1;
             foreach ($params as $param) {
                 if ($param['categoria'] == "1") {

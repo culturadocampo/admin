@@ -4,6 +4,8 @@ rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
 Options -Indexes
 
+ErrorDocument 404 /404.php
+
 rewriteRule ^sistema\/rotas-de-acesso/adicionar\/?$ ./index.php? [NC]
 rewriteRule ^login\/?$ ./index.php? [NC]
 rewriteRule ^login\/_login?$ ./index.php? [NC]
@@ -33,6 +35,6 @@ rewriteRule ^sistema\/rotas-de-acesso\/editar\/?$ ./index.php? [NC]
 rewriteRule ^sistemas\/rotas-de-acesso\/excluir\/?$ ./index.php? [NC]
 rewriteRule ^buscar-cidades\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
-
 rewriteRule ^perfil-produtor\/?$ ./index.php [NC]
 rewriteRule ^redireciona-perfil\/?$ ./index.php [NC]
+rewriteRule ^form-adicionar-rota\/?$ ./index.php [NC]
