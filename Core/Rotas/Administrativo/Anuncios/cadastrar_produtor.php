@@ -94,7 +94,7 @@ if ($retorno) {
                                     <label class="control-label text-right col-md-3">Estado</label>
                                     <div class="col-md-5">
                                         <select class="form-control" name="estado" id="estado">
-                                            <option value="" selected="selected">Selecione</option>
+                                            <option value="" disabled="disabled" selected="selected">Selecione</option>
                                             <?php
                                             $produtor = new Produtor;
                                             $estados = $produtor->estados();
@@ -109,10 +109,8 @@ if ($retorno) {
                                 <!--NAO PODE SER FIXO PELO PHP ASSIM, PRECISA SER UM LOAD E CARREGAR PELO ESTADO SELECIONADO-->
                                 <div class="form-group row" id="cidade">
                                     <label class="control-label text-right col-md-3">Cidade</label>
-                                    <div class="col-md-5">
-                                        <select class="form-control" name="cidade" id="cidade">
-                                            <option value="">Selecione</option>
-                                        </select>
+                                    <div id="combo_cidades" class="col-md-5">
+                                        <!--  Aqui vem o combo de cidades via javascript -->
                                     </div>
                                 </div>
                                 
@@ -179,23 +177,9 @@ if ($retorno) {
         $("#estado").off("change");
         $("#estado").on("change", function () {
             let uf = $("#estado").val();
-
-            $.post("buscar-cidades",{uf: uf},function(data){
-                let cidades = JSON.parse(data);
-                    
-                    cidades.forEach(name => console.log(name));
-                    
-                    // console.log( cidades['cidades']);
-
-                
-            });
-           
-
+            $("#combo_cidades").load("buscar-cidades", {uf: uf});
         });
-    }
-    
-                                        
-    
+    }  
 </script>
 
 <script>
@@ -235,8 +219,7 @@ if ($retorno) {
             });
         });
     });
-</script>
-<script>
+    
     let x = document.getElementById("demo");
     function getLocation() {
         if (navigator.geolocation) {

@@ -1,6 +1,6 @@
 <?php
-        //Pego as cidades ref. ao estado selecionado
 
+        //Pego as cidades ref. ao estado selecionado
         $query = "SELECT 
                     id_municipio, 
                     nome
@@ -11,10 +11,11 @@
         
         $res_cidades =  DATABASE::fetch_all($query);
         
-        if($res_cidades){
-
-            echo json_encode($res_cidades);
-            die();
-        } else {
-            return false;
-        }
+        if($res_cidades){ ?>
+            <select class="form-control" name="cidade" id="cidade">
+                <option value="" disabled="disabled" selected="selected">Selecione</option>
+                <?php foreach($res_cidades as $cidades) { ?>
+                    <option value="<?php echo $cidades['id_municipio']; ?>"><?php echo $cidades['nome']; ?> </option>
+                <?php } ?>
+            </select>
+        <?php } ?>   

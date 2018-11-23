@@ -10,7 +10,7 @@ $o_endereco = new Endereco();
 $o_produtor->set_cpf($_POST['cpf']);
 $o_produtor->set_rg($_POST['rg']);
 $o_produtor->set_data_nascimento($_POST['data_nascimento']);
-$o_produtor->set_sexo(isset($_POST['sexo']));
+$o_produtor->set_sexo($_POST['sexo']);
 $o_produtor->set_cad_pro($_POST['cad_pro']);
 
 /**
