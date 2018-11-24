@@ -1,10 +1,10 @@
 
 <style>
     .m-wrapper{
-        padding: 0px!important;
+        padding: 8px!important;
     }
     .m-portlet{
-        box-shadow: none!important;
+        /*box-shadow: none!important;*/
     }
 </style>
 
@@ -22,7 +22,8 @@
 
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Adicionar rota de acesso
+                                <span class="flaticon-add m--margin-right-20"></span> 
+                                <span class="text-primary" style="font-weight: lighter; font-size: 1.8rem">Adicionar rota de acesso</span>
                             </h3>
 
                         </div>
@@ -34,10 +35,10 @@
 
 
                                 <div class="btn-group">
-                                    <button id="cadastrar_rota" type="button" class="btn btn-success m-btn m-btn--icon m-btn--wide m-btn--md">
+                                    <button id="cadastrar_rota" type="button" class="btn btn-outline-info m-btn m-btn--icon m-btn--wide m-btn--md">
                                         <span>
-                                            <i class="la la-check"></i>
-                                            <span>Criar rota</span>
+                                            <i class="fa fa-check"></i>
+                                            <span>Cadastrar rota</span>
                                         </span>
                                     </button>
                                 </div>
@@ -60,19 +61,13 @@
 
 
 <script>
-
-
+    
     $(document).ready(function () {
-
         load_form();
-
     });
-
-
 
     function load_form() {
         $("#form_adicionar_rota").load("form-adicionar-rota");
     }
-
-
+    
 </script>

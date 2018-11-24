@@ -36,14 +36,14 @@
     </head>
 
     <body class="m-page--fluid m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
-        <div class="m-grid m-grid--hor m-grid--root m-page">
+        <div id="my-page" class="m-grid m-grid--hor m-grid--root m-page">
             <header id="m_header" class="m-grid__item m-header " m-minimize="minimize" m-minimize-mobile="minimize" m-minimize-offset="10" m-minimize-mobile-offset="10">
                 <?php include 'Public/Matriz/Sistema/topo.php'; ?>
                 <?php include 'Public/Matriz/Sistema/menu.php'; ?>
             </header>
             <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
-                
-                    <?php include $conteudo; ?>
+
+                <?php include $conteudo; ?>
             </div>
             <?php include 'Public/Matriz/Sistema/footer.php'; ?>
         </div>

@@ -4,7 +4,7 @@
             <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
                 <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
                     <span class="m-footer__copyright">
-                        2019 &copy; <strong>Agribox</strong> por <a href="https://keenthemes.com" class="m-link">Cultura do Campo</a>
+                        2019 &copy; <strong class="text-dark">Agribox</strong> por <strong class="m-link text-success">Cultura do Campo</strong>
                     </span>
                 </div>
                 <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
@@ -20,7 +20,7 @@
                             </a>
                         </li>
                         <li class="m-nav__item">
-                            <a href="#" class="m-nav__link" data-toggle="m-tooltip" title="Support Center" data-placement="left">
+                            <a href="#" class="m-nav__link" data-toggle="m-tooltip" title="Suporte" data-placement="top">
                                 <i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
                             </a>
                         </li>

@@ -7,10 +7,27 @@
     padding: 0 40px;
 }*/
 
-/*.m-menu__link{
-    background: red;
-}*/
 
+.m-header-menu .m-menu__nav > .m-menu__item.m-menu__item--tabs {
+    padding: 0 1px 0 0;
+}
+.m-header-menu .m-menu__nav > .m-menu__item.m-menu__item--tabs > .m-menu__link {
+    background: #eee;
+}
+
+#my-page{
+    background: url("../Images/footer-line.png") repeat-x scroll center bottom transparent;
+    padding-bottom: 20px;
+
+
+}
+#topo{
+    background: url("../Images/top-line.png") repeat-x scroll center top #fff;
+}
+body{
+    /*background: url("Public/Images/teste.png");*/
+    background: #f3f5f6!important;
+}
 
 #entrega_mapbox {
     height: 750px;
