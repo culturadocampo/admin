@@ -3,6 +3,10 @@ $o_rota = new Rota();
 $o_parametro = new Parametro();
 $o_rota->set_id_rota($_GET['id_rota']);
 $rota = $o_rota->select_rota_from_id();
+if (!$rota) {
+    $base_url = APP::get_base_url();
+    header("Location: {$base_url}/dashboard", true, 301);
+}
 $parametros_get = $o_parametro->select_parametros($_GET['id_rota']);
 
 $arquivos_base = $o_rota->get_arquivos_base();
@@ -66,7 +70,7 @@ $json_parametros = json_encode($array_parametros);
                         <div class="btn-group">
                             <div class="m-portlet__head-tools">
 
-                                <button id="excluir_rota" id_rota="<?php echo $rota['id_rota'];?>" class="btn btn-danger m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                                <button id="excluir_rota" id_rota="<?php echo $rota['id_rota']; ?>" class="btn btn-danger m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
                                     <span>
                                         <i class="la la-trash"></i>
                                         <span>Desativar rota</span>
@@ -160,7 +164,7 @@ $json_parametros = json_encode($array_parametros);
                                                 <div class="form-group">
                                                     <label>Tipo regex</label>
                                                     <select class="form-control selectpicker" id="expressao_select">
-                                                        <option value="STRING">Somente letras</option>
+                                                        <option value="STRING">Somente letras ou números</option>
                                                         <option value="INT">Somente números</option>
                                                     </select>
                                                 </div>

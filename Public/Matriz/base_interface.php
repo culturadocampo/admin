@@ -39,7 +39,25 @@
         <div id="my-page" class="m-grid m-grid--hor m-grid--root m-page">
             <header id="m_header" class="m-grid__item m-header " m-minimize="minimize" m-minimize-mobile="minimize" m-minimize-offset="10" m-minimize-mobile-offset="10">
                 <?php include 'Public/Matriz/Sistema/topo.php'; ?>
-                <?php include 'Public/Matriz/Sistema/menu.php'; ?>
+
+
+                <div class="m-header__bottom">
+                    <div class="m-container m-container--fluid m-container--full-height m-page__container">
+                        <div class="m-stack m-stack--ver m-stack--desktop">
+                            <div class="m-stack__item m-stack__item--fluid m-header-menu-wrapper">
+                                <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light" id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+                                <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light">
+
+                                    <?php include 'Public/Matriz/Sistema/menu.php'; ?>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </header>
             <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
 

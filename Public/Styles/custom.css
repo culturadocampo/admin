@@ -2,31 +2,43 @@
     cursor: pointer;
 }
 
-/*
-.m-page--fluid .m-page .m-page__container{
-    padding: 0 40px;
-}*/
 
+.m-page--fluid .m-page .m-page__container{
+    /*padding: 0 20px;*/
+}
+
+@keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
 
 .m-header-menu .m-menu__nav > .m-menu__item.m-menu__item--tabs {
-    padding: 0 1px 0 0;
+    padding: 0 3px 0 0;
 }
 .m-header-menu .m-menu__nav > .m-menu__item.m-menu__item--tabs > .m-menu__link {
-    background: #eee;
+    background: rgba(0,0,0,0.03);
 }
 
 #my-page{
     background: url("../Images/footer-line.png") repeat-x scroll center bottom transparent;
     padding-bottom: 20px;
 
+}
 
+.fast {
+    animation-duration: 0.3s;
+    animation-delay: 0.2s;
+    /*animation-iteration-count: infinite;*/
 }
 #topo{
     background: url("../Images/top-line.png") repeat-x scroll center top #fff;
+
+    /*animation: animatedBackground 1.5s alternate infinite;*/
+
 }
 body{
     /*background: url("Public/Images/teste.png");*/
-    background: #f3f5f6!important;
+    background: #ecf5fc!important;
 }
 
 #entrega_mapbox {
@@ -96,3 +108,4 @@ body{
         box-shadow: 0 0 0 0 rgba(204,169,44, 0);
     }
 }
+
