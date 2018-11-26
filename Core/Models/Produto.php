@@ -84,6 +84,21 @@ class Produto {
         ";
         return DATABASE::fetch_all($query);
     }
+    
+    /*function meus_dados($id){
+        $query = "
+            SELECT
+                email
+            FROM 
+                usuarios
+            INNER JOIN produtores ON fk_usuario = id_produtor 
+            INNER JOIN enderecos  ON fk_usuario = id_endereco
+            INNER JOIN telefones  ON fk_usuario = id_telefone
+            WHERE TRUE 
+                AND produtos.ativo = 1
+        ";
+        return DATABASE::fetch($query);
+    }*/
 
     function get_ncm_codigo() {
         return $this->ncm_codigo;
