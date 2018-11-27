@@ -1,6 +1,6 @@
 <?php
 $o_rota = new Rota();
-
+$o_permissao = new Permissao();
 $arquivos_base = $o_rota->get_arquivos_base();
 $arquivos_conteudo = $o_rota->get_arquivos_conteudo();
 if ($arquivos_conteudo) {
@@ -13,15 +13,12 @@ if ($arquivos_conteudo) {
     }
     $arquivos_conteudo = array_values($arquivos_conteudo);
 }
+$arr_permissoes = $o_permissao->select_all_permissoes();
 ?>  
 
-<form id="form_rotas" class="m-form m-form--fit m-form--label-align-right animated fadeIn">
-
+<form id="form_rotas" class="m-form m-form--fit m-form--label-align-right animated fadeIn fast">
     <div class="m-portlet__body">
-
         <div class="form-group m-form__group">
-
-
             <div class="row m--padding-bottom-20">
                 <div class="col-md-6 ">
                     <div class="form-group">
@@ -29,9 +26,7 @@ if ($arquivos_conteudo) {
                             <label for="confirm">Conteúdo</label>
                         <?php } else { ?>
                             <label class="text-danger" for="confirm">Conteúdo</label>
-
                         <?php } ?>
-
                         <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="conteudo" class="form-control selectpicker" id="select_conteudo">
                             <?php if ($arquivos_conteudo) { ?>
                                 <?php foreach ($arquivos_conteudo as $arquivo) { ?>
@@ -40,7 +35,6 @@ if ($arquivos_conteudo) {
                             <?php } else { ?>
                                 <option>Nenhum novo arquivo disponível</option>
                             <?php } ?>
-
                         </select>
                     </div>
                 </div>
@@ -49,22 +43,18 @@ if ($arquivos_conteudo) {
                         <label for="password">Matriz *</label>
                         <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control selectpicker" id="select_matriz">
                             <option selected value="0">Arquivo load/ajax</option>
-
                             <?php if ($arquivos_base) { ?>
                                 <?php foreach ($arquivos_base as $arquivo) { ?>
                                     <option value="<?php echo $arquivo['arquivo']; ?>"><?php echo $arquivo['nome']; ?></option>
                                 <?php } ?>
                             <?php } ?>
-
                         </select>
 
                     </div>
                 </div>
-
             </div>
 
-
-            <div class="row">
+            <div class="row m--padding-bottom-20">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="password">URI*</label>
@@ -88,6 +78,20 @@ if ($arquivos_conteudo) {
                         </select>
 
                     </div>
+                </div>
+            </div>
+
+            <div class="row m--padding-bottom-20">
+                <div class="col-md-6">
+                    <label class="">Vincular permissões (Opcional):</label>
+                    <select id="vinculo_permissoes" name="permissoes[]" class="form-control m-input selectpicker" multiple>
+                        <?php if ($arr_permissoes) { ?>
+                            <?php foreach ($arr_permissoes as $value) { ?>
+                                <option value='<?php echo $value['id_permissao']; ?>'><?php echo $value['descricao']; ?></option>
+                            <?php } ?>
+
+                        <?php } ?>
+                    </select>
                 </div>
             </div>
 
@@ -146,8 +150,6 @@ if ($arquivos_conteudo) {
                                         <tr style="background: rgba(0,0,0,0.025)">
                                             <th class="text-center">Parâmetro</th>
                                             <th class="text-center">Tipo</th>
-                                            <!--<th class="text-center"></th>-->
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,19 +159,13 @@ if ($arquivos_conteudo) {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
             <div id="alerta_interface" class="m-alert m-alert--outline m-alert--square alert alert-info" style="display: none" role="alert">
                 <strong>Base da interface (CTRL+C / CTRL + V):</strong> <br>&lt;div class="m-grid__item m-grid__item--fluid m-wrapper"&gt;<br>&lt;/div&gt;
             </div>
-
-
-
         </div>
     </div>
-
 </form>
 
 
@@ -185,9 +181,11 @@ if ($arquivos_conteudo) {
             var publico = $("#publico").val();
             var matriz = $("#select_matriz").val();
             var conteudo = $("#select_conteudo").val();
-            $.post(
-                    'sistema/rotas-de-acesso/cadastrar',
-                    {url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array},
+            var permissoes = $("#vinculo_permissoes").val()
+
+            $.post('sistema/rotas-de-acesso/cadastrar',
+                    {url: url, publico: publico, matriz: matriz,
+                        conteudo: conteudo, params: parametros_array, permissoes: permissoes},
                     function (response) {
                         if (is_json(response)) {
                             response = JSON.parse(response);
@@ -225,21 +223,26 @@ if ($arquivos_conteudo) {
             } else {
                 $("#alerta_interface").show();
                 $("#alerta_parametros").hide();
-
             }
-
         });
 
         $("#categoria").on("change", function () {
             if (this.value === "1") {
                 $("#expressao_regular").show();
                 $("#palavra_fixa").hide();
-
             } else {
                 $("#expressao_regular").hide();
                 $("#palavra_fixa").show();
             }
+        });
 
+        $("#publico").on("change", function () {
+            if (this.value === "1") {
+                $("#vinculo_permissoes").removeAttr("disabled");
+            } else {
+                $("#vinculo_permissoes").attr("disabled", "disabled");
+            }
+            $("#publico").selectpicker('render');
         });
 
 

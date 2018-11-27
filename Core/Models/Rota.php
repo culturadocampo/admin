@@ -33,8 +33,10 @@ class Rota {
                 conteudo,
                 publico,
                 expressao,
-                url
+                url,
+                GROUP_CONCAT(fk_permissao) AS permissoes
             FROM rotas
+            LEFT JOIN permissoes_rotas ON fk_rota = id_rota
             WHERE TRUE
                 AND id_rota = '{$this->get_id_rota()}'
         ";

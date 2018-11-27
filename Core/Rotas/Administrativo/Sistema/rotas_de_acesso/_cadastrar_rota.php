@@ -3,6 +3,7 @@
 //ARRAYS::pre_print($_POST);
 $o_rota = new Rota();
 $o_parametro = new Parametro();
+$o_permissao = new Permissao();
 $o_rota->set_url($_POST['url']);
 $o_rota->set_conteudo($_POST['conteudo']);
 $o_rota->set_matriz($_POST['matriz']);
@@ -31,6 +32,13 @@ if ($_POST['url']) {
                 }
             }
         }
+
+        if (isset($_POST['permissoes']) && !empty($_POST['permissoes'])) {
+            foreach ($_POST['permissoes'] as $key => $id_permissao) {
+                $o_permissao->insert_permissao_rota($id_permissao, $id_rota);
+            }
+        }
+
 
         $response['result'] = true;
         $response['message'] = "Rota cadastrada com sucesso";

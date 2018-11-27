@@ -1,8 +1,15 @@
 <?php
 $o_rota = new Rota();
 $o_parametro = new Parametro();
+$o_permissao = new Permissao();
+
+$arr_permissoes = $o_permissao->select_all_permissoes();
+
 $o_rota->set_id_rota($_GET['id_rota']);
 $rota = $o_rota->select_rota_from_id();
+
+$permissoes_rota = explode(",", $rota['permissoes']);
+
 if (!$rota) {
     $base_url = APP::get_base_url();
     header("Location: {$base_url}/dashboard", true, 301);
@@ -122,7 +129,7 @@ $json_parametros = json_encode($array_parametros);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row m--padding-bottom-20">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="password">URI*</label>
@@ -145,6 +152,25 @@ $json_parametros = json_encode($array_parametros);
                                             </select>
 
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m--padding-bottom-20">
+                                    <div class="col-md-6">
+                                        <label class="">Vincular permissões (Opcional):</label>
+                                        <select id="vinculo_permissoes" name="permissoes[]" class="form-control m-input selectpicker" multiple>
+                                            <?php if ($arr_permissoes) { ?>
+                                                <?php foreach ($arr_permissoes as $value) { ?>
+                                                    <?php
+                                                    if (in_array($value['id_permissao'], $permissoes_rota)) {
+                                                        ?>
+                                                        <option selected value='<?php echo $value['id_permissao']; ?>'><?php echo $value['descricao']; ?></option>
+                                                    <?php } else { ?>
+                                                        <option value='<?php echo $value['id_permissao']; ?>'><?php echo $value['descricao']; ?></option>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -234,9 +260,11 @@ $json_parametros = json_encode($array_parametros);
             var publico = $("#publico").val();
             var matriz = $("#select_matriz").val();
             var conteudo = $("#select_conteudo").val();
+                        var permissoes = $("#vinculo_permissoes").val()
+
             $.post(
                     'sistema/rotas-de-acesso/editar',
-                    {id_rota: id_rota, url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array},
+                    {id_rota: id_rota, url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array, permissoes: permissoes},
                     function (response) {
                         alert(response);
 //                        if (is_json(response)) {

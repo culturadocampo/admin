@@ -4,7 +4,7 @@
         padding: 8px!important;
     }
     .m-portlet{
-        /*box-shadow: none!important;*/
+        box-shadow: none!important;
     }
 </style>
 
@@ -50,7 +50,6 @@
             <div class="m-portlet__body">
                 <!--begin: Form Body -->
                 <div id="form_adicionar_rota" class="m-portlet__body">
-
                 </div>
             </div>
         </div>
@@ -61,13 +60,22 @@
 
 
 <script>
-    
+
     $(document).ready(function () {
         load_form();
+        mApp.block("#form_adicionar_rota", {
+            overlayColor: "#fff",
+            state: "primary",
+            type: "loader",
+            message: "Carregando..."
+
+        });
     });
 
     function load_form() {
-        $("#form_adicionar_rota").load("form-adicionar-rota");
+        $("#form_adicionar_rota").load("form-adicionar-rota", {}, function () {
+            mApp.unblock("#form_adicionar_rota");
+        });
     }
-    
+
 </script>

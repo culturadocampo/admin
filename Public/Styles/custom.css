@@ -4,7 +4,7 @@
 
 
 .m-page--fluid .m-page .m-page__container{
-    /*padding: 0 20px;*/
+    padding: 0 40px;
 }
 
 @keyframes animatedBackground {
@@ -26,18 +26,15 @@
 }
 
 .fast {
-    animation-duration: 0.3s;
-    animation-delay: 0.2s;
-    /*animation-iteration-count: infinite;*/
+    animation-duration: 0.001s;
+    animation-delay: .0s;
 }
 #topo{
     background: url("../Images/top-line.png") repeat-x scroll center top #fff;
-
-    /*animation: animatedBackground 1.5s alternate infinite;*/
+    /*animation: animatedBackground 2.5s alternate infinite;*/
 
 }
 body{
-    /*background: url("Public/Images/teste.png");*/
     background: #ecf5fc!important;
 }
 

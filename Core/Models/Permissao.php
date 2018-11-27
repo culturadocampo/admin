@@ -49,7 +49,24 @@ class Permissao {
         ";
         DATABASE::execute($query);
     }
-    
+
+    function insert_permissao_rota($id_permissao, $id_rota) {
+        $query = "
+            INSERT INTO permissoes_rotas
+            (fk_permissao, fk_rota)
+            VALUES('{$id_permissao}', '{$id_rota}')
+        ";
+        DATABASE::execute($query);
+    }
+
+    function delete_permissoes_rota($id_rota) {
+        $query = "
+            DELETE FROM permissoes_rotas
+            WHERE fk_rota = '{$id_rota}'
+        ";
+        DATABASE::execute($query);
+    }
+
     function get_descricao() {
         return $this->descricao;
     }
