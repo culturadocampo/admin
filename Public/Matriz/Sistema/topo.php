@@ -12,23 +12,13 @@
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
-
-                   
-
-                        <!-- BEGIN: Responsive Aside Left Menu Toggler -->
                         <a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
                             <span></span>
                         </a>
-
-                        <!-- END -->
-
                         <!-- begin::Responsive Header Menu Toggler-->
                         <a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
                             <span></span>
                         </a>
-
-                        <!-- end::Responsive Header Menu Toggler-->
-
                         <!-- begin::Topbar Toggler-->
                         <a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
                             <i class="flaticon-more"></i>
@@ -46,8 +36,7 @@
                 <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-topbar__nav-wrapper">
                         <ul class="m-topbar__nav m-nav m-nav--inline">
-                            <li class="
-                                m-nav__item m-nav__item--focus m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light" m-dropdown-toggle="click"
+                            <li class="m-nav__item m-nav__item--focus m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light" m-dropdown-toggle="click"
                                 m-dropdown-persistent="1" id="m_quicksearch" m-quicksearch-mode="dropdown">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-nav__link-icon"><span class="m-nav__link-icon-wrapper"><i class="flaticon-search-1"></i></span></span>

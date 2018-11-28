@@ -228,7 +228,6 @@ $json_parametros = json_encode($array_parametros);
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
                                                     </tbody>
                                                 </table>
                                             </div>

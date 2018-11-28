@@ -33,8 +33,8 @@ class Permissao {
                 permissoes.data,
                 GROUP_CONCAT(tipos_usuario.nome) AS usuarios
             FROM permissoes
-            INNER JOIN permissoes_tipos_usuario ON id_permissao = fk_permissao
-            INNER JOIN tipos_usuario ON fk_tipo_usuario = id_tipo_usuario
+            LEFT JOIN permissoes_tipos_usuario ON id_permissao = fk_permissao
+            LEFT JOIN tipos_usuario ON fk_tipo_usuario = id_tipo_usuario
             WHERE TRUE
             GROUP BY id_permissao
         ";
