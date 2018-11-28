@@ -40,3 +40,5 @@ rewriteRule ^sistema\/permissoes\/?$ ./index.php? [NC]
 rewriteRule ^insert-permissao\/?$ ./index.php? [NC]
 rewriteRule ^tabela-permissoes\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
+
+rewriteRule ^alterar-dados-produtor\/?$ ./index.php [NC]

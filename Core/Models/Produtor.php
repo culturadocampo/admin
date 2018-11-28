@@ -2,28 +2,16 @@
     
 class Produtor {
 
-    private $cpf;
     private $rg;
     private $sexo;
     private $cad_pro;
     private $data_nascimento;
-
-    public function estados() {
-        $query = "SELECT * FROM estados";
-        return DATABASE::fetch_all($query);
-    }
-
-    public function cidades() {
-        $query = "SELECT id_municipio, nome, uf FROM municipios";
-        return DATABASE::fetch_all($query);
-    }
 
     function insert_produtor_usuario($id_usuario) {
         $query = "
             INSERT INTO produtores
              (
                  fk_usuario, 
-                 cpf, 
                  rg, 
                  cadpro, 
                  data_nascimento,
@@ -32,7 +20,6 @@ class Produtor {
              VALUES 
              (
                 '{$id_usuario}',
-                '{$this->get_cpf()}',
                 '{$this->get_rg()}',
                 '{$this->get_cad_pro()}',
                 '{$this->get_data_nascimento()}',
@@ -41,9 +28,23 @@ class Produtor {
         ";
         DATABASE::execute($query);
     }
-
-    function get_cpf() {
-        return $this->cpf;
+    
+    function meus_dados(){
+        $id_usuario = SESSION::get_id_usuario();
+        
+        $query = "
+            SELECT
+                nome, email, cpf, rg, cadpro, data_nascimento, sexo, fk_cidade, cep, bairro, rua, numero, complemento, cel_principal, cel_secundario
+            FROM 
+                usuarios
+            INNER JOIN produtores ON produtores.fk_usuario = id_usuario 
+            INNER JOIN enderecos  ON enderecos.fk_usuario  = id_usuario
+            INNER JOIN telefones  ON telefones.fk_usuario  = id_usuario
+            WHERE TRUE 
+                AND id_usuario = '$id_usuario'
+                
+        ";
+        return DATABASE::fetch($query);
     }
 
     function get_rg() {
@@ -60,18 +61,6 @@ class Produtor {
 
     function get_data_nascimento() {
         return $this->data_nascimento;
-    }
-
-    function set_cpf($cpf) {
-        if (VALIDA::cpf($_POST['cpf']) != true) {
-            APP::return_response(false, "Por favor, preencha o campo CPF corretamente");
-        }
-        
-        if(VALIDA::existe_cpf($cpf)){
-            APP::return_response(false, "O CPF digitado já encontra-se cadastrado, por favor digite outro");
-        }    
-        
-        $this->cpf = STRINGS::limpar($cpf);
     }
 
     function set_rg($rg) {

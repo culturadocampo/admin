@@ -12,6 +12,16 @@ class Endereco {
     private $lat;
     private $long;
 
+    public function estados() {
+        $query = "SELECT * FROM estados";
+        return DATABASE::fetch_all($query);
+    }
+
+    public function cidades() {
+        $query = "SELECT id_municipio, nome, uf FROM municipios";
+        return DATABASE::fetch_all($query);
+    }
+    
     function insert_endereco($id_usuario) {
         $query = "
             INSERT INTO enderecos
@@ -22,9 +32,7 @@ class Endereco {
                 bairro, 
                 rua, 
                 numero,
-                complemento,
-                lng,
-                lat
+                complemento
             )
             VALUES (
                 '{$id_usuario}',
@@ -33,9 +41,7 @@ class Endereco {
                 '{$this->get_bairro()}',
                 '{$this->get_logradouro()}',
                 '{$this->get_numero()}',
-                '{$this->get_complemento()}',
-                '{$this->get_lat()}',
-                '{$this->get_long()}'
+                '{$this->get_complemento()}'
              )";
         DATABASE::execute($query);
     }

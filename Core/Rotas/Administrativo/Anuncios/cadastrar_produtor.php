@@ -13,8 +13,10 @@ if ($retorno) {
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <p id="demo">Clique no botão para receber sua localização em Latitude e Longitude:</p>
-                    <button onclick="getLocation()">Gerar</button>
+                    
+                   <!-- Desabilitado temp. <p id="demo">Clique no botão para receber sua localização em Latitude e Longitude:</p> 
+                    <button onclick="getLocation()">Gerar</button> -->
+                    
                     <form id="form_cadastro" class="form-horizontal">
                         <div class="form-body">
                             <div class="inputs">
@@ -27,13 +29,6 @@ if ($retorno) {
                                 <div class="form-group row">
                                     <div class="col-md-5">
                                         <input type="hidden" placeholder="" class="form-control" id="latitude" name="latitude" value="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">CPF</label>
-                                    <div class="col-md-5">
-                                        <input type="text" placeholder="" class="form-control" id="cpf" name="cpf">
                                     </div>
                                 </div>
 
@@ -96,8 +91,8 @@ if ($retorno) {
                                         <select class="form-control" name="estado" id="estado">
                                             <option value="" disabled="disabled" selected="selected">Selecione</option>
                                             <?php
-                                            $produtor = new Produtor;
-                                            $estados = $produtor->estados();
+                                            $endereco = new Endereco;
+                                            $estados = $endereco->estados();
                                             foreach ($estados as $estado) {
                                                 ?><option class="estado" value="<?php echo $estado['uf'] ?>"><?php echo $estado['uf'] ?></option> <?php
                                             }
@@ -219,7 +214,7 @@ if ($retorno) {
             });
         });
     });
-    
+    /* Desabilitado o botão de gerar Lat e Long
     let x = document.getElementById("demo");
     function getLocation() {
         if (navigator.geolocation) {
@@ -234,6 +229,6 @@ if ($retorno) {
 
         $("#latitude").val(position.coords.latitude);
         $("#longitude").val(position.coords.longitude);
-    }
+    }*/
 </script>
 

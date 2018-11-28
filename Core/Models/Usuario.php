@@ -2,6 +2,7 @@
 
 class Usuario {
 
+    private $cpf;
     private $nome;
     private $email;
     private $usuario;
@@ -82,9 +83,25 @@ class Usuario {
     function get_usuario() {
         return $this->usuario;
     }
+    
+     function get_cpf() {
+        return $this->cpf;
+     }
 
     function get_senha() {
         return $this->senha;
+    }
+    
+    function set_cpf($cpf) {
+        if (VALIDA::cpf($_POST['cpf']) != true) {
+            APP::return_response(false, "Por favor, preencha o campo CPF corretamente");
+        }
+        
+        if(VALIDA::existe_cpf($cpf)){
+            APP::return_response(false, "O CPF digitado já encontra-se cadastrado, por favor digite outro");
+        }    
+        
+        $this->cpf = STRINGS::limpar($cpf);
     }
 
     function set_nome($nome) {
