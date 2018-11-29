@@ -42,3 +42,5 @@ rewriteRule ^tabela-permissoes\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
 
 rewriteRule ^alterar-dados-produtor\/?$ ./index.php [NC]
+rewriteRule ^sistema\/permissoes\/(\d+)\/editar\/?$ ./index.php?id_permissao=$1 [NC]
+rewriteRule ^sistema\/permissao\/editar\/?$ ./index.php [NC]

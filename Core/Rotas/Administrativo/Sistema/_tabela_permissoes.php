@@ -17,7 +17,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
     <tbody>
         <?php if ($arr_permissoes) { ?>
             <?php foreach ($arr_permissoes as $value) { ?>
-                <tr>
+                <tr class="pointer permissao" href="sistema/permissoes/<?php echo $value['id_permissao']; ?>/editar">
                     <td><?php echo $value['id_permissao']; ?></td>
                     <td><?php echo $value['descricao']; ?></td>
                     <td><?php echo $value['usuarios']; ?></td>
@@ -34,5 +34,10 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
 <script>
     $(document).ready(function () {
         $("#permissoes_table").DataTable();
+
+        $("#permissoes_table").on("click", ".permissao", function () {
+            var href = $(this).attr("href");
+            window.location = href;
+        });
     });
 </script>

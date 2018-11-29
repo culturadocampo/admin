@@ -13,7 +13,9 @@
  */
 class Permissao {
 
+    private $id_permissao;
     private $descricao;
+    private $ativo;
 
     function insert_permissao() {
         $query = "
@@ -67,6 +69,74 @@ class Permissao {
         DATABASE::execute($query);
     }
 
+    function delete_rotas_permissao() {
+        $query = "
+            DELETE FROM permissoes_rotas
+            WHERE fk_permissao = '{$this->get_id_permissao()}'
+        ";
+        DATABASE::execute($query);
+    }
+    
+    function delete_tipos_usuario_permissao(){
+        $query = "
+            DELETE FROM permissoes_tipos_usuario
+            WHERE fk_permissao = '{$this->get_id_permissao()}'
+        ";
+        DATABASE::execute($query);
+    }
+
+    function select_permissao() {
+        $query = "
+            SELECT 
+                descricao,
+                ativo
+            FROM permissoes
+            WHERE id_permissao = '{$this->get_id_permissao()}'
+        ";
+        return DATABASE::fetch($query);
+    }
+
+    function select_tipos_usuario_permissao() {
+        $query = "
+            SELECT 
+                group_concat(fk_tipo_usuario) AS ids
+            FROM permissoes_tipos_usuario
+            WHERE fk_permissao = '{$this->get_id_permissao()}'
+        ";
+        return DATABASE::fetch($query);
+    }
+
+    function select_rotas_permissao() {
+        $query = "
+            SELECT 
+                group_concat(id_rota) AS ids
+            FROM rotas
+            INNER JOIN permissoes_rotas ON fk_rota = id_rota
+            WHERE fk_permissao = '{$this->get_id_permissao()}'
+        ";
+        return DATABASE::fetch($query);
+    }
+
+    function update_permissao() {
+        $query = "
+            UPDATE permissoes
+            SET 
+                descricao           = '{$this->get_descricao()}',
+                ativo               = '{$this->is_ativo()}'
+            WHERE TRUE
+                AND id_permissao    = '{$this->get_id_permissao()}'
+        ";
+        return DATABASE::execute($query);
+    }
+
+    function get_id_permissao() {
+        return $this->id_permissao;
+    }
+
+    function set_id_permissao($id_permissao) {
+        $this->id_permissao = STRINGS::limpar($id_permissao);
+    }
+
     function get_descricao() {
         return $this->descricao;
     }
@@ -76,6 +146,18 @@ class Permissao {
             $this->descricao = STRINGS::limpar($descricao);
         } else {
             APP::return_response(false, "Informe a descrição da permissão");
+        }
+    }
+
+    function is_ativo() {
+        return $this->ativo;
+    }
+
+    function set_ativo($ativo) {
+        if ($ativo) {
+            $this->ativo = STRINGS::limpar($ativo);
+        } else {
+            APP::return_response(false, "Informe o status da permissão");
         }
     }
 

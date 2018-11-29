@@ -81,4 +81,13 @@ class STRINGS {
         return $string;
     }
 
+    static function readable_regex($regex) {
+        $regex = str_replace("^", "", $regex);
+        $regex = str_replace("\/", "/", $regex);
+        $regex = str_replace("?$", "", $regex);
+        $regex = str_replace("(\d+)", "{int}", $regex);
+        $regex = str_replace("([a-zA-Z\-]+)", "{string}", $regex);
+        return $regex;
+    }
+
 }

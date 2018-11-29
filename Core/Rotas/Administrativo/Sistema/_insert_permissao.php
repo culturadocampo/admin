@@ -2,7 +2,6 @@
 
 $o_permissao = new Permissao();
 
-//ARRAYS::pre_print($_POST);
 
 $o_permissao->set_descricao($_POST['descricao']);
 
