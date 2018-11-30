@@ -1,208 +1,195 @@
-<?php
-$o_produto = new Produto();
-
-$array_produtos = $o_produto->select_produtos_com_imagens();
-?>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <style>
-    .draggable {
-        z-index: 5;
-        margin: 1rem;
+    .m-widget28 .m-widget28__pic{
+        background: #fefefe;
     }
 
-    .draggable img {
-        width:128px; 
-        height: auto;
+    .m-widget28 table {
+        margin-top: 16px;
+    }
+    .m-widget28 td div {
+        height: 100px;
+        line-height: 100px;
+        border: 1px dashed #a0a0a0;
+    }
+    .add_icon{
+        opacity: 0.75;
     }
 
-    .dropped {
-        text-align: center;
-        /*z-index: 999;*/
+    .m-widget28 input {
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid #ebedf2;
+        padding: 1rem 0;
+        margin-top: 0.1rem;
     }
 
-    .dropped img {
-        width:250px;
-        height: auto;
-
-    }
-
-    ul {
-        list-style-type: none;
-    }
-    .droppable{
-        height: 250px;
-        vertical-align: central;
-    }
-
-    .hint{
-        line-height: 250px;
-        text-align: center;
-        color: rgba(255,255,255,0.6);
-        font-size: 32px;
-        font-weight: bold;
-    }
-
-    #cardboardbox .space {
-        background: #cd9f61;
-        border-style: dashed;
-        border-width: 0.05rem;
-        border-color: #ad8762;
-    }
 
 </style>
-<div id="m_aside_left" class="m-grid__item m-aside-left " style="overflow: auto; height: 100px;">	
-
-    <?php if ($array_produtos) { ?>
-
-        <?php foreach ($array_produtos as $value) { ?>
-            <div class="draggable text-center">
-                <img class="img-fluid " id="<?php echo $value['ncm_codigo'] ?>" src="Public/Images/Produtos/<?php echo $value['imagem'] ?>" >
-            </div>
-        <?php } ?>
-
-    <?php } ?>
-
-</div>
-
-<!--adicionar esta div em todas as rotas-->
 <div class="m-grid__item m-grid__item--fluid m-wrapper" > 
-    <div class="m-subheader ">
-        <div class="d-flex align-items-center">
-            <div class="mr-auto">
-                <h3 class="m-subheader__title m-subheader__title--separator">Criar cesta</h3>
-                <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-                    <li class="m-nav__item m-nav__item--home">
-                        <a class="m-nav__link m-nav__link--icon">
-                            <i class="m-nav__link-icon flaticon-add"></i>
-                        </a>
-                    </li>
-                    <li class="m-nav__item">
-                        <a class="m-nav__link">
-                            <span class="m-nav__link-text">Produtos</span>
-                        </a>
-                    </li>
+
+    <div class="row">
+        <div class="col-md-4">
+            <!--begin:: Widgets/Blog-->
+            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height   m-portlet--rounded-force">
+                <div class="m-portlet__head m-portlet__head--fit">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">				
+                            <h3 class="m-portlet__head-text m--font-light">
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="m-portlet__body">
+                    <div class="m-widget28">
+                        <div class="m-widget28__container">	
+                            <!-- begin::Nav pills -->			   	
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="text-center">
+                                        <div>
+                                            <img class="add_icon" src="Public/Images/add.png" width="48px" height="48px">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img class="add_icon" src="Public/Images/add.png" width="48px" height="48px">
+                                        </div>                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img class="add_icon" src="Public/Images/add.png" width="48px" height="48px">
+                                        </div>                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <div>
+                                            <img class="add_icon" src="Public/Images/add.png" width="48px" height="48px">
+                                        </div>                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img class="add_icon" src="Public/Images/add.png" width="48px" height="48px">
+                                        </div>                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img class="add_icon" src="Public/Images/add.png" width="48px" height="48px">
+                                        </div>                                    </td>
+                                </tr>
+                            </table>
 
 
-                </ul>
+                            <!-- end::Nav pills --> 
+
+                            <!-- begin::Tab Content -->
+                            <div class="m-widget28__tab tab-content">
+                                <div id="menu11" class="m-widget28__tab-container tab-pane active">
+                                    <div class="m-widget28__tab-items">
+                                        <div class="m-widget28__tab-item">
+                                            <span>Company Name</span>
+                                            <input class="form-control m-input" type="text" placeholder="Digite aqui" name="username" autocomplete="off">
+                                        </div>
+                                        <div class="m-widget28__tab-item">
+                                            <span>Valor</span>
+                                            <input class="form-control m-input" type="text" placeholder="Digite aqui" name="username" autocomplete="off">
+                                        </div>
+                                       
+                                    </div>					      	 		      	
+                                </div>
+
+
+                            </div>
+                            <!-- end::Tab Content --> 	
+                        </div>				 	 
+                    </div>
+                </div>
             </div>
+            <!--end:: Widgets/Blog-->
+
 
         </div>
-    </div>
-    <div class="row m--margin-top-30" id="cardboardbox">
-        <div class="col-md-8 offset--2" style="background: #fff;">
-            <div class="row">
-                <div class="col-md-4 space" style="">
-                    <div class="droppable m--margin-15">
-                        <div class="hint">
-                            1
-
+        <div class="col-md-4">
+            <!--begin:: Widgets/Blog-->
+            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height   m-portlet--rounded-force">
+                <div class="m-portlet__head m-portlet__head--fit">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">				
+                            <h3 class="m-portlet__head-text m--font-light">
+                            </h3>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4 space" style="">
-                    <div class=" droppable m--margin-15">
-                        <div class="hint">
-                            2
-                        </div>
-                    </div>
                 </div>
-                <div class="col-md-4 space" style="">
-                    <div class=" droppable m--margin-15">
-                        <div class="hint">
-                            3
-                        </div>
+                <div class="m-portlet__body">
+                    <div class="m-widget28">
+                        <div class="m-widget28__container">	
+                            <!-- begin::Nav pills -->			   	
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="text-center">
+                                        <div>
+                                            <img src="Public/Images/Produtos/repolhoroxo.png" width="64px" height="64px">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img src="Public/Images/Produtos/tomate.png" width="64px" height="64px">
+                                        </div>                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img src="Public/Images/Produtos/maca.png" width="64px" height="64px">
+                                        </div>                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <div>
+                                            <img src="Public/Images/Produtos/couveflor.png" width="64px" height="64px">
+                                        </div>                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img src="Public/Images/Produtos/kiwi.png" width="64px" height="64px">
+                                        </div>                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <img src="Public/Images/Produtos/morangos.png" width="64px" height="64px">
+                                        </div>                                    
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <!-- end::Nav pills --> 
+
+                            <!-- begin::Tab Content -->
+                            <div class="m-widget28__tab tab-content">
+                                <div id="menu11" class="m-widget28__tab-container tab-pane active">
+                                    <div class="m-widget28__tab-items">
+                                        <div class="m-widget28__tab-item">
+                                            <span>Descrição</span>
+                                            <span>Cesta saudável</span>
+                                        </div>
+                                        <div class="m-widget28__tab-item">
+                                            <span>Valor</span>
+                                            <span>R$ 32.00</span>
+                                        </div>
+                                        <div class="m-widget28__tab-item">
+                                            <span>Anunciado</span>
+                                            <span>Sim</span>
+                                        </div>
+                                        <div class="m-widget28__tab-item">
+                                            <span>Vendidos</span>
+                                            <span>17</span>
+                                        </div>
+                                    </div>					      	 		      	
+                                </div>
+
+                            </div>
+                            <!-- end::Tab Content --> 	
+                        </div>				 	 
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 space" style="">
-                    <div class=" droppable m--margin-15">
-                        <div class="hint">
-                            4
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 space" style="">
-                    <div class=" droppable m--margin-15">
-                        <div class="hint">
-                            5
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 space" style="">
-                    <div class=" droppable m--margin-15">
-                        <div class="hint">
-                            6
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--end:: Widgets/Blog-->
+
+
         </div>
-    </div>
-    <div class="m--margin-top-50">
-        Quantidade de itens: 0
-        <br>
-        Preço sugerido: R$ 0,00
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        init();
-        var main_height = $(".m-wrapper").height();
-        $("#m_aside_left").css("height", main_height+60);
-
-
-        if ($(".draggable").length > 0) {
-            $(".droppable").droppable({
-                drop: function (event, ui) {
-                    var item = ui.draggable.clone();
-                    item.removeClass('draggable');
-                    item.addClass('dropped animated bounceIn');
-                    $(this).addClass('').html(item);
-                    init();
-                }
-            });
-        }
-
-        $(".draggable").dblclick(function () {
-            var item = $(this).clone();
-
-
-            $(".droppable").each(function (key, html) {
-
-                var item_count = $(html).children(".dropped").length;
-                if (item_count === 0) {
-                    item.addClass('dropped animated bounceIn');
-                    $(html).html(item);
-                    return false;
-                }
-            });
-
-        });
-
-
-
-        function init() {
-            if ($(".draggable").length > 0) {
-                $(".draggable").draggable({
-                    // snap: ".droppable",
-                    // snapMode: "inner",
-                    helper: "clone", // create "copy" with original properties, but not a true clone
-                    cursor: "move",
-
-                    revert: function (event, ui) {
-                        $(this).data("ui-draggable").originalPosition = {
-                            top: 0,
-                            left: 0
-                        };
-                        return !event;
-                    }
-                });
-            }
-
-        }
-
-    });
-</script>
