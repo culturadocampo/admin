@@ -29,6 +29,8 @@
         <script src="Metronic/assets/demo/demo10/base/scripts.bundle.js" type="text/javascript"></script>
         <script src="Metronic/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
         <script src="Public/Scripts/helper.js" type="text/javascript"></script>
+        <script src="Public/Scripts/janimate.min.js" type="text/javascript"></script>
+
         <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/amcharts/3.21.14/amcharts.js" rel="stylesheet" type="text/css" />

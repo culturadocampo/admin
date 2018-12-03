@@ -18,3 +18,10 @@ function get_pathname() {
         return "/";
     }
 }
+
+        function getPos(element) {
+            var rect = element.getBoundingClientRect();
+            var x = rect.left;
+            var y = rect.top;
+            return {x: x, y: y};
+        }

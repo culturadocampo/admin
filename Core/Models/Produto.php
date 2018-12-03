@@ -13,6 +13,7 @@
  */
 class Produto {
 
+    private $id_produto;
     private $ncm_codigo;
     private $ncm_descricao;
     private $is_organico;
@@ -37,17 +38,14 @@ class Produto {
         $query = "
             SELECT
                 id_produto,
-                nome,
+                ncm_descricao as nome,
                 ncm_codigo,
                 organico,
                 hidroponico,
-                categoria
+                '' AS categoria
             FROM produtos
-            INNER JOIN categorias_produtos ON id_categoria = fk_categoria
             WHERE TRUE
                 AND produtos.ativo = 1
-                AND nome IS NOT NULL
-            LIMIT 50
         ";
         return DATABASE::fetch_all($query);
     }
@@ -56,17 +54,28 @@ class Produto {
         $query = "
             SELECT
                 id_produto,
-                nome,
+                ncm_descricao AS nome,
                 ncm_codigo,
                 organico,
-                hidroponico,
-                categoria
+                hidroponico
+               # categoria
             FROM produtos
-            INNER JOIN categorias_produtos ON id_categoria = fk_categoria
+            #INNER JOIN categorias_produtos ON id_categoria = fk_categoria
             WHERE TRUE
                 AND produtos.ativo = 1
-                AND nome IS NOT NULL
+              #  AND nome IS NOT NULL
                 AND ncm_codigo = '{$this->get_ncm_codigo()}'
+        ";
+        return DATABASE::fetch($query);
+    }
+
+    function select_imagem_produto() {
+        $query = "
+            SELECT
+                imagem
+            FROM produtos_imagens
+            WHERE TRUE 
+                AND fk_produto = '{$this->get_id_produto()}'
         ";
         return DATABASE::fetch($query);
     }
@@ -76,13 +85,38 @@ class Produto {
             SELECT
                 ncm_codigo,
                 ncm_descricao,
-                url AS imagem
+                imagem
             FROM produtos
             INNER JOIN produtos_imagens ON fk_produto = id_produto 
             WHERE TRUE 
                 AND produtos.ativo = 1
         ";
         return DATABASE::fetch_all($query);
+    }
+
+    function delete_all_imagens_produto() {
+        $query = "
+            DELETE FROM produtos_imagens
+            WHERE fk_produto = '{$this->id_produto}'
+        ";
+        DATABASE::execute($query);
+    }
+
+    function insert_imagem_produto($imagem) {
+        $query = "
+            INSERT INTO produtos_imagens
+            (fk_produto, imagem)
+            VALUES ('{$this->get_id_produto()}', '{$imagem}')
+        ";
+        DATABASE::execute($query);
+    }
+
+    function get_id_produto() {
+        return $this->id_produto;
+    }
+
+    function set_id_produto($id_produto) {
+        $this->id_produto = $id_produto;
     }
 
     function get_ncm_codigo() {

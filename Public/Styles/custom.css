@@ -26,16 +26,19 @@
 }
 
 .fast {
-    animation-duration: 0.001s;
-    animation-delay: .0s;
+    animation-duration: 0.27s!important;
+    /*animation-delay: 0.2s!important;*/
 }
 #topo{
-    background: url("../Images/top-line.png") repeat-x scroll center top #fff;
-    /*animation: animatedBackground 2.5s alternate infinite;*/
-
+    background: url("../Images/top-line.png") repeat-x scroll center top white;
 }
+
+.animate_bar{
+    animation: animatedBackground 1.0s alternate infinite;
+}
+
 body{
-    background: #eeeeee!important;
+    background: #fefefe!important;
 }
 
 #entrega_mapbox {

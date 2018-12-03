@@ -59,7 +59,8 @@ if ($array_produtos) {
 <script>
     $(document).ready(function () {
         $("#produtos_table").DataTable({
-            paging: true
+            paging: true,
+            pageLength: 30
         });
         $("#produtos_table tbody").on("click", "tr", function () {
             window.location = $(this).attr("href");
