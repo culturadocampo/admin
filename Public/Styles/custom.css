@@ -4,7 +4,7 @@
 
 
 .m-page--fluid .m-page .m-page__container{
-    padding: 0 40px;
+    /*padding: 0 40px;*/
 }
 
 @keyframes animatedBackground {
@@ -16,11 +16,11 @@
     padding: 0 3px 0 0;
 }
 .m-header-menu .m-menu__nav > .m-menu__item.m-menu__item--tabs > .m-menu__link {
-    background: rgba(0,0,0,0.03);
+    /*background: rgba(0,0,0,0.03);*/
 }
 
 #my-page{
-    background: url("../Images/footer-line.png") repeat-x scroll center bottom transparent;
+    background: url("../Images/Outros/footer-line-alt2.png") repeat-x scroll center bottom transparent;
     padding-bottom: 20px;
 
 }
@@ -30,7 +30,7 @@
     /*animation-delay: 0.2s!important;*/
 }
 #topo{
-    background: url("../Images/top-line.png") repeat-x scroll center top white;
+    /*background: url("../Images/Outros/top-line-alt2.png") repeat-x scroll center top white;*/
 }
 
 .animate_bar{
@@ -38,7 +38,7 @@
 }
 
 body{
-    background: #fefefe!important;
+    /*background: #fefefe!important;*/
 }
 
 #entrega_mapbox {

@@ -83,25 +83,6 @@
 
     }
 
-
-
-    .bar {
-        /*        float: left;
-                margin: 10px;
-                text-align: center;
-                color: #FFF;
-                font-weight: bold;
-                text-shadow: 0px 1px 2px rgba(0,0,0,0.25);
-                line-height: 5em;
-                border: 2px dashed transparent;
-                box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.15);
-                border-radius: 4px;
-                -webkit-border-radius: 4px;
-                transition: all .3s ease-in-out;
-                -webkit-transition: all .3s ease-in-out;
-                -moz-transition: all .3s ease-in-out;
-                -o-transition: all .3s ease-in-out;*/
-    }
 </style> 
 
 
@@ -145,30 +126,30 @@
                                     <tr>
                                         <td class="text-center">
                                             <div class="add">
-                                                <img src="Public/Images/add.png" width="48px" height="48px">
+                                                <img src="Public/Images/Outros/add.png" width="48px" height="48px">
                                             </div>
                                         </td>
                                         <td class="text-center">
                                             <div class="add">
-                                                <img src="Public/Images/add.png" width="48px" height="48px">
+                                                <img src="Public/Images/Outros/add.png" width="48px" height="48px">
                                             </div>                                    </td>
                                         <td class="text-center">
                                             <div class="add">
-                                                <img src="Public/Images/add.png" width="48px" height="48px">
+                                                <img src="Public/Images/Outros/add.png" width="48px" height="48px">
                                             </div>                                    </td>
                                     </tr>
                                     <tr>
                                         <td class="text-center">
                                             <div class="add">
-                                                <img src="Public/Images/add.png" width="48px" height="48px">
+                                                <img src="Public/Images/Outros/add.png" width="48px" height="48px">
                                             </div>                                    </td>
                                         <td class="text-center">
                                             <div class="add">
-                                                <img src="Public/Images/add.png" width="48px" height="48px">
+                                                <img src="Public/Images/Outros/add.png" width="48px" height="48px">
                                             </div>                                    </td>
                                         <td class="text-center">
                                             <div class="add">
-                                                <img src="Public/Images/add.png" width="48px" height="48px">
+                                                <img src="Public/Images/Outros/add.png" width="48px" height="48px">
                                             </div>                                    </td>
                                     </tr>
                                 </table>

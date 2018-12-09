@@ -8,7 +8,7 @@ unset($_SESSION['login_request']);
 <div class="m-login__container">
     <div class="m-login__logo">
         <a href="#">
-            <img src="Public/Images/c.jpg" style="width: 128px; height: auto;">
+            <img src="Public/Images/Logo/c.jpg" style="width: 96px; height: auto;">
         </a>
     </div>
     <div class="m-login__signin">

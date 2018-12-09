@@ -15,7 +15,7 @@
                             
                             <div class="m-card-profile__pic">
                                 <div class="m-card-profile__pic-wrapper">	
-                                    <img src="../../../../Public/Images/noimage.jpg" alt=""/>
+                                    <img src="../../../../Public/Images/Outros/noimage.jpg" alt=""/>
                                 </div>
                             </div>
                             

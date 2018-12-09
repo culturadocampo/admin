@@ -4,7 +4,7 @@ $o_produto->set_ncm_codigo($_GET['ncm']);
 $produto = $o_produto->select_um_produto();
 $o_produto->set_id_produto($produto['id_produto']);
 $imagem = $o_produto->select_imagem_produto();
-$imagem = $imagem ? "Public/Images/Produtos/{$imagem['imagem']}" : "Public/Images/noimage.jpg";
+$imagem = $imagem ? "Public/Images/Produtos/{$imagem['imagem']}" : "Public/Images/Outros/noimage.jpg";
 
 //$produto_uri = STRINGS::string_to_uri($produto['nome']);
 //$base_url = APP::get_base_url();
