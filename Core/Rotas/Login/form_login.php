@@ -5,10 +5,10 @@
 $request_anterior = isset($_SESSION['login_request']) ? $_SESSION['login_request'] : "./"; 
 unset($_SESSION['login_request']);
 ?>
-<div class="m-login__container">
+<div class="m-login__container animated fadeIn">
     <div class="m-login__logo">
         <a href="#">
-            <img src="Public/Images/Logo/c.jpg" style="width: 96px; height: auto;">
+            <img src="Public/Images/Logo/vertical_logo.png" style="width:400px; height: auto;">
         </a>
     </div>
     <div class="m-login__signin">
@@ -20,10 +20,10 @@ unset($_SESSION['login_request']);
         </div>
         <form id="form_login" class="m-login__form m-form" action="">
             <div class="form-group m-form__group">
-                <input class="form-control m-input" type="text" placeholder="Email" name="usuario" autocomplete="off">
+                <input class="form-control m-input text-center font-weight-bold text-dark" type="text" placeholder="Usuário ou e-mail" name="usuario">
             </div>
             <div class="form-group m-form__group">
-                <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="senha">
+                <input class="form-control m-input text-center font-weight-bold text-dark" type="password" placeholder="Senha de acesso" name="senha">
             </div>
             <div class="row m-login__form-sub m--margin-top-20">
                 <div class="col m--align-left m-login__form-left">
@@ -44,11 +44,11 @@ unset($_SESSION['login_request']);
                 </div>   
             <?php } ?>
             <div class="m-login__form-action">
-                <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-accent m-btn--gradient-to-success btn-block">Acessar plataforma</button>     
-                <button type="button" id="google-login-button" class="btn btn-danger m-btn btn-block  m-btn  m-btn m-btn--icon">
+                <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-success btn-block">Acessar plataforma</button>     
+                <button type="button" id="google-login-button" class="btn btn-default m-btn btn-block  m-btn  m-btn m-btn--icon">
                     <span>
-                        <i class="fa fa-home"></i>
-                        <span>Entrar com Google</span>
+                        <img width="20px" height="20px" src="Public/Images/Outros/icon-google.png" style="margin-right: 16px">
+                        <span>Acessar com Google</span>
                     </span>
                 </button>
             </div>
@@ -56,22 +56,6 @@ unset($_SESSION['login_request']);
 
     </div>
 
-    <div class="m-login__forget-password">
-        <div class="m-login__head">
-            <h3 class="m-login__title">Forgotten Password ?</h3>
-            <div class="m-login__desc">Enter your email to reset your password:</div>
-        </div>
-        <form class="m-login__form m-form" action="">
-            <div class="form-group m-form__group">
-                <input class="form-control m-input" type="text" placeholder="Email" name="email" id="m_email" autocomplete="off">
-            </div>
-            <div class="m-login__form-action">
-                <button id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air  m-login__btn m-login__btn--primaryr">Request</button>&nbsp;&nbsp;
-                <button id="m_login_forget_password_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom m-login__btn">Cancel</button>
-            </div>
-        </form>
-
-    </div>
 
 
 

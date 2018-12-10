@@ -7,8 +7,8 @@
                 <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a href="./" class="m-brand__logo-wrapper">
-                            <img alt="" src="Public/Images/Logo/cdc_horizontal.png" style="width: 225px; height: auto;" class="m-brand__logo-desktop" />
-                            <img alt="" src="Public/Images/Logo/cdc_horizontal.png" style="width: 200px; height: auto;" class="m-brand__logo-mobile" />
+                            <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 48px;" class="m-brand__logo-desktop" />
+                            <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 48px;" class="m-brand__logo-mobile" />
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
