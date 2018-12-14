@@ -1,10 +1,17 @@
-<?php 
+<?php
 /**
  * Serve para redirecionar o pós-login para a página requisitada
  */
-$request_anterior = isset($_SESSION['login_request']) ? $_SESSION['login_request'] : "./"; 
+$request_anterior = isset($_SESSION['login_request']) ? $_SESSION['login_request'] : "./";
 unset($_SESSION['login_request']);
 ?>
+
+<style>
+    div.g-recaptcha {
+        margin: 0 auto!important;
+        width: 304px!important;
+    }
+</style>
 <div class="m-login__container animated fadeIn">
     <div class="m-login__logo">
         <a href="#">
@@ -12,9 +19,9 @@ unset($_SESSION['login_request']);
         </a>
     </div>
     <div class="m-login__signin">
-<!--        <div class="m-login__head">
-            <h3 class="m-login__title"><small>CULTURA DO CAMPO</small></h3>
-        </div>-->
+        <!--        <div class="m-login__head">
+                    <h3 class="m-login__title"><small>CULTURA DO CAMPO</small></h3>
+                </div>-->
         <div class="alert alert-danger m--margin-top-30 bounceIn " id="alert_login_invalido" role="alert" style="display: none">
 
         </div>
@@ -37,11 +44,7 @@ unset($_SESSION['login_request']);
                 </div>
             </div>
             <?php if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
-                <div class="text-center">
-                    <span>
-                        <div class="g-recaptcha col-md-12 text-center" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
-                    </span>
-                </div>   
+                <div class="g-recaptcha col-md-12 text-center" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
             <?php } ?>
             <div class="m-login__form-action">
                 <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-success btn-block">Acessar plataforma</button>     

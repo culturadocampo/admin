@@ -50,12 +50,12 @@ class APP {
     static function rota_default() {
         if (isset($_SESSION['tipo_usuario'])) {
             if ($_SESSION['tipo_usuario'] == "1") {
-                return 'visao-geral';
+                return 'mapa-de-produtores';
             } else {
-                return 'dashboard';
+                return 'mapa-de-produtores';
             }
         } else {
-            return 'dashboard';
+            return 'mapa-de-produtores';
         }
     }
 
