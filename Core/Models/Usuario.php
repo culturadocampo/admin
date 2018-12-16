@@ -12,13 +12,16 @@ class Usuario {
         $query = "
             SELECT
                 id_usuario,
-                nome,
+                usuarios.nome,
                 email,
-                fk_tipo_usuario
+                tipos_usuario.nome AS tipo_usuario,
+                id_tipo_usuario,
+                email
             FROM usuarios
+            INNER JOIN tipos_usuario ON id_tipo_usuario = fk_tipo_usuario
             WHERE TRUE
-                AND ativo = 1
-                AND usuario = '{$this->get_usuario()}'
+                AND usuarios.ativo = 1
+                AND (usuario = '{$this->get_usuario()}' OR email = '{$this->get_usuario()}')
                 AND senha = '{$this->get_senha()}'
         ";
         return DATABASE::fetch($query);
@@ -66,6 +69,7 @@ class Usuario {
                 email,
                 fk_tipo_usuario
             FROM usuarios 
+
             WHERE TRUE 
                 AND usuario = '{$usuario}'
         ";
@@ -83,24 +87,24 @@ class Usuario {
     function get_usuario() {
         return $this->usuario;
     }
-    
-     function get_cpf() {
+
+    function get_cpf() {
         return $this->cpf;
-     }
+    }
 
     function get_senha() {
         return $this->senha;
     }
-    
+
     function set_cpf($cpf) {
         if (VALIDA::cpf($_POST['cpf']) != true) {
             APP::return_response(false, "Por favor, preencha o campo CPF corretamente");
         }
-        
-        if(VALIDA::existe_cpf($cpf)){
+
+        if (VALIDA::existe_cpf($cpf)) {
             APP::return_response(false, "O CPF digitado já encontra-se cadastrado, por favor digite outro");
-        }    
-        
+        }
+
         $this->cpf = STRINGS::limpar($cpf);
     }
 

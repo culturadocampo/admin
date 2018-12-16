@@ -7,7 +7,7 @@ if ($retorno) {
 ?>
 
 <!-- CONTENT WRAPPER -->
-<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
+<div class="" > 
 
     <section class="page-content animated fadeIn ">
         <div class="col-md-12">

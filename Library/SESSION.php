@@ -10,4 +10,30 @@ class SESSION {
         }
     }
 
+    static function get_nome_usuario() {
+        if (isset($_SESSION['nome_usuario'])) {
+            return $_SESSION['nome_usuario'];
+        } else {
+            return false;
+        }
+    }
+
+    static function get_id_tipo_usuario() {
+        if (isset($_SESSION['id_tipo_usuario'])) {
+            return $_SESSION['id_tipo_usuario'];
+        } else {
+            return false;
+        }
+    }
+
+    static function get_tipo_usuario() {
+        if (isset($_SESSION['tipo_usuario'])) {
+            return $_SESSION['tipo_usuario'];
+        } else {
+            return false;
+        }
+    }
+
+
+
 }

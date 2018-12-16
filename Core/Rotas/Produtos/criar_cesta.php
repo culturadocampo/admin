@@ -91,7 +91,7 @@
 
 </div>
 
-<div  class="m-grid__item m-grid__item--fluid m-wrapper" id="cesta"> 
+<div  class="" id="cesta"> 
 
     <div class="row">
 

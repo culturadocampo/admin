@@ -11,7 +11,7 @@ if ($array_produtos) {
     }
 }
 ?>
-<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
+<div class="" > 
 
 <div class="m-portlet__body">
     <table class="table table-striped- table-bordered table-hover table-sm" id="produtos_table">

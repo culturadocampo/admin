@@ -28,20 +28,12 @@ class APP {
      * Caso false, redireciona para o login
      */
     static function is_logged() {
-        if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome'])) {
-            if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome'])) {
+        if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome_usuario'])) {
+            if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome_usuario'])) {
                 return true;
             } else {
                 return false;
             }
-        } else {
-            return false;
-        }
-    }
-
-    static function get_id_tipo_usuario() {
-        if (isset($_SESSION['tipo_usuario'])) {
-            return $_SESSION['tipo_usuario'];
         } else {
             return false;
         }
@@ -62,7 +54,7 @@ class APP {
     static function return_response($result, $message) {
         $response['result'] = $result;
         $response['message'] = $message;
-        ARRAYS::utf8_encode_deep($response);
+//        ARRAYS::utf8_encode_deep($response);
         echo json_encode($response);
         exit;
     }

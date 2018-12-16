@@ -11,7 +11,7 @@
         <title>Cultura do Campo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
-        <link rel="shortcut icon" href="Public/Images/logo_letra_c.png" />
+        <link rel="shortcut icon" href="Public/Images/Logo/logo_modern2.png" />
         <link href="Public/Vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
         <link href="Public/Styles/style.bundle.css" rel="stylesheet" type="text/css" />
         <link href="Public/Styles/datatables.bundle.css" rel="stylesheet" type="text/css" />
@@ -45,7 +45,9 @@
                 </div>
             </header>
             <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
-                <?php include $conteudo; ?>
+                <div class="m-grid__item m-grid__item--fluid m-wrapper">
+                    <?php include $conteudo; ?>
+                </div>
             </div>
             <?php include 'Public/Matriz/Sistema/footer.php'; ?>
         </div>

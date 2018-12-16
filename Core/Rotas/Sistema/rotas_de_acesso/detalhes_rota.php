@@ -55,7 +55,7 @@ $json_parametros = json_encode($array_parametros);
         box-shadow: none!important;
     }
 </style>
-<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
+<div class="" > 
     <div class="m-subheader ">
         <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
             <div class="m-portlet__head">

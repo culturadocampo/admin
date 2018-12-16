@@ -1,4 +1,4 @@
-<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
+<div class="" > 
 
 <div class="m-portlet">
     <div class="m-portlet__body  m-portlet__body--no-padding">

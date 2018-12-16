@@ -2,7 +2,7 @@
     $o_produtor = New Produtor;
     $dados = $o_produtor->meus_dados();
 ?>
-<div class="m-grid__item m-grid__item--fluid m-wrapper">
+<div class="">
     <div class="m-content">
         <div class="row">
             <div class="col-xl-3 col-lg-4">

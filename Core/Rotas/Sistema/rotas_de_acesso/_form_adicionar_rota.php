@@ -161,9 +161,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
                     </div>
                 </div>
             </div>
-            <div id="alerta_interface" class="m-alert m-alert--outline m-alert--square alert alert-info" style="display: none" role="alert">
-                <strong>Base da interface (CTRL+C / CTRL + V):</strong> <br>&lt;div class="m-grid__item m-grid__item--fluid m-wrapper"&gt;<br>&lt;/div&gt;
-            </div>
+       
         </div>
     </div>
 </form>
@@ -218,10 +216,8 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
 
         $("#select_matriz").on("change", function () {
             if (this.value === "0") {
-                $("#alerta_interface").hide();
                 $("#alerta_parametros").show();
             } else {
-                $("#alerta_interface").show();
                 $("#alerta_parametros").hide();
             }
         });

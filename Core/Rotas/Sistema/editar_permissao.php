@@ -13,7 +13,7 @@ $arr_rotas_permissao = explode(",", $arr_rotas_permissao['ids']);
 $arr_rotas = $o_rota->select_all_rotas();
 ?>
 
-<div class="m-grid__item m-grid__item--fluid m-wrapper" > 
+<div class="" > 
     <form id="form_editar_permissao" class="m-form m-form--fit m-form--label-align-right animated fadeIn">
 
         <div class="m-subheader ">
