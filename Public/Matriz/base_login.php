@@ -39,7 +39,7 @@
         </div>
     </body>
 
-    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload = function () {};HandleGoogleApiLibrary()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+    <!--<script async defer src="https://apis.google.com/js/api.js" onload="this.onload = function () {};HandleGoogleApiLibrary()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>-->
     <script>
         WebFont.load({
             google: {"families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]},

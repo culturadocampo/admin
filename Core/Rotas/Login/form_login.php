@@ -18,7 +18,7 @@ unset($_SESSION['login_request']);
             <img class="img-fluid" src="Public/Images/Logo/vertical_logo.png" style="width:350px; height: auto;">
         </a>
     </div>
-    <div class="m-login__signin">
+    <div id="m_blockui_1_content" class="m-login__signin">
 
 
         <form id="form_login" class="m-login__form m-form" action="">
@@ -71,6 +71,7 @@ unset($_SESSION['login_request']);
 
 <script>
     $(document).ready(function () {
+
         $('#submit_login').on('click', function () {
             executeLogin();
         });
@@ -80,8 +81,9 @@ unset($_SESSION['login_request']);
             }
         });
     });
-
+        
     function executeLogin() {
+        blockPage();
         var formData = $("#form_login").serialize();
         $.ajax({
             type: "post",
@@ -102,6 +104,7 @@ unset($_SESSION['login_request']);
                     $("#alert_login_invalido").html(response.message);
                     $("#alert_login_invalido").show();
                 }
+                unblockPage();
             },
             error: function (error) {
                 alert("Erro: Entre em contato com o suporte (COD: L001)");

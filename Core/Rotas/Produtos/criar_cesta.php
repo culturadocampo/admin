@@ -278,11 +278,5 @@
 
     });
 
-    function loadingBar(boolean) {
-        if (boolean) {
-            $("#topo").addClass("animate_bar");
-        } else {
-            $("#topo").removeClass("animate_bar");
-        }
-    }
+
 </script>

@@ -47,18 +47,11 @@ foreach ($array_parametros as $key => $value) {
 array_pop($array_parametros);
 $json_parametros = json_encode($array_parametros);
 ?>
-<style>
-    .m-wrapper{
-        padding: 0px!important;
-    }
-    .m-portlet{
-        box-shadow: none!important;
-    }
-</style>
+
 <div class="" > 
     <div class="m-subheader ">
         <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
-            <div class="m-portlet__head">
+            <div class="m-portlet__head portlet_round">
                 <div class="m-portlet__head-progress">
                     <!-- here can place a progress bar-->
                 </div>
@@ -67,7 +60,8 @@ $json_parametros = json_encode($array_parametros);
 
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Rota #<?php echo $rota['id_rota'] ?>
+                                <!--<span class="fa fa-user-secret m--margin-right-20 text-dark"></span>--> 
+                                <span class="text-dark" style="font-weight: lighter;">Rota #<?php echo $_GET['id_rota']; ?> - Detalhes</span>
                             </h3>
 
                         </div>
@@ -84,7 +78,7 @@ $json_parametros = json_encode($array_parametros);
                                     </span>
                                 </button>
                                 <div class="btn-group">
-                                    <button id="salvar_alteracoes" type="button" class="btn btn-success m-btn m-btn--icon m-btn--wide m-btn--md">
+                                    <button id="salvar_alteracoes" type="button" class="btn btn-primary m-btn m-btn--icon m-btn--wide m-btn--md">
                                         <span>
                                             <i class="la la-check"></i>
                                             <span>Salvar alterações</span>
@@ -259,7 +253,7 @@ $json_parametros = json_encode($array_parametros);
             var publico = $("#publico").val();
             var matriz = $("#select_matriz").val();
             var conteudo = $("#select_conteudo").val();
-                        var permissoes = $("#vinculo_permissoes").val()
+            var permissoes = $("#vinculo_permissoes").val()
 
             $.post(
                     'sistema/rotas-de-acesso/editar',

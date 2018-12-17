@@ -76,8 +76,8 @@ class Permissao {
         ";
         DATABASE::execute($query);
     }
-    
-    function delete_tipos_usuario_permissao(){
+
+    function delete_tipos_usuario_permissao() {
         $query = "
             DELETE FROM permissoes_tipos_usuario
             WHERE fk_permissao = '{$this->get_id_permissao()}'
@@ -126,7 +126,16 @@ class Permissao {
             WHERE TRUE
                 AND id_permissao    = '{$this->get_id_permissao()}'
         ";
-        return DATABASE::execute($query);
+        DATABASE::execute($query);
+    }
+
+    function select_tipos_usuario() {
+        $query = "
+            SELECT id_tipo_usuario, nome
+            FROM tipos_usuario
+            WHERE ativo = 1
+        ";
+        return DATABASE::fetch_all($query);
     }
 
     function get_id_permissao() {

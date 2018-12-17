@@ -7,7 +7,7 @@
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a href="./" class="m-brand__logo-wrapper">
                             <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 48px;" class="m-brand__logo-desktop" />
-                            <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 48px;" class="m-brand__logo-mobile" />
+                            <img alt="" src="Public/Images/Logo/logo_modern2.png" style="width: auto; height: 32px;" class="m-brand__logo-mobile" />
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -71,7 +71,7 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                    <li class="m-nav__item">
+<!--                                                    <li class="m-nav__item">
                                                         <a href="profile.html" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-share"></i>
                                                             <span class="m-nav__link-text">Activity</span>
@@ -96,11 +96,11 @@
                                                             <i class="m-nav__link-icon flaticon-lifebuoy"></i>
                                                             <span class="m-nav__link-text">Support</span>
                                                         </a>
-                                                    </li>
+                                                    </li>-->
                                                     <li class="m-nav__separator m-nav__separator--fit">
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="logout" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+                                                        <a href="logout" class="btn m-btn--pill btn-block   btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
                                                     </li>
                                                 </ul>
                                             </div>

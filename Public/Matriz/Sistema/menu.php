@@ -10,9 +10,9 @@
             <span class="m-menu__arrow m-menu__arrow--adjust"></span>
             <ul class="m-menu__subnav animated fadeIn fast">
                 <li class="m-menu__item">
-                    <a href="mapa-de-produtores" class="m-menu__link">
+                    <a href="visao-aerea" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-globe-americas"></i>
-                        <span class="m-menu__link-text">Mapa de produtores</span>
+                        <span class="m-menu__link-text">Visão aérea</span>
                     </a>
                 </li>
             </ul>
@@ -21,7 +21,7 @@
 
     <li class=" m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab">
         <a href="javascript:;" class="m-menu__link m-menu__toggle" title="">
-            <span class="m-menu__link-text">Cadastros</span>
+            <span class="m-menu__link-text">Usuários</span>
             <i class="m-menu__hor-arrow la la-angle-down"></i>
             <i class="m-menu__ver-arrow la la-angle-right"></i>
         </a>
@@ -29,7 +29,7 @@
             <span class="m-menu__arrow m-menu__arrow--adjust"></span>
             <ul class="m-menu__subnav animated fadeIn fast">
                 <li class="m-menu__item">
-                    <a href="#" class="m-menu__link">
+                    <a href="usuarios/cadastro/administrador" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-user-secret"></i>
                         <span class="m-menu__link-text">Administrador</span>
                     </a>

@@ -19,9 +19,31 @@ function get_pathname() {
     }
 }
 
-        function getPos(element) {
-            var rect = element.getBoundingClientRect();
-            var x = rect.left;
-            var y = rect.top;
-            return {x: x, y: y};
-        }
+function getPos(element) {
+    var rect = element.getBoundingClientRect();
+    var x = rect.left;
+    var y = rect.top;
+    return {x: x, y: y};
+}
+
+
+function blockPage() {
+    mApp.blockPage({
+        overlayColor: "#4CAF50",
+        type: "loader",
+        state: "success",
+        message: "Carregando..."
+    });
+}
+
+function unblockPage() {
+    mApp.unblockPage();
+}
+
+function loadingBar(boolean) {
+    if (boolean) {
+        $("#my-page").addClass("animate_bar");
+    } else {
+        $("#my-page").removeClass("animate_bar");
+    }
+}

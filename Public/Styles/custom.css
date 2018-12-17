@@ -5,7 +5,19 @@
 .m-wrapper{
     border-bottom-left-radius: 10px!important;
     border-bottom-right-radius: 10px!important;
+    padding: 8px!important;
+
 }
+
+.m-portlet{
+    box-shadow: none!important;
+}
+
+.portlet_round{
+    background: rgba(0,0,0,0.025);
+    border-radius: 10px;
+}
+
 .m-page--fluid .m-page .m-page__container{
     /*padding: 0 40px;*/
 }
@@ -32,9 +44,9 @@
     animation-duration: 0.27s!important;
     /*animation-delay: 0.2s!important;*/
 }
-#topo{
-    background: url("../Images/Outros/top-line-alt2.png") repeat-x scroll center top white;
-}
+/*#topo{
+    background: url("../Images/Outros/top-line-alt2.png") repeat-x scroll center top rgba(255,255,255,0.5);
+}*/
 
 .animate_bar{
     animation: animatedBackground 1.0s alternate infinite;

@@ -28,7 +28,7 @@ $arr_rotas = $o_rota->select_all_rotas();
                             <div class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
                                     <span class="flaticon-add m--margin-right-20"></span> 
-                                    <span class="text-primary" style="font-weight: lighter; font-size: 1.8rem">Edição de permissão (#<?php echo $_GET['id_permissao']; ?>)</span>
+                                    <span class="text-primary" style="font-weight: lighter;">Edição de permissão (#<?php echo $_GET['id_permissao']; ?>)</span>
                                 </h3>
 
                             </div>

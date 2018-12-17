@@ -1,5 +1,6 @@
-<?php 
-
+<?php
+$o_permissao = new Permissao();
+$arr_tipos = $o_permissao->select_tipos_usuario();
 ?>
 <style>
     .m-wrapper{
@@ -27,7 +28,7 @@
                             <div class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
                                     <span class="flaticon-add m--margin-right-20"></span> 
-                                    <span class="text-primary" style="font-weight: lighter; font-size: 1.8rem">Permissões de acesso</span>
+                                    <span class="text-primary" style="font-weight: lighter;">Permissões de acesso</span>
                                 </h3>
 
                             </div>
@@ -39,7 +40,7 @@
 
 
                                     <div class="btn-group">
-                                        <button id="cadastrar_permissao" type="button" class="btn btn-outline-info m-btn m-btn--icon m-btn--wide m-btn--md">
+                                        <button id="cadastrar_permissao" type="button" class="btn btn-primary m-btn m-btn--icon m-btn--wide m-btn--md">
                                             <span>
                                                 <i class="fa fa-check"></i>
                                                 <span>Cadastrar permissão</span>
@@ -63,23 +64,25 @@
                             <div class="col-lg-6">
                                 <label class="">Tipo de usuário:</label>
                                 <select name="tipo_usuario[]" class="form-control m-input selectpicker" multiple>
-                                    <option value="1">Administrador</option>
-                                    <option value="2">Cliente</option>
-                                    <option value="3">Produtor</option>
-
+                                    <?php if ($arr_tipos) { ?>
+                                        <?php foreach ($arr_tipos as $value) { ?>
+                                            <option value="<?php echo $value['id_tipo_usuario']; ?>"><?php echo $value['nome']; ?></option>
+                                        <?php } ?>
+                                    <?php } ?>
                                 </select>
                                 <span class="m-form__help">Selecione ao menos um tipo</span>
                             </div>
                         </div>
+                        <hr>
+                           <div id="tabela_permissoes">
+
+    </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    <hr>
-    <div id="tabela_permissoes">
-        
-    </div>
+ 
 </div>
 
 
@@ -97,7 +100,7 @@
                     if (is_json(json)) {
                         if (json.result) {
                             $("#form_permissao").trigger('reset');
-                                    carregar_permissoes();
+                            carregar_permissoes();
 
                             swal({
                                 type: 'success',
@@ -129,9 +132,9 @@
             });
         });
     });
-    
-    
-    function carregar_permissoes(){
+
+
+    function carregar_permissoes() {
         $("#tabela_permissoes").load("tabela-permissoes");
     }
 </script>
