@@ -46,11 +46,11 @@
                                         <div class="m-dropdown__header m--align-center">
                                             <div class="m-card-user m-card-user--skin-light">
                                                 <div class="m-card-user__pic">
-                                                    <img src="Metronic/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                                                    <img src="Public/Images/Outros/avatar.png" class="m--img-rounded m--marginless" alt="" />
                                                 </div>
                                                 <div class="m-card-user__details">
-                                                    <span class="m-card-user__name m--font-weight-500"><?php echo STRINGS::proper_case($_SESSION['nome_usuario']); ?></span>
-                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo strtolower($_SESSION['email_usuario']); ?></a>
+                                                    <span class="m-card-user__name m--font-weight-500"><?php echo STRINGS::proper_case(SESSION::get_nome_usuario()); ?></span>
+                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?></a>
                                                 </div>
                                             </div>
                                         </div>
