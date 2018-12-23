@@ -128,6 +128,10 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 - Amazon AWS
     - Usuário: contato@culturadocampo.com.br
     - Senha: INFODMZ@626
+- GMail
+    - contato@culturadocampo.com.br / INFODMZ@626
+    - app.culturadocampo@gmail.com / InfoDmz626
+
 
 
 

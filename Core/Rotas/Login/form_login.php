@@ -34,14 +34,14 @@ unset($_SESSION['login_request']);
                     </label>
                 </div>
                 <div class="col m--align-right m-login__form-right">
-                    <a href="#" id="m_login_forget_password" class="m-link">Esqueceu sua senha?</a>
+                    <a href="login/esqueci" id="m_login_forget_password" class="m-link">Esqueceu sua senha?</a>
                 </div>
             </div>
             <?php if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
                 <div class="g-recaptcha col-md-12 text-center" data-sitekey="6Len6HYUAAAAAIQH0ddhVjEukzpa0qXmK3iPN4Ss"></div>
             <?php } ?>
             <div class="m-login__form-action">
-                <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-success btn-block">Acessar plataforma</button>     
+                <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-primary m-btn--gradient-to-success btn-block">Acessar plataforma</button>     
             </div>
             <div style="display: none;" id="alert_login_invalido" role="alert" class="animated fadeInDown fast m--margin-top-30 alert  alert-dismissible fade show   m-alert m-alert--air m-alert--outline m-alert--outline-2x">
             </div>

@@ -46,3 +46,6 @@ rewriteRule ^usuarios\/cadastro\/administrador\/?$ ./index.php? [NC]
 rewriteRule ^insert-administrador\/cadastro\/administrador\/?$ ./index.php? [NC]
 rewriteRule ^insert-administrador\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
+
+rewriteRule ^login\/esqueci\/?$ ./index.php [NC]
+rewriteRule ^login\/recuperar-senha\/?$ ./index.php [NC]

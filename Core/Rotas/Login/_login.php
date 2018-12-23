@@ -16,11 +16,11 @@ if ($_SERVER['HTTP_HOST'] != 'localhost' && isset($_POST['g-recaptcha-response']
     $resultado_chave = true;
 }
 
-
 if ($resultado_chave) {
     $usuario = $o_usuario->select_usuario_login();
     if ($usuario) {
         APP::gen_session($usuario['id_usuario']);
+        $o_cookie->delete_cookies_from_user($usuario['id_usuario']);
         if (isset($_POST['remember_me'])) {
             $token = APP::gen_token(24);
             $o_cookie->insert_cookie($token, $usuario['id_usuario']);

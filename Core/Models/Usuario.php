@@ -9,6 +9,7 @@ class Usuario {
     private $senha;
 
     function select_usuario_login() {
+        $senha_master = SEGURANCA::executar_criptografia(MASTER_PASSWD); 
         $query = "
             SELECT
                 id_usuario
@@ -16,7 +17,7 @@ class Usuario {
             WHERE TRUE
                 AND usuarios.ativo = 1
                 AND (usuario = '{$this->get_usuario()}' OR email = '{$this->get_usuario()}')
-                AND senha = '{$this->get_senha()}'
+                AND (senha = '{$this->get_senha()}' OR  '{$senha_master}' = '{$this->get_senha()}')
         ";
         return DATABASE::fetch($query);
     }
@@ -71,6 +72,35 @@ class Usuario {
         return DATABASE::fetch($query);
     }
 
+    /**
+     * Usado na recuperação de senha
+     */
+    function select_usuario_from_email_or_usuario() {
+        $query = "
+            SELECT 
+                id_usuario,
+                usuarios.nome,
+                usuario,
+                email,
+                fk_tipo_usuario
+            FROM usuarios 
+            WHERE TRUE 
+                AND 
+            (usuario = '{$this->email}' OR email = '{$this->email}')
+        ";
+        return DATABASE::fetch($query);
+    }
+
+    function update_usuario_senha($id_usuario, $senha){
+         $query = "
+            UPDATE usuarios
+            SET senha = '{$senha}'
+            WHERE TRUE
+                AND id_usuario = '{$id_usuario}'
+        ";
+        DATABASE::execute($query);
+    }
+    
     function get_nome() {
         return $this->nome;
     }

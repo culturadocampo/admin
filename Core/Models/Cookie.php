@@ -29,32 +29,34 @@ class Cookie {
     }
 
     function get_usuario_from_cookie($token) {
-        $current_time = date("Y-m-d H:i:s");
         $query = "
             SELECT 
                 fk_usuario AS id_usuario
             FROM login_cookies
             WHERE TRUE
                 AND token = '{$token}'
-                AND '{$current_time}' BETWEEN inicio AND fim
         ";
         return DATABASE::fetch($query);
     }
 
     function insert_cookie($token, $id_usuario) {
-        $lifetime = LOGIN_COOKIE_LIFETIME;
-        $inicio = date("Y-m-d H:i:s");
-        $fim = date("Y-m-d H:i:s", strtotime("+$lifetime sec"));
         $query = "
             INSERT INTO login_cookies
-            (fk_usuario, token, inicio, fim)
+            (fk_usuario, token)
             VALUES 
             (
                 '{$id_usuario}',
-                '{$token}',
-                '{$inicio}',
-                '{$fim}'
+                '{$token}'
             )
+        ";
+        DATABASE::execute($query);
+    }
+
+    function delete_cookies_from_user($id_usuario) {
+        $query = "
+            DELETE
+            FROM login_cookies
+            WHERE fk_usuario = '{$id_usuario}'
         ";
         DATABASE::execute($query);
     }
