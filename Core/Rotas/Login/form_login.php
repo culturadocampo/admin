@@ -19,19 +19,17 @@ unset($_SESSION['login_request']);
         </a>
     </div>
     <div id="m_blockui_1_content" class="m-login__signin">
-
-
         <form id="form_login" class="m-login__form m-form" action="">
             <div class="form-group m-form__group">
-                <input class="form-control m-input text-center text-success font-weight-bold" type="text" placeholder="Usuário ou e-mail" name="usuario">
+                <input class="form-control m-input text-center" type="text" placeholder="Usuário ou e-mail" name="usuario">
             </div>
             <div class="form-group m-form__group">
-                <input class="form-control m-input text-center text-success" type="password" placeholder="Senha de acesso" name="senha">
+                <input class="form-control m-input text-center" type="password" placeholder="Senha de acesso" name="senha">
             </div>
             <div class="row m-login__form-sub m--margin-top-20">
                 <div class="col m--align-left m-login__form-left">
-                    <label class="m-checkbox  m-checkbox--focus">
-                        <input type="checkbox" name="remember"> Lembrar
+                    <label class="m-checkbox m-checkbox--focus">
+                        <input type="checkbox" name="remember_me"> Lembrar por 24h
                         <span></span>
                     </label>
                 </div>
@@ -44,28 +42,13 @@ unset($_SESSION['login_request']);
             <?php } ?>
             <div class="m-login__form-action">
                 <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-success btn-block">Acessar plataforma</button>     
-                <!--                <button type="button" id="google-login-button" class="btn btn-default m-btn btn-block  m-btn  m-btn m-btn--icon">
-                                    <span>
-                                        <img width="20px" height="20px" src="Public/Images/Outros/icon-google.png" style="margin-right: 16px">
-                                        <span>Acessar com Google</span>
-                                    </span>
-                                </button>-->
             </div>
-
-
             <div style="display: none;" id="alert_login_invalido" role="alert" class="animated fadeInDown fast m--margin-top-30 alert  alert-dismissible fade show   m-alert m-alert--air m-alert--outline m-alert--outline-2x">
-
             </div>
         </form>
 
     </div>
 
-    <!--    <div class="m-login__account">
-            <span class="m-login__account-msg">
-                Ainda não possui uma conta ?
-            </span>&nbsp;&nbsp;
-            <a href="#" id="m_login_signup" class="m-link m-link--light m-login__account-link">Crie uma agora</a>
-        </div>-->
 </div>
 
 

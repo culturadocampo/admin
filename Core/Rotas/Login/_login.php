@@ -1,10 +1,11 @@
 <?php
 
-$m_usuario = new Usuario();
+$o_usuario = new Usuario();
+$o_cookie = new Cookie();
 
 $senha = SEGURANCA::executar_criptografia($_POST['senha']);
-$m_usuario->set_usuario($_POST['usuario']);
-$m_usuario->set_senha($senha);
+$o_usuario->set_usuario($_POST['usuario']);
+$o_usuario->set_senha($senha);
 
 if ($_SERVER['HTTP_HOST'] != 'localhost' && isset($_POST['g-recaptcha-response'])) {
     $captcha = $_POST['g-recaptcha-response'];
@@ -17,14 +18,14 @@ if ($_SERVER['HTTP_HOST'] != 'localhost' && isset($_POST['g-recaptcha-response']
 
 
 if ($resultado_chave) {
-    $usuario = $m_usuario->select_usuario_login();
+    $usuario = $o_usuario->select_usuario_login();
     if ($usuario) {
-        $_SESSION['id_usuario'] = $usuario['id_usuario'];
-        $_SESSION['nome_usuario'] = $usuario['nome'];
-        $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
-        $_SESSION['id_tipo_usuario'] = $usuario['id_tipo_usuario'];
-        $_SESSION['email_usuario'] = $usuario['email'];
-
+        APP::gen_session($usuario['id_usuario']);
+        if (isset($_POST['remember_me'])) {
+            $token = APP::gen_token(24);
+            $o_cookie->insert_cookie($token, $usuario['id_usuario']);
+            setcookie("REMEMBER_ME", $token, time() + LOGIN_COOKIE_LIFETIME, "/");
+        }
         APP::return_response(true, "Aguarde...");
     } else {
         APP::return_response(false, "Credenciais inválidas");

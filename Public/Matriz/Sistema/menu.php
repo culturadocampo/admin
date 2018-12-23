@@ -31,7 +31,7 @@
                 <li class="m-menu__item">
                     <a href="usuarios/cadastro/administrador" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-user-secret"></i>
-                        <span class="m-menu__link-text">Administrador</span>
+                        <span class="m-menu__link-text">Coordenador</span>
                     </a>
                 </li>
                 <li class="m-menu__item">

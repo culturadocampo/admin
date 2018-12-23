@@ -8,7 +8,6 @@ class ROUTER {
         $array_rotas = $o_rota->select_rota();
 
         $rota = self::get_rota_apropriada($array_rotas);
-
         if (APP::is_logged() || $rota['publico']) {
             if (!$rota['publico'] || APP::is_logged()) {
                 self::insert_acesso($rota['id_rota']);

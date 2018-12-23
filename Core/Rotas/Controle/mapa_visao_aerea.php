@@ -10,7 +10,6 @@
         padding: 10px!important;
     }
 </style>
-
 <div id='map' class='contain'></div>
 
 <script>

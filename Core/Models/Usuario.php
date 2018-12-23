@@ -11,14 +11,8 @@ class Usuario {
     function select_usuario_login() {
         $query = "
             SELECT
-                id_usuario,
-                usuarios.nome,
-                email,
-                tipos_usuario.nome AS tipo_usuario,
-                id_tipo_usuario,
-                email
+                id_usuario
             FROM usuarios
-            INNER JOIN tipos_usuario ON id_tipo_usuario = fk_tipo_usuario
             WHERE TRUE
                 AND usuarios.ativo = 1
                 AND (usuario = '{$this->get_usuario()}' OR email = '{$this->get_usuario()}')
@@ -61,17 +55,18 @@ class Usuario {
         DATABASE::execute($query);
     }
 
-    function select_usuario($usuario) {
+    function select_usuario_from_id($id_usuario) {
         $query = "
             SELECT 
                 id_usuario,
-                nome,
+                usuarios.nome,
                 email,
-                fk_tipo_usuario
+                fk_tipo_usuario,
+                tipos_usuario.nome AS tipo_usuario
             FROM usuarios 
-
+            INNER JOIN tipos_usuario ON id_tipo_usuario = fk_tipo_usuario
             WHERE TRUE 
-                AND usuario = '{$usuario}'
+                AND id_usuario = '{$id_usuario}'
         ";
         return DATABASE::fetch($query);
     }

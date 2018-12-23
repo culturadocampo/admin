@@ -22,18 +22,33 @@ class APP {
         return $request;
     }
 
-    /**
+    /*
      * Verifica se a sessão do usuário é válida
-     * ou a rota requisitada não é privada.
      * Caso false, redireciona para o login
      */
+
     static function is_logged() {
         if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome_usuario'])) {
             if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome_usuario'])) {
                 return true;
             } else {
-                return false;
+                return self::check_for_cookie();
             }
+        } else {
+            return self::check_for_cookie();
+        }
+    }
+
+    static function gen_session($id_usuario) {
+        $o_usuario = new Usuario();
+        $usuario = $o_usuario->select_usuario_from_id($id_usuario);
+        if (!empty($usuario)) {
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome_usuario'] = $usuario['nome'];
+            $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
+            $_SESSION['id_tipo_usuario'] = $usuario['fk_tipo_usuario'];
+            $_SESSION['email_usuario'] = $usuario['email'];
+            return true;
         } else {
             return false;
         }
@@ -54,7 +69,6 @@ class APP {
     static function return_response($result, $message) {
         $response['result'] = $result;
         $response['message'] = $message;
-//        ARRAYS::utf8_encode_deep($response);
         echo json_encode($response);
         exit;
     }
@@ -75,6 +89,39 @@ class APP {
             $origem = $_SERVER['REMOTE_ADDR'];
         }
         return $origem;
+    }
+
+    private static function check_for_cookie() {
+        if (!isset($_COOKIE["REMEMBER_ME"])) {
+            return false;
+        } else {
+            $o_cookie = new Cookie();
+            $usuario = $o_cookie->get_usuario_from_cookie($_COOKIE["REMEMBER_ME"]);
+            if (empty($usuario)) {
+                $o_cookie->delete_cookie($_COOKIE["REMEMBER_ME"]);
+                return false;
+            } else {
+                return APP::gen_session($usuario['id_usuario']);
+            }
+        }
+    }
+
+    static function gen_token($length) {
+        $o_cookie = new Cookie();
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet .= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max - 1)];
+        }
+        $is_new = $o_cookie->is_cookie_new($token);
+        if ($is_new) {
+            return $token;
+        } else {
+            self::gen_token($length);
+        }
     }
 
 }
