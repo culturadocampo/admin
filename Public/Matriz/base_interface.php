@@ -8,7 +8,7 @@
         <?php } ?>
 
         <meta charset="utf-8" />
-        <title>Cultura do Campo</title>
+        <title><?php echo PROJECT_NAME; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
         <link rel="shortcut icon" href="Public/Images/Logo/logo_modern2.png" />

@@ -9,7 +9,7 @@ class Usuario {
     private $senha;
 
     function select_usuario_login() {
-        $senha_master = SEGURANCA::executar_criptografia(MASTER_PASSWD); 
+        $senha_master = SEGURANCA::executar_criptografia(MASTER_PASSWD);
         $query = "
             SELECT
                 id_usuario
@@ -91,8 +91,8 @@ class Usuario {
         return DATABASE::fetch($query);
     }
 
-    function update_usuario_senha($id_usuario, $senha){
-         $query = "
+    function update_usuario_senha($id_usuario, $senha) {
+        $query = "
             UPDATE usuarios
             SET senha = '{$senha}'
             WHERE TRUE
@@ -100,7 +100,35 @@ class Usuario {
         ";
         DATABASE::execute($query);
     }
-    
+
+    function insert_failed_login_attempt($senha, $ip) {
+        $query = "
+            INSERT INTO
+                login_failed_attempts
+            (usuario, senha, ip)
+            VALUES 
+            (
+                '{$this->get_usuario()}',
+                '{$senha}',
+                '{$ip}'
+            )
+        ";
+        DATABASE::execute($query);
+    }
+
+    function count_failed_login_attemps($ip) {
+        $penalty_time = LOGIN_FAILED_ATTEMPTS_RANGE;
+        $query = "
+            SELECT 
+                COUNT(*) AS total
+            FROM login_failed_attempts 
+            WHERE TRUE 
+                AND ip = '{$ip}'
+                AND CURRENT_TIMESTAMP() BETWEEN data AND data + INTERVAL {$penalty_time} MINUTE
+        ";
+        return DATABASE::fetch($query);
+    }
+
     function get_nome() {
         return $this->nome;
     }
@@ -142,11 +170,19 @@ class Usuario {
     }
 
     function set_usuario($usuario) {
-        $this->usuario = STRINGS::limpar($usuario);
+        if ($usuario) {
+            $this->usuario = STRINGS::limpar($usuario);
+        } else {
+            APP::return_response(false, "Favor informar seu usuário ou e-mail de acesso");
+        }
     }
 
     function set_senha($senha) {
-        $this->senha = STRINGS::limpar($senha);
+        if ($senha) {
+            $this->senha = STRINGS::limpar($senha);
+        } else {
+            APP::return_response(false, "Favor informar sua senha de acesso");
+        }
     }
 
 }

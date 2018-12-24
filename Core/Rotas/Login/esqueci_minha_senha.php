@@ -14,7 +14,7 @@ unset($_SESSION['login_request']);
 </style>
 <div class="m-login__container animated fadeIn">
     <div class="m-login__logo">
-        <a href="#">
+        <a href="login">
             <img class="img-fluid" src="Public/Images/Logo/vertical_logo.png" style="width:350px; height: auto;">
         </a>
     </div>
