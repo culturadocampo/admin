@@ -9,7 +9,7 @@
                  WHERE
                     uf = '{$_POST['uf']}' ";
         
-        $res_cidades =  DATABASE::fetch_all($query);
+//        $res_cidades =  DATABASE::fetch_all($query);
         
         if($res_cidades){ ?>
             <select class="form-control" name="cidade" id="cidade">

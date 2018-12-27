@@ -9,7 +9,7 @@
             <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">
         <?php } ?>
 
-        <title>Login | <?php echo PROJECT_NAME; ?></title>
+        <title>Login | <?php echo CONFIG::$PROJECT_NAME; ?></title>
 
         <meta charset="utf-8" />
         <meta name="description" content="Latest updates and statistic charts">

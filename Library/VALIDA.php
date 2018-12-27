@@ -60,8 +60,9 @@ class VALIDA {
             return false;
         }
     }
-    
-    static function existe_cpf($cpf){
+
+    static function existe_cpf($cpf) {
+        $conn = DB::get_instance();
         $query = "
             SELECT 
                 cpf
@@ -70,11 +71,11 @@ class VALIDA {
             WHERE TRUE
                 AND cpf = '{$cpf}'
         ";
-        $row_cpf = DATABASE::row_count($query);
-        
-        if( $row_cpf != 0 ){
+        $row_cpf = $conn->row_count($query);
+
+        if ($row_cpf != 0) {
             return true;
-        } else { 
+        } else {
             return false;
         }
     }

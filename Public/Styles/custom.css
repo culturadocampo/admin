@@ -11,12 +11,12 @@
 
 .m-portlet{
     box-shadow: none!important;
-}
+}/*
 
 .portlet_round{
     background: rgba(0,0,0,0.025);
     border-radius: 10px;
-}
+}*/
 
 .m-page--fluid .m-page .m-page__container{
     /*padding: 0 40px;*/

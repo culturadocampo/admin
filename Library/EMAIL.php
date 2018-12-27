@@ -11,13 +11,13 @@ class EMAIL {
         try {
 //            $mail->SMTPDebug = 2;
             $mail->isSMTP();
-            $mail->Host = MAIL_SMPT;
+            $mail->Host = CONFIG::$MAIL_SMPT;
             $mail->SMTPAuth = true;
-            $mail->Username = MAIL_USERNAME;
-            $mail->Password = MAIL_PASSWORD;
-            $mail->SMTPSecure = MAIL_PROTOCOL;
-            $mail->Port = MAIL_PORT;
-            $mail->setFrom(MAIL_USERNAME, PROJECT_NAME);
+            $mail->Username = CONFIG::$MAIL_USERNAME;
+            $mail->Password = CONFIG::$MAIL_PASSWORD;
+            $mail->SMTPSecure = CONFIG::$MAIL_PROTOCOL;
+            $mail->Port = CONFIG::$MAIL_PORT;
+            $mail->setFrom(CONFIG::$MAIL_USERNAME, CONFIG::$PROJECT_NAME);
             $mail->addAddress($destino);
             $mail->isHTML(true);
             $mail->Subject = $assunto;

@@ -100,4 +100,10 @@ class STRINGS {
         return $result;
     }
 
+    static function write_log($text) {
+        $fp = fopen('log.txt', 'w');
+        fwrite($fp, $text);
+        fclose($fp);
+    }
+
 }

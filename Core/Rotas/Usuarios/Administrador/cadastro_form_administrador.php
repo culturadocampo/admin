@@ -8,7 +8,7 @@
                     <div class="m-portlet__head-title">
                         <h3 class="m-portlet__head-text">
                             <!--<span class="fa fa-user-secret m--margin-right-20 text-primary"></span>--> 
-                            <span class="text-dark" style="font-weight: lighter;">Cadastro de administrador</span>
+                            Cadastro de administrador
                         </h3>
 
                     </div>

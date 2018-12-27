@@ -2,16 +2,19 @@
 
 class SEGURANCA {
 
-    private static function chave() {
-        return "X5aa65ag@dfeL65836A";
-    }
-
-    public static function executar_criptografia($senha) {
+    static function password_hash($senha) {
         if ($senha) {
-            $chave = SEGURANCA::chave();
-            return base64_encode($senha . $chave . $senha);
+            return password_hash($senha, PASSWORD_DEFAULT);
         } else {
             return null;
+        }
+    }
+
+    static function password_verify($senha, $hash) {
+        if ($senha) {
+            return password_verify($senha, $hash);
+        } else {
+            return false;
         }
     }
 

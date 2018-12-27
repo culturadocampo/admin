@@ -21,6 +21,7 @@ unset($_SESSION['login_request']);
     <div id="m_blockui_1_content" class="m-login__signin">
         <form id="form_login" class="m-login__form m-form" action="">
             <input name="g-recaptcha-response" type="hidden">
+
             <div class="form-group m-form__group">
                 <input class="form-control m-input text-center" type="text" placeholder="Usuário ou e-mail" name="usuario">
             </div>
@@ -31,7 +32,7 @@ unset($_SESSION['login_request']);
             <div class="row m-login__form-sub m--margin-top-20">
                 <div class="col m--align-left m-login__form-left">
                     <label class="m-checkbox m-checkbox--focus">
-                        <input type="checkbox" name="remember_me"> Lembrar por <?php echo round(LOGIN_COOKIE_LIFETIME / 3600); ?>h
+                        <input type="checkbox" name="remember_me"> Lembrar por <?php echo round(CONFIG::$LOGIN_COOKIE_LIFETIME / 3600); ?>h
                         <span></span>
                     </label>
                 </div>
@@ -40,9 +41,9 @@ unset($_SESSION['login_request']);
                 </div>
             </div>
             <div class="m-login__form-action">
-                <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-primary m-btn--gradient-to-success btn-block">Acessar plataforma</button>     
+                <button type="button" id="submit_login" class="btn m-btn m-btn--gradient-from-primary m-btn--gradient-to-primary btn-block">Acessar plataforma</button>     
             </div>
-            <div style="display: none;" id="alert_login_invalido" role="alert" class="animated fadeInDown fast m--margin-top-30 alert  alert-dismissible fade show   m-alert m-alert--air m-alert--outline m-alert--outline-2x">
+            <div style="display: none;" id="alert_login_invalido" role="alert" class="text-center animated fadeInDown fast m--margin-top-30 alert  alert-dismissible fade show   m-alert m-alert--air m-alert--outline m-alert--outline-2x">
             </div>
         </form>
 
@@ -54,7 +55,6 @@ unset($_SESSION['login_request']);
 <script>
     $(document).ready(function () {
 
-
         execute_captcha();
 
         /**
@@ -64,7 +64,6 @@ unset($_SESSION['login_request']);
         setInterval(function () {
             execute_captcha();
         }, 60000);
-
         $('#submit_login').on('click', function () {
             executeLogin();
         });
@@ -114,7 +113,7 @@ unset($_SESSION['login_request']);
 
     function execute_captcha() {
         grecaptcha.ready(function () {
-            grecaptcha.execute('6Le8m4QUAAAAAIH-aUf0xYHIyt-HS9F7MZHlRIm1', {}).then(function (token) {
+            grecaptcha.execute('6Le8m4QUAAAAAIH-aUf0xYHIyt-HS9F7MZHlRIm1', {action: 'login'}).then(function (token) {
                 $("input[name=g-recaptcha-response]").val(token);
             });
         });
