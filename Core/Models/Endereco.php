@@ -11,15 +11,19 @@ class Endereco {
     private $estado;
     private $lat;
     private $long;
+    
+       function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     public function estados() {
         $query = "SELECT * FROM estados";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     public function cidades() {
         $query = "SELECT id_municipio, nome, uf FROM municipios";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
     
     function insert_endereco($id_usuario) {
@@ -43,7 +47,7 @@ class Endereco {
                 '{$this->get_numero()}',
                 '{$this->get_complemento()}'
              )";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function select_enderecos_usuarios($id_usuario) {
@@ -54,7 +58,7 @@ class Endereco {
             WHERE TRUE
                 AND fk_usuario = '{$id_usuario}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
     
     function get_lat() {

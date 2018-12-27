@@ -3,6 +3,10 @@
 class Entrega {
 
     private $id_entrega;
+    
+       function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     function select_minhas_entregas_pendentes() {
         $id_usuario_produto = SESSION::get_id_usuario();
@@ -15,7 +19,7 @@ class Entrega {
             WHERE TRUE
                 AND fk_usuario = '{$id_usuario_produto}'
        ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function select_entrega() {
@@ -29,7 +33,7 @@ class Entrega {
             WHERE TRUE
                 AND id_entrega = '{$this->get_id_entrega()}'
        ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function select_clientes_entrega() {
@@ -43,7 +47,7 @@ class Entrega {
             WHERE TRUE
                 AND id_entrega = '{$this->get_id_entrega()}'
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function get_id_entrega() {

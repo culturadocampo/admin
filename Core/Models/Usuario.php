@@ -2,24 +2,41 @@
 
 class Usuario {
 
+    private $conn;
     private $cpf;
     private $nome;
     private $email;
     private $usuario;
     private $senha;
 
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
+
     function select_usuario_login() {
-        $senha_master = SEGURANCA::executar_criptografia(MASTER_PASSWD);
         $query = "
             SELECT
-                id_usuario
+                id_usuario,
+                senha
             FROM usuarios
             WHERE TRUE
                 AND usuarios.ativo = 1
                 AND (usuario = '{$this->get_usuario()}' OR email = '{$this->get_usuario()}')
-                AND (senha = '{$this->get_senha()}' OR  '{$senha_master}' = '{$this->get_senha()}')
         ";
-        return DATABASE::fetch($query);
+        $usuario = $this->conn->fetch($query);
+        /**
+         * 
+         */
+        if (!empty($usuario)) {
+           $senha_usuario = SEGURANCA::password_verify($this->get_senha(), $usuario['senha']);
+            if ($senha_usuario || $this->get_senha() === CONFIG::$MASTER_PASSWD) {
+                return $usuario['id_usuario'];
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     function insert_novo_usuario() {
@@ -37,7 +54,7 @@ class Usuario {
             )
         ";
 
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function insert_novo_usuario_google() {
@@ -53,7 +70,7 @@ class Usuario {
                 '{$this->get_email()}'
             )
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function select_usuario_from_id($id_usuario) {
@@ -69,7 +86,7 @@ class Usuario {
             WHERE TRUE 
                 AND id_usuario = '{$id_usuario}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     /**
@@ -88,7 +105,7 @@ class Usuario {
                 AND 
             (usuario = '{$this->email}' OR email = '{$this->email}')
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function update_usuario_senha($id_usuario, $senha) {
@@ -98,7 +115,7 @@ class Usuario {
             WHERE TRUE
                 AND id_usuario = '{$id_usuario}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function insert_failed_login_attempt($senha, $ip) {
@@ -113,11 +130,11 @@ class Usuario {
                 '{$ip}'
             )
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function count_failed_login_attemps($ip) {
-        $penalty_time = LOGIN_FAILED_ATTEMPTS_RANGE;
+        $penalty_time = CONFIG::$LOGIN_FAILED_ATTEMPTS_RANGE;
         $query = "
             SELECT 
                 COUNT(*) AS total
@@ -126,7 +143,7 @@ class Usuario {
                 AND ip = '{$ip}'
                 AND CURRENT_TIMESTAMP() BETWEEN data AND data + INTERVAL {$penalty_time} MINUTE
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function get_nome() {

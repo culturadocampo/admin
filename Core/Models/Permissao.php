@@ -17,14 +17,18 @@ class Permissao {
     private $descricao;
     private $ativo;
 
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
+
     function insert_permissao() {
         $query = "
             INSERT INTO permissoes
             (descricao)
             VALUES('{$this->get_descricao()}')
         ";
-        DATABASE::execute($query);
-        return DATABASE::last_id();
+        $this->conn->execute($query);
+        return $this->conn->last_id();
     }
 
     function select_all_permissoes() {
@@ -40,7 +44,7 @@ class Permissao {
             WHERE TRUE
             GROUP BY id_permissao
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function insert_permissao_usuario($id_permissao, $tipo_usuario) {
@@ -49,7 +53,7 @@ class Permissao {
             (fk_permissao, fk_tipo_usuario)
             VALUES('{$id_permissao}', '{$tipo_usuario}')
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function insert_permissao_rota($id_permissao, $id_rota) {
@@ -58,7 +62,7 @@ class Permissao {
             (fk_permissao, fk_rota)
             VALUES('{$id_permissao}', '{$id_rota}')
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function delete_permissoes_rota($id_rota) {
@@ -66,7 +70,7 @@ class Permissao {
             DELETE FROM permissoes_rotas
             WHERE fk_rota = '{$id_rota}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function delete_rotas_permissao() {
@@ -74,7 +78,7 @@ class Permissao {
             DELETE FROM permissoes_rotas
             WHERE fk_permissao = '{$this->get_id_permissao()}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function delete_tipos_usuario_permissao() {
@@ -82,7 +86,7 @@ class Permissao {
             DELETE FROM permissoes_tipos_usuario
             WHERE fk_permissao = '{$this->get_id_permissao()}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function select_permissao() {
@@ -93,7 +97,7 @@ class Permissao {
             FROM permissoes
             WHERE id_permissao = '{$this->get_id_permissao()}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function select_tipos_usuario_permissao() {
@@ -103,7 +107,7 @@ class Permissao {
             FROM permissoes_tipos_usuario
             WHERE fk_permissao = '{$this->get_id_permissao()}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function select_rotas_permissao() {
@@ -114,7 +118,7 @@ class Permissao {
             INNER JOIN permissoes_rotas ON fk_rota = id_rota
             WHERE fk_permissao = '{$this->get_id_permissao()}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function update_permissao() {
@@ -126,7 +130,7 @@ class Permissao {
             WHERE TRUE
                 AND id_permissao    = '{$this->get_id_permissao()}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function select_tipos_usuario() {
@@ -135,7 +139,7 @@ class Permissao {
             FROM tipos_usuario
             WHERE ativo = 1
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function get_id_permissao() {

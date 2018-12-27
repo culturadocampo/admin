@@ -1,11 +1,15 @@
 <?php
-    
+
 class Produtor {
 
     private $rg;
     private $sexo;
     private $cad_pro;
     private $data_nascimento;
+
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     function insert_produtor_usuario($id_usuario) {
         $query = "
@@ -26,12 +30,12 @@ class Produtor {
                 '{$this->get_sexo()}'
              )                    
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
-    
-    function meus_dados(){
+
+    function meus_dados() {
         $id_usuario = SESSION::get_id_usuario();
-        
+
         $query = "
             SELECT
                 nome, email, cpf, rg, cadpro, data_nascimento, sexo, fk_cidade, cep, bairro, rua, numero, complemento, cel_principal, cel_secundario
@@ -44,17 +48,17 @@ class Produtor {
                 AND id_usuario = '$id_usuario'
                 
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function get_rg() {
         return $this->rg;
     }
-    
+
     function get_sexo() {
         return $this->sexo;
     }
-    
+
     function get_cad_pro() {
         return $this->cad_pro;
     }
@@ -70,15 +74,15 @@ class Produtor {
             APP::return_response(false, "Por favor, preencha o campo RG corretamente");
         }
     }
-    
+
     function set_sexo($sexo) {
-        if(isset($sexo)){
+        if (isset($sexo)) {
             if ($sexo) {
                 $this->sexo = STRINGS::limpar($sexo);
             } else {
                 APP::return_response(false, "Por favor, preencha o campo SEXO corretamente");
             }
-        }else {
+        } else {
             APP::return_response(false, "Por favor, preencha o campo SEXO corretamente");
         }
     }
@@ -98,15 +102,15 @@ class Produtor {
             APP::return_response(false, "Por favor, preencha o campo DATA DE NASCIMENTO corretamente");
         }
     }
-    
-    public static function verifica_cadastro_produtor(){
+
+    public static function verifica_cadastro_produtor() {
         $query = "SELECT fk_usuario FROM produtores WHERE fk_usuario = '$_SESSION[id_usuario]' ";
-        $retorno_prod =  DATABASE::row_count($query);
-        
-        if($retorno_prod != 0){
+        $retorno_prod = $this->conn->row_count($query);
+
+        if ($retorno_prod != 0) {
             return true;
         } else {
-            return false; 
+            return false;
         }
     }
 

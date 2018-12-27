@@ -6,6 +6,10 @@ class Anuncio {
     private $valor;
     private $visivel;
     private $ativo;
+    
+       function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     function insert_anuncio($fk_produtor, $fk_produto) {
         $query = "
@@ -28,7 +32,7 @@ class Anuncio {
                 '{$this->get_visivel()}',
                 '{$this->get_ativo()}'
              )";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     public function anuncios_ativos() {
@@ -41,7 +45,7 @@ class Anuncio {
                 TRUE 
             AND ativo = 1   
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     public function meus_anuncios() {
@@ -51,7 +55,7 @@ class Anuncio {
             FROM 
                 anuncios
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function get_quantidade() {

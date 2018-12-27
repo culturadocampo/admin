@@ -12,6 +12,11 @@
  * @author Notheros
  */
 class Acesso {
+    
+    
+       function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     function insert_acesso($id_rota) {
         $id_usuario = SESSION::get_id_usuario();
@@ -20,7 +25,7 @@ class Acesso {
             (fk_usuario, fk_rota)
             VALUES('{$id_usuario}', '{$id_rota}')   
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
 }

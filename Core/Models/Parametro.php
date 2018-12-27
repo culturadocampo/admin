@@ -6,6 +6,10 @@ class Parametro {
     private $tipo;
     private $indice;
 
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
+
     function select_parametros($id_rota) {
         $query = "
             SELECT 
@@ -13,7 +17,7 @@ class Parametro {
             FROM rotas_parametros
             WHERE fk_rota = '{$id_rota}'
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function insert_parametro($id_rota) {
@@ -28,14 +32,14 @@ class Parametro {
                 '{$this->get_indice()}'
             )
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function delete_parametros_rota($id_rota) {
         $query = "
             DELETE FROM rotas_parametros WHERE fk_rota = '{$id_rota}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function get_parametro() {

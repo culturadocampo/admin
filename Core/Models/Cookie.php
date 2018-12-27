@@ -12,6 +12,10 @@
  * @author Notheros
  */
 class Cookie {
+    
+       function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     function is_cookie_new($token) {
         $query = "
@@ -20,7 +24,7 @@ class Cookie {
             FROM login_cookies
             WHERE token = '{$token}'
         ";
-        $result = DATABASE::fetch($query);
+        $result = $this->conn->fetch($query);
         if (!empty($result)) {
             return false;
         } else {
@@ -36,7 +40,7 @@ class Cookie {
             WHERE TRUE
                 AND token = '{$token}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function insert_cookie($token, $id_usuario) {
@@ -49,7 +53,7 @@ class Cookie {
                 '{$token}'
             )
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function delete_cookies_from_user($id_usuario) {
@@ -58,7 +62,7 @@ class Cookie {
             FROM login_cookies
             WHERE fk_usuario = '{$id_usuario}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function delete_cookie($token) {
@@ -67,7 +71,7 @@ class Cookie {
             WHERE TRUE
                 AND token = '{$token}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
 }

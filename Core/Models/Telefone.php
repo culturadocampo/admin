@@ -6,6 +6,9 @@ class Telefone {
     private $celSecundario;
     private $telFixo;
 
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
 
     function insert_telefone($id_usuario) {
         $query = "
@@ -22,36 +25,35 @@ class Telefone {
                 '{$this->get_celSecundario()}',
                 '{$this->get_telFixo()}'
              )";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
-    
     function get_celPrincipal() {
         return $this->celPrincipal;
     }
-    
-    function get_celSecundario(){
+
+    function get_celSecundario() {
         return $this->celSecundario;
     }
-    
+
     function get_telFixo() {
         return $this->telFixo;
     }
-    
+
     function set_celPrincipal($celPrincipal) {
-         if($celPrincipal){
+        if ($celPrincipal) {
             $this->celPrincipal = STRINGS::limpar($celPrincipal);
         } else {
-             APP::return_response(false, "Favor informar o nº do CEL. PRINCIPAL");
+            APP::return_response(false, "Favor informar o nº do CEL. PRINCIPAL");
         }
     }
-    
+
     function set_celSecundario($celSecundario) {
         $this->celSecundario = STRINGS::limpar($celSecundario);
     }
-    
+
     function set_telFixo($telFixo) {
         $this->telFixo = STRINGS::limpar($telFixo);
-    } 
+    }
 
 }

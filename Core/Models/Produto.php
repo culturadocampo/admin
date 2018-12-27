@@ -19,6 +19,10 @@ class Produto {
     private $is_organico;
     private $is_hidroponico;
 
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
+
     function insert_produto_xml() {
         $query = "
             INSERT INTO produtos
@@ -31,7 +35,7 @@ class Produto {
             '{$this->is_hidroponico()}'
             )
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function select_produtos() {
@@ -47,7 +51,7 @@ class Produto {
             WHERE TRUE
                 AND produtos.ativo = 1
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function select_um_produto() {
@@ -66,7 +70,7 @@ class Produto {
               #  AND nome IS NOT NULL
                 AND ncm_codigo = '{$this->get_ncm_codigo()}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function select_imagem_produto() {
@@ -77,7 +81,7 @@ class Produto {
             WHERE TRUE 
                 AND fk_produto = '{$this->get_id_produto()}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function select_produtos_com_imagens() {
@@ -91,7 +95,7 @@ class Produto {
             WHERE TRUE 
                 AND produtos.ativo = 1
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function delete_all_imagens_produto() {
@@ -99,7 +103,7 @@ class Produto {
             DELETE FROM produtos_imagens
             WHERE fk_produto = '{$this->id_produto}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function insert_imagem_produto($imagem) {
@@ -108,7 +112,7 @@ class Produto {
             (fk_produto, imagem)
             VALUES ('{$this->get_id_produto()}', '{$imagem}')
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function get_id_produto() {

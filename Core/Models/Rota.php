@@ -9,6 +9,10 @@ class Rota {
     private $publico;
     private $expressao;
 
+    function __construct() {
+        $this->conn = DB::get_instance();
+    }
+
     function select_rota() {
         $query = "
             SELECT
@@ -22,7 +26,7 @@ class Rota {
                 AND url = '{$this->get_url()}'
                 AND ativo = '1'
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function select_rota_from_id() {
@@ -40,7 +44,7 @@ class Rota {
             WHERE TRUE
                 AND id_rota = '{$this->get_id_rota()}'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function select_all_rotas($order = 'DESC') {
@@ -58,7 +62,7 @@ class Rota {
                 AND ativo = 1
             ORDER BY id_rota $order
         ";
-        return DATABASE::fetch_all($query);
+        return $this->conn->fetch_all($query);
     }
 
     function get_arquivos_base() {
@@ -117,7 +121,7 @@ class Rota {
                 AND conteudo = '{$this->get_conteudo()}'
                 AND ativo = '1'
         ";
-        return DATABASE::fetch($query);
+        return $this->conn->fetch($query);
     }
 
     function insert_rota() {
@@ -132,8 +136,8 @@ class Rota {
                 '{$this->get_expressao()}'
             )
         ";
-        DATABASE::execute($query);
-        return DATABASE::last_id();
+        $this->conn->execute($query);
+        return $this->conn->last_id();
     }
 
     function update_rota() {
@@ -146,7 +150,7 @@ class Rota {
                 expressao = '{$this->get_expressao()}'
             WHERE id_rota = '{$this->get_id_rota()}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function save_on_htaccess($params = array()) {
@@ -222,7 +226,7 @@ class Rota {
             WHERE TRUE 
                 AND id_rota = '{$this->getId()}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function desativar_rota() {
@@ -232,7 +236,7 @@ class Rota {
             WHERE TRUE
                 AND id_rota = '{$this->get_id_rota()}'
         ";
-        DATABASE::execute($query);
+        $this->conn->execute($query);
     }
 
     function get_id_rota() {
