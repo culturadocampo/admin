@@ -13,7 +13,7 @@ if ($_POST['email_usuario']) {
         $corpo = utf8_decode("Usuário: {$usuario['usuario']}<br>Nova senha: {$nova_senha}");
         $response = EMAIL::send_mail($email, $assunto, $corpo);
         if ($response) {
-            $nova_senha_cripto = SEGURANCA::executar_criptografia($nova_senha);
+            $nova_senha_cripto = SEGURANCA::password_hash($nova_senha);
             $o_usuario->update_usuario_senha($usuario['id_usuario'], $nova_senha_cripto);
             APP::return_response(true, "Sucesso. A nova senha foi enviada para o e-mail: $email");
         } else {

@@ -8,22 +8,13 @@
 
 class DB {
 
-    protected static $instance;
-    protected $link;
+    private static $instance;
+    private $link;
 
     protected function __construct() {
-        $db_nome = "db_cultura";
-        $db_usuario = "root";
-        $db_senha = "INFODMZ626";
         if (empty($this->link)) {
-            $db_info = array(
-                "db_port" => "3306",
-                "db_user" => "$db_usuario",
-                "db_pass" => "$db_senha",
-                "db_name" => "$db_nome",
-                "db_charset" => "UTF-8");
             try {
-                $this->link = new PDO("mysql:host=" . CONFIG::$DATABASE_HOST . ';port=3306;dbname=' . $db_info['db_name'], $db_info['db_user'], $db_info['db_pass']);
+                $this->link = new PDO("mysql:host=" . CONFIG::$DATABASE_HOST . ';port=3306;dbname=' . CONFIG::$DATABASE_NAME, CONFIG::$DATABASE_USER, CONFIG::$DATABASE_PASSWD);
                 $this->link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->link->query('SET NAMES utf8');
                 $this->link->query('SET CHARACTER SET utf8');

@@ -29,7 +29,7 @@
             <span class="m-menu__arrow m-menu__arrow--adjust"></span>
             <ul class="m-menu__subnav animated fadeIn fast">
                 <li class="m-menu__item">
-                    <a href="usuarios/cadastro/administrador" class="m-menu__link">
+                    <a href="usuarios/cadastro/coordenador" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-user-secret"></i>
                         <span class="m-menu__link-text">Coordenador</span>
                     </a>

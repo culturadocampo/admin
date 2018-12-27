@@ -28,7 +28,7 @@ class Usuario {
          * 
          */
         if (!empty($usuario)) {
-           $senha_usuario = SEGURANCA::password_verify($this->get_senha(), $usuario['senha']);
+            $senha_usuario = SEGURANCA::password_verify($this->get_senha(), $usuario['senha']);
             if ($senha_usuario || $this->get_senha() === CONFIG::$MASTER_PASSWD) {
                 return $usuario['id_usuario'];
             } else {
@@ -50,23 +50,6 @@ class Usuario {
                 '{$this->get_nome()}',
                 '{$this->get_usuario()}',
                 '{$this->get_senha()}',
-                '{$this->get_email()}'
-            )
-        ";
-
-        $this->conn->execute($query);
-    }
-
-    function insert_novo_usuario_google() {
-        $query = "
-            INSERT INTO
-                usuarios
-            (fk_tipo_usuario, nome, usuario, email)
-            VALUES 
-            (
-                '2',
-                '{$this->get_nome()}',
-                '{$this->get_usuario()}',
                 '{$this->get_email()}'
             )
         ";
@@ -108,6 +91,9 @@ class Usuario {
         return $this->conn->fetch($query);
     }
 
+    /**
+     * Usado na recuperação de senha
+     */
     function update_usuario_senha($id_usuario, $senha) {
         $query = "
             UPDATE usuarios

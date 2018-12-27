@@ -18,5 +18,3 @@ function autoload($class) {
 
 session_start();
 APP::start();
-
-
