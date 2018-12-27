@@ -18,7 +18,6 @@
     - Sem comunicação com o banco de dados;
     - Instancia um ou mais modelos (quando necessário);
     - Representa uma ação;
-    - Nome do arquivo com prefixo "do_" (e.g. `do_insert_produto.php`);
     - Finaliza o arquivo retornando um `JSON`;
 - **Models**
     - Cada classe representa uma tabela do banco de dados;
@@ -134,7 +133,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
 
 
 
-
+##
 ------------
 
 Quem quiser usar o editor `markdown` para editar este arquivo, acesse o seguinte link:
