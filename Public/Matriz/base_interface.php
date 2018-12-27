@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php if ($_SERVER['HTTP_HOST'] == "localhost") { ?>
-            <base href="http://localhost/pro_campo/">
+            <base href="http://localhost/admin/">
         <?php } else { ?>
             <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">
         <?php } ?>

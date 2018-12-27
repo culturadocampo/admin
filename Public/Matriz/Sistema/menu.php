@@ -156,7 +156,7 @@
     $(document).ready(function () {
         var path = location.pathname.substring(1);
         if (location.host == "localhost") {
-            path = path.replace("pro_campo/", "");
+            path = path.replace("admin/", "");
         }
         if (path == "") {
             path = "<?php echo APP::rota_default(); ?>";

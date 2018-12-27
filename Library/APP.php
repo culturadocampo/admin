@@ -76,7 +76,7 @@ class APP {
     static function get_base_url() {
         $host = $_SERVER['HTTP_HOST'];
         if ($host == "localhost") {
-            return "http://localhost/pro_campo";
+            return "http://localhost/admin";
         } else {
             return "http://culturadocampo.com.br";
         }
