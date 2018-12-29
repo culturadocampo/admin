@@ -193,6 +193,8 @@ class Rota {
         fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-f" . PHP_EOL);
         fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-d" . PHP_EOL);
         fwrite($fp, "Options -Indexes" . PHP_EOL);
+        fwrite($fp, "ErrorDocument 404 /404.php" . PHP_EOL);
+
         foreach ($all_rotas as $rota) {
             $parametros = $o_parametro->select_parametros($rota['id_rota']);
             $query_string = "";

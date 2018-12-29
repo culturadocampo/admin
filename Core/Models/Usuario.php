@@ -39,18 +39,19 @@ class Usuario {
         }
     }
 
-    function insert_novo_usuario() {
+    function insert_novo_usuario($id_tipo_usuario) {
         $query = "
             INSERT INTO
                 usuarios
-            (fk_tipo_usuario, nome, usuario, senha, email)
+            (fk_tipo_usuario, nome, usuario, senha, email, cpf)
             VALUES 
             (
-                '2',
+                '{$id_tipo_usuario}',
                 '{$this->get_nome()}',
                 '{$this->get_usuario()}',
                 '{$this->get_senha()}',
-                '{$this->get_email()}'
+                '{$this->get_email()}',
+                '{$this->get_cpf()}'
             )
         ";
         $this->conn->execute($query);
@@ -154,38 +155,42 @@ class Usuario {
 
     function set_cpf($cpf) {
         if (VALIDA::cpf($_POST['cpf']) != true) {
-            APP::return_response(false, "Por favor, preencha o campo CPF corretamente");
+            APP::return_response(false, "Por favor, preencha o campo CPF corretamente.");
         }
 
         if (VALIDA::existe_cpf($cpf)) {
-            APP::return_response(false, "O CPF digitado já encontra-se cadastrado, por favor digite outro");
+            APP::return_response(false, "O CPF digitado já encontra-se cadastrado.");
         }
 
         $this->cpf = STRINGS::limpar($cpf);
     }
 
     function set_nome($nome) {
-        $this->nome = strtoupper(STRINGS::limpar($nome));
+        if (!empty($nome)) {
+            $this->nome = strtoupper(STRINGS::limpar($nome));
+        } else {
+            APP::return_response(false, "Favor informar o nome completo do usuário.");
+        }
     }
 
     function set_email($email) {
-        $this->email = STRINGS::limpar($email);
+        if (!empty($email) && VALIDA::is_email($email)) {
+            $this->email = STRINGS::limpar($email);
+        } else {
+            APP::return_response(false, "Favor informar o e-mail válido");
+        }
     }
 
     function set_usuario($usuario) {
         if ($usuario) {
             $this->usuario = STRINGS::limpar($usuario);
         } else {
-            APP::return_response(false, "Favor informar seu usuário ou e-mail de acesso");
+            APP::return_response(false, "Favor informar seu usuário ou e-mail de acesso.");
         }
     }
 
     function set_senha($senha) {
-        if ($senha) {
-            $this->senha = STRINGS::limpar($senha);
-        } else {
-            APP::return_response(false, "Favor informar sua senha de acesso");
-        }
+        $this->senha = STRINGS::limpar($senha);
     }
 
 }

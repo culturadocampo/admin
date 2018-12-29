@@ -4,6 +4,8 @@ rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
 Options -Indexes
 
+ErrorDocument 404 /404.php
+
 rewriteRule ^sistema\/rotas-de-acesso/adicionar\/?$ ./index.php? [NC]
 rewriteRule ^login\/?$ ./index.php? [NC]
 rewriteRule ^login\/_login?$ ./index.php? [NC]
@@ -48,5 +50,6 @@ rewriteRule ^insert-coordenador\/?$ ./index.php? [NC]
 rewriteRule ^login\/esqueci\/?$ ./index.php? [NC]
 rewriteRule ^login\/recuperar-senha\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
-
 rewriteRule ^usuarios\/cadastro\/coordenador\/?$ ./index.php [NC]
+rewriteRule ^usuario\/form\/coordenador\/?$ ./index.php [NC]
+rewriteRule ^usuario\/insert_coordenador\/?$ ./index.php [NC]

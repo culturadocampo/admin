@@ -67,7 +67,7 @@ class VALIDA {
             SELECT 
                 cpf
             FROM 
-                produtores
+                usuarios
             WHERE TRUE
                 AND cpf = '{$cpf}'
         ";
@@ -78,6 +78,10 @@ class VALIDA {
         } else {
             return false;
         }
+    }
+    
+    static function is_email($email){
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
 }

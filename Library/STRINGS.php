@@ -90,7 +90,7 @@ class STRINGS {
         return $regex;
     }
 
-    static function gen_password($length = 6) {
+    static function gen_password($length = 8) {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $count = mb_strlen($chars);
         for ($i = 0, $result = ''; $i < $length; $i++) {
