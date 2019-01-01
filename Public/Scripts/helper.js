@@ -47,3 +47,23 @@ function loadingBar(boolean) {
         $("#my-page").removeClass("animate_bar");
     }
 }
+
+{
+    var timeOut;
+    function notify(msg, typeClass) {
+        var alert = $("#system_alert");
+        alert.addClass(typeClass);
+        alert.html(msg);
+        alert.show();
+        timeOut = setTimeout(function () {
+            alert.hide();
+            alert.removeClass(typeClass);
+        }, 4000);
+    }
+
+    function hideNotify() {
+        clearTimeout(timeOut);
+        var alert = $("#system_alert");
+        alert.hide();
+    }
+}

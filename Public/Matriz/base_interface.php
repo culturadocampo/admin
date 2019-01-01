@@ -54,6 +54,8 @@
         <div id="m_scroll_top" class="m-scroll-top">
             <i class="la la-arrow-up"></i>
         </div>
+        <div id="system_alert" role="alert" class="text-center animated fadeInDown fast m--margin-top-30 alert alert-dismissible fade show m-alert m-alert--air m-alert--outline m-alert--outline-2x">
+        </div>
     </body>
 </html>
 <script>

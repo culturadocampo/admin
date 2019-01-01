@@ -50,6 +50,7 @@
     });
 
     function executar_cadastro() {
+        hideNotify();
         blockPage();
         var formData = $("#form_coordenador").serialize();
         $.ajax({
@@ -60,14 +61,14 @@
                 var response = JSON.parse(json);
                 if (response.result) {
                     load_form();
-                    alert(response.message);
+                    notify(response.message, 'alert-success');
                 } else {
                     unblockPage();
-                    alert(response.message);
+                    notify(response.message, 'alert-danger');
                 }
             },
             error: function (error) {
-                alert("Erro: Entre em contato com o suporte (COD: L001)");
+                notify("Erro: Entre em contato com o suporte", 'alert-danger');
             }
         });
     }

@@ -37,7 +37,6 @@
 #my-page{
     background: url("../Images/Outros/footer-line-alt2.png") repeat-x scroll center bottom transparent;
     padding-bottom: 20px;
-
 }
 
 .fast {
@@ -50,6 +49,10 @@
 
 .animate_bar{
     animation: animatedBackground 1.0s alternate infinite;
+}
+
+#system_alert{
+    position: fixed; top: 75px; right: 75px; display: none;
 }
 
 body{
