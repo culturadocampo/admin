@@ -5,7 +5,7 @@
                 <div class="m-portlet__head-caption">
                     <div class="m-portlet__head-title">
                         <h3 class="m-portlet__head-text">
-                            <span class="text-dark" style="font-weight: lighter;">Novo coordenador</span>
+                            <span class="text-dark" style="font-weight: lighter;">Novo técnico</span>
                         </h3>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div id="cadastro_coordenador" class="m-portlet__body" >
+        <div id="cadastro_tecnico" class="m-portlet__body" >
 
         </div>
     </div>
@@ -39,38 +39,8 @@
     });
 
     function load_form() {
-        $("#cadastro_coordenador").load("usuario/form/coordenador", {}, function () {
-//            mApp.unblock("#cadastro_coordenador");
+        $("#cadastro_tecnico").load("usuario/form/tecnico", {}, function () {
             unblockPage();
         });
     }
-
-    $("#cadastrar").on("click", function () {
-        executar_cadastro();
-    });
-
-    function executar_cadastro() {
-        hideNotify();
-        blockPage();
-        var formData = $("#form_coordenador").serialize();
-        $.ajax({
-            type: "post",
-            url: "usuario/insert_coordenador",
-            data: formData,
-            success: function (json) {
-                var response = JSON.parse(json);
-                if (response.result) {
-                    load_form();
-                    notify(response.message, 'alert-success');
-                } else {
-                    unblockPage();
-                    notify(response.message, 'alert-danger');
-                }
-            },
-            error: function (error) {
-                notify("Erro: Entre em contato com o suporte", 'alert-danger');
-            }
-        });
-    }
-
 </script>

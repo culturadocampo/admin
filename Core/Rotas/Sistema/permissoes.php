@@ -117,7 +117,7 @@ $arr_tipos = $o_permissao->select_tipos_usuario();
                     } else {
                         swal({
                             type: 'error',
-                            title: 'Resposta inesperadaaaa',
+                            title: 'Resposta inesperada',
                             text: response
                         });
                     }

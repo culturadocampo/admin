@@ -105,9 +105,11 @@ class Rota {
             if ($file->isDir()) {
                 continue;
             }
-            $path = str_replace("\\", "/", $file->getPathname());
-            $path = str_replace("Core/Rotas/", "", $path);
-            array_push($conteudo, $path);
+            if (strpos($file->getPathname(), 'include') === false) {
+                $path = str_replace("\\", "/", $file->getPathname());
+                $path = str_replace("Core/Rotas/", "", $path);
+                array_push($conteudo, $path);
+            }
         }
         return $conteudo;
     }

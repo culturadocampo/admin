@@ -26,7 +26,7 @@ class CONFIG {
     static $LOGIN_NUMBER_ATTEMPS_DELAY = 5;
     static $LOGIN_SLEEP_BASE_DELAY = 2;
     static $LOGIN_FAILED_ATTEMPTS_RANGE = 15; // em minutos 
-    static $LOGIN_RECAPTCHA = FALSE;
+    static $LOGIN_RECAPTCHA = TRUE;
     static $LOGIN_CAPTCHA_SECRET = '6Le8m4QUAAAAAIJ1IykZy0aEMkaVUASnyKKwIzEm';
     /*
      * Mail

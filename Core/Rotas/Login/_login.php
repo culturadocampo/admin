@@ -15,11 +15,11 @@ if (CONFIG::$LOGIN_RECAPTCHA == FALSE || $_POST['g-recaptcha-response']) {
 
         if ($failed_attempts['total'] >= CONFIG::$LOGIN_NUMBER_ATTEMPS_DELAY) {
             $micro_seconds = (CONFIG::$LOGIN_SLEEP_BASE_DELAY * $failed_attempts['total']) * 500000;
-//            usleep($micro_seconds);
+            usleep($micro_seconds);
         }
 
         if (isset($_POST['usuario']) && isset($_POST['senha'])) {
-            $o_usuario->set_usuario($_POST['usuario']);
+            $o_usuario->set_usuario($_POST['usuario'], false);
             $o_usuario->set_senha($_POST['senha']);
 
             $id_usuario = $o_usuario->select_usuario_login();

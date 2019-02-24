@@ -18,5 +18,5 @@ if ($envio_ok) {
     $o_usuario->insert_novo_usuario(2);
     APP::return_response(true, "Sucesso. Credenciais enviadas para o e-mail informado.");
 } else {
-    APP::return_response(false, "A mensagem não pode ser enviada ao e-mail. Tente novamente mais tarde.");
+    APP::return_response(false, "A mensagem não pôde ser enviada ao e-mail informado. Tente novamente mais tarde.");
 }

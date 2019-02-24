@@ -103,15 +103,15 @@ class Produtor {
         }
     }
 
-    public static function verifica_cadastro_produtor() {
-        $query = "SELECT fk_usuario FROM produtores WHERE fk_usuario = '$_SESSION[id_usuario]' ";
-        $retorno_prod = $this->conn->row_count($query);
+    // public static function verifica_cadastro_produtor() {
+    //     $query = "SELECT fk_usuario FROM produtores WHERE fk_usuario = '$_SESSION[id_usuario]' ";
+    //     $retorno_prod = $this->conn->row_count($query);
 
-        if ($retorno_prod != 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     if ($retorno_prod != 0) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
 }

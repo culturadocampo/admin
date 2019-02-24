@@ -4,7 +4,7 @@ $o_usuario = new Usuario();
 
 if ($_POST['email_usuario']) {
     $email_usuario = $_POST['email_usuario'];
-    $o_usuario->set_email($email_usuario);
+    $o_usuario->set_usuario($email_usuario, false);
     $usuario = $o_usuario->select_usuario_from_email_or_usuario();
     if (!empty($usuario)) {
         $email = $usuario['email'];

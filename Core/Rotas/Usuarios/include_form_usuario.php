@@ -27,7 +27,7 @@
                 <div class="form-group m-form__group">
                     <label for="email">Endereço eletrônico</label>
                     <input name="email" type="email" class="form-control m-input" id="email" placeholder="Informe um e-mail válido">
-                    <span class="m-form__help text-danger">A senha de acesso será enviada a este e-mail.</span>
+                    <span class="m-form__help text-info">A senha de acesso será enviada a este e-mail.</span>
                 </div>
             </div>
         </div>

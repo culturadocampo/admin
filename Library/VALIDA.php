@@ -71,16 +71,54 @@ class VALIDA {
             WHERE TRUE
                 AND cpf = '{$cpf}'
         ";
-        $row_cpf = $conn->row_count($query);
+        $row = $conn->row_count($query);
 
-        if ($row_cpf != 0) {
+        if ($row != 0) {
             return true;
         } else {
             return false;
         }
     }
-    
-    static function is_email($email){
+
+    static function existe_email($email) {
+        $conn = DB::get_instance();
+        $query = "
+            SELECT 
+                email
+            FROM 
+                usuarios
+            WHERE TRUE
+                AND email = '{$email}'
+        ";
+        $row = $conn->row_count($query);
+
+        if ($row != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static function existe_usuario($usuario) {
+        $conn = DB::get_instance();
+        $query = "
+            SELECT 
+                usuario
+            FROM 
+                usuarios
+            WHERE TRUE
+                AND usuario = '{$usuario}'
+        ";
+        $row = $conn->row_count($query);
+
+        if ($row != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static function is_email($email) {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 

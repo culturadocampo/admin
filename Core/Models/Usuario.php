@@ -55,6 +55,7 @@ class Usuario {
             )
         ";
         $this->conn->execute($query);
+        return $this->conn->last_id();
     }
 
     function select_usuario_from_id($id_usuario) {
@@ -87,7 +88,7 @@ class Usuario {
             FROM usuarios 
             WHERE TRUE 
                 AND 
-            (usuario = '{$this->email}' OR email = '{$this->email}')
+            (usuario = '{$this->get_usuario()}' OR email = '{$this->get_usuario()}')
         ";
         return $this->conn->fetch($query);
     }
@@ -153,15 +154,15 @@ class Usuario {
         return $this->senha;
     }
 
-    function set_cpf($cpf) {
+    function set_cpf($cpf, $unique = true) {
         if (VALIDA::cpf($_POST['cpf']) != true) {
             APP::return_response(false, "Por favor, preencha o campo CPF corretamente.");
         }
-
-        if (VALIDA::existe_cpf($cpf)) {
-            APP::return_response(false, "O CPF digitado já encontra-se cadastrado.");
+        if ($unique) {
+            if (VALIDA::existe_cpf($cpf)) {
+                APP::return_response(false, "O CPF digitado já encontra-se cadastrado.");
+            }
         }
-
         $this->cpf = STRINGS::limpar($cpf);
     }
 
@@ -173,19 +174,29 @@ class Usuario {
         }
     }
 
-    function set_email($email) {
+    function set_email($email, $unique = true) {
         if (!empty($email) && VALIDA::is_email($email)) {
             $this->email = STRINGS::limpar($email);
+            if ($unique) {
+                if (VALIDA::existe_email($this->get_email())) {
+                    APP::return_response(false, "O E-MAIL informado já existe em nossa base.");
+                }
+            }
         } else {
-            APP::return_response(false, "Favor informar o e-mail válido");
+            APP::return_response(false, "Favor informar um E-MAIL válido");
         }
     }
 
-    function set_usuario($usuario) {
+    function set_usuario($usuario, $unique = true) {
         if ($usuario) {
             $this->usuario = STRINGS::limpar($usuario);
+            if ($unique) {
+                if (VALIDA::existe_usuario($this->get_usuario())) {
+                    APP::return_response(false, "O USUÁRIO informado já existe em nossa base.");
+                }
+            }
         } else {
-            APP::return_response(false, "Favor informar seu usuário ou e-mail de acesso.");
+            APP::return_response(false, "Favor informar seu USUÁRIO");
         }
     }
 

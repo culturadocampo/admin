@@ -34,30 +34,30 @@
                         <span class="m-menu__link-text">Coordenador</span>
                     </a>
                 </li>
-                <li class="m-menu__item">
+<!--                <li class="m-menu__item">
                     <a href="#" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-warehouse"></i>
                         <span class="m-menu__link-text">Cooperativas</span>
                     </a>
                 </li>
-                <li class="m-menu__item">
-                    <a href="#" class="m-menu__link">
+                <li class="m-menu__item">-->
+<!--                    <a href="#" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-user-tie"></i>
                         <span class="m-menu__link-text">Supervisores</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="m-menu__item">
-                    <a href="#" class="m-menu__link">
+                    <a href="usuarios/cadastro/tecnico" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-user-graduate"></i>
                         <span class="m-menu__link-text">Técnicos</span>
                     </a>
                 </li>
-                <li class="m-menu__item">
+<!--                <li class="m-menu__item">
                     <a href="#" class="m-menu__link">
                         <i class="m-menu__link-icon fas fa-user"></i>
                         <span class="m-menu__link-text">Produtores</span>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </li>
@@ -92,7 +92,7 @@
             </div>
         </li>
     -->        
-    <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab">
+<!--    <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab">
         <a href="javascript:;" class="m-menu__link m-menu__toggle" title=""><span class="m-menu__link-text">Produtos</span><i
                 class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
         <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
@@ -102,7 +102,7 @@
                 <li class="m-menu__item"><a href="produtos/criar-cesta" class="m-menu__link"><i class="m-menu__link-icon fas fa-box-open"></i><span class="m-menu__link-text">Criar cesta</span></a></li>
             </ul>
         </div>
-    </li>
+    </li>-->
 
     <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab">
         <a href="javascript:;" class="m-menu__link m-menu__toggle" title="">
