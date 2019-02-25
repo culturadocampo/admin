@@ -1,36 +1,31 @@
-<div class="m-portlet__body">
-    <div class="form-group m-form__group">
-        <div class="row m--padding-bottom-20">
-            <div class="col-md-6 ">
-                <div class="form-group m-form__group">
-                    <label for="nome_completo">Nome completo</label>
-                    <input name="nome_completo" type="text" class="form-control m-input" id="nome_completo" placeholder="Nome completo do novo usuário">
-                </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="form-group m-form__group">
-                    <label for="cpf">CPF</label>
-                    <input pattern="\d+" name="cpf" type="text" class="form-control m-input" id="cpf" placeholder="Informe o CPF (Somente números)">
-                </div>
-            </div>
-        </div>
+<div class="form-group m-form__group row">
+    <div class="col-lg-6">
+        <label for="nome_completo">Nome completo</label>
+        <input name="nome_completo" type="text" class="form-control m-input" placeholder="Nome do usuário">
+        <span class="m-form__help">Informe o nome completo</span>
     </div>
-    <div class="form-group m-form__group">
-        <div class="row m--padding-bottom-20">
-            <div class="col-md-6 ">
-                <div class="form-group m-form__group">
-                    <label for="usuario">Usuário de acesso</label>
-                    <input name="usuario" type="text" class="form-control m-input" id="usuario" placeholder="Somente letra ou números. Sem espaço.">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group m-form__group">
-                    <label for="email">Endereço eletrônico</label>
-                    <input name="email" type="email" class="form-control m-input" id="email" placeholder="Informe um e-mail válido">
-                    <span class="m-form__help text-info">A senha de acesso será enviada a este e-mail.</span>
-                </div>
-            </div>
+    <div class="col-lg-6">
+        <label for="cpf">CPF</label>
+        <input id="cpf" pattern="\d+" name="cpf" type="text" class="form-control m-input" placeholder="CPF do usuário">
+        <span class="m-form__help">Somente números</span>
+    </div>
+</div>	 
+<div class="form-group m-form__group row">
+    <div class="col-lg-6">
+        <label for="usuario">Usuário de acesso</label>
+        <div class="m-input-icon m-input-icon--right">
+            <input name="usuario" type="text" class="form-control m-input" id="usuario" class="form-control m-input" placeholder="Usuário de acesso">
+            <span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="la la-user"></i></span></span>
         </div>
+        <span class="m-form__help">Somente letras e números. Sem espaço.</span>
+    </div>
+    <div class="col-lg-6">
+        <label for="email">Endereço eletrônico</label>
+        <div class="m-input-icon m-input-icon--right">
+            <input name="email" type="email" class="form-control m-input" id="email" class="form-control m-input" placeholder="E-mail do usuário">
+            <span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="la la-bookmark-o"></i></span></span>
+        </div>
+        <span class="m-form__help">A senha de acesso será enviada a este e-mail</span>
     </div>
 </div>
 

@@ -1,35 +1,33 @@
-<div class="m-subheader ">
-    <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
-        <div class="m-portlet__head portlet_round">
-            <div class="m-portlet__head-wrapper" >
-                <div class="m-portlet__head-caption">
-                    <div class="m-portlet__head-title">
-                        <h3 class="m-portlet__head-text">
-                            <span class="text-dark" style="font-weight: lighter;">Novo coordenador</span>
-                        </h3>
-                    </div>
-                </div>
-                <div class="m-portlet__head-tools">
-                    <div class="btn-group">
-                        <div class="m-portlet__head-tools">
-                            <div class="btn-group">
-                                <button id="cadastrar" type="button" class="btn btn-info m-btn m-btn--icon m-btn--wide m-btn--md">
-                                    <span>
-                                        <span class="">Confirmar</span>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <span class="m-portlet__head-icon m--hide">
+                    <i class="la la-gear"></i>
+                </span>
+                <h3 class="m-portlet__head-text">
+                    Cadastro de coordernador
+                </h3>
+            </div>
+        </div>
+    </div>
+    <form id="form_coordenador" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+        <div id="cadastro_coordenador" class="m-portlet__body">	
+
+        </div>
+        <br>    
+        <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+            <div class="m-form__actions m-form__actions--solid">
+                <div class="row">
+                    <div class="col-lg-12  m--align-right">
+                        <button id="cadastrar" type="button" class="btn btn-success">Salvar usuário</button>
+                        <button type="reset" class="btn btn-secondary">Limpar</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="cadastro_coordenador" class="m-portlet__body" >
-
-        </div>
-    </div>
+    </form>
 </div>
-
 
 <script>
 
@@ -40,7 +38,6 @@
 
     function load_form() {
         $("#cadastro_coordenador").load("usuario/form/coordenador", {}, function () {
-//            mApp.unblock("#cadastro_coordenador");
             unblockPage();
         });
     }

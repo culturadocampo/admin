@@ -16,11 +16,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
         <link rel="shortcut icon" href="Public/Images/new_logo.png" />
-        <link href="Public/Styles/style.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="Public/Styles/style.bundle.min.css" rel="stylesheet" type="text/css">
         <link href="Public/Styles/custom.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
         <script src="Public/Vendors/base/vendors.bundle.js" type="text/javascript"></script>
-        <script src="Public/Scripts/scripts.bundle.js" type="text/javascript"></script>
+        <script src="Public/Scripts/scripts.bundle.min.js" type="text/javascript"></script>
         <script src='Public/Scripts/helper.js'></script>
         <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
         <script src='https://www.google.com/recaptcha/api.js?render=6Le8m4QUAAAAAIH-aUf0xYHIyt-HS9F7MZHlRIm1'></script>

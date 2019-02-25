@@ -17,35 +17,34 @@ class Tecnico {
         $this->conn = DB::get_instance();
     }
 
-    function insertTecnico($id_usuario, $id_municipio) {
+    function insertTecnico($id_usuario, $codigo_municipio) {
         $query = "
             INSERT INTO tecnicos
             (
                 fk_usuario,
-                fk_municipio,
+                codigo_municipio,
                 rg,
                 formacao,
                 area_atuacao,
                 entidade,
                 telefone,
                 celular,
-                email,
                 observacao
             )
             VALUES (
                 '{$id_usuario}',
-                '{$id_municipio}',
+                '{$codigo_municipio}',
                 '{$this->getRg()}',
                 '{$this->getFormacao()}',
                 '{$this->getAreaAtuacao()}',
                 '{$this->getEntidade()}',
                 '{$this->getTelefone()}',
                 '{$this->getCelular()}',
-                '{$this->getEmail()}',
                 '{$this->getObservacao()}'
             )
         ";
         $this->conn->execute($query);
+        return $this->conn->last_id();
     }
 
     function getIdTecnico() {

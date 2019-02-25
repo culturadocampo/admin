@@ -23,11 +23,21 @@ class Municipio {
     function selectMunicipio($codigo) {
         $query = "
             SELECT 
-                id, nome, uf 
+                id_municipio, nome, uf 
             FROM municipios
             WHERE codigo = '{$codigo}'
         ";
         return $this->conn->fetch($query);
+    }
+    
+    function select_todos_municipios_uf($uf){
+          $query = "
+            SELECT 
+                codigo, nome
+            FROM municipios
+            WHERE uf = '{$uf}'
+        ";
+        return $this->conn->fetch_all($query);
     }
 
     function getCodigo() {

@@ -1,12 +1,16 @@
 .pointer {
     cursor: pointer;
 }
-
+.m-body .m-content{
+    padding-top: 0px!important;
+}
+.m-header, .m-brand{
+    background-color: #FAFAFA!important;
+}
 .m-wrapper{
     border-bottom-left-radius: 10px!important;
     border-bottom-right-radius: 10px!important;
-    padding: 8px!important;
-
+    padding: 0px!important;
 }
 
 .m-portlet{
@@ -20,6 +24,10 @@
 
 .m-page--fluid .m-page .m-page__container{
     /*padding: 0 40px;*/
+}
+
+#searchContainer{
+    overflow: visible!important;
 }
 
 @keyframes animatedBackground {
@@ -52,7 +60,7 @@
 }
 
 #system_alert{
-    position: fixed; top: 75px; right: 75px; display: none;
+    position: fixed; top: 90px; right: 75px; display: none;
 }
 
 body{

@@ -154,23 +154,23 @@
 
 <script>
     $(document).ready(function () {
-        var path = location.pathname.substring(1);
-        if (location.host == "localhost") {
-            path = path.replace("admin/", "");
-        }
-        if (path == "") {
-            path = "<?php echo APP::rota_default(); ?>";
-        }
-        $(".m-menu__item").each(function (key, item) {
-            if ($(this).hasClass("has-submenu")) {
-
-            } else {
-                var href = $(this).find('a').attr("href");
-                if (href == path) {
-                    $(this).addClass("m-menu__item--active");
-                    $(this).closest(".m-menu__item--tabs").addClass("m-menu__item--active-tab");
-                }
-            }
-        });
+//        var path = location.pathname.substring(1);
+//        if (location.host == "localhost") {
+//            path = path.replace("admin/", "");
+//        }
+//        if (path == "") {
+//            path = "<?php // echo APP::rota_default(); ?>";
+//        }
+//        $(".m-menu__item").each(function (key, item) {
+//            if ($(this).hasClass("has-submenu")) {
+//
+//            } else {
+//                var href = $(this).find('a').attr("href");
+//                if (href == path) {
+//                    $(this).addClass("m-menu__item--active");
+//                    $(this).closest(".m-menu__item--tabs").addClass("m-menu__item--active-tab");
+//                }
+//            }
+//        });
     });
 </script>

@@ -12,7 +12,15 @@ class SESSION {
 
     static function get_nome_usuario() {
         if (isset($_SESSION['nome_usuario'])) {
-            return $_SESSION['nome_usuario'];
+            return STRINGS::proper_case($_SESSION['nome_usuario']);
+        } else {
+            return false;
+        }
+    }
+    
+      static function get_email_usuario() {
+        if (isset($_SESSION['email_usuario'])) {
+            return $_SESSION['email_usuario'];
         } else {
             return false;
         }

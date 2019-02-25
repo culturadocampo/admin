@@ -58,7 +58,7 @@ function loadingBar(boolean) {
         timeOut = setTimeout(function () {
             alert.hide();
             alert.removeClass(typeClass);
-        }, 4000);
+        }, 5000);
     }
 
     function hideNotify() {

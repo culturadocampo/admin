@@ -23,11 +23,20 @@ $o_tecnico->setEmail($_POST['email']);
 $o_tecnico->setObservacao($_POST['observacao']);
 
 $id_usuario = $o_usuario->insert_novo_usuario(5);
-$o_tecnico->insertTecnico($id_usuario, $o_municipio->getCodigo());
+if ($id_usuario) {
+    $id_tecnico = $o_tecnico->insertTecnico($id_usuario, $o_municipio->getCodigo());
+    if ($id_tecnico) {
+        $body = EMAIL::body_cadastro_usuario($o_usuario->get_nome(), $o_usuario->get_usuario(), $nova_senha, 5);
+        $envio_ok = EMAIL::send_mail($o_usuario->get_email(), CONFIG::$PROJECT_NAME . " - Credenciais de acesso", $body);
+    } else {
+        APP::return_response(false, "Ocorreu um erro: CT101");
+    }
+} else {
+    APP::return_response(false, "Ocorreu um erro: CT100");
+}
+
+APP::return_response(true, "Sucesso! As credenciais foram enviadas para o e-mail informado.");
 
 
 
-
-//$body = EMAIL::body_cadastro_usuario($o_usuario->get_nome(), $o_usuario->get_usuario(), $nova_senha, 5);
-//$envio_ok = EMAIL::send_mail($o_usuario->get_email(), CONFIG::$PROJECT_NAME . " - Credenciais de acesso", $body);
 
