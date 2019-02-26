@@ -17,8 +17,8 @@ class SESSION {
             return false;
         }
     }
-    
-      static function get_email_usuario() {
+
+    static function get_email_usuario() {
         if (isset($_SESSION['email_usuario'])) {
             return $_SESSION['email_usuario'];
         } else {
@@ -42,6 +42,12 @@ class SESSION {
         }
     }
 
-
+    static function get_permissoes() {
+        if (isset($_SESSION['permissoes'])) {
+            return explode(',', $_SESSION['permissoes']);
+        } else {
+            return false;
+        }
+    }
 
 }

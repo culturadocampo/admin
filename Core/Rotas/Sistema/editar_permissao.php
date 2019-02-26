@@ -20,7 +20,7 @@ $arr_rotas = $o_rota->select_all_rotas();
             <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
                 <div class="m-portlet__head">
                     <div class="m-portlet__head-progress">
-                        <!-- here can place a progress bar-->
+
                     </div>
                     <div class="m-portlet__head-wrapper">
                         <div class="m-portlet__head-caption">
@@ -82,9 +82,9 @@ $arr_rotas = $o_rota->select_all_rotas();
                             <div class="col-lg-4">
                                 <label class="">Tipo de usuário:</label>
                                 <select name="tipo_usuario[]" class="form-control m-input selectpicker" multiple>
-                                    <option <?php echo in_array(1, $tipos_usuario) ? 'selected' : ''; ?> value="1">Administrador</option>
-                                    <option <?php echo in_array(2, $tipos_usuario) ? 'selected' : ''; ?> value="2">Cliente</option>
-                                    <option <?php echo in_array(3, $tipos_usuario) ? 'selected' : ''; ?> value="3">Produtor</option>
+                                    <option <?php echo in_array(1, $tipos_usuario) ? 'selected' : ''; ?> value="1">Master</option>
+                                    <option <?php echo in_array(2, $tipos_usuario) ? 'selected' : ''; ?> value="2">Coordenador</option>
+                                    <option <?php echo in_array(5, $tipos_usuario) ? 'selected' : ''; ?> value="5">Técnico</option>
 
                                 </select>
                                 <span class="m-form__help">Selecione ao menos um tipo</span>

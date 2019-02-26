@@ -62,7 +62,6 @@
             url: "usuario/insert_tecnico",
             data: formData,
             success: function (json) {
-                alert(json);
                 if (is_json(json)) {
                     var response = JSON.parse(json);
                     if (response.result) {

@@ -3,6 +3,7 @@
 class APP {
 
     static function start() {
+
         $request = self::get_request();
         ROUTER::include_file($request);
     }
@@ -30,6 +31,8 @@ class APP {
     static function is_logged() {
         if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome_usuario'])) {
             if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome_usuario'])) {
+                $o_permissao = new Permissao();
+                $_SESSION['permissoes'] = $o_permissao->select_permissoes_tipo_usuario($_SESSION['id_tipo_usuario']);
                 return true;
             } else {
                 return self::check_for_cookie();
@@ -121,6 +124,14 @@ class APP {
             return $token;
         } else {
             self::gen_token($length);
+        }
+    }
+
+    static function has_permissao($id_permissao) {
+        if (in_array($id_permissao, SESSION::get_permissoes())) {
+            return true;
+        } else {
+            return false;
         }
     }
 

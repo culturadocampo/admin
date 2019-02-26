@@ -142,6 +142,21 @@ class Permissao {
         return $this->conn->fetch_all($query);
     }
 
+    function select_permissoes_tipo_usuario($id_tipo_usuario) {
+        $query = "
+            SELECT
+                GROUP_CONCAT( fk_permissao ) AS permissoes 
+            FROM
+                permissoes_tipos_usuario 
+            WHERE
+                fk_tipo_usuario = '{$id_tipo_usuario}'
+            GROUP BY
+                fk_tipo_usuario
+        ";
+        $result = $this->conn->fetch($query);
+        return $result['permissoes'];
+    }
+
     function get_id_permissao() {
         return $this->id_permissao;
     }
