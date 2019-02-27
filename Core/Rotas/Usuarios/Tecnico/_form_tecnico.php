@@ -1,5 +1,5 @@
 
-<form id="form_tecnico" class="m-form m-form--fit m-form--label-align-right animated fadeIn fast">
+<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
     <?php include 'Core/Rotas/Usuarios/include_form_usuario.php'; ?>
     <div class="form-group m-form__group row">
         <div class="col-lg-6">

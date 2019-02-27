@@ -9,12 +9,12 @@
 
             <li id="1" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text">Controle</h4>
-                <i class="m-menu__section-icon flaticon-more-v2"></i>
+                <i class="m-menu__section-icon text-dark flaticon-more-v2"></i>
             </li>
             <?php if (APP::has_permissao(8)) { ?>
-                <li class="m-menu__item " aria-haspopup="true" menu="1">
-                    <a href="visao-area" class="m-menu__link ">
-                        <i class="m-menu__link-icon flaticon-suitcase"></i>
+                <li class="m-menu__item " menu="1">
+                    <a href="visao-aerea" class="m-menu__link ">
+                        <i class="m-menu__link-icon  text-dark flaticon-presentation-1  "></i>
                         <span class="m-menu__link-text">Visão geral</span>
                     </a>
                 </li>
@@ -23,12 +23,12 @@
 
             <li id="2" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text">Usuários</h4>
-                <i class="m-menu__section-icon flaticon-more-v2"></i>
+                <i class="m-menu__section-icon text-dark flaticon-more-v2"></i>
             </li>
             <?php if (APP::has_permissao(11)) { ?>
                 <li class="m-menu__item " menu="2">
                     <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                        <i class="m-menu__link-icon flaticon-suitcase"></i>
+                        <i class="m-menu__link-icon text-dark flaticon-user-settings "></i>
                         <span class="m-menu__link-text">Coordernador</span>
                     </a>
                 </li>
@@ -36,7 +36,7 @@
             <?php if (APP::has_permissao(12)) { ?>
                 <li class="m-menu__item " menu="2">
                     <a href="usuarios/cadastro/tecnico" class="m-menu__link ">
-                        <i class="m-menu__link-icon flaticon-suitcase"></i>
+                        <i class="m-menu__link-icon text-dark flaticon-users"></i>
                         <span class="m-menu__link-text">Técnicos</span>
                     </a>
                 </li>
@@ -46,13 +46,13 @@
 
             <li id="3" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text">Sistema</h4>
-                <i class="m-menu__section-icon flaticon-more-v2"></i>
+                <i class="m-menu__section-icon text-dark flaticon-more-v2"></i>
             </li>
             <?php if (APP::has_permissao(1)) { ?>
 
                 <li class="m-menu__item " menu="3">
                     <a href="sistema/rotas-de-acesso/adicionar" class="m-menu__link ">
-                        <i class="m-menu__link-icon flaticon-suitcase"></i>
+                        <i class="m-menu__link-icon  text-dark flaticon-signs "></i>
                         <span class="m-menu__link-text">Rotas de acesso</span>
                     </a>
                 </li>
@@ -62,7 +62,7 @@
 
                 <li class="m-menu__item " menu="3">
                     <a href="sistema/permissoes" class="m-menu__link ">
-                        <i class="m-menu__link-icon flaticon-suitcase"></i>
+                        <i class="m-menu__link-icon  text-dark flaticon-signs-2 "></i>
                         <span class="m-menu__link-text">Permissões de acesso</span>
                     </a>
                 </li>

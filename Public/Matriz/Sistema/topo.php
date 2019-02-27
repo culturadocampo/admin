@@ -63,16 +63,18 @@
                                                     <li class="m-nav__section m--hide">
                                                         <span class="m-nav__section-text">Section</span>
                                                     </li>
-                                                    <li class="m-nav__item">
-                                                        <a href="#" class="m-nav__link">
-                                                            <i class="m-nav__link-icon flaticon-profile-1"></i>
-                                                            <span class="m-nav__link-title">  
-                                                                <span class="m-nav__link-wrap">      
-                                                                    <span class="m-nav__link-text">Meu perfil</span>      
+                                                    <?php if (APP::has_permissao(6)) { ?>
+                                                        <li class="m-nav__item">
+                                                            <a href="usuario/perfil" class="m-nav__link">
+                                                                <i class="m-nav__link-icon flaticon-profile-1"></i>
+                                                                <span class="m-nav__link-title">  
+                                                                    <span class="m-nav__link-wrap">      
+                                                                        <span class="m-nav__link-text">Meu perfil</span>      
+                                                                    </span>
                                                                 </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
+                                                            </a>
+                                                        </li>
+                                                    <?php } ?>
                                                     <li class="m-nav__item">
                                                         <a href="logout" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-logout"></i>
