@@ -1,6 +1,6 @@
 <?php
 $o_permissao = new Permissao();
-$arr_tipos = $o_permissao->select_tipos_usuario();
+$arr_tipos = $o_permissao->select_usuarios_tipo();
 ?>
 <style>
     .m-wrapper{

@@ -65,9 +65,9 @@ class Usuario {
                 usuarios.nome,
                 email,
                 fk_tipo_usuario,
-                tipos_usuario.nome AS tipo_usuario
+                usuarios_tipo.nome AS tipo_usuario
             FROM usuarios 
-            INNER JOIN tipos_usuario ON id_tipo_usuario = fk_tipo_usuario
+            INNER JOIN usuarios_tipo ON id_tipo_usuario = fk_tipo_usuario
             WHERE TRUE 
                 AND id_usuario = '{$id_usuario}'
         ";

@@ -2,9 +2,9 @@
 
 class Telefone {
 
-    private $celPrincipal;
-    private $celSecundario;
-    private $telFixo;
+    private $conn;
+    private $telefone;
+    private $tipoTelefone;
 
     function __construct() {
         $this->conn = DB::get_instance();
@@ -12,48 +12,34 @@ class Telefone {
 
     function insert_telefone($id_usuario) {
         $query = "
-            INSERT INTO telefones
+            INSERT INTO usuarios_telefones
              (
                 fk_usuario, 
-                cel_principal, 
-                cel_secundario, 
-                tel_fixo
+                tipo_telefone, 
+                telefone
             )
             VALUES (
                 '{$id_usuario}',
-                '{$this->get_celPrincipal()}',
-                '{$this->get_celSecundario()}',
-                '{$this->get_telFixo()}'
+                '{$this->getTipoTelefone()}',
+                '{$this->getTelefone()}'
              )";
         $this->conn->execute($query);
     }
 
-    function get_celPrincipal() {
-        return $this->celPrincipal;
+    function getTelefone() {
+        return $this->telefone;
     }
 
-    function get_celSecundario() {
-        return $this->celSecundario;
+    function setTelefone($telefone) {
+        $this->telefone = $telefone;
     }
 
-    function get_telFixo() {
-        return $this->telFixo;
+    function getTipoTelefone() {
+        return $this->tipoTelefone;
     }
 
-    function set_celPrincipal($celPrincipal) {
-        if ($celPrincipal) {
-            $this->celPrincipal = STRINGS::limpar($celPrincipal);
-        } else {
-            APP::return_response(false, "Favor informar o nº do CEL. PRINCIPAL");
-        }
-    }
-
-    function set_celSecundario($celSecundario) {
-        $this->celSecundario = STRINGS::limpar($celSecundario);
-    }
-
-    function set_telFixo($telFixo) {
-        $this->telFixo = STRINGS::limpar($telFixo);
+    function setTipoTelefone($tipoTelefone) {
+        $this->tipoTelefone = $tipoTelefone;
     }
 
 }

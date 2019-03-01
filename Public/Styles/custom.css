@@ -1,6 +1,9 @@
 .pointer {
     cursor: pointer;
 }
+.text-grey{
+    color: #cccccc!important;
+}
 .m-body .m-content{
     padding-top: 0px!important;
 }

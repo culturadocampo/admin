@@ -8,8 +8,6 @@ class Tecnico {
     private $formacao;
     private $areaAtuacao;
     private $entidade;
-    private $telefone;
-    private $celular;
     private $email;
     private $observacao;
 
@@ -19,7 +17,7 @@ class Tecnico {
 
     function insertTecnico($id_usuario, $codigo_municipio) {
         $query = "
-            INSERT INTO tecnicos
+            INSERT INTO usuarios_tecnicos
             (
                 fk_usuario,
                 codigo_municipio,
@@ -27,8 +25,6 @@ class Tecnico {
                 formacao,
                 area_atuacao,
                 entidade,
-                telefone,
-                celular,
                 observacao
             )
             VALUES (
@@ -38,8 +34,6 @@ class Tecnico {
                 '{$this->getFormacao()}',
                 '{$this->getAreaAtuacao()}',
                 '{$this->getEntidade()}',
-                '{$this->getTelefone()}',
-                '{$this->getCelular()}',
                 '{$this->getObservacao()}'
             )
         ";
@@ -65,14 +59,6 @@ class Tecnico {
 
     function getEntidade() {
         return $this->entidade;
-    }
-
-    function getTelefone() {
-        return $this->telefone;
-    }
-
-    function getCelular() {
-        return $this->celular;
     }
 
     function getEmail() {
@@ -116,22 +102,6 @@ class Tecnico {
             $this->entidade = STRINGS::limpar($entidade);
         } else {
             APP::return_response(false, "Favor informar a ENTIDADE a qual pertence.");
-        }
-    }
-
-    function setTelefone($telefone) {
-        if (!empty($telefone)) {
-            $this->telefone = STRINGS::limpar($telefone);
-        } else {
-            APP::return_response(false, "Favor informar o TELEFONE do técnico.");
-        }
-    }
-
-    function setCelular($celular) {
-        if (!empty($celular)) {
-            $this->celular = STRINGS::limpar($celular);
-        } else {
-            APP::return_response(false, "Favor informar o CELULAR do técnico.");
         }
     }
 

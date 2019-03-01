@@ -37,10 +37,10 @@ class Permissao {
                 id_permissao,
                 permissoes.descricao,
                 permissoes.data,
-                GROUP_CONCAT(tipos_usuario.nome) AS usuarios
+                GROUP_CONCAT(usuarios_tipo.nome) AS usuarios
             FROM permissoes
             LEFT JOIN permissoes_tipos_usuario ON id_permissao = fk_permissao
-            LEFT JOIN tipos_usuario ON fk_tipo_usuario = id_tipo_usuario
+            LEFT JOIN usuarios_tipo ON fk_tipo_usuario = id_tipo_usuario
             WHERE TRUE
             GROUP BY id_permissao
         ";
@@ -133,10 +133,10 @@ class Permissao {
         $this->conn->execute($query);
     }
 
-    function select_tipos_usuario() {
+    function select_usuarios_tipo() {
         $query = "
             SELECT id_tipo_usuario, nome
-            FROM tipos_usuario
+            FROM usuarios_tipo
             WHERE ativo = 1
         ";
         return $this->conn->fetch_all($query);
