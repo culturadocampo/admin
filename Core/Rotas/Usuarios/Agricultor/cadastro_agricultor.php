@@ -6,13 +6,13 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Cadastro de técnico
+                    Cadastro de agricultor
                 </h3>
             </div>
         </div>
     </div>
-    <form id="form_tecnico" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
-        <div id="cadastro_tecnico" class="m-portlet__body">	
+    <form id="form_agricultor" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+        <div id="cadastro_agricultor" class="m-portlet__body">	
 
         </div>
         <br>    
@@ -36,14 +36,13 @@
     $(document).ready(function () {
         blockPage();
         load_form();
-        $(".caepf").mask("000.000.000/000-00");
         $("#cadastrar").on("click", function () {
             executar_cadastro();
         });
     });
-
+    
     function load_form() {
-        $("#cadastro_tecnico").load("usuario/form/tecnico", {}, function () {
+        $("#cadastro_agricultor").load("usuario/form/agricultor", {}, function () {
             unblockPage();
         });
     }
@@ -51,10 +50,10 @@
     function executar_cadastro() {
         hideNotify();
         blockPage();
-        var formData = $("#form_tecnico").serialize();
+        var formData = $("#form_agricultor").serialize();
         $.ajax({
             type: "post",
-            url: "usuario/insert_tecnico",
+            url: "usuario/insert/agricultor",
             data: formData,
             success: function (json) {
                 if (is_json(json)) {

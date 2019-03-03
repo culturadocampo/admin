@@ -7,8 +7,11 @@
 .m-body .m-content{
     padding-top: 0px!important;
 }
-.m-header, .m-brand{
+.m-header {
     background-color: #FAFAFA!important;
+}
+.m-portlet, #m_aside_left {
+    border: 1px solid #cccccc!important;
 }
 .m-wrapper{
     border-bottom-left-radius: 10px!important;
@@ -63,7 +66,7 @@
 }
 
 #system_alert{
-    position: fixed; top: 90px; right: 75px; display: none;
+    position: fixed; top: 90px; right: 75px; display: none; z-index: 999; font-size: 18px;
 }
 
 body{

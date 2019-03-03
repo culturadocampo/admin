@@ -7,7 +7,7 @@
         </div>
         <div class="col-lg-6">
             <label for="cpf">CPF</label>
-            <input id="cpf" name="cpf" type="text" class="form-control m-input cpf" placeholder="CPF do usuário">
+            <input id="cpf" name="cpf" type="text" class="form-control m-input cpf" placeholder="CPF do responsável por esta conta">
             <span class="m-form__help">Somente números</span>
         </div>
     </div>	 

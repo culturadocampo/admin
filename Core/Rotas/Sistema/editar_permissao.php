@@ -3,6 +3,7 @@ $o_permissao = new Permissao();
 $o_rota = new Rota();
 $o_permissao->set_id_permissao($_GET['id_permissao']);
 $permissao = $o_permissao->select_permissao();
+$arr_tipos = $o_permissao->select_usuarios_tipo();
 
 $tipos_usuario = $o_permissao->select_tipos_usuario_permissao();
 $tipos_usuario = explode(",", $tipos_usuario['ids']);
@@ -82,10 +83,11 @@ $arr_rotas = $o_rota->select_all_rotas();
                             <div class="col-lg-4">
                                 <label class="">Tipo de usuário:</label>
                                 <select name="tipo_usuario[]" class="form-control m-input selectpicker" multiple>
-                                    <option <?php echo in_array(1, $tipos_usuario) ? 'selected' : ''; ?> value="1">Master</option>
-                                    <option <?php echo in_array(2, $tipos_usuario) ? 'selected' : ''; ?> value="2">Coordenador</option>
-                                    <option <?php echo in_array(5, $tipos_usuario) ? 'selected' : ''; ?> value="5">Técnico</option>
-
+                                    <?php if ($arr_tipos) { ?>
+                                        <?php foreach ($arr_tipos as $value) { ?>
+                                            <option value="<?php echo $value['id_tipo_usuario']; ?>"><?php echo $value['nome']; ?></option>
+                                        <?php } ?>
+                                    <?php } ?>
                                 </select>
                                 <span class="m-form__help">Selecione ao menos um tipo</span>
                             </div>
@@ -93,7 +95,7 @@ $arr_rotas = $o_rota->select_all_rotas();
                                 <label class="">Status:</label>
                                 <select name="status" class="form-control m-input selectpicker">
                                     <option <?php echo $permissao['ativo'] ? 'selected' : ''; ?> value="1">Ativado</option>
-                                    <option <?php echo !$permissao['ativo'] ? 'selected' : ''; ?> value="0">Desativado</option>
+                                    <option <?php echo!$permissao['ativo'] ? 'selected' : ''; ?> value="0">Desativado</option>
                                 </select>
                             </div>
                         </div>

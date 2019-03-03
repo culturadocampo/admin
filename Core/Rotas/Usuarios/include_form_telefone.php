@@ -73,7 +73,6 @@
             show: function () {
                 $(this).slideDown();
                 initMask();
-
             },
 
             hide: function (deleteElement) {

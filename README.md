@@ -71,7 +71,7 @@ Há regras e padrões a serem seguidos ao criar tabelas e atributos:
     - Senha: INFODMZ@626
 - GMail
     - contato@culturadocampo.com.br / INFODMZ@626
-    - app.culturadocampo@gmail.com / InfoDmz626
+    - app.culturadocampo@gmail.com / INFODMZ@626
 - Github
     - Usuário: app.culturadocampo@gmail.com
     - Senha: InfoDmz626

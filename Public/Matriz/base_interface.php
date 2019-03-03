@@ -39,6 +39,7 @@
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESi5IIXd_jnpNizfj_HRYkrf7Fa_ZJ0w&callback=initMap&language=pt&region=BR"></script>
 
 
 
@@ -78,7 +79,7 @@
         <div id="m_scroll_top" class="m-scroll-top">
             <i class="la la-arrow-up"></i>
         </div>
-        <div id="system_alert" role="alert" class="text-center animated fadeInDown fast m--margin-top-30 alert alert-dismissible fade show m-alert m-alert--air m-alert--outline m-alert--outline-2x">
+        <div style="display: none" id="system_alert" role="alert" class="text-center animated fadeInDown fast m--margin-top-30 alert alert-dismissible fade show m-alert m-alert--air m-alert--outline m-alert--outline-2x">
         </div>
     </body><!-- end::Body -->
 </html>
