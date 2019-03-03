@@ -73,7 +73,11 @@ class APP {
         $response['result'] = $result;
         $response['message'] = $message;
         echo json_encode($response);
-        exit;
+        if ($result) {
+            exit;
+        } else {
+            throw new Exception;
+        }
     }
 
     static function get_base_url() {

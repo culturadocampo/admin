@@ -14,40 +14,40 @@
 class Municipio {
 
     private $conn;
-    private $codigo;
+    private $idMunicipio;
 
     function __construct() {
         $this->conn = DB::get_instance();
     }
 
-    function selectMunicipio($codigo) {
+    function selectMunicipio($id_municipio) {
         $query = "
             SELECT 
                 id_municipio, nome, uf 
             FROM municipios
-            WHERE codigo = '{$codigo}'
+            WHERE id_municipio = '{$id_municipio}'
         ";
         return $this->conn->fetch($query);
     }
-    
-    function select_todos_municipios_uf($uf){
-          $query = "
+
+    function select_todos_municipios_uf($uf) {
+        $query = "
             SELECT 
-                codigo, nome
+                id_municipio, nome
             FROM municipios
             WHERE uf = '{$uf}'
         ";
         return $this->conn->fetch_all($query);
     }
 
-    function getCodigo() {
-        return $this->codigo;
+    function getIdMunicipio() {
+        return $this->idMunicipio;
     }
 
-    function setCodigo($codigo) {
-        $municipio = $this->selectMunicipio($codigo);
+    function setIdMunicipio($id) {
+        $municipio = $this->selectMunicipio($id);
         if ($municipio) {
-            $this->codigo = $codigo;
+            $this->idMunicipio = $id;
         } else {
             APP::return_response(false, "Ocorreu um erro: MUNICÍPIO inexistente");
         }

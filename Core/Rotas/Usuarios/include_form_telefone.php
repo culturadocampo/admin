@@ -83,7 +83,7 @@
     });
 
     function initMask() {
-        $('.telefone_fixo').mask("(00) 0000-0000");
-        $('.celular').mask("(00) 00000-0000");
+        $('.telefone_fixo').mask("00 0000 0000");
+        $('.celular').mask("00 00000 0000");
     }
 </script>

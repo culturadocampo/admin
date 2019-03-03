@@ -63,8 +63,8 @@ class ROUTER {
     }
 
     private static function insert_acesso($id_rota) {
-        $o_acesso = new Acesso();
-        $o_acesso->insert_acesso($id_rota);
+//        $o_acesso = new Acesso();
+//        $o_acesso->insert_acesso($id_rota);
     }
 
 }

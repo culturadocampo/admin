@@ -9,11 +9,11 @@ if (isset($_POST['uf'])) {
 
 <label for="município">Município</label>
 <?php if ($municipios) { ?>
-    <select id="municipio" name="codigo_municipio" class="form-control m-input selectpicker" data-live-search="true">
-        <option selected value="">Escolha um município</option>
+    <select id="municipio" name="id_municipio" class="form-control m-input selectpicker" data-live-search="true">
+        <option>Escolha um município</option>
 
         <?php foreach ($municipios as $value) { ?>
-            <option value="<?php echo $value['codigo']; ?>"><?php echo $value['nome']; ?></option>
+            <option value="<?php echo $value['id_municipio']; ?>"><?php echo $value['nome']; ?></option>
         <?php } ?>
     <?php } else { ?>
         <input disabled="" class="form-control m-input" placeholder="Favor escolher o município de atuação">
@@ -24,12 +24,13 @@ if (isset($_POST['uf'])) {
     $(document).ready(function () {
         $(".selectpicker").selectpicker();
         $("#municipio").on("change", function () {
-//            blockPage();
+            blockPage();
             var codigo = $(this).val();
+            var siglaEstado = $("#uf").val();
             if (typeof geocoding === "function") {
-                var siglaEstado = $("#uf").val();
+                var estado = $("#uf option[value='" + siglaEstado + "']").text();
                 var municipio = $("#municipio option[value='" + codigo + "']").text();
-                geocoding("Brasil, " + siglaEstado + ", " + municipio, 12);
+                geocoding("Brasil, " + estado + ", " + municipio, 12);
             }
         });
     });

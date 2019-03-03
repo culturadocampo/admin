@@ -14,7 +14,7 @@ $o_usuario->set_usuario($_POST['usuario']);
 $o_usuario->set_email($_POST['email']);
 $o_usuario->set_senha($senha_hash);
 
-$o_municipio->setCodigo($_POST['codigo_municipio']);
+$o_municipio->setCodigo($_POST['id_municipio']);
 $o_tecnico->setRg($_POST['rg']);
 $o_tecnico->setFormacao($_POST['formacao']);
 $o_tecnico->setAreaAtuacao($_POST['area_atuacao']);

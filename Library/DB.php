@@ -19,7 +19,8 @@ class DB {
                 $this->link->query('SET NAMES utf8');
                 $this->link->query('SET CHARACTER SET utf8');
             } catch (PDOException $error) {
-                echo $error->getMessage();
+                APP::return_response(false, "Connection error");
+//                echo $error->getMessage();
             }
         }
     }
@@ -33,8 +34,12 @@ class DB {
     }
 
     function execute($query) {
-        $sth = $this->link->prepare($query);
-        $sth->execute();
+        try {
+            $sth = $this->link->prepare($query);
+            $sth->execute();
+        } catch (PDOException $exc) {
+            APP::return_response(false, $exc->getMessage());
+        }
     }
 
     function fetch($query) {
@@ -55,6 +60,18 @@ class DB {
     function last_id() {
         $sth = $this->link->query("SELECT LAST_INSERT_ID()");
         return $sth->fetchColumn();
+    }
+
+    function beginTransaction() {
+        $this->link->beginTransaction();
+    }
+
+    function commit() {
+        $this->link->commit();
+    }
+
+    function rollback() {
+        $this->link->rollBack();
     }
 
 }

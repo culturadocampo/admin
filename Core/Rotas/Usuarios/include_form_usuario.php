@@ -26,7 +26,7 @@
                 <input name="email" type="email" class="form-control m-input" id="email" class="form-control m-input" placeholder="E-mail do usuário">
                 <span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="la la-bookmark-o"></i></span></span>
             </div>
-            <span class="m-form__help">A senha de acesso será enviada a este e-mail</span>
+            <span class="m-form__help text-info">A senha de acesso será enviada a este e-mail</span>
         </div>
     </div>
 </div>

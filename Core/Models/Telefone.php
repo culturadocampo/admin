@@ -11,7 +11,8 @@ class Telefone {
     }
 
     function insert_telefone($id_usuario) {
-        $query = "
+        if (is_numeric($id_usuario)) {
+            $query = "
             INSERT INTO usuarios_telefones
              (
                 fk_usuario, 
@@ -23,7 +24,10 @@ class Telefone {
                 '{$this->getTipoTelefone()}',
                 '{$this->getTelefone()}'
              )";
-        $this->conn->execute($query);
+            $this->conn->execute($query);
+        } else {
+            APP::return_response(false, "ID do usuário inválido. Entre em contato com o administrador.");
+        }
     }
 
     function getTelefone() {
@@ -31,7 +35,11 @@ class Telefone {
     }
 
     function setTelefone($telefone) {
-        $this->telefone = $telefone;
+        if (!empty($telefone)) {
+            $this->telefone = $telefone;
+        } else {
+            APP::return_response(false, "Número de telefone inválido");
+        }
     }
 
     function getTipoTelefone() {
@@ -39,7 +47,11 @@ class Telefone {
     }
 
     function setTipoTelefone($tipoTelefone) {
-        $this->tipoTelefone = $tipoTelefone;
+        if (!empty($tipoTelefone) && ($tipoTelefone == 1 || $tipoTelefone == 2)) {
+            $this->tipoTelefone = $tipoTelefone;
+        } else {
+            APP::return_response(false, "Tipo de telefone inválido");
+        }
     }
 
 }

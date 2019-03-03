@@ -2,7 +2,7 @@
 $o_estado = new Estado();
 $estados = $o_estado->select_todos_estados();
 ?>
-<div class="col-md-12">
+<div class="col-md-12" id="include_estado_municipio">
     <div class="form-group m-form__group row">
         <div class="col-lg-6">
             <label for="estado">Estado</label>
@@ -30,16 +30,8 @@ $estados = $o_estado->select_todos_estados();
     $(document).ready(function () {
         $(".selectpicker").selectpicker();
         $("#uf").on("change", function () {
-
             var uf = $(this).val();
-            blockPage();
-            $("#select_municipios").load("load/select/municipios", {uf: uf}, function () {
-                unblockPage();
-            });
-            if (typeof geocoding === "function") {
-                var siglaEstado = $("#uf").val();
-                geocoding("Brasil, " + siglaEstado, 6);
-            }
+            selectUf(uf);
         });
     });
 </script>

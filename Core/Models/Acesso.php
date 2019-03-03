@@ -13,8 +13,9 @@
  */
 class Acesso {
     
-    
-       function __construct() {
+    private $conn;
+
+    function __construct() {
         $this->conn = DB::get_instance();
     }
 

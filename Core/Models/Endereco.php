@@ -7,12 +7,12 @@ class Endereco {
     private $logradouro;
     private $cep;
     private $bairro;
-    private $cidade;
+    private $municipio;
     private $estado;
     private $lat;
-    private $long;
-    
-       function __construct() {
+    private $lng;
+
+    function __construct() {
         $this->conn = DB::get_instance();
     }
 
@@ -21,31 +21,57 @@ class Endereco {
         return $this->conn->fetch_all($query);
     }
 
-    public function cidades() {
+    public function municipios() {
         $query = "SELECT id_municipio, nome, uf FROM municipios";
         return $this->conn->fetch_all($query);
     }
-    
-    function insert_endereco($id_usuario) {
+
+    public function get_id_from_uf($uf) {
+        $query = "SELECT id_estado FROM estados WHERE uf = '{$uf}'";
+        $estado = $this->conn->fetch($query);
+        if (isset($estado['id_estado']) && $estado['id_estado'] > 0) {
+            return $estado['id_estado'];
+        } else {
+            return false;
+        }
+    }
+
+    public function get_id_from_nome_municipio($nome) {
+        $query = "SELECT id_municipio FROM municipios WHERE nome = '{$nome}'";
+        $municipio = $this->conn->fetch($query);
+        if (isset($municipio['id_municipio']) && $municipio['id_municipio'] > 0) {
+            return $municipio['id_municipio'];
+        } else {
+            return false;
+        }
+    }
+
+    function insertEndereco($id_usuario) {
         $query = "
             INSERT INTO enderecos
              (
                 fk_usuario, 
-                fk_cidade, 
+                fk_estado,
+                fk_municipio, 
                 cep,
                 bairro, 
                 rua, 
                 numero,
-                complemento
+                complemento,
+                lat,
+                lng
             )
             VALUES (
                 '{$id_usuario}',
-                '{$this->get_cidade()}',
+                '{$this->get_estado()}',
+                '{$this->get_municipio()}',
                 '{$this->get_cep()}',
                 '{$this->get_bairro()}',
                 '{$this->get_logradouro()}',
                 '{$this->get_numero()}',
-                '{$this->get_complemento()}'
+                '{$this->get_complemento()}',
+                '{$this->get_lat()}',
+                '{$this->get_lng()}'
              )";
         $this->conn->execute($query);
     }
@@ -60,19 +86,19 @@ class Endereco {
         ";
         return $this->conn->fetch($query);
     }
-    
+
     function get_lat() {
         return $this->lat;
     }
-    
-    function get_cep(){
+
+    function get_cep() {
         return $this->cep;
     }
-    
-    function get_long() {
-        return $this->long;
+
+    function get_lng() {
+        return $this->lng;
     }
-    
+
     function get_numero() {
         return $this->numero;
     }
@@ -89,40 +115,40 @@ class Endereco {
         return $this->bairro;
     }
 
-    function get_cidade() {
-        return $this->cidade;
+    function get_municipio() {
+        return $this->municipio;
     }
 
     function get_estado() {
         return $this->estado;
     }
-    
+
     function set_cep($cep) {
-         if($cep){
+        if ($cep) {
             $this->cep = STRINGS::limpar($cep);
         } else {
-             APP::return_response(false, "Favor informar o CEP");
+            APP::return_response(false, "Favor informar o CEP");
         }
     }
-    
+
     function set_lat($lat) {
-         if($lat){
+        if ($lat) {
             $this->lat = STRINGS::limpar($lat);
         } else {
-             APP::return_response(false, "Favor clique no botão GERAR");
+            APP::return_response(false, "Coordenadas incompletas (LAT)");
         }
     }
-    
-    function set_long($long) {
-        if($long){
-            $this->long = STRINGS::limpar($long);
+
+    function set_lng($lng) {
+        if ($lng) {
+            $this->lng = STRINGS::limpar($lng);
         } else {
-             APP::return_response(false, "Favor clique no botão GERAR");
+            APP::return_response(false, "Coordenadas incompletas (LNG)");
         }
     }
 
     function set_numero($numero) {
-        if($numero){
+        if ($numero) {
             $this->numero = STRINGS::limpar($numero);
         } else {
             APP::return_response(false, "Favor informar o Nº");
@@ -142,16 +168,12 @@ class Endereco {
     }
 
     function set_bairro($bairro) {
-        if($bairro){
-            $this->bairro = STRINGS::limpar($bairro);
-        } else {
-            APP::return_response(false, "Favor informar o BAIRRO");
-        }
+        $this->bairro = STRINGS::limpar($bairro);
     }
 
-    function set_cidade($cidade) {
-        if ($cidade) {
-            $this->cidade = STRINGS::limpar($cidade);
+    function set_municipio($municipio) {
+        if ($municipio) {
+            $this->municipio = STRINGS::limpar($municipio);
         } else {
             APP::return_response(false, "Favor informar a CIDADE");
         }
