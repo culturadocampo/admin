@@ -50,19 +50,26 @@
         hideNotify();
         blockPage();
         var formData = $("#form_coordenador").serialize();
+        console.log(formData);
         $.ajax({
             type: "post",
             url: "usuario/insert_coordenador",
             data: formData,
             success: function (json) {
-                var response = JSON.parse(json);
-                if (response.result) {
-                    load_form();
-                    notify(response.message, 'alert-success');
+                if (is_json(json)) {
+                    var response = JSON.parse(json);
+                    if (response.result) {
+                        load_form();
+                        notify(response.message, 'alert-success');
+                    } else {
+                        unblockPage();
+                        notify(response.message, 'alert-danger');
+                    }
                 } else {
                     unblockPage();
-                    notify(response.message, 'alert-danger');
+                    notify("Resposta inesperada do servidor", 'alert-danger');
                 }
+
             },
             error: function (error) {
                 notify("Erro: Entre em contato com o suporte", 'alert-danger');
