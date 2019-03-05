@@ -26,7 +26,7 @@ class Agricultor {
     function insert_agricultor($id_usuario) {
         $query = "
             INSERT INTO 
-                usuarios_agaricultores
+                usuarios_agricultores
             (fk_usuario, rg, caepf, integrantes_upf, coletivo)
             VALUES(
                 '{$id_usuario}',

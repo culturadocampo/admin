@@ -34,4 +34,16 @@ $estados = $o_estado->select_todos_estados();
             selectUf(uf);
         });
     });
+
+
+    function selectUf(uf) {
+        blockPage();
+        $("#select_municipios").load("load/select/municipios", {uf: uf}, function () {
+            unblockPage();
+        });
+        if (typeof geocoding === "function") {
+            var siglaEstado = $("#uf").val();
+            geocoding("Brasil, " + siglaEstado, 6);
+        }
+    }
 </script>

@@ -20,7 +20,7 @@
             <li class="m-menu__item " menu="1">
                 <a href="javascript:alert('Ainda não está pronto')" class="m-menu__link ">
                     <i class="text-dark m-menu__link-icon  flaticon-gift  "></i>
-                    <span class="m-menu__link-text ">Produtos</span>
+                    <span class="m-menu__link-text "><s>Produtos</s></span>
                 </a>
             </li>
 

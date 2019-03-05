@@ -7,7 +7,7 @@
         <div class="col-md-12">
 
             <div class="btn-group mr-2" role="group" aria-label="Second group">
-                <button type="button" id="me_encontre" class="btn btn-info"><span class="flaticon-map-location m--margin-right-10"></span>Tente me encontre no mapa</button>
+                <button type="button" id="me_encontre" class="btn btn-info"><span class="flaticon-map-location m--margin-right-10"></span>Tente me encontrar no mapa</button>
                 <button type="button" id="reset_geolocation" class="btn btn-dark" disabled><span class="fa  fa-times "></span></button>
             </div>
             <br>
@@ -297,15 +297,6 @@
             });
         }
 
-        function selectUf(uf) {
-            blockPage();
-            $("#select_municipios").load("load/select/municipios", {uf: uf}, function () {
-                unblockPage();
-            });
-            if (typeof geocoding === "function") {
-                var siglaEstado = $("#uf").val();
-                geocoding("Brasil, " + siglaEstado, 6);
-            }
-        }
+
 
     </script>

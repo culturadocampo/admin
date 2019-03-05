@@ -20,7 +20,7 @@ try {
     $o_usuario->set_usuario($_POST['usuario']);
     $o_usuario->set_email($_POST['email']);
     $o_usuario->set_senha($senha_hash);
-    $id_usuario = $o_usuario->insert_novo_usuario(5);
+    $id_usuario = $o_usuario->insert_novo_usuario(6);
 
     /**
      * Telefones

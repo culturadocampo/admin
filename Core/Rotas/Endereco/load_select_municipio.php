@@ -31,7 +31,11 @@ if (isset($_POST['uf'])) {
                 var estado = $("#uf option[value='" + siglaEstado + "']").text();
                 var municipio = $("#municipio option[value='" + codigo + "']").text();
                 geocoding("Brasil, " + estado + ", " + municipio, 12);
+            } else {
+                unblockPage();
             }
+
+
         });
     });
 </script>
