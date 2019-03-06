@@ -23,30 +23,11 @@ class Produto {
         $this->conn = DB::get_instance();
     }
 
-    function insert_produto_xml() {
-        $query = "
-            INSERT INTO produtos
-            (ncm_codigo, ncm_descricao, organico, hidroponico)
-            VALUES 
-            (
-            '{$this->get_ncm_codigo()}',
-            '{$this->get_ncm_descricao()}',
-            '{$this->is_organico()}',
-            '{$this->is_hidroponico()}'
-            )
-        ";
-        $this->conn->execute($query);
-    }
-
     function select_produtos() {
         $query = "
             SELECT
                 id_produto,
-                ncm_descricao as nome,
-                ncm_codigo,
-                organico,
-                hidroponico,
-                '' AS categoria
+                ncm_descricao as nome
             FROM produtos
             WHERE TRUE
                 AND produtos.ativo = 1
@@ -73,46 +54,13 @@ class Produto {
         return $this->conn->fetch($query);
     }
 
-    function select_imagem_produto() {
+    function select_unidades_medida() {
         $query = "
-            SELECT
-                imagem
-            FROM produtos_imagens
-            WHERE TRUE 
-                AND fk_produto = '{$this->get_id_produto()}'
-        ";
-        return $this->conn->fetch($query);
-    }
-
-    function select_produtos_com_imagens() {
-        $query = "
-            SELECT
-                ncm_codigo,
-                ncm_descricao,
-                imagem
-            FROM produtos
-            INNER JOIN produtos_imagens ON fk_produto = id_produto 
-            WHERE TRUE 
-                AND produtos.ativo = 1
+            SELECT id_unidade, descricao
+            FROM produto_unidades
+            WHERE ativo = 1
         ";
         return $this->conn->fetch_all($query);
-    }
-
-    function delete_all_imagens_produto() {
-        $query = "
-            DELETE FROM produtos_imagens
-            WHERE fk_produto = '{$this->id_produto}'
-        ";
-        $this->conn->execute($query);
-    }
-
-    function insert_imagem_produto($imagem) {
-        $query = "
-            INSERT INTO produtos_imagens
-            (fk_produto, imagem)
-            VALUES ('{$this->get_id_produto()}', '{$imagem}')
-        ";
-        $this->conn->execute($query);
     }
 
     function get_id_produto() {

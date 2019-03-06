@@ -60,12 +60,12 @@ class APP {
     static function rota_default() {
         if (isset($_SESSION['tipo_usuario'])) {
             if ($_SESSION['tipo_usuario'] == "1") {
-                return 'visao-aerea';
+                return 'inicio';
             } else {
-                return 'visao-aerea';
+                return 'inicio';
             }
         } else {
-            return 'visao-aerea';
+            return 'inicio';
         }
     }
 

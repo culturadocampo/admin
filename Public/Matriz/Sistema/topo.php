@@ -9,7 +9,7 @@
             <div class="m-stack__item m-brand  m-brand--skin-light ">
                 <div class="m-stack m-stack--ver m-stack--general m-stack--fluid">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
-                        <a href="?page=index&amp;demo=demo11" class="m-brand__logo-wrapper">
+                        <a href="visao-aerea" class="m-brand__logo-wrapper">
                             <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 48px;">
 
                         </a>  

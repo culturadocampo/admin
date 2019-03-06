@@ -11,16 +11,16 @@
             </li>
             <?php if (APP::has_permissao(8)) { ?>
                 <li class="m-menu__item " menu="1">
-                    <a href="visao-aerea" class="m-menu__link ">
+                    <a href="inicio" class="m-menu__link ">
                         <i class="text-dark m-menu__link-icon  flaticon-presentation-1  "></i>
-                        <span class="m-menu__link-text ">Visão geral</span>
+                        <span class="m-menu__link-text ">Início</span>
                     </a>
                 </li>
             <?php } ?>
             <li class="m-menu__item " menu="1">
-                <a href="javascript:alert('Ainda não está pronto')" class="m-menu__link ">
-                    <i class="text-dark m-menu__link-icon  flaticon-gift  "></i>
-                    <span class="m-menu__link-text "><s>Produtos</s></span>
+                <a href="producao/cadastro" class="m-menu__link ">
+                    <i class="text-dark m-menu__link-icon   flaticon-open-box   "></i>
+                    <span class="m-menu__link-text ">Produção</span>
                 </a>
             </li>
 

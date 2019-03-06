@@ -4,10 +4,8 @@
 .text-grey{
     color: #cccccc!important;
 }
-.m-body .m-content{
-    padding-top: 0px!important;
-}
-.m-header {
+
+.m-header,.m-brand {
     background-color: #FAFAFA!important;
 }
 .m-portlet, #m_aside_left {
@@ -18,6 +16,7 @@
     border-bottom-right-radius: 10px!important;
     padding: 0px!important;
 }
+
 
 .m-portlet{
     box-shadow: none!important;
@@ -49,8 +48,8 @@
 }
 
 #my-page{
-    background: url("../Images/Outros/footer-line-alt2.png") repeat-x scroll center bottom transparent;
-    padding-bottom: 20px;
+    /*background: url("../Images/Outros/footer-line-alt2.png") repeat-x scroll center bottom transparent;*/
+    /*padding-bottom: 20px;*/
 }
 
 .fast {

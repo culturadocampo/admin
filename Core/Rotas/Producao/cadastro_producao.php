@@ -6,13 +6,13 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Cadastro de agricultor
+                    Cadastro de produção
                 </h3>
             </div>
         </div>
     </div>
-    <form id="form_agricultor" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
-        <div id="cadastro_agricultor" class="m-portlet__body">	
+    <form id="form_producao" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+        <div id="cadastro_producao" class="m-portlet__body">	
 
         </div>
         <br>    
@@ -20,7 +20,7 @@
             <div class="m-form__actions m-form__actions--solid">
                 <div class="row">
                     <div class="m--align-right col-md-12" style="position: initial;">
-                        <button id="cadastrar" type="button" class="btn btn-success">Salvar usuário</button>
+                        <button id="cadastrar" type="button" class="btn btn-success">Salvar</button>
                         <button type="reset" class="btn btn-secondary">Limpar</button>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
     });
 
     function load_form() {
-        $("#cadastro_agricultor").load("usuario/form/agricultor", {}, function () {
+        $("#cadastro_producao").load("producao/load/form", {}, function () {
             unblockPage();
         });
     }
@@ -50,10 +50,10 @@
     function executar_cadastro() {
         hideNotify();
         blockPage();
-        var formData = $("#form_agricultor").serialize();
+        var formData = $("#form_producao").serialize();
         $.ajax({
             type: "post",
-            url: "usuario/insert/agricultor",
+            url: "producao/insert",
             data: formData,
             success: function (json) {
                 if (is_json(json)) {
@@ -76,4 +76,5 @@
             }
         });
     }
+
 </script>

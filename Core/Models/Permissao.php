@@ -13,6 +13,7 @@
  */
 class Permissao {
 
+    private $conn;
     private $id_permissao;
     private $descricao;
     private $ativo;
