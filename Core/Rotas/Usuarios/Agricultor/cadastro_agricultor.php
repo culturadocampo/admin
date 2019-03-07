@@ -42,9 +42,7 @@
     });
 
     function load_form() {
-        $("#cadastro_agricultor").load("usuario/form/agricultor", {}, function () {
-            unblockPage();
-        });
+        $("#cadastro_agricultor").load("usuario/form/agricultor", {}, unblockPage());
     }
 
     function executar_cadastro() {
@@ -55,25 +53,11 @@
             type: "post",
             url: "usuario/insert/agricultor",
             data: formData,
-            success: function (json) {
-                if (is_json(json)) {
-                    var response = JSON.parse(json);
-                    if (response.result) {
-                        load_form();
-                        notify(response.message, 'alert-success');
-                    } else {
-                        unblockPage();
-                        notify(response.message, 'alert-danger');
-                    }
-                } else {
-                    unblockPage();
-                    notify("Resposta inesperada do servidor", 'alert-danger');
-                }
-
-            },
-            error: function (error) {
-                notify("Erro: Entre em contato com o suporte", 'alert-danger');
+            success: function (response) {
+                lerResposta(response, load_form);
             }
         });
     }
+
+
 </script>

@@ -67,3 +67,29 @@ function loadingBar(boolean) {
         alert.hide();
     }
 }
+
+/**
+ * Função usada para ler a resposta
+ * do servidor.
+ * Possui um callback opcional
+ * @param {type} response
+ * @param {type} callback
+ * @return {undefined}
+ */
+function lerResposta(response, callback) {
+    if (is_json(response)) {
+        var data = JSON.parse(response);
+        if (data.result) {
+            if (typeof callback === 'function' && callback()) {
+                callback();
+            }
+            notify(data.message, 'alert-success');
+        } else {
+            unblockPage();
+            notify(data.message, 'alert-danger');
+        }
+    } else {
+        unblockPage();
+        notify("Resposta inesperada do servidor", 'alert-danger');
+    }
+}

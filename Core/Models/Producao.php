@@ -66,11 +66,11 @@ class Producao {
     }
 
     function setPeriodoInicio($periodoInicio) {
-        $this->periodoInicio = $periodoInicio;
+        $this->periodoInicio = DATE::date_to_mysql($periodoInicio);
     }
 
     function setPeriodoFim($periodoFim) {
-        $this->periodoFim = $periodoFim;
+        $this->periodoFim = DATE::date_to_mysql($periodoFim);
     }
 
 }

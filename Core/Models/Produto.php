@@ -35,40 +35,30 @@ class Produto {
         return $this->conn->fetch_all($query);
     }
 
-    function select_um_produto() {
+    function is_produto_valido($id_produto) {
         $query = "
             SELECT
-                id_produto,
-                ncm_descricao AS nome,
-                ncm_codigo,
-                organico,
-                hidroponico
-               # categoria
+                id_produto
             FROM produtos
-            #INNER JOIN categorias_produtos ON id_categoria = fk_categoria
             WHERE TRUE
                 AND produtos.ativo = 1
-              #  AND nome IS NOT NULL
-                AND ncm_codigo = '{$this->get_ncm_codigo()}'
+                AND id_produto = '{$id_produto}'
         ";
         return $this->conn->fetch($query);
     }
 
-    function select_unidades_medida() {
-        $query = "
-            SELECT id_unidade, descricao
-            FROM produto_unidades
-            WHERE ativo = 1
-        ";
-        return $this->conn->fetch_all($query);
-    }
 
     function get_id_produto() {
         return $this->id_produto;
     }
 
     function set_id_produto($id_produto) {
-        $this->id_produto = $id_produto;
+        $produto = $this->is_produto_valido($id_produto);
+        if ($produto) {
+            $this->id_produto = $id_produto;
+        } else {
+            APP::return_response(false, "O produto selecionado é inválido");
+        }
     }
 
     function get_ncm_codigo() {

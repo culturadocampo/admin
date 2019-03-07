@@ -6,38 +6,38 @@
     <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
         <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
             <li id="1" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text text-dark">Controle</h4>
+                <h4 class="m-menu__section-text ">Controle</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
             <?php if (APP::has_permissao(8)) { ?>
                 <li class="m-menu__item " menu="1">
                     <a href="inicio" class="m-menu__link ">
-                        <i class="text-dark m-menu__link-icon  flaticon-presentation-1  "></i>
+                        <i class=" m-menu__link-icon  flaticon-presentation-1  "></i>
                         <span class="m-menu__link-text ">Início</span>
                     </a>
                 </li>
             <?php } ?>
             <li class="m-menu__item " menu="1">
                 <a href="producao/cadastro" class="m-menu__link ">
-                    <i class="text-dark m-menu__link-icon   flaticon-open-box   "></i>
+                    <i class=" m-menu__link-icon   flaticon-open-box   "></i>
                     <span class="m-menu__link-text ">Produção</span>
                 </a>
             </li>
 
             <li id="2" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text text-dark">Usuários</h4>
+                <h4 class="m-menu__section-text ">Usuários</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
             <li class="m-menu__item " menu="2">
                 <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                    <i class="text-dark m-menu__link-icon flaticon-search-1  "></i>
+                    <i class=" m-menu__link-icon flaticon-search-1  "></i>
                     <span class="m-menu__link-text "><s>Localizar usuário</s></span>
                 </a>
             </li>
             <?php if (APP::has_permissao(11)) { ?>
                 <li class="m-menu__item " menu="2">
                     <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                        <i class="text-dark m-menu__link-icon flaticon-user-settings "></i>
+                        <i class=" m-menu__link-icon flaticon-user-settings "></i>
                         <span class="m-menu__link-text ">Coordernadores</span>
                     </a>
                 </li>
@@ -45,32 +45,32 @@
             <?php if (APP::has_permissao(12)) { ?>
                 <li class="m-menu__item " menu="2">
                     <a href="usuarios/cadastro/tecnico" class="m-menu__link ">
-                        <i class="text-dark m-menu__link-icon flaticon-users"></i>
+                        <i class=" m-menu__link-icon flaticon-users"></i>
                         <span class="m-menu__link-text ">Técnicos</span>
                     </a>
                 </li>
             <?php } ?>
             <li class="m-menu__item " menu="2">
                 <a href="usuarios/cadastro/agricultor" class="m-menu__link ">
-                    <i class="text-dark m-menu__link-icon flaticon-avatar"></i>
+                    <i class=" m-menu__link-icon flaticon-avatar"></i>
                     <span class="m-menu__link-text ">Agricultores</span>
                 </a>
             </li>
             <li class="m-menu__item " menu="2">
                 <a href="javascript:alert('Ainda não está pronto');" class="m-menu__link ">
-                    <i class="text-dark m-menu__link-icon flaticon-profile-1 "></i>
+                    <i class=" m-menu__link-icon flaticon-profile-1 "></i>
                     <span class="m-menu__link-text "><s>Empresas</s></span>
                 </a>
             </li>
             <li class="m-menu__item " menu="2">
                 <a href="javascript:alert('Ainda não está pronto');" class="m-menu__link ">
-                    <i class="text-dark m-menu__link-icon flaticon-buildings  "></i>
+                    <i class=" m-menu__link-icon flaticon-buildings  "></i>
                     <span class="m-menu__link-text "><s>Cooperativas</s></span>
                 </a>
             </li>
 
             <li id="3" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text text-dark">Sistema</h4>
+                <h4 class="m-menu__section-text ">Sistema</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
 
@@ -78,8 +78,8 @@
 
             <li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon flaticon-signs"></i>
-                    <span class="m-menu__link-text">Rotas de acesso</span>
+                    <i class="m-menu__link-icon  flaticon-paper-plane  "></i>
+                    <span class="m-menu__link-text ">Rotas de acesso</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;"
@@ -109,7 +109,7 @@
 
                 <li class="m-menu__item " menu="3">
                     <a href="sistema/permissoes" class="m-menu__link ">
-                        <i class="text-dark m-menu__link-icon  flaticon-signs-2 "></i>
+                        <i class=" m-menu__link-icon  flaticon-signs-2 "></i>
                         <span class="m-menu__link-text ">Permissões de acesso</span>
                     </a>
                 </li>

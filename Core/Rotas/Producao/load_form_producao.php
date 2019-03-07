@@ -1,13 +1,14 @@
 <?php
 $o_produto = new Produto();
+$o_medida = new Medida();
 
 $produtos = $o_produto->select_produtos();
-$unidades = $o_produto->select_unidades_medida();
+$unidades = $o_medida->select_unidades_medida();
 ?>
 <div class="col-md-12">
     <div class="form-group m-form__group row">
         <div class="col-md-12">
-            <label for="id_produto">Nome completo</label>
+            <label for="id_produto">Produto</label>
             <select name='id_produto' data-live-search="true" class="form-control selectpicker">
                 <option selected>[Selecione um produto]</option>
                 <?php if ($produtos) { ?>
@@ -21,7 +22,7 @@ $unidades = $o_produto->select_unidades_medida();
     </div>	 
     <div class="form-group m-form__group row">
         <div class="col-md-4">
-            <label for="usuario">Usuário de acesso</label>
+            <label for="usuario">Unidade de medida</label>
             <div class="m-input-icon m-input-icon--right">
                 <select id="unidade_medida" name='id_unidade' data-live-search="true" class="form-control selectpicker">
                     <option selected>[Selecione a unidade]</option>

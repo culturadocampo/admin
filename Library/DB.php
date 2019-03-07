@@ -43,13 +43,21 @@ class DB {
     }
 
     function fetch($query) {
-        $sth = $this->link->query($query);
-        return $sth->fetch(PDO::FETCH_ASSOC);
+        try {
+            $sth = $this->link->query($query);
+            return $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $exc) {
+            APP::return_response(false, $exc->getMessage());
+        }
     }
 
     function fetch_all($query) {
-        $sth = $this->link->query($query);
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $sth = $this->link->query($query);
+            return $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exc) {
+            APP::return_response(false, $exc->getMessage());
+        }
     }
 
     function row_count($query) {
