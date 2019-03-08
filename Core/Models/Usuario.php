@@ -3,6 +3,7 @@
 class Usuario {
 
     private $conn;
+    private $idUsuario;
     private $cpf;
     private $nome;
     private $email;
@@ -202,6 +203,18 @@ class Usuario {
 
     function set_senha($senha) {
         $this->senha = STRINGS::limpar($senha);
+    }
+
+    function getIdUsuario() {
+        return $this->idUsuario;
+    }
+
+    function setIdUsuario($idUsuario) {
+        if ($idUsuario > 0) {
+            $this->idUsuario = $idUsuario;
+        } else {
+            APP::return_response(false, "Usuário inválido");
+        }
     }
 
 }

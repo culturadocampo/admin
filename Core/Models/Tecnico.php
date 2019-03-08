@@ -15,12 +15,13 @@ class Tecnico {
         $this->conn = DB::get_instance();
     }
 
-    function insertTecnico($id_usuario, $id_municipio) {
+    function insertTecnico($id_coordenador, $id_usuario, $id_municipio) {
         $query = "
             INSERT INTO usuarios_tecnicos
             (
+                fk_usuario_coordenador,
                 fk_usuario,
-                codigo_municipio,
+                fk_municipio,
                 rg,
                 formacao,
                 area_atuacao,
@@ -28,6 +29,7 @@ class Tecnico {
                 observacao
             )
             VALUES (
+                '{$id_coordenador}',
                 '{$id_usuario}',
                 '{$id_municipio}',
                 '{$this->getRg()}',

@@ -32,7 +32,7 @@ class CONFIG {
      * Mail
      */
     static $MAIL_USERNAME = 'app.culturadocampo@gmail.com';
-    static $MAIL_PASSWORD = 'InfoDmz626';
+    static $MAIL_PASSWORD = 'INFODMZ@626';
     static $MAIL_SMPT = 'smtp.gmail.com';
     static $MAIL_PORT = 465;
     static $MAIL_PROTOCOL = 'ssl';

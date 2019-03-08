@@ -40,6 +40,14 @@ try {
     /**
      * Técnico
      */
+    if (isset($_POST['id_usuario_coordenador'])) {
+        $id_usuario_coordenador = $_POST['id_usuario_coordenador'];
+    } else {
+        $id_usuario_coordenador = $_SESSION['id_usuario'];
+    }
+    
+    $o_usuario->setIdUsuario($id_usuario_coordenador);
+
     $o_municipio->setIdMunicipio($_POST['id_municipio']);
     $o_tecnico->setRg($_POST['rg']);
     $o_tecnico->setFormacao($_POST['formacao']);
@@ -47,17 +55,20 @@ try {
     $o_tecnico->setEntidade($_POST['entidade']);
     $o_tecnico->setEmail($_POST['email']);
     $o_tecnico->setObservacao($_POST['observacao']);
-    $id_tecnico = $o_tecnico->insertTecnico($id_usuario, $o_municipio->getIdMunicipio());
+    $id_tecnico = $o_tecnico->insertTecnico($o_usuario->getIdUsuario(), $id_usuario, $o_municipio->getIdMunicipio());
 
     /**
      * E-Mail com credenciais
      */
     $body = EMAIL::body_cadastro_usuario($o_usuario->get_nome(), $o_usuario->get_usuario(), $nova_senha, 5);
     $envio_ok = EMAIL::send_mail($o_usuario->get_email(), CONFIG::$PROJECT_NAME . " - Credenciais de acesso", $body);
-    
-    $db->commit();
 
-    APP::return_response(true, "Sucesso! As credenciais foram enviadas para o e-mail informado.");
+    if ($envio_ok) {
+        $db->commit();
+        APP::return_response(true, "Sucesso! As credenciais foram enviadas para o e-mail informado.");
+    } else {
+        APP::return_response(false, "Erro: não foi possível enviar o e-mail. Cadastro cancelado.");
+    }
 } catch (Exception $exc) {
     $db->rollback();
     //gravar o erro no banco com o handling

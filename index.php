@@ -1,5 +1,5 @@
 <?php
-
+set_time_limit(90);
 ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);

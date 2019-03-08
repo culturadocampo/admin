@@ -56,24 +56,8 @@
             type: "post",
             url: "usuario/insert_tecnico",
             data: formData,
-            success: function (json) {
-                if (is_json(json)) {
-                    var response = JSON.parse(json);
-                    if (response.result) {
-                        load_form();
-                        notify(response.message, 'alert-success');
-                    } else {
-                        unblockPage();
-                        notify(response.message, 'alert-danger');
-                    }
-                } else {
-                    unblockPage();
-                    notify("Resposta inesperada do servidor", 'alert-danger');
-                }
-
-            },
-            error: function (error) {
-                notify("Erro: Entre em contato com o suporte", 'alert-danger');
+            success: function (response) {
+                lerResposta(response, load_form);
             }
         });
     }

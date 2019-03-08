@@ -50,7 +50,7 @@ $unidades = $o_medida->select_unidades_medida();
     <div class="form-group m-form__group row">
 
         <div class="col-md-12">
-            <label for="periodo_final">Período de disponibilidade do produto</label>
+            <label for="periodo_final">Período de safra</label>
             <div class="input-daterange input-group">
                 <input readonly="" type="text" class="form-control m-input text-right" name="periodo_inicial" placeholder="Data inicial">
                 <div class="input-group-append">
