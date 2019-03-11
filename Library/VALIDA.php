@@ -122,4 +122,21 @@ class VALIDA {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
+    static function isValidLongitude($longitude) {
+        if (preg_match("/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/", $longitude)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static function isValidLatitude($latitude) {
+
+        if (preg_match("/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/", $latitude)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

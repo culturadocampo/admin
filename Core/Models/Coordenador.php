@@ -31,6 +31,27 @@ class Coordenador {
         ";
         return $this->conn->fetch_all($query);
     }
-    
+
+    function select_ids_tecnicos_coordenador() {
+        $id_usuario_coordenador = SESSION::get_id_usuario();
+        $id_tipo_usuario = SESSION::get_id_tipo_usuario();
+        if ($id_tipo_usuario == 3) {
+            $query = "
+                SELECT
+                    GROUP_CONCAT(DISTINCT(fk_usuario)) as ids
+                FROM
+                    usuarios_tecnicos
+                INNER JOIN usuarios ON fk_usuario = id_usuario
+                WHERE TRUE
+                    AND fk_tipo_usuario = 5
+                    AND ativo = 1
+                    AND fk_usuario_coordenador = '{$id_usuario_coordenador}'
+            ";
+            $tecnicos = $this->conn->fetch($query);
+            return $tecnicos['ids'];
+        } else {
+            return "-1";
+        }
+    }
 
 }

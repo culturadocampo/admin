@@ -132,18 +132,18 @@ class Endereco {
     }
 
     function set_lat($lat) {
-        if ($lat) {
+        if (VALIDA::isValidLatitude($lat)) {
             $this->lat = STRINGS::limpar($lat);
         } else {
-            APP::return_response(false, "Coordenadas incompletas (LAT)");
+            APP::return_response(false, "(LAT) Latitude inválida");
         }
     }
 
     function set_lng($lng) {
-        if ($lng) {
+        if (VALIDA::isValidLongitude($lng)) {
             $this->lng = STRINGS::limpar($lng);
         } else {
-            APP::return_response(false, "Coordenadas incompletas (LNG)");
+            APP::return_response(false, "(LNG) Longitude inválida");
         }
     }
 

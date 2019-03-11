@@ -49,5 +49,10 @@ class SESSION {
             return false;
         }
     }
-    
+
+    static function get_meus_tecnicos() {
+        $o_coordenador = new Coordenador();
+        return $o_coordenador->select_ids_tecnicos_coordenador();
+    }
+
 }

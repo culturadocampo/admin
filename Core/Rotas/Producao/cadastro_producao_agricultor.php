@@ -1,4 +1,5 @@
 
+
 <div class="m-portlet">
     <div class="m-portlet__head">
         <div class="m-portlet__head-caption">
@@ -7,13 +8,12 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Cadastro de produção geral
+                    Cadastro de produção
                 </h3>
             </div>
         </div>
     </div>
     <form id="form_producao" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
-        <input value="<?php echo $_GET['id_usuario_agricultor']; ?>" name='id_usuario_agricultor' type="hidden">
         <div id="cadastro_producao" class="m-portlet__body">	
 
         </div>

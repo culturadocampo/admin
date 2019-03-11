@@ -42,6 +42,17 @@ class Tecnico {
         $this->conn->execute($query);
         return $this->conn->last_id();
     }
+    
+    function selectTecnicosAtivos(){
+        $query = "
+            SELECT 
+                id_usuario, nome
+            FROM usuarios_tecnicos
+            INNER JOIN usuarios ON usuarios_tecnicos.fk_usuario = id_usuario
+            WHERE TRUE
+               AND usuarios.ativo = 1";
+        return $this->conn->fetch_all($query);
+    }
 
     function getIdTecnico() {
         return $this->idTecnico;

@@ -139,4 +139,13 @@ class APP {
         }
     }
 
+    static function gravar_erro($arquivo, $tipo, $mensagem, $linha) {
+        $db = DB::get_instance(true);
+
+        $db->beginTransaction();
+        $o_erro = new Erro();
+        $o_erro->insert_erro($arquivo, $tipo, $mensagem, $linha);
+        $db->commit();
+    }
+
 }

@@ -1,3 +1,30 @@
+<?php
+$id_tipo_usuario = SESSION::get_id_tipo_usuario();
+?>
+
+<?php if ($id_tipo_usuario <> 5) { ?>
+    <div class="col-md-12">
+        <div class="form-group m-form__group row">
+            <div class="col-md-12">
+            <label for="rg">Técnico responsável</label>
+
+                <?php
+                $o_tecnico = new Tecnico();
+                $a_tecnicos = $o_tecnico->selectTecnicosAtivos();
+                ?>
+                <select data-style="btn-success" name="id_usuario_tecnico" class="form-control selectpicker">
+
+                    <?php if ($a_tecnicos) { ?>
+                        <option selected>Selecione o técnico responsável por este agricultor</option>
+                        <?php foreach ($a_tecnicos as $value) { ?>
+                            <option  value="<?php echo $value['id_usuario']; ?>"><?php echo $value['nome']; ?></option>
+                        <?php } ?>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
 <?php include 'Core/Rotas/Usuarios/include_form_usuario.php'; ?>
 <?php include 'Core/Rotas/Usuarios/include_form_telefone.php'; ?>

@@ -1,11 +1,9 @@
 <?php
 
-//ARRAYS::pre_print($_POST);
 $o_usuario = new Usuario();
 $o_tecnico = new Tecnico();
 $o_municipio = new Municipio();
 $o_telefone = new Telefone();
-
 
 
 try {
@@ -43,9 +41,13 @@ try {
     if (isset($_POST['id_usuario_coordenador'])) {
         $id_usuario_coordenador = $_POST['id_usuario_coordenador'];
     } else {
-        $id_usuario_coordenador = $_SESSION['id_usuario'];
+        if (SESSION::get_id_tipo_usuario() == 2) {
+            $id_usuario_coordenador = $_SESSION['id_usuario'];
+        } else {
+            APP::return_response(false, "Ocorreu um erro: Coordenador inválido");
+        }
     }
-    
+
     $o_usuario->setIdUsuario($id_usuario_coordenador);
 
     $o_municipio->setIdMunicipio($_POST['id_municipio']);

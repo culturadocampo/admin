@@ -25,12 +25,16 @@ class DB {
         }
     }
 
-    static function get_instance() {
-        if (!isset(self::$instance)) {
-            $c = new DB();
-            self::$instance = $c;
+    static function get_instance($force_new_instance = false) {
+        if ($force_new_instance) {
+            return new DB();
+        } else {
+            if (!isset(self::$instance)) {
+                $c = new DB();
+                self::$instance = $c;
+            }
+            return self::$instance;
         }
-        return self::$instance;
     }
 
     function execute($query) {
@@ -38,7 +42,8 @@ class DB {
             $sth = $this->link->prepare($query);
             $sth->execute();
         } catch (PDOException $exc) {
-            APP::return_response(false, $exc->getMessage());
+//            APP::gravar_erro("Query", "MySQL", "Mensagem", "0");
+            APP::return_response(false, "Resposta inesperada do servidor");
         }
     }
 
@@ -47,7 +52,9 @@ class DB {
             $sth = $this->link->query($query);
             return $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
-            APP::return_response(false, $exc->getMessage());
+//            LOG::writeLog($exc->getMessage());
+
+            APP::return_response(false, "Resposta inesperada do servidor");
         }
     }
 
@@ -56,7 +63,9 @@ class DB {
             $sth = $this->link->query($query);
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
-            APP::return_response(false, $exc->getMessage());
+//            LOG::writeLog($exc->getMessage());
+
+            APP::return_response(false, "Resposta inesperada do servidor");
         }
     }
 

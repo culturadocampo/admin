@@ -46,16 +46,25 @@ try {
     $o_endereco->set_lng($_POST['lng']);
     $o_endereco->set_bairro($_POST['comunidade']);
     $o_endereco->insertEndereco($id_usuario);
-    
+
     /**
      * Agricultor
      */
+    if (isset($_POST['id_usuario_tecnico'])) {
+        $id_usuario_tecnico = $_POST['id_usuario_tecnico'];
+    } else {
+        if (SESSION::get_id_tipo_usuario() == 5) {
+            $id_usuario_tecnico = $_SESSION['id_usuario'];
+        } else {
+            APP::return_response(false, "Ocorreu um erro: Técnico inválido");
+        }
+    }
     $o_agricultor->setRg($_POST['rg']);
     $o_agricultor->setCaepf($_POST['caepf']);
     $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
     $o_agricultor->setColetivo($_POST['coletivo']);
-    $o_agricultor->insert_agricultor($id_usuario);
-    
+    $o_agricultor->insert_agricultor($id_usuario, $id_usuario_tecnico);
+
     $db->commit();
     APP::return_response(true, "Agricultor cadastrado com sucesso");
 } catch (Exception $exc) {
