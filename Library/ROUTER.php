@@ -9,8 +9,14 @@ class ROUTER {
 
         $rota = self::get_rota_apropriada($array_rotas);
         if (APP::is_logged() || $rota['publico']) {
-            if (!$rota['publico'] || APP::is_logged()) {
+            if (!$rota['publico'] && APP::is_logged()) {
                 self::insert_acesso($rota['id_rota']);
+                $tem_permissao = $o_rota->has_permissao_acesso_rota($rota['id_rota'], SESSION::get_id_tipo_usuario());
+                if (!$tem_permissao) {
+                    $o_rota->set_url("notallowed");
+                    $array_rotas = $o_rota->select_rota();
+                    $rota = self::get_rota_apropriada($array_rotas, $o_rota->get_url());
+                }
             }
             $conteudo = "Core/Rotas/{$rota['conteudo']}";
             if ($rota['matriz']) {
@@ -26,14 +32,6 @@ class ROUTER {
             $conteudo = "Core/Rotas/{$rota['conteudo']}";
             include "Public/Matriz/{$rota['matriz']}";
         }
-    }
-
-    static function include_rota($id_rota) {
-        
-    }
-
-    static function tem_permissao($id_rota) {
-        
     }
 
     /**

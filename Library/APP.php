@@ -32,6 +32,9 @@ class APP {
         if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome_usuario'])) {
             if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome_usuario'])) {
                 $o_permissao = new Permissao();
+                /**
+                 * Foi colocado aqui para que seja em tempo real.
+                 */
                 $_SESSION['permissoes'] = $o_permissao->select_permissoes_tipo_usuario($_SESSION['id_tipo_usuario']);
                 return true;
             } else {

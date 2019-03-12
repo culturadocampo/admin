@@ -243,6 +243,22 @@ class Rota {
         $this->conn->execute($query);
     }
 
+    function has_permissao_acesso_rota($id_rota, $id_tipo_usuario) {
+        $query = "
+            SELECT
+                permissoes_rotas.fk_permissao
+            FROM
+            permissoes_tipos_usuario
+            INNER JOIN permissoes_rotas ON permissoes_rotas.fk_permissao = permissoes_tipos_usuario.fk_permissao 
+            WHERE TRUE
+                AND fk_tipo_usuario = '{$id_tipo_usuario}'
+                AND fk_rota = '{$id_rota}'
+            LIMIT 1
+        ";
+        $result = $this->conn->fetch($query);
+        return $result;
+    }
+
     function get_id_rota() {
         return $this->id_rota;
     }

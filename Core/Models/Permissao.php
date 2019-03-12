@@ -158,6 +158,8 @@ class Permissao {
         return $result['permissoes'];
     }
 
+
+
     function get_id_permissao() {
         return $this->id_permissao;
     }

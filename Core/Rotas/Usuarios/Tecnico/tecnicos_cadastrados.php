@@ -18,7 +18,7 @@ $a_tecnicos = $o_tecnico->selectTecnicosAtivos();
         </div>
     </div>
     <div class="m-portlet__body">	
-        <table class="table datatable table-striped">
+        <table class="table datatable table-sm">
             <thead>
                 <tr>
                     <td>ID</td>

@@ -42,14 +42,38 @@ class Tecnico {
         $this->conn->execute($query);
         return $this->conn->last_id();
     }
-    
-    function selectTecnicosAtivos(){
+
+    function selectTecnicosAtivos() {
+        $id_tipo_usuario = SESSION::get_id_tipo_usuario();
+        if ($id_tipo_usuario == 1) {
+            return $this->select_todos_tecnicos();
+        } else if ($id_tipo_usuario == 2) {
+            return $this->select_tecnicos_coordenador();
+        } else {
+            return array();
+        }
+    }
+
+    function select_todos_tecnicos() {
         $query = "
             SELECT 
                 id_usuario, nome
             FROM usuarios_tecnicos
             INNER JOIN usuarios ON usuarios_tecnicos.fk_usuario = id_usuario
             WHERE TRUE
+               AND usuarios.ativo = 1";
+        return $this->conn->fetch_all($query);
+    }
+
+    function select_tecnicos_coordenador() {
+        $id_usuario_coordenador = SESSION::get_id_usuario();
+          $query = "
+            SELECT 
+                id_usuario, nome
+            FROM usuarios_tecnicos
+            INNER JOIN usuarios ON usuarios_tecnicos.fk_usuario = id_usuario
+            WHERE TRUE
+               AND fk_usuario_coordenador = '{$id_usuario_coordenador}'
                AND usuarios.ativo = 1";
         return $this->conn->fetch_all($query);
     }
