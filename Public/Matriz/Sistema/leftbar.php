@@ -131,7 +131,7 @@
                     <ul class="m-menu__subnav">
                         <?php if (APP::has_permissao(1)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
-                                <a href="sistema/rotas-de-acesso/adicionar" class="m-menu__link ">
+                                <a href="sistema/rotas/adicionar" class="m-menu__link ">
                                     <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
                                     </i><span class="m-menu__link-text">Nova rota</span>
                                 </a>
@@ -139,7 +139,7 @@
                         <?php } ?>
 
                         <li class="m-menu__item " aria-haspopup="true">
-                            <a href="sistema/rotas-de-acesso/lista" class="m-menu__link ">
+                            <a href="sistema/rotas/lista" class="m-menu__link ">
                                 <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
                                 </i><span class="m-menu__link-text">Mostrar todas</span>
                             </a>

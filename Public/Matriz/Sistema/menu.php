@@ -125,13 +125,13 @@
                         <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 70.5px;"></span>
                         <ul class="m-menu__subnav">
                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-                                <a href="sistema/rotas-de-acesso/adicionar" class="m-menu__link">
+                                <a href="sistema/rotas/adicionar" class="m-menu__link">
                                     <i class="m-menu__link-icon flaticon-add"></i>
                                     <span class="m-menu__link-text">Adicionar</span>
                                 </a>
                             </li>
                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-                                <a href="sistema/rotas-de-acesso/lista" class="m-menu__link ">
+                                <a href="sistema/rotas/lista" class="m-menu__link ">
                                     <i class="m-menu__link-icon flaticon-file"></i>
                                     <span class="m-menu__link-text">Lista</span>
                                 </a>

@@ -44,7 +44,7 @@
     $(document).ready(function () {
         load_rotas();
         function load_rotas() {
-            $("#tabela_rotas").load("sistema/rotas-de-acesso/_tabela_rotas");
+            $("#tabela_rotas").load("sistema/rotas/_tabela_rotas");
         }
     });
 </script>

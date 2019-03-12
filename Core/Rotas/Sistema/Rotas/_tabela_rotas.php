@@ -44,7 +44,7 @@ foreach ($rotas as $key => $rota) {
             <?php if ($rotas) { ?>
 
                 <?php foreach ($rotas as $value) { ?>
-                    <tr  href="sistema/rotas-de-acesso/<?php echo $value['id_rota']; ?>/detalhes/" class="pointer" id="<?php echo $value['id_rota']; ?>">
+                    <tr  href="sistema/rotas/<?php echo $value['id_rota']; ?>/detalhes/" class="pointer" id="<?php echo $value['id_rota']; ?>">
                         <td class="text-center"><?php echo $value['id_rota']; ?></td>
                         <td class="text-truncate" width="20%"><?php echo $value['expressao']; ?></td>
                         <td class="text-center"><?php echo $value['matriz']; ?></td>

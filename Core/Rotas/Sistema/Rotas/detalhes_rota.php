@@ -256,7 +256,7 @@ $json_parametros = json_encode($array_parametros);
             var permissoes = $("#vinculo_permissoes").val()
 
             $.post(
-                    'sistema/rotas-de-acesso/editar',
+                    'sistema/rotas/editar',
                     {id_rota: id_rota, url: url, publico: publico, matriz: matriz, conteudo: conteudo, params: parametros_array, permissoes: permissoes},
                     function (response) {
                         alert(response);
@@ -357,7 +357,7 @@ $json_parametros = json_encode($array_parametros);
         $("#excluir_rota").off("click");
         $("#excluir_rota").on("click", function () {
             var id = $(this).attr('id_rota');
-            $.post("sistemas/rotas-de-acesso/excluir", {id_rota: id}, function (response) {
+            $.post("sistema/rotas/excluir", {id_rota: id}, function (response) {
                 alert(response);
             });
         });

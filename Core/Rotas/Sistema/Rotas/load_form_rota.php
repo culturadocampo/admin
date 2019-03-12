@@ -181,7 +181,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
             var conteudo = $("#select_conteudo").val();
             var permissoes = $("#vinculo_permissoes").val()
 
-            $.post('sistema/rotas-de-acesso/cadastrar',
+            $.post('sistema/rotas/cadastrar',
                     {url: url, publico: publico, matriz: matriz,
                         conteudo: conteudo, params: parametros_array, permissoes: permissoes},
                     function (response) {
