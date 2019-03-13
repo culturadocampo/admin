@@ -12,7 +12,7 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
                 $o_tecnico = new Tecnico();
                 $a_tecnicos = $o_tecnico->selectTecnicosAtivos();
                 ?>
-                <select data-style="btn-success" name="id_usuario_tecnico" class="form-control selectpicker">
+                <select data-style="btn-info" name="id_usuario_tecnico" class="form-control selectpicker">
 
                     <?php if ($a_tecnicos) { ?>
                         <option selected>Selecione o técnico responsável por este agricultor</option>

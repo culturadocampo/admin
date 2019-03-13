@@ -12,7 +12,9 @@
                     <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
                         <li class="m-nav__item">
                             <a class="m-nav__link">
-                                <span class="m-nav__link-text text-primary">U<?php echo SESSION::get_id_usuario(); ?>-R<?php echo $rota['id_rota']; ?>-T<?php echo SESSION::get_id_tipo_usuario(); ?></span>
+                                <span class="m-nav__link-text text-primary">
+                                        U<?php echo SESSION::get_id_usuario(); ?>T<?php echo SESSION::get_id_tipo_usuario(); ?>R<?php echo $rota['id_rota']; ?>
+                                </span>
                             </a>
                         </li>
                         <li class="m-nav__item">

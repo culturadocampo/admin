@@ -13,9 +13,13 @@ class ROUTER {
                 self::insert_acesso($rota['id_rota']);
                 $tem_permissao = $o_rota->has_permissao_acesso_rota($rota['id_rota'], SESSION::get_id_tipo_usuario());
                 if (!$tem_permissao) {
-                    $o_rota->set_url("notallowed");
-                    $array_rotas = $o_rota->select_rota();
-                    $rota = self::get_rota_apropriada($array_rotas, $o_rota->get_url());
+                    if ($rota['matriz']) {
+                        $o_rota->set_url("notallowed");
+                        $array_rotas = $o_rota->select_rota();
+                        $rota = self::get_rota_apropriada($array_rotas, $o_rota->get_url());
+                    } else {
+                        exit("Código 626: Sem permissão de acesso");
+                    }
                 }
             }
             $conteudo = "Core/Rotas/{$rota['conteudo']}";
