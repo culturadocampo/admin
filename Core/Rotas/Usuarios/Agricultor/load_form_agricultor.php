@@ -6,7 +6,7 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
     <div class="col-md-12">
         <div class="form-group m-form__group row">
             <div class="col-md-12">
-            <label for="rg">Técnico responsável</label>
+                <label for="rg">Técnico responsável</label>
 
                 <?php
                 $o_tecnico = new Tecnico();
@@ -179,8 +179,8 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
                 blockPage();
 
                 if (navigator.geolocation) {
-                    $("#include_estado_municipio").slideUp();
                     navigator.geolocation.getCurrentPosition(function (position) {
+                        $("#include_estado_municipio").slideUp();
                         var pos = {
                             lat: position.coords.latitude,
                             lng: position.coords.longitude
@@ -190,7 +190,7 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
                         geocodeLatLng(pos.lat, pos.lng);
                     }, function () {
                         alert("Não foi possível encontrar a localização");
-                        $("#include_estado_municipio").slideDown();
+                        unblockPage();
                     });
                 } else {
                     alert("Este navegador não suporta geolocalização");

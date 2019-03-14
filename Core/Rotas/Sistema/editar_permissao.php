@@ -85,7 +85,7 @@ $arr_rotas = $o_rota->select_all_rotas();
                                 <select name="tipo_usuario[]" class="form-control m-input selectpicker" multiple>
                                     <?php if ($arr_tipos) { ?>
                                         <?php foreach ($arr_tipos as $value) { ?>
-                                            <option value="<?php echo $value['id_tipo_usuario']; ?>"><?php echo $value['nome']; ?></option>
+                                            <option <?php echo in_array($value['id_tipo_usuario'], $tipos_usuario) ? 'selected' : ''; ?> value="<?php echo $value['id_tipo_usuario']; ?>"><?php echo $value['nome']; ?></option>
                                         <?php } ?>
                                     <?php } ?>
                                 </select>

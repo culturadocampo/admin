@@ -74,15 +74,15 @@ $arr_tipos = $o_permissao->select_usuarios_tipo();
                             </div>
                         </div>
                         <hr>
-                           <div id="tabela_permissoes">
+                        <div id="tabela_permissoes">
 
-    </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
- 
+
 </div>
 
 
@@ -96,38 +96,7 @@ $arr_tipos = $o_permissao->select_usuarios_tipo();
                 url: "insert-permissao",
                 data: formData,
                 success: function (response) {
-                    var json = JSON.parse(response);
-                    if (is_json(json)) {
-                        if (json.result) {
-                            $("#form_permissao").trigger('reset');
-                            carregar_permissoes();
-
-                            swal({
-                                type: 'success',
-                                title: 'Sucesso',
-                                text: json.message
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Aviso',
-                                text: json.message
-                            });
-                        }
-                    } else {
-                        swal({
-                            type: 'error',
-                            title: 'Resposta inesperada',
-                            text: response
-                        });
-                    }
-                },
-                error: function (error) {
-                    swal({
-                        type: 'error',
-                        title: 'Resposta inesperadasss',
-                        text: 'Entre em contato com o supoorte (COD: L001)'
-                    });
+                    lerResposta(response, carregar_permissoes);
                 }
             });
         });
@@ -136,6 +105,7 @@ $arr_tipos = $o_permissao->select_usuarios_tipo();
 
     function carregar_permissoes() {
         $("#tabela_permissoes").load("tabela-permissoes");
+        $("#form_permissao").trigger('reset');
     }
 </script>
 

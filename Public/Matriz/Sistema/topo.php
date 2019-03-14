@@ -47,7 +47,7 @@
                             <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-dark" m-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        <?php echo mb_strtoupper(SESSION::get_nome_usuario()); ?>
+                                        <?php echo strtoupper(SESSION::get_nome_usuario()); ?>
                                     </span>
                                     <span class="m-nav__link-icon m-topbar__usericon  m--hide">
                                         <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>

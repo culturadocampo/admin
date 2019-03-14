@@ -44,6 +44,7 @@ class Permissao {
             LEFT JOIN usuarios_tipo ON fk_tipo_usuario = id_tipo_usuario
             WHERE TRUE
             GROUP BY id_permissao
+            ORDER BY id_permissao DESC
         ";
         return $this->conn->fetch_all($query);
     }
