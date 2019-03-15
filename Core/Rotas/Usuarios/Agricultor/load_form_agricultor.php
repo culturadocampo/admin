@@ -1,5 +1,7 @@
 <?php
+$o_certificacao = new Certificacao();
 $id_tipo_usuario = SESSION::get_id_tipo_usuario();
+$a_certificacoes = $o_certificacao->select_todas_certificacoes();
 ?>
 
 <?php if ($id_tipo_usuario <> 5) { ?>
@@ -13,7 +15,6 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
                 $a_tecnicos = $o_tecnico->selectTecnicosAtivos();
                 ?>
                 <select data-style="btn-info" name="id_usuario_tecnico" class="form-control selectpicker">
-
                     <?php if ($a_tecnicos) { ?>
                         <option selected>Selecione o técnico responsável por este agricultor</option>
                         <?php foreach ($a_tecnicos as $value) { ?>
@@ -140,12 +141,15 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
             <input pattern="\d+" name="integrantes_upf" type="text" class="form-control m-input" placeholder="Informe a quantidade">
         </div>
         <div class="col-lg-6">
-            <label for="coletivo">Coletivo a que pertence</label>
-            <select name="coletivo" class="form-control selectpicker">
-                <option value="1">Associação</option>
-                <option value="2">Cooperativa</option>
-                <option value="3">Grupo informal</option>
-                <option value="4">Agricultor osilado</option>
+            <label for="id_certificacao">Certificação orgânica</label>
+            <select name="id_certificacao" class="form-control selectpicker" data-live-search="true">
+                <?php if ($a_certificacoes) { ?>
+
+                    <?php foreach ($a_certificacoes as $value) { ?>
+                        <option value="<?php echo $value['id_descricao']; ?>"><?php echo $value['descricao']; ?></option>
+                    <?php } ?>
+
+                <?php } ?>
             </select>
         </div>
     </div>
@@ -284,11 +288,12 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
         }
 
         function localizarComunidade() {
-            var codigo = $("input[name=comunidade]").val();
+            var codigo = $("#municipio").val();
             var siglaEstado = $("#uf").val();
             var municipio = $("#municipio option[value='" + codigo + "']").text();
             var comunidade = $("input[name=comunidade]").val();
             var estado = $("#uf option[value='" + siglaEstado + "']").text();
+            console.log("Brasil, " + estado + ", " + municipio + ", " + comunidade);
             geocoding("Brasil, " + estado + ", " + municipio + ", " + comunidade, 15);
         }
 
@@ -303,7 +308,6 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
 
                         var geo_municipio = results[0]['address_components'][3]['long_name'];
                         var geo_local = results[0]['address_components'][2]['long_name'] + ", " + results[0]['address_components'][1]['long_name'];
-
                         $("#reset_geolocation").attr("disabled", false);
                         $("#include_estado_municipio select").prop("disabled", true);
                         $('#include_estado_municipio .selectpicker').selectpicker('refresh');

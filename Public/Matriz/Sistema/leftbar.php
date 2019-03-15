@@ -112,12 +112,15 @@
                                 <span class="m-menu__link-text text-grey "><s>Empresas</s></span>
                             </a>
                         </li>-->
-            <!--            <li menu="2" class="m-menu__item " menu="2">
-                            <a href="javascript:alert('Ainda não está pronto');" class="m-menu__link ">
-                                <i class=" m-menu__link-icon text-grey flaticon-buildings  "></i>
-                                <span class="m-menu__link-text text-grey "><s>Filiados</s></span>
-                            </a>
-                        </li>-->
+            <?php if (APP::has_permissao(20)) { ?>
+
+                <li menu="2" class="m-menu__item " menu="2">
+                    <a href="usuario/cadastro/filiado" class="m-menu__link ">
+                        <i class=" m-menu__link-icon text-grey flaticon-buildings  "></i>
+                        <span class="m-menu__link-text text-grey ">Filiados</span>
+                    </a>
+                </li>
+            <?php } ?>
 
             <li id="3" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text text-grey ">Sistema</h4>

@@ -5,6 +5,7 @@ $o_usuario = new Usuario();
 $o_telefone = new Telefone();
 $o_endereco = new Endereco();
 $o_agricultor = new Agricultor();
+$o_certificacao = new Certificacao();
 
 try {
     $db = DB::get_instance();
@@ -62,8 +63,8 @@ try {
     $o_agricultor->setRg($_POST['rg']);
     $o_agricultor->setCaepf($_POST['caepf']);
     $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
-    $o_agricultor->setColetivo($_POST['coletivo']);
-    $o_agricultor->insert_agricultor($id_usuario, $id_usuario_tecnico);
+    $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
+    $o_agricultor->insert_agricultor($id_usuario, $id_usuario_tecnico, $o_certificacao->getIdCertificacao());
 
     $db->commit();
     APP::return_response(true, "Agricultor cadastrado com sucesso");

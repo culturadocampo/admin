@@ -16,25 +16,24 @@ class Agricultor {
     private $rg;
     private $caepf;
     private $integrantesUpf;
-    private $coletivo;
     private $conn;
 
     function __construct() {
         $this->conn = DB::get_instance();
     }
 
-    function insert_agricultor($id_usuario, $id_tecnico_responsavel) {
+    function insert_agricultor($id_usuario, $id_tecnico_responsavel, $id_certificacao) {
         $query = "
             INSERT INTO 
                 usuarios_agricultores
-            (fk_usuario, fk_usuario_tecnico, rg, caepf, integrantes_upf, coletivo)
+            (fk_usuario, fk_usuario_tecnico, fk_certificacao_organica, rg, caepf, integrantes_upf)
             VALUES(
                 '{$id_usuario}',
                 '{$id_tecnico_responsavel}',
+                '{$id_certificacao}',
                 '{$this->getRg()}',
                 '{$this->getCaepf()}',
-                '{$this->getIntegrantesUpf()}',
-                '{$this->getColetivo()}'
+                '{$this->getIntegrantesUpf()}'
             )
         ";
         $this->conn->execute($query);
@@ -124,8 +123,6 @@ class Agricultor {
         $this->integrantesUpf = $integrantesUpf;
     }
 
-    function setColetivo($coletivo) {
-        $this->coletivo = $coletivo;
-    }
+
 
 }

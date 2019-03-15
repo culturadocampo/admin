@@ -43,7 +43,7 @@ class DB {
             $sth->execute();
         } catch (PDOException $exc) {
 //            APP::gravar_erro("Query", "MySQL", "Mensagem", "0");
-            APP::return_response(false, "Resposta inesperada do servidor");
+            APP::return_response(false, $exc->getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ class DB {
         } catch (PDOException $exc) {
 //            LOG::writeLog($exc->getMessage());
 
-            APP::return_response(false, "Resposta inesperada do servidor");
+            APP::return_response(false, $exc->getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ class DB {
         } catch (PDOException $exc) {
 //            LOG::writeLog($exc->getMessage());
 
-            APP::return_response(false, "Resposta inesperada do servidor");
+            APP::return_response(false, $exc->getMessage());
         }
     }
 
