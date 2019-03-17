@@ -1,11 +1,10 @@
 <?php
 
-//ARRAYS::pre_print($_POST);
 $o_usuario = new Usuario();
 $o_telefone = new Telefone();
 $o_endereco = new Endereco();
-$o_agricultor = new Agricultor();
-$o_certificacao = new Certificacao();
+$o_filiado = new Filiado();
+$o_coletivo = new Coletivo();
 
 try {
     $db = DB::get_instance();
@@ -21,7 +20,7 @@ try {
     $o_usuario->set_usuario($_POST['usuario']);
     $o_usuario->set_email($_POST['email']);
     $o_usuario->set_senha($senha_hash);
-    $id_usuario_agricultor = $o_usuario->insert_novo_usuario(6);
+    $id_usuario_filiado = $o_usuario->insert_novo_usuario(3);
 
     /**
      * Telefones
@@ -30,12 +29,11 @@ try {
         foreach ($_POST['telefones'] as $value) {
             $o_telefone->setTelefone($value['telefone']);
             $o_telefone->setTipoTelefone($value['tipo_telefone']);
-            $o_telefone->insert_telefone($id_usuario_agricultor);
+            $o_telefone->insert_telefone($id_usuario_filiado);
         }
     } else {
         APP::return_response(false, "Necessário informar ao menos 1 celular ou telefone");
     }
-
 
     /**
      * Localização
@@ -53,32 +51,35 @@ try {
 
     $o_endereco->set_estado($id_estado);
     $o_endereco->set_municipio($id_municipio);
-    $o_endereco->set_lat($_POST['lat']);
-    $o_endereco->set_lng($_POST['lng']);
-    $o_endereco->set_bairro($_POST['comunidade']);
-    $o_endereco->insertEndereco($id_usuario_agricultor);
+    $o_endereco->set_bairro($_POST['bairro']);
+    $o_endereco->set_logradouro($_POST['logradouro']);
+    $o_endereco->set_numero($_POST['numero']);
+    $o_endereco->set_cep($_POST['cep']);
+    $o_endereco->set_complemento($_POST['complemento']);
+    $o_endereco->insertEndereco($id_usuario_filiado);
 
     /**
-     * Agricultor
+     * Filiado
      */
-    if (isset($_POST['id_usuario_tecnico'])) {
-        $id_usuario_tecnico = $_POST['id_usuario_tecnico'];
+    $o_coletivo->setIdColetivo($_POST['id_coletivo']);
+    $o_filiado->setNomeFantasia($_POST['nome_fantasia']);
+    $o_filiado->setRazaoSocial($_POST['razao_social']);
+    $o_filiado->setCnpj($_POST['cnpj']);
+    $o_filiado->insert_filiado($id_usuario_filiado, $o_coletivo->getIdColetivo());
+      /**
+     * E-Mail com credenciais
+     */
+    $body = EMAIL::body_cadastro_usuario($o_usuario->get_nome(), $o_usuario->get_usuario(), $nova_senha, 3);
+    $envio_ok = EMAIL::send_mail($o_usuario->get_email(), CONFIG::$PROJECT_NAME . " - Credenciais de acesso", $body);
+
+    if ($envio_ok) {
+        $db->commit();
+        APP::return_response(true, "Sucesso! As credenciais foram enviadas para o e-mail informado.");
     } else {
-        if (SESSION::get_id_tipo_usuario() == 5) {
-            $id_usuario_tecnico = $_SESSION['id_usuario'];
-        } else {
-            APP::return_response(false, "Ocorreu um erro: Técnico inválido");
-        }
+        APP::return_response(false, "Erro: não foi possível enviar o e-mail. Cadastro cancelado.");
     }
-    $o_agricultor->setRg($_POST['rg']);
-    $o_agricultor->setCaepf($_POST['caepf']);
-    $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
-    $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
-    $o_agricultor->insert_agricultor($id_usuario_agricultor, $o_certificacao->getIdCertificacao());
-    $o_agricultor->insert_vinculo_agricultor_tecnico($id_usuario_agricultor, $id_usuario_tecnico);
-    $db->commit();
-    APP::return_response(true, "Agricultor cadastrado com sucesso");
 } catch (Exception $exc) {
     $db->rollback();
-    //gravar o erro no banco com o handling
 }
+
+

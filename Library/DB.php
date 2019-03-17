@@ -20,7 +20,6 @@ class DB {
                 $this->link->query('SET CHARACTER SET utf8');
             } catch (PDOException $error) {
                 APP::return_response(false, "Connection error");
-//                echo $error->getMessage();
             }
         }
     }
@@ -42,7 +41,7 @@ class DB {
             $sth = $this->link->prepare($query);
             $sth->execute();
         } catch (PDOException $exc) {
-//            APP::gravar_erro("Query", "MySQL", "Mensagem", "0");
+            LOG::writeLog($query);
             APP::return_response(false, $exc->getMessage());
         }
     }
@@ -52,7 +51,7 @@ class DB {
             $sth = $this->link->query($query);
             return $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
-//            LOG::writeLog($exc->getMessage());
+            LOG::writeLog($query);
 
             APP::return_response(false, $exc->getMessage());
         }
@@ -63,7 +62,7 @@ class DB {
             $sth = $this->link->query($query);
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
-//            LOG::writeLog($exc->getMessage());
+            LOG::writeLog($query);
 
             APP::return_response(false, $exc->getMessage());
         }

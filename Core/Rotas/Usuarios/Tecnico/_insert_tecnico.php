@@ -57,7 +57,7 @@ try {
     $o_tecnico->setEntidade($_POST['entidade']);
     $o_tecnico->setEmail($_POST['email']);
     $o_tecnico->setObservacao($_POST['observacao']);
-    $id_tecnico = $o_tecnico->insertTecnico($o_usuario->getIdUsuario(), $id_usuario, $o_municipio->getIdMunicipio());
+    $o_tecnico->insertTecnico($o_usuario->getIdUsuario(), $id_usuario, $o_municipio->getIdMunicipio());
 
     /**
      * E-Mail com credenciais

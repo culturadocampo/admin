@@ -34,10 +34,12 @@ class EMAIL {
         return "<img src='http://culturadocampo.com.br/Public/Images/Logo/horizontal_logo.png' style='width: auto; height: 48px;'><br><br>";
     }
 
-    static function body_cadastro_usuario($nome, $usuario, $senha, $tipo) {
+    static function body_cadastro_usuario($nome, $usuario, $senha, $id_tipo_usuario) {
+        $o_usuario = new Usuario();
+        $tipo = $o_usuario->get_tipo_usuario($id_tipo_usuario);
         $body = self::get_logo();
         $body .= "<strong>{$nome}</strong>, seja bem vindo à plataforma " . CONFIG::$PROJECT_NAME . "!<br><br>";
-        $body .= "Suas credenciais de acesso como <u>COORDENADOR(A)</u> são:<br><br>";
+        $body .= "Suas credenciais de acesso como <u>{$tipo}</u> são:<br><br>";
         $body .= "<strong>Usuário: </strong> {$usuario}<br>";
         $body .= "<strong>Senha: </strong> $senha<br><br>";
         $body .= "Caso deseje, você pode alterar esta senha através das configurações de perfil do seu usuário.<br>Se houver qualquer problema ou dúvida com relação à plataforma, entre em contato com o nosso suporte.<br><br>";

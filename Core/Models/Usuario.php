@@ -135,6 +135,18 @@ class Usuario {
         return $this->conn->fetch($query);
     }
 
+    function get_tipo_usuario($id_tipo_usuario) {
+        $query = "
+            SELECT 
+                nome
+            FROM usuarios_tipo 
+            WHERE TRUE 
+                AND id_tipo_usuario = '{$id_tipo_usuario}'
+        ";
+        $tipo = $this->conn->fetch($query);
+        return strtoupper($tipo['nome']);
+    }
+
     function get_nome() {
         return $this->nome;
     }

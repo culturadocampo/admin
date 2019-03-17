@@ -16,7 +16,6 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
                 ?>
                 <select data-style="btn-info" name="id_usuario_tecnico" class="form-control selectpicker">
                     <?php if ($a_tecnicos) { ?>
-                        <option selected>Selecione o técnico responsável por este agricultor</option>
                         <?php foreach ($a_tecnicos as $value) { ?>
                             <option  value="<?php echo $value['id_usuario']; ?>"><?php echo $value['nome']; ?></option>
                         <?php } ?>
@@ -146,7 +145,7 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
                 <?php if ($a_certificacoes) { ?>
 
                     <?php foreach ($a_certificacoes as $value) { ?>
-                        <option value="<?php echo $value['id_descricao']; ?>"><?php echo $value['descricao']; ?></option>
+                        <option value="<?php echo $value['id_certificacao']; ?>"><?php echo $value['descricao']; ?></option>
                     <?php } ?>
 
                 <?php } ?>

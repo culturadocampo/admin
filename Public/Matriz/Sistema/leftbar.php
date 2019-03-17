@@ -112,15 +112,36 @@
                                 <span class="m-menu__link-text text-grey "><s>Empresas</s></span>
                             </a>
                         </li>-->
-            <?php if (APP::has_permissao(20)) { ?>
 
-                <li menu="2" class="m-menu__item " menu="2">
-                    <a href="usuario/cadastro/filiado" class="m-menu__link ">
-                        <i class=" m-menu__link-icon text-grey flaticon-buildings  "></i>
-                        <span class="m-menu__link-text text-grey ">Filiados</span>
-                    </a>
-                </li>
-            <?php } ?>
+            <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon text-grey  flaticon-buildings  "></i>
+                    <span class="m-menu__link-text text-grey ">Filiados</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(20)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="usuario/cadastro/filiado" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
+                                    </i><span class="m-menu__link-text text-grey">Novo filiado</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php // if (APP::has_permissao(14)) { ?>
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="usuario/lista/filiado" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
+                                </i><span class="m-menu__link-text text-grey">Lista de cadastrados</span>
+                            </a>
+                        </li>
+                        <?php // } ?>
+                    </ul>
+                </div>
+            </li>
+
 
             <li id="3" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text text-grey ">Sistema</h4>

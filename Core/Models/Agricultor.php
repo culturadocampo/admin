@@ -22,18 +22,30 @@ class Agricultor {
         $this->conn = DB::get_instance();
     }
 
-    function insert_agricultor($id_usuario, $id_tecnico_responsavel, $id_certificacao) {
+    function insert_agricultor($id_usuario, $id_certificacao) {
         $query = "
             INSERT INTO 
                 usuarios_agricultores
-            (fk_usuario, fk_usuario_tecnico, fk_certificacao_organica, rg, caepf, integrantes_upf)
+            (fk_usuario, fk_certificacao_organica, rg, caepf, integrantes_upf)
             VALUES(
                 '{$id_usuario}',
-                '{$id_tecnico_responsavel}',
                 '{$id_certificacao}',
                 '{$this->getRg()}',
                 '{$this->getCaepf()}',
                 '{$this->getIntegrantesUpf()}'
+            )
+        ";
+        $this->conn->execute($query);
+    }
+    
+    function insert_vinculo_agricultor_tecnico($id_usuario_agricultor, $id_usuario_tecnico){
+            $query = "
+            INSERT INTO 
+                xref_agricultor_tecnico
+            (fk_usuario_agricultor, fk_usuario_tecnico)
+            VALUES(
+                '{$id_usuario_agricultor}',
+                '{$id_usuario_tecnico}'
             )
         ";
         $this->conn->execute($query);

@@ -36,6 +36,16 @@ class Endereco {
         }
     }
 
+    public function get_nome_from_uf($uf) {
+        $query = "SELECT nome FROM estados WHERE uf = '{$uf}'";
+        $estado = $this->conn->fetch($query);
+        if ($estado) {
+            return $estado['nome'];
+        } else {
+            return false;
+        }
+    }
+
     public function get_id_from_nome_municipio($nome) {
         $query = "SELECT id_municipio FROM municipios WHERE nome = '{$nome}'";
         $municipio = $this->conn->fetch($query);
@@ -55,7 +65,7 @@ class Endereco {
                 fk_municipio, 
                 cep,
                 bairro, 
-                rua, 
+                logradouro, 
                 numero,
                 complemento,
                 lat,
@@ -151,7 +161,7 @@ class Endereco {
         if ($numero) {
             $this->numero = STRINGS::limpar($numero);
         } else {
-            APP::return_response(false, "Favor informar o Nº");
+            APP::return_response(false, "Favor informar o número do imóvel");
         }
     }
 
