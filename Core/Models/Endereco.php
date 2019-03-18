@@ -56,11 +56,10 @@ class Endereco {
         }
     }
 
-    function insertEndereco($id_usuario) {
+    function insertEndereco() {
         $query = "
             INSERT INTO enderecos
              (
-                fk_usuario, 
                 fk_estado,
                 fk_municipio, 
                 cep,
@@ -72,7 +71,6 @@ class Endereco {
                 lng
             )
             VALUES (
-                '{$id_usuario}',
                 '{$this->get_estado()}',
                 '{$this->get_municipio()}',
                 '{$this->get_cep()}',
@@ -84,18 +82,10 @@ class Endereco {
                 '{$this->get_lng()}'
              )";
         $this->conn->execute($query);
+        return $this->conn->last_id();
     }
 
-    function select_enderecos_usuarios($id_usuario) {
-        $query = "
-            SELECT 
-                lng, lat
-            FROM enderecos
-            WHERE TRUE
-                AND fk_usuario = '{$id_usuario}'
-        ";
-        return $this->conn->fetch($query);
-    }
+    
 
     function get_lat() {
         return $this->lat;

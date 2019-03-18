@@ -6,15 +6,15 @@
 }
 
 #m_header{
-    /*background-color: #007AFF!important;*/
+    /*background-color: #6495ed!important;*/
 }
 
-
 .m-header,.m-brand {
-    background-color: #FAFAFA!important;
+    background-color: #fafafa!important;
 }
 .m-portlet, #m_aside_left {
     border: 1px solid #cccccc!important;
+    border-radius: 8px!important;
 }
 .m-wrapper{
     border-bottom-left-radius: 10px!important;
@@ -24,7 +24,7 @@
 
 
 .m-portlet{
-    box-shadow: none!important;
+    /*box-shadow: none!important;*/
 }
 
 .portlet_round{

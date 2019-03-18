@@ -17,7 +17,7 @@ class Tecnico {
 
     function insertTecnico($id_coordenador, $id_usuario, $id_municipio) {
         $query = "
-            INSERT INTO usuarios_tecnicos
+            INSERT INTO tecnicos
             (
                 fk_usuario_coordenador,
                 fk_usuario,
@@ -57,9 +57,9 @@ class Tecnico {
     function select_todos_tecnicos() {
         $query = "
             SELECT 
-                id_usuario, nome
-            FROM usuarios_tecnicos
-            INNER JOIN usuarios ON usuarios_tecnicos.fk_usuario = id_usuario
+                id_tecnico, id_usuario, nome
+            FROM tecnicos
+            INNER JOIN usuarios ON tecnicos.fk_usuario = id_usuario
             WHERE TRUE
                AND usuarios.ativo = 1";
         return $this->conn->fetch_all($query);
@@ -67,15 +67,25 @@ class Tecnico {
 
     function select_tecnicos_coordenador() {
         $id_usuario_coordenador = SESSION::get_id_usuario();
-          $query = "
+        $query = "
             SELECT 
-                id_usuario, nome
-            FROM usuarios_tecnicos
-            INNER JOIN usuarios ON usuarios_tecnicos.fk_usuario = id_usuario
+                id_tecnico, id_usuario, nome
+            FROM tecnicos
+            INNER JOIN usuarios ON tecnicos.fk_usuario = id_usuario
             WHERE TRUE
                AND fk_usuario_coordenador = '{$id_usuario_coordenador}'
                AND usuarios.ativo = 1";
         return $this->conn->fetch_all($query);
+    }
+
+    function select_tecnico_from_id_usuario($id_usuario) {
+        $query = "
+            SELECT 
+                id_tecnico
+            FROM tecnicos
+            WHERE TRUE
+               AND fk_usuario = '{$id_usuario}'";
+        return $this->conn->fetch($query);
     }
 
     function getIdTecnico() {

@@ -1,7 +1,3 @@
-<?php
-$o_tecnico = new Tecnico();
-$a_tecnicos = $o_tecnico->selectTecnicosAtivos();
-?>
 
 
 <div class="m-portlet">
@@ -12,28 +8,26 @@ $a_tecnicos = $o_tecnico->selectTecnicosAtivos();
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Técnicos cadastrados
+                    Filiados cadastrados
                 </h3>
             </div>
         </div>
     </div>
     <div class="m-portlet__body">	
-        <table class="table datatable table-sm">
+        <table class="table datatable table-striped">
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Nome completo</td>
+                    <td>Nome fantasia</td>
+                    <td>CNPJ</td>
+                    <td>Coletivo</td>
+                    <td>Propriedades rurais</td>
+                    <td>Editar</td>
+                    <td>Excluir</td>
                 </tr>
             </thead>
             <tbody>
-                <?php if ($a_tecnicos) { ?>
-                    <?php foreach ($a_tecnicos as $value) { ?>
-                        <tr>
-                            <td>U<?php echo $value['id_usuario']; ?>-T<?php echo $value['id_tecnico']; ?></td>
-                            <td><?php echo $value['nome']; ?></td>
-                        </tr>
-                    <?php } ?>
-                <?php } ?>
+
             </tbody>
         </table>
     </div>
@@ -46,3 +40,5 @@ $a_tecnicos = $o_tecnico->selectTecnicosAtivos();
         $(".datatable").DataTable();
     });
 </script>
+
+

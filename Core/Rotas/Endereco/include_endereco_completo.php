@@ -16,7 +16,7 @@
     <div id='endereco_from_cep' class="form-group m-form__group row">
         <div class="col-md-4">
             <label for="bairro">Bairro</label>
-            <input name="bairro" type="text" class="form-control m-input" placeholder="Bairro que se encontra">
+            <input name="bairro" type="text" class="form-control m-input" placeholder="Informe o bairro">
             <!--<span class="m-form__help">Informe o nome completo</span>-->
         </div>
         <div class="col-md-6">

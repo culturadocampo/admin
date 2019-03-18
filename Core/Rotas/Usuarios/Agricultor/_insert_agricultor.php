@@ -4,7 +4,7 @@
 $o_usuario = new Usuario();
 $o_telefone = new Telefone();
 $o_endereco = new Endereco();
-$o_agricultor = new Agricultor();
+$o_propriedade = new PropriedadeRural();
 $o_certificacao = new Certificacao();
 
 try {
@@ -55,27 +55,45 @@ try {
     $o_endereco->set_municipio($id_municipio);
     $o_endereco->set_lat($_POST['lat']);
     $o_endereco->set_lng($_POST['lng']);
-    $o_endereco->set_bairro($_POST['comunidade']);
-    $o_endereco->insertEndereco($id_usuario_agricultor);
+    $o_endereco->set_complemento($_POST['comunidade']);
+    $id_endereco = $o_endereco->insertEndereco();
 
     /**
-     * Agricultor
+     * Propriedade
      */
     if (isset($_POST['id_usuario_tecnico'])) {
-        $id_usuario_tecnico = $_POST['id_usuario_tecnico'];
+        $id_usuario_tecnico = $_POST['id_tecnico'];
     } else {
         if (SESSION::get_id_tipo_usuario() == 5) {
-            $id_usuario_tecnico = $_SESSION['id_usuario'];
+            $id_usuario_tecnico = $_SESSION['id_tecnico'];
         } else {
             APP::return_response(false, "Ocorreu um erro: Técnico inválido");
         }
     }
-    $o_agricultor->setRg($_POST['rg']);
-    $o_agricultor->setCaepf($_POST['caepf']);
-    $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
+
+    if (isset($_POST['id_filiado'])) {
+        $id_filiado = $_POST['id_filiado'];
+    } else {
+        if (SESSION::get_id_tipo_usuario() == 3) {
+            $id_filiado = $_SESSION['id_filiado'];
+        } else {
+            APP::return_response(false, "Ocorreu um erro: Filiado inválido");
+        }
+    }
+
+    $o_propriedade->setRg($_POST['rg']);
+    $o_propriedade->setCaepf($_POST['caepf']);
+    $o_propriedade->setIntegrantesUpf($_POST['integrantes_upf']);
     $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
-    $o_agricultor->insert_agricultor($id_usuario_agricultor, $o_certificacao->getIdCertificacao());
-    $o_agricultor->insert_vinculo_agricultor_tecnico($id_usuario_agricultor, $id_usuario_tecnico);
+    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao());
+    $o_propriedade->insert_vinculo_propriedade_usuario($id_propriedade, $id_usuario_agricultor);
+
+    if ($id_usuario_tecnico) {
+        $o_propriedade->insert_vinculo_propriedade_tecnico($id_propriedade, $id_usuario_tecnico);
+    }
+    if ($id_filiado) {
+        $o_propriedade->insert_vinculo_propriedade_filiado($id_propriedade, $id_filiado);
+    }
     $db->commit();
     APP::return_response(true, "Agricultor cadastrado com sucesso");
 } catch (Exception $exc) {

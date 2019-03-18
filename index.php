@@ -1,17 +1,17 @@
 <?php
 
-set_time_limit(90);
+set_time_limit(60);
 ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 spl_autoload_register("autoload");
-set_error_handler("error_handler");
+//set_error_handler("error_handler");
 
 date_default_timezone_set(CONFIG::$TIMEZONE);
 
 function error_handler($errno, $errstr, $errfile, $errline) {
-
+    
     if (!(error_reporting() & $errno)) {
         // This error code is not included in error_reporting, so let it fall
         // through to the standard PHP error handler

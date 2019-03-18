@@ -1,6 +1,7 @@
 <?php
-$o_agriculor = new Agricultor();
-$a_agricultores = $o_agriculor->select_agricultores_ativos();
+
+$o_propriedade = new PropriedadeRural();
+$a_propriedades = $o_propriedade->select_agricultores_ativos();
 ?>
 
 
@@ -22,19 +23,18 @@ $a_agricultores = $o_agriculor->select_agricultores_ativos();
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Nome completo</td>
-                    <td>Cidade</td>
-                    <td>Produção</td>
+                    <td>Estado</td>
+                    <td>Municipio</td>
                 </tr>
             </thead>
             <tbody>
-                <?php if ($a_agricultores) { ?>
-                    <?php foreach ($a_agricultores as $value) { ?>
+                <?php if ($a_propriedades) { ?>
+                    <?php foreach ($a_propriedades as $value) { ?>
                         <tr>
-                            <td><?php echo $value['id_usuario']; ?></td>
-                            <td><?php echo $value['nome']; ?></td>
-                            <td><?php echo $value['fk_municipio']; ?></td>
-                            <td><a href="agricultor/<?php echo $value['id_usuario']; ?>/cadastrar/producao" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></a></td>
+                            <td><?php echo $value['id_propriedade_rural']; ?></td>
+                            <td><?php echo $value['estado']; ?></td>
+                            <td><?php echo $value['municipio']; ?></td>
+                            <!--<td><a href="agricultor/<?php // echo $value['id_usuario']; ?>/cadastrar/producao" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></a></td>-->
                         </tr>
                     <?php } ?>
                 <?php } ?>

@@ -167,7 +167,7 @@ class Usuario {
         return $this->senha;
     }
 
-    function set_cpf($cpf, $unique = true) {
+    function set_cpf($cpf, $unique = false) {
         if (VALIDA::cpf($_POST['cpf']) != true) {
             APP::return_response(false, "Por favor, preencha o campo CPF corretamente.");
         }

@@ -1,46 +1,46 @@
 
 
-<button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn"><i class="la la-close"></i></button>
-<div id="m_aside_left" class="m-grid__item m-aside-left  m-aside-left--skin-dark ">
+<button class="m-aside-left-close  m-aside-left-close--skin-light " id="m_aside_left_close_btn"><i class="la la-close"></i></button>
+<div id="m_aside_left" class="m-grid__item m-aside-left  m-aside-left--skin-light ">
     <!-- BEGIN: Aside Menu -->
-    <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
-        <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+    <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
+        <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow list-unstyled">
             <li id="1" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text text-grey ">Controle</h4>
+                <h4 class="m-menu__section-text  ">Controle</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
             <?php if (APP::has_permissao(8)) { ?>
                 <li class="m-menu__item " menu="1">
                     <a href="inicio" class="m-menu__link ">
-                        <i class=" m-menu__link-icon text-grey  flaticon-presentation-1  "></i>
-                        <span class="m-menu__link-text text-grey ">Início</span>
+                        <i class=" m-menu__link-icon   flaticon-presentation-1  "></i>
+                        <span class="m-menu__link-text  ">Início</span>
                     </a>
                 </li>
             <?php } ?>
             <?php if (APP::has_permissao(13)) { ?>
                 <li class="m-menu__item " menu="1">
                     <a href="producao/cadastro" class="m-menu__link ">
-                        <i class=" m-menu__link-icon text-grey   flaticon-open-box   "></i>
-                        <span class="m-menu__link-text text-grey ">Produção</span>
+                        <i class=" m-menu__link-icon    flaticon-open-box   "></i>
+                        <span class="m-menu__link-text  ">Produção</span>
                     </a>
                 </li>
             <?php } ?>
 
             <li id="2" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text text-grey ">Usuários</h4>
+                <h4 class="m-menu__section-text  ">Usuários</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
             <!--            <li class="m-menu__item " menu="2">
                             <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                                <i class=" m-menu__link-icon text-grey flaticon-search-1  "></i>
-                                <span class="m-menu__link-text text-grey "><s>Localizar usuário</s></span>
+                                <i class=" m-menu__link-icon  flaticon-search-1  "></i>
+                                <span class="m-menu__link-text  "><s>Localizar usuário</s></span>
                             </a>
                         </li>-->
             <?php if (APP::has_permissao(11)) { ?>
                 <li class="m-menu__item " menu="2">
                     <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                        <i class=" m-menu__link-icon text-grey flaticon-user-settings "></i>
-                        <span class="m-menu__link-text text-grey ">Coordernadores</span>
+                        <i class=" m-menu__link-icon  flaticon-user-settings "></i>
+                        <span class="m-menu__link-text  ">Coordernadores</span>
                     </a>
                 </li>
             <?php } ?>
@@ -48,8 +48,8 @@
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon text-grey  flaticon-users "></i>
-                    <span class="m-menu__link-text text-grey ">Técnicos</span>
+                    <i class="m-menu__link-icon   flaticon-users "></i>
+                    <span class="m-menu__link-text  ">Técnicos</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;"
@@ -59,16 +59,16 @@
                         <?php if (APP::has_permissao(12)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuarios/cadastro/tecnico" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Novo técnico</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Novo técnico</span>
                                 </a>
                             </li>
                         <?php } ?>
                         <?php if (APP::has_permissao(15)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuarios/lista/tecnicos" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Técnicos disponíveis</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Técnicos disponíveis</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -78,8 +78,8 @@
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon text-grey  flaticon-avatar  "></i>
-                    <span class="m-menu__link-text text-grey ">Agricultores</span>
+                    <i class="m-menu__link-icon flaticon-map-location "></i>
+                    <span class="m-menu__link-text  ">Propriedades rurais</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;"
@@ -88,16 +88,16 @@
                         <?php if (APP::has_permissao(2)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuarios/cadastro/agricultor" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Novo agricultor</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Nova propriedade</span>
                                 </a>
                             </li>
                         <?php } ?>
                         <?php if (APP::has_permissao(14)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuarios/lista/agricultores" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Lista de cadastrados</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Exibir todas</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -108,15 +108,15 @@
 
             <!--            <li menu="2" class="m-menu__item " menu="2">
                             <a href="javascript:alert('Ainda não está pronto');" class="m-menu__link ">
-                                <i class=" m-menu__link-icon text-grey flaticon-profile-1 "></i>
-                                <span class="m-menu__link-text text-grey "><s>Empresas</s></span>
+                                <i class=" m-menu__link-icon  flaticon-profile-1 "></i>
+                                <span class="m-menu__link-text  "><s>Empresas</s></span>
                             </a>
                         </li>-->
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon text-grey  flaticon-buildings  "></i>
-                    <span class="m-menu__link-text text-grey ">Filiados</span>
+                    <i class="m-menu__link-icon   flaticon-buildings  "></i>
+                    <span class="m-menu__link-text  ">Filiados</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;"
@@ -125,35 +125,32 @@
                         <?php if (APP::has_permissao(20)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuario/cadastro/filiado" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Novo filiado</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Novo filiado</span>
                                 </a>
                             </li>
                         <?php } ?>
-                        <?php // if (APP::has_permissao(14)) { ?>
-                        <li class="m-menu__item " aria-haspopup="true">
-                            <a href="usuario/lista/filiado" class="m-menu__link ">
-                                <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                </i><span class="m-menu__link-text text-grey">Lista de cadastrados</span>
-                            </a>
-                        </li>
-                        <?php // } ?>
+                        <?php if (APP::has_permissao(21)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="usuario/lista/filiados" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Meus filiados</span>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </li>
 
-
             <li id="3" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text text-grey ">Sistema</h4>
+                <h4 class="m-menu__section-text  text-danger">Sistema</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
 
-
-
             <li menu="3" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon text-grey  flaticon-paper-plane  "></i>
-                    <span class="m-menu__link-text text-grey ">Rotas de acesso</span>
+                    <i class="m-menu__link-icon   flaticon-paper-plane  "></i>
+                    <span class="m-menu__link-text  ">Rotas de acesso</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;"
@@ -162,8 +159,8 @@
                         <?php if (APP::has_permissao(1)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="sistema/rotas/adicionar" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Nova rota</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Nova rota</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -171,8 +168,8 @@
 
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="sistema/rotas/lista" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span>
-                                    </i><span class="m-menu__link-text text-grey">Todas as rotas</span>
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Todas as rotas</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -185,8 +182,8 @@
             <?php if (APP::has_permissao(7)) { ?>
                 <li class="m-menu__item " menu="3">
                     <a href="sistema/permissoes" class="m-menu__link ">
-                        <i class=" m-menu__link-icon text-grey  flaticon-signs-2 "></i>
-                        <span class="m-menu__link-text text-grey ">Permissões de acesso</span>
+                        <i class=" m-menu__link-icon   flaticon-signs-2 "></i>
+                        <span class="m-menu__link-text  ">Permissões de acesso</span>
                     </a>
                 </li>
             <?php } ?>

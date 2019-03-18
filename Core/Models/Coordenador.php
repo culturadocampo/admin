@@ -40,7 +40,7 @@ class Coordenador {
                 SELECT
                     GROUP_CONCAT(DISTINCT(fk_usuario)) as ids
                 FROM
-                    usuarios_tecnicos
+                    tecnicos
                 INNER JOIN usuarios ON fk_usuario = id_usuario
                 WHERE TRUE
                     AND fk_tipo_usuario = 5

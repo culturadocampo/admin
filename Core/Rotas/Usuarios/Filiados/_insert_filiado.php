@@ -32,7 +32,7 @@ try {
             $o_telefone->insert_telefone($id_usuario_filiado);
         }
     } else {
-        APP::return_response(false, "Necessário informar ao menos 1 celular ou telefone");
+        APP::return_response(false, "Necessário informar ao menos 1 celular ou telefone fixo");
     }
 
     /**
@@ -56,7 +56,7 @@ try {
     $o_endereco->set_numero($_POST['numero']);
     $o_endereco->set_cep($_POST['cep']);
     $o_endereco->set_complemento($_POST['complemento']);
-    $o_endereco->insertEndereco($id_usuario_filiado);
+    $id_endereco = $o_endereco->insertEndereco();
 
     /**
      * Filiado
@@ -65,8 +65,10 @@ try {
     $o_filiado->setNomeFantasia($_POST['nome_fantasia']);
     $o_filiado->setRazaoSocial($_POST['razao_social']);
     $o_filiado->setCnpj($_POST['cnpj']);
-    $o_filiado->insert_filiado($id_usuario_filiado, $o_coletivo->getIdColetivo());
-      /**
+    $id_filiado = $o_filiado->insert_filiado($o_coletivo->getIdColetivo(), $id_endereco);
+    $o_filiado->insert_vinculo_usuario_filiado($id_usuario_filiado, $id_filiado);
+
+    /**
      * E-Mail com credenciais
      */
     $body = EMAIL::body_cadastro_usuario($o_usuario->get_nome(), $o_usuario->get_usuario(), $nova_senha, 3);

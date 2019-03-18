@@ -3,7 +3,7 @@ rewriteEngine on
 rewriteCond %{SCRIPT_FILENAME} !-f
 rewriteCond %{SCRIPT_FILENAME} !-d
 Options -Indexes
-ErrorDocument 404 /notfound.php
+ErrorDocument 404 /404.php
 
 rewriteRule ^sistema\/rotas/adicionar\/?$ ./index.php? [NC]
 rewriteRule ^login\/?$ ./index.php? [NC]
@@ -50,11 +50,13 @@ rewriteRule ^producao\/cadastro\/?$ ./index.php? [NC]
 rewriteRule ^producao\/insert\/?$ ./index.php? [NC]
 rewriteRule ^producao\/load\/form\/?$ ./index.php? [NC]
 rewriteRule ^usuarios\/lista\/agricultores\/?$ ./index.php? [NC]
+rewriteRule ^usuarios\/lista\/tecnicos\/?$ ./index.php? [NC]
+rewriteRule ^agricultor\/(\d+)\/cadastrar\/producao\/?$ ./index.php?id_usuario_agricultor=$1 [NC]
+rewriteRule ^notallowed\/?$ ./index.php? [NC]
+rewriteRule ^usuario\/cadastro\/filiado\/?$ ./index.php? [NC]
+rewriteRule ^usuario\/form\/filiado\/?$ ./index.php? [NC]
+rewriteRule ^usuario\/insert\/filiado\/?$ ./index.php? [NC]
 rewriteRule ^\/?$ .\/index.php [NC]
 
-rewriteRule ^usuarios\/lista\/tecnicos\/?$ ./index.php [NC]
-rewriteRule ^agricultor\/(\d+)\/cadastrar\/producao\/?$ ./index.php?id_usuario_agricultor=$1 [NC]
-rewriteRule ^notallowed\/?$ ./index.php [NC]
-rewriteRule ^usuario\/cadastro\/filiado\/?$ ./index.php [NC]
-rewriteRule ^usuario\/form\/filiado\/?$ ./index.php [NC]
-rewriteRule ^usuario\/insert\/filiado\/?$ ./index.php [NC]
+rewriteRule ^usuario\/lista\/filiados\/?$ ./index.php [NC]
+rewriteRule ^sistema\/sessao\/?$ ./index.php [NC]

@@ -45,21 +45,6 @@ class APP {
         }
     }
 
-    static function gen_session($id_usuario) {
-        $o_usuario = new Usuario();
-        $usuario = $o_usuario->select_usuario_from_id($id_usuario);
-        if (!empty($usuario)) {
-            $_SESSION['id_usuario'] = $usuario['id_usuario'];
-            $_SESSION['nome_usuario'] = $usuario['nome'];
-            $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
-            $_SESSION['id_tipo_usuario'] = $usuario['fk_tipo_usuario'];
-            $_SESSION['email_usuario'] = $usuario['email'];
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     static function rota_default() {
         if (isset($_SESSION['tipo_usuario'])) {
             if ($_SESSION['tipo_usuario'] == "1") {

@@ -18,7 +18,11 @@ class ROUTER {
                         $array_rotas = $o_rota->select_rota();
                         $rota = self::get_rota_apropriada($array_rotas, $o_rota->get_url());
                     } else {
-                        exit("Código 626: Sem permissão de acesso");
+                        try {
+                            APP::return_response(false, "626: Sem permissão de acesso");
+                        } catch (Exception $exc) {
+                            exit;
+                        }
                     }
                 }
             }

@@ -25,7 +25,7 @@ try {
 
                 $id_usuario = $o_usuario->select_usuario_login();
                 if ($id_usuario) {
-                    APP::gen_session($id_usuario);
+                    SESSION::gen_session($id_usuario);
                     $o_cookie->delete_cookies_from_user($id_usuario);
                     if (isset($_POST['remember_me'])) {
                         $token = APP::gen_token(24);

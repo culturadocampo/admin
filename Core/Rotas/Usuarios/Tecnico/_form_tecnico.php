@@ -14,7 +14,7 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
                 $o_coordenador = new Coordenador();
                 $coordenadores = $o_coordenador->select_coordenadores();
                 ?>
-                <select data-style="btn-info" name="id_usuario_coordenador" class="form-control selectpicker">
+                <select data-style="btn-outline-info" name="id_usuario_coordenador" class="form-control selectpicker">
 
                     <?php if ($coordenadores) { ?>
                         <option selected>Selecione o coordenador responsável por este técnico</option>
