@@ -2,8 +2,6 @@
 
 class PropriedadeRural {
 
-    private $rg;
-    private $caepf;
     private $integrantesUpf;
     private $conn;
 
@@ -15,12 +13,10 @@ class PropriedadeRural {
         $query = "
             INSERT INTO 
                 propriedades_rurais
-            (fk_endereco, fk_certificacao_organica, rg, caepf, integrantes_upf)
+            (fk_endereco, fk_certificacao_organica, integrantes_upf)
             VALUES(
                 '{$id_endereco}',
                 '{$id_certificacao}',
-                '{$this->getRg()}',
-                '{$this->getCaepf()}',
                 '{$this->getIntegrantesUpf()}'
             )
         ";
@@ -28,14 +24,14 @@ class PropriedadeRural {
         return $this->conn->last_id();
     }
 
-    function insert_vinculo_propriedade_tecnico($id_propriedade, $id_usuario_tecnico) {
+    function insert_vinculo_propriedade_tecnico($id_propriedade, $id_tecnico) {
         $query = "
             INSERT INTO 
                 xref_propriedades_tecnicos
-            (fk_propriedade_rural, fk_usuario_tecnico)
+            (fk_propriedade_rural, fk_tecnico)
             VALUES(
                 '{$id_propriedade}',
-                '{$id_usuario_tecnico}'
+                '{$id_tecnico}'
             )
         ";
         $this->conn->execute($query);
@@ -54,14 +50,14 @@ class PropriedadeRural {
         $this->conn->execute($query);
     }
 
-    function insert_vinculo_propriedade_usuario($id_propriedade, $id_usuario) {
+    function insert_vinculo_propriedade_trabalhador($id_propriedade, $id_trabalhador_rural) {
         $query = "
             INSERT INTO 
-                xref_propriedades_usuarios
-            (fk_propriedade_rural, fk_usuario)
+                xref_propriedades_trabalhadores
+            (fk_propriedade_rural, fk_trabalhador_rural)
             VALUES(
                 '{$id_propriedade}',
-                '{$id_usuario}'
+                '{$id_trabalhador_rural}'
             )
         ";
         $this->conn->execute($query);
@@ -133,25 +129,18 @@ class PropriedadeRural {
      * Usado durante o login para descobrir
      * qual é a propriedade do usuário que está logando
      */
-    function select_propriedade_usuario($id_usuario) {
+    function select_propriedade_trabalhador($id_trabalhador) {
         $query = "
             SELECT
                 id_propriedade_rural
             FROM propriedades_rurais
-            INNER JOIN xref_propriedades_usuarios ON id_propriedade_rural = fk_propriedade_rural
+            INNER JOIN xref_propriedades_trabalhadores ON id_propriedade_rural = fk_propriedade_rural
             WHERE TRUE
-                AND fk_usuario = '{$id_usuario}'
+                AND fk_trabalhador_rural = '{$id_trabalhador}'
         ";
-        return $this->conn->fetch($query);
+        return $this->conn->fetch_all($query);
     }
 
-    function getRg() {
-        return $this->rg;
-    }
-
-    function getCaepf() {
-        return $this->caepf;
-    }
 
     function getIntegrantesUpf() {
         return $this->integrantesUpf;
@@ -159,14 +148,6 @@ class PropriedadeRural {
 
     function getColetivo() {
         return $this->coletivo;
-    }
-
-    function setRg($rg) {
-        $this->rg = $rg;
-    }
-
-    function setCaepf($caepf) {
-        $this->caepf = $caepf;
     }
 
     function setIntegrantesUpf($integrantesUpf) {

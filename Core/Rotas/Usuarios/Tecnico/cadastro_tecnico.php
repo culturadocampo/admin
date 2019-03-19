@@ -36,7 +36,6 @@
     $(document).ready(function () {
         blockPage();
         load_form();
-        $(".caepf").mask("000.000.000/000-00");
         $("#cadastrar").on("click", function () {
             executar_cadastro();
         });

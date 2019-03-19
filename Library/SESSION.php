@@ -27,15 +27,18 @@ class SESSION {
             if ($usuario['fk_tipo_usuario'] == 5) {
                 $o_tecnico = new Tecnico();
                 $a_tecnico = $o_tecnico->select_tecnico_from_id_usuario($id_usuario);
-                $_SESSION['id_tecnico'] = $a_tecnico['id_tecnico'];     
+                $_SESSION['id_tecnico'] = $a_tecnico['id_tecnico'];
             }
             /**
              * Agricultor/Propriedade Rural
              */
             if ($usuario['fk_tipo_usuario'] == 6) {
-                $o_propriedade = new PropriedadeRural;
-                $a_propriedade = $o_propriedade->select_propriedade_usuario($id_usuario);
-                $_SESSION['id_propriedade_rural'] = $a_propriedade['id_propriedade_rural'];
+                $o_trabalhador = new TrabalhadorRural();
+                $o_propriedade = new PropriedadeRural();
+                $a_trabalhador = $o_trabalhador->select_trabalhador_usuario($id_usuario);
+                $a_propriedade = $o_propriedade->select_propriedade_trabalhador($a_trabalhador['id_trabalhador']);
+                $_SESSION['propriedades_rurais'] = $a_propriedade;
+                $_SESSION['id_trabalhador'] = $a_trabalhador['id_trabalhador'];
             }
 
             return true;
