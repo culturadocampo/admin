@@ -141,6 +141,48 @@
                     </ul>
                 </div>
             </li>
+            
+            <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon   flaticon-buildings  "></i>
+                    <span class="m-menu__link-text  ">Compras</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(24)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="comprar" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Nova Compra</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(24)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="#" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Lista de Compra</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(24)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="#" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Relatório</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+
+            </li>
 
             <li id="3" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text  text-danger">Sistema</h4>
