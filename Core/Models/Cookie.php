@@ -23,12 +23,14 @@ class Cookie {
     }
 
     function get_usuario_from_cookie($token) {
+        $COOKIE_LIFETIME = CONFIG::$LOGIN_COOKIE_LIFETIME;
         $query = "
             SELECT 
                 fk_usuario AS id_usuario
             FROM login_cookies
             WHERE TRUE
                 AND token = '{$token}'
+                AND CURRENT_TIMESTAMP < (date + INTERVAL {$COOKIE_LIFETIME} SECOND) 
         ";
         return $this->conn->fetch($query);
     }

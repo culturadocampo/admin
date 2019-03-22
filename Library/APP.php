@@ -96,7 +96,7 @@ class APP {
                 $o_cookie->delete_cookie($_COOKIE["REMEMBER_ME"]);
                 return false;
             } else {
-                return APP::gen_session($usuario['id_usuario']);
+                return SESSION::gen_session($usuario['id_usuario']);
             }
         }
     }
@@ -127,6 +127,9 @@ class APP {
         }
     }
 
+    /**
+     * Não funciona 100%, nao vai ficar desta forma
+     */
     static function gravar_erro($arquivo, $tipo, $mensagem, $linha) {
         $db = DB::get_instance(true);
 
