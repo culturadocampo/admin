@@ -144,44 +144,64 @@
             
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon   flaticon-buildings  "></i>
+                    <i class="m-menu__link-icon flaticon-cart"></i>
                     <span class="m-menu__link-text  ">Compras</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;"
                      m-hidden-height="80"><span class="m-menu__arrow"></span>
                     <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(24)) { ?>
+                        <?php if (APP::has_permissao(27)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
-                                <a href="comprar" class="m-menu__link ">
+                                <a href="compra/nova" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Nova Compra</span>
+                                    </i><span class="m-menu__link-text ">Realizar Compra</span>
                                 </a>
                             </li>
                         <?php } ?>
                     </ul>
                     <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(24)) { ?>
+                        <?php if (APP::has_permissao(27)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="#" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Lista de Compra</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                    <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(24)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
-                                <a href="#" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Relatório</span>
+                                    </i><span class="m-menu__link-text ">Lista de Compras</span>
                                 </a>
                             </li>
                         <?php } ?>
                     </ul>
                 </div>
-
+            </li>
+            
+            <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-bag"></i>
+                    <span class="m-menu__link-text  ">Vendas</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(28)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="venda" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Realizar Venda</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(28)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="#" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Lista de Vendas</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
             </li>
 
             <li id="3" class="m-menu__section m-menu__section--first">

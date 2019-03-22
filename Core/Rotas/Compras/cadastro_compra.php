@@ -6,7 +6,7 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Cadastro de compra
+                    Dados Vendedor
                 </h3>
             </div>
         </div>
@@ -42,7 +42,7 @@
     });
 
     function load_form() {
-        $("#cadastro_compra").load("nova", {}, function () {
+        $("#cadastro_compra").load("compra/nova/form", {}, function () {
             unblockPage();
         });
     }
