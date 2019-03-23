@@ -3,7 +3,6 @@
 class APP {
 
     static function start() {
-
         $request = self::get_request();
         ROUTER::include_file($request);
     }
@@ -13,12 +12,12 @@ class APP {
             $host = $_SERVER['HTTP_HOST'];
             $request = explode("/", $_SERVER['REDIRECT_URL']);
             if ($host == "localhost") {
-                $request = $request[2] ? $request[2] : self::rota_default();
+                $request = $request[2] ? $request[2] : self::rota_default(true);
             } else {
-                $request = $request[1] ? $request[1] : self::rota_default();
+                $request = $request[1] ? $request[1] : self::rota_default(true);
             }
         } else {
-            $request = self::rota_default();
+            $request = self::rota_default(true);
         }
         return $request;
     }
@@ -45,15 +44,17 @@ class APP {
         }
     }
 
-    static function rota_default() {
-        if (isset($_SESSION['tipo_usuario'])) {
-            if ($_SESSION['tipo_usuario'] == "1") {
-                return 'inicio';
-            } else {
-                return 'inicio';
-            }
+    static function rota_default($base_only = false) {
+        if (SESSION::get_id_tipo_usuario() == "1") {
+            $request = 'sistema/github/issues';
         } else {
-            return 'inicio';
+            $request = 'inicio';
+        }
+
+        if ($base_only) {
+            return explode("/", $request)[0];
+        } else {
+            return $request;
         }
     }
 
@@ -138,6 +139,5 @@ class APP {
         $o_erro->insert_erro($arquivo, $tipo, $mensagem, $linha);
         $db->commit();
     }
-
 
 }

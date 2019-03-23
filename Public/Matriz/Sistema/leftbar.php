@@ -115,7 +115,7 @@
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon   flaticon-buildings  "></i>
+                    <i class="m-menu__link-icon  flaticon-suitcase   "></i>
                     <span class="m-menu__link-text  ">Filiados</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
@@ -205,13 +205,13 @@
             </li>
 
             <li id="3" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text  text-danger">Sistema</h4>
+                <h4 class="m-menu__section-text">Sistema</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
 
             <li menu="3" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon   flaticon-paper-plane  "></i>
+                    <i class="m-menu__link-icon  flaticon-infinity    "></i>
                     <span class="m-menu__link-text  ">Rotas de acesso</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
@@ -244,8 +244,16 @@
             <?php if (APP::has_permissao(7)) { ?>
                 <li class="m-menu__item " menu="3">
                     <a href="sistema/permissoes" class="m-menu__link ">
-                        <i class=" m-menu__link-icon   flaticon-signs-2 "></i>
+                        <i class=" m-menu__link-icon  flaticon-lock "></i>
                         <span class="m-menu__link-text  ">Permissões de acesso</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php if (APP::has_permissao(31)) { ?>
+                <li class="m-menu__item " menu="3">
+                    <a href="sistema/github/issues" class="m-menu__link ">
+                        <i class=" m-menu__link-icon   flaticon-book  "></i>
+                        <span class="m-menu__link-text  ">Github Issues</span>
                     </a>
                 </li>
             <?php } ?>

@@ -259,6 +259,18 @@ class Rota {
         return $result;
     }
 
+    function find_rota($string) {
+        $query = "
+            SELECT 
+                * 
+            FROM rotas 
+            WHERE TRUE
+                AND expressao LIKE '%{$string}%'
+        ";
+        $result = $this->conn->fetch_all($query);
+        return $result;
+    }
+
     function get_id_rota() {
         return $this->id_rota;
     }

@@ -36,7 +36,7 @@ class SESSION {
                 $o_trabalhador = new TrabalhadorRural();
                 $o_propriedade = new PropriedadeRural();
                 $a_trabalhador = $o_trabalhador->select_trabalhador_usuario($id_usuario);
-                $a_propriedade = $o_propriedade->select_propriedade_trabalhador($a_trabalhador['id_trabalhador']);
+                $a_propriedade = $o_propriedade->select_propriedades_usuario($id_usuario);
                 $_SESSION['propriedades_rurais'] = $a_propriedade;
                 $_SESSION['id_trabalhador'] = $a_trabalhador['id_trabalhador'];
             }

@@ -1,8 +1,25 @@
+body{
+    color: #646c9a;
+}
 .pointer {
     cursor: pointer;
 }
 .text-grey{
     color: #cccccc!important;
+}
+
+/*.kt-svg-icon g [fill]{*/
+    /*fill: #5d78ff;*/
+/*}*/
+
+.m-menu__link-icon{
+    color:#007AFF!important;
+    font-size: 1.6rem!important;
+    width: 40px!important;
+}
+
+.issue_avatar{
+    border-radius: 3px;
 }
 
 #m_header{

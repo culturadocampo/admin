@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700" media="all">
 
         <link href="Public/Vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css">
+        <link href="Public/Vendors/base/flaticon.css" rel="stylesheet" type="text/css">
+        <link href="Public/Vendors/base/flaticon2.css" rel="stylesheet" type="text/css">
         <link href="Public/Styles/style.bundle.min.css" rel="stylesheet" type="text/css">
         <link href="Public/Styles/datatables.bundle.css" rel="stylesheet" type="text/css" />
         <link href="Public/Styles/custom.css" rel="stylesheet" type="text/css" />
