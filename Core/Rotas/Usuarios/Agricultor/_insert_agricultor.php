@@ -22,7 +22,7 @@ try {
     $o_usuario->set_usuario($_POST['usuario']);
     $o_usuario->set_email($_POST['email']);
     $o_usuario->set_senha($senha_hash);
-    $id_usuario_trabalhador = $o_usuario->insert_novo_usuario(6);
+    $id_usuario = $o_usuario->insert_novo_usuario(6);
     
     
     /**
@@ -30,7 +30,7 @@ try {
      */
     $o_trabalhador->setCaepf($_POST['caepf']);
     $o_trabalhador->setRg($_POST['rg']);
-    $id_trabalhador = $o_trabalhador->insert_trabalhador_rural($id_usuario_trabalhador);
+    $o_trabalhador->insert_trabalhador_rural($id_usuario);
 
     /**
      * Telefones
@@ -39,7 +39,7 @@ try {
         foreach ($_POST['telefones'] as $value) {
             $o_telefone->setTelefone($value['telefone']);
             $o_telefone->setTipoTelefone($value['tipo_telefone']);
-            $o_telefone->insert_telefone($id_usuario_trabalhador);
+            $o_telefone->insert_telefone($id_usuario);
         }
     } else {
         APP::return_response(false, "Necessário informar ao menos 1 celular ou telefone");
@@ -89,14 +89,13 @@ try {
 
     $o_propriedade->setIntegrantesUpf($_POST['integrantes_upf']);
     $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
-    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao());
-    $o_propriedade->insert_vinculo_propriedade_trabalhador($id_propriedade, $id_trabalhador);
+    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao(), $id_usuario);
 
     if ($id_tecnico) {
         $o_propriedade->insert_vinculo_propriedade_tecnico($id_propriedade, $id_tecnico);
     }
     if ($id_filiado) {
-        $o_propriedade->insert_vinculo_propriedade_filiado($id_propriedade, $id_filiado);
+        $o_propriedade->insert_vinculo_usuario_filiado($id_usuario, $id_filiado);
     }
     $db->commit();
     APP::return_response(true, "Agricultor cadastrado com sucesso");

@@ -57,7 +57,7 @@
 
                 <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
-                    <div style="display: none;" id="conteudo" class="m-content">
+                    <div id="conteudo" class="m-content">
                         <?php include $conteudo; ?>
 
                     </div>

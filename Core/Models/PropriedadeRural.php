@@ -9,14 +9,15 @@ class PropriedadeRural {
         $this->conn = DB::get_instance();
     }
 
-    function insert_propriedade_rural($id_endereco, $id_certificacao) {
+    function insert_propriedade_rural($id_endereco, $id_certificacao, $id_usuario) {
         $query = "
             INSERT INTO 
                 propriedades_rurais
-            (fk_endereco, fk_certificacao_organica, integrantes_upf)
+            (fk_endereco, fk_certificacao_organica, fk_usuario_responsavel, integrantes_upf)
             VALUES(
                 '{$id_endereco}',
                 '{$id_certificacao}',
+                '{$id_usuario}',
                 '{$this->getIntegrantesUpf()}'
             )
         ";
@@ -37,27 +38,14 @@ class PropriedadeRural {
         $this->conn->execute($query);
     }
 
-    function insert_vinculo_propriedade_filiado($id_propriedade, $id_filiado) {
+    function insert_vinculo_usuario_filiado($id_usuario, $id_filiado) {
         $query = "
             INSERT INTO 
-                xref_propriedades_filiados
-            (fk_propriedade_rural, fk_filiado)
+                xref_usuarios_filiados
+            (fk_usuario, fk_filiado)
             VALUES(
-                '{$id_propriedade}',
+                '{$id_usuario}',
                 '{$id_filiado}'
-            )
-        ";
-        $this->conn->execute($query);
-    }
-
-    function insert_vinculo_propriedade_trabalhador($id_propriedade, $id_trabalhador_rural) {
-        $query = "
-            INSERT INTO 
-                xref_propriedades_trabalhadores
-            (fk_propriedade_rural, fk_trabalhador_rural)
-            VALUES(
-                '{$id_propriedade}',
-                '{$id_trabalhador_rural}'
             )
         ";
         $this->conn->execute($query);
@@ -129,14 +117,13 @@ class PropriedadeRural {
      * Usado durante o login para descobrir
      * qual é a propriedade do usuário que está logando
      */
-    function select_propriedade_trabalhador($id_trabalhador) {
+    function select_propriedades_usuario($id_usuario) {
         $query = "
             SELECT
                 id_propriedade_rural
             FROM propriedades_rurais
-            INNER JOIN xref_propriedades_trabalhadores ON id_propriedade_rural = fk_propriedade_rural
             WHERE TRUE
-                AND fk_trabalhador_rural = '{$id_trabalhador}'
+                AND fk_usuario_responsavel = '{$id_usuario}'
         ";
         return $this->conn->fetch_all($query);
     }
