@@ -21,10 +21,19 @@
                                 </span>
                             </a>
                         </li>
+                        <?php if (APP::has_permissao(33)) { ?>
+                            <li class="m-nav__item">
+                                <a class="m-nav__link">
+                                    <span class="m-nav__link-text text-primary">
+                                        <?php echo $rota['conteudo']; ?>
+                                    </span>
+                                </a>
+                            </li>
+                        <?php } ?>
                         <li class="m-nav__item">
                             <a class="m-nav__link">
                                 <span class="m-nav__link-text text-primary">
-                                    U<?php echo SESSION::get_id_usuario(); ?>T<?php echo SESSION::get_id_tipo_usuario(); ?>R<?php echo $rota['id_rota']; ?>
+                                    U<?php echo SESSION::get_id_usuario(); ?>-T<?php echo SESSION::get_id_tipo_usuario(); ?>-R<?php echo $rota['id_rota']; ?>
                                 </span>
                             </a>
                         </li>

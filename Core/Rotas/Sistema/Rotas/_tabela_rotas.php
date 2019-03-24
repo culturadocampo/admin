@@ -4,8 +4,8 @@ $rotas = $o_rota->select_all_rotas();
 foreach ($rotas as $key => $rota) {
     if ($rota['matriz'] == "base_admin.php") {
         $rota['matriz'] = "Administração";
-    } else if ($rota['matriz'] == "base_geral.php") {
-        $rota['matriz'] = "Geral";
+    } else if ($rota['matriz'] == "base_interface.php") {
+        $rota['matriz'] = "Interface";
     } else if ($rota['matriz'] == "base_login.php") {
         $rota['matriz'] = "Base login";
     } else {
@@ -22,42 +22,28 @@ foreach ($rotas as $key => $rota) {
 }
 ?>
 
-
-
-
-<div class="m-portlet m-portlet__body">
-
-    <!--begin: Datatable -->
     <table class="table table-bordered table-hover table-bordered" id="rotas_table">
         <thead>
             <tr>
-         <!--<th class="text-center"></th>-->
-                <th class="text-center ">ID</th>
-
+                <th width="5%" class="text-center ">ID</th>
                 <th class="">URI</th>
                 <th class="text-center">Tipo</th>
                 <th class="">Conteúdo</th>
-
             </tr>
         </thead>
         <tbody>
             <?php if ($rotas) { ?>
-
                 <?php foreach ($rotas as $value) { ?>
                     <tr  href="sistema/rotas/<?php echo $value['id_rota']; ?>/detalhes/" class="pointer" id="<?php echo $value['id_rota']; ?>">
-                        <td class="text-center"><?php echo $value['id_rota']; ?></td>
+                        <td class="text-center" ><?php echo $value['id_rota']; ?></td>
                         <td class="text-truncate" width="20%"><?php echo $value['expressao']; ?></td>
                         <td class="text-center"><?php echo $value['matriz']; ?></td>
                         <td class=""><?php echo $value['conteudo']; ?></td>
-
                     </tr>
                 <?php } ?>
-
             <?php } ?>
-
         </tbody>
     </table>
-</div>
 
 
 <script>
@@ -81,7 +67,8 @@ foreach ($rotas as $key => $rota) {
 
         $('#rotas_table').DataTable({
             "order": [],
-            "paging": true
+            "paging": true,
+            pageLength: 30
         });
 
         $("#rotas_table tbody").on("click", "tr", function () {

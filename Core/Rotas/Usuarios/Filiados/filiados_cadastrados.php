@@ -1,6 +1,6 @@
 
 
-<div class="m-portlet">
+<div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
     <div class="m-portlet__head">
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">

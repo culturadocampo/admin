@@ -4,7 +4,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
 ?>
 
 
-<table class="table table-striped- table-bordered table-hover table-" id="permissoes_table">
+<table class="table table-striped- table-bordered table-hover" id="permissoes_table">
     <thead>
         <tr>
             <th>ID</th>
@@ -30,7 +30,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
 
 <script>
     $(document).ready(function () {
-        $("#permissoes_table").DataTable({"order": [], paging: false});
+        $("#permissoes_table").DataTable({"order": [], paging: true, pageLength: 30});
         $("#permissoes_table").on("click", ".permissao", function () {
             var href = $(this).attr("href");
             window.location = href;

@@ -16,7 +16,6 @@ if ($arquivos_conteudo) {
 $arr_permissoes = $o_permissao->select_all_permissoes();
 ?>  
 
-<form id="form_rotas" class="m-form m-form--fit m-form--label-align-right animated fadeIn fast">
     <div class="m-portlet__body">
         <div class="form-group m-form__group">
             <div class="row m--padding-bottom-20">
@@ -164,7 +163,6 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
        
         </div>
     </div>
-</form>
 
 
 <script>

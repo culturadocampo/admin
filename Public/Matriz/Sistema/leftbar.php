@@ -253,7 +253,7 @@
                 <li class="m-menu__item " menu="3">
                     <a href="sistema/github/issues" class="m-menu__link ">
                         <i class=" m-menu__link-icon   flaticon-book  "></i>
-                        <span class="m-menu__link-text  ">Github Issues</span>
+                        <span class="m-menu__link-text  ">GitHub Issues</span>
                     </a>
                 </li>
             <?php } ?>
