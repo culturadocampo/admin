@@ -22,7 +22,7 @@ class Coordenador {
     function select_coordenadores() {
         $query = "
             SELECT
-                id_usuario, nome
+                id_usuario, nome, cpf, email
             FROM
                 usuarios
             WHERE TRUE

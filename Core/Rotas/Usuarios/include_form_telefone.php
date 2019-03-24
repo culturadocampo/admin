@@ -24,7 +24,7 @@
                 </div>
             </div>
             <br>
-            <div data-repeater-create class="btn btn btn-sm btn-brand m-btn m-btn--icon m-btn-- m-btn--wide">
+            <div data-repeater-create class="btn btn btn-sm btn-success m-btn m-btn--icon m-btn--wide">
                 <span>
                     <i class="la la-plus"></i>
                     <span>Adicionar</span>
@@ -40,7 +40,6 @@
         initMask();
         setInterval(function () {
             $(".selectpicker").selectpicker();
-
         }, 500);
 
         $("#telefone_repeater").on("change", ".tipo_telefone", function () {

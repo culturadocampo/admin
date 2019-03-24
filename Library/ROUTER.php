@@ -53,6 +53,7 @@ class ROUTER {
         $uri = $uri ? $uri : self::get_uri();
         foreach ($array_rotas as $rota) {
             if (preg_match("@{$rota['expressao']}@", $uri)) {
+                $rota['pathname'] = $uri;
                 return $rota;
             }
         }

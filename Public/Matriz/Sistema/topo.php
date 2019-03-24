@@ -12,7 +12,7 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                 <div class="m-stack m-stack--ver m-stack--general m-stack--fluid">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a href="inicio" class="m-brand__logo-wrapper" style="">
-                            <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 40px;margin-left:40px;">
+                            <img alt="" src="Public/Images/Logo/horizontal_logo.png" style="width: auto; height: 48px; margin-left: 10px;">
 
                         </a>  
                     </div>
@@ -37,12 +37,8 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                             <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                 <a class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        U<?php echo SESSION::get_id_usuario(); ?>T<?php echo SESSION::get_id_tipo_usuario(); ?>R<?php echo $rota['id_rota']; ?>
+                                        <label style="display: inline!important;" class="badge badge-pill badge-info    "> U<?php echo SESSION::get_id_usuario(); ?>-T<?php echo SESSION::get_id_tipo_usuario(); ?>-R<?php echo $rota['id_rota']; ?></label>
                                     </span>
-                                    <span class="m-nav__link-icon m-topbar__usericon  m--hide">
-                                        <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
-                                    </span>
-                                    <span class="m-topbar__username m--hide">Nick</span>					
                                 </a>
                             </li>
 
@@ -50,7 +46,7 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                             <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        <?php echo strtoupper(SESSION::get_nome_usuario()); ?>
+                                        Olá, <u><strong><?php echo SESSION::get_nome_usuario(); ?></strong></u>
                                     </span>
                                 </a>
                                 <div class="m-dropdown__wrapper">

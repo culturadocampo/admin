@@ -30,20 +30,40 @@
                 <h4 class="m-menu__section-text  ">Usuários</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
             </li>
-            <!--            <li class="m-menu__item " menu="2">
-                            <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                                <i class=" m-menu__link-icon  flaticon-search-1  "></i>
-                                <span class="m-menu__link-text  "><s>Localizar usuário</s></span>
-                            </a>
-                        </li>-->
-            <?php if (APP::has_permissao(11)) { ?>
-                <li class="m-menu__item " menu="2">
-                    <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
-                        <i class=" m-menu__link-icon  flaticon-user-settings "></i>
-                        <span class="m-menu__link-text  ">Coordernadores</span>
-                    </a>
-                </li>
-            <?php } ?>
+
+
+            <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon   flaticon-user-settings"></i>
+                    <span class="m-menu__link-text  ">Coordernadores</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+
+                        <?php if (APP::has_permissao(11)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="usuarios/cadastro/coordenador" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Novo coordenador</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (APP::has_permissao(34)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="usuarios/lista/coordenadores" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Meus coordenadores</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </li>
+
+
+
 
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
@@ -106,12 +126,6 @@
                 </div>
             </li>
 
-            <!--            <li menu="2" class="m-menu__item " menu="2">
-                            <a href="javascript:alert('Ainda não está pronto');" class="m-menu__link ">
-                                <i class=" m-menu__link-icon  flaticon-profile-1 "></i>
-                                <span class="m-menu__link-text  "><s>Empresas</s></span>
-                            </a>
-                        </li>-->
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
@@ -141,7 +155,7 @@
                     </ul>
                 </div>
             </li>
-            
+
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon flaticon-cart"></i>
@@ -152,7 +166,7 @@
                      m-hidden-height="80"><span class="m-menu__arrow"></span>
                     <ul class="m-menu__subnav">
                         <?php if (APP::has_permissao(27)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
+                            <li class="m-menu__item" aria-haspopup="true">
                                 <a href="compra/nova" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
                                     </i><span class="m-menu__link-text ">Realizar Compra</span>
@@ -172,7 +186,7 @@
                     </ul>
                 </div>
             </li>
-            
+
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon flaticon-bag"></i>
@@ -219,7 +233,7 @@
                      m-hidden-height="80"><span class="m-menu__arrow"></span>
                     <ul class="m-menu__subnav">
                         <?php if (APP::has_permissao(1)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
+                            <li class="m-menu__item" aria-haspopup="true">
                                 <a href="sistema/rotas/adicionar" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
                                     </i><span class="m-menu__link-text ">Nova rota</span>
@@ -263,8 +277,29 @@
     <!-- END: Aside Menu -->
 </div>
 
+
 <script>
     $(document).ready(function () {
+
+        var pathname = '<?php echo $rota['pathname']; ?>';
+
+        $(".m-menu__item").each(function () {
+            var item = $(this);
+            var href = item.find("a").attr("href");
+            if (item.parent(".m-menu__subnav").length > 0) {
+                var subnav = item.parent(".m-menu__subnav");
+                if (href == pathname) {
+                    subnav.parent().parent().addClass("m-menu__item--open");
+                    subnav.parent().show();
+                }
+            } else {
+                if (href == pathname) {
+                    item.addClass("active_menu");
+                }
+            }
+        });
+
+
         $(".m-menu__subnav").each(function () {
             var menu = $(this);
             var count = menu.find("li").length;
