@@ -102,8 +102,7 @@
                     <span class="m-menu__link-text  ">Propriedades rurais</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
-                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
-                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
                     <ul class="m-menu__subnav">
                         <?php if (APP::has_permissao(2)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
@@ -173,8 +172,6 @@
                                 </a>
                             </li>
                         <?php } ?>
-                    </ul>
-                    <ul class="m-menu__subnav">
                         <?php if (APP::has_permissao(27)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="#" class="m-menu__link ">
@@ -184,6 +181,7 @@
                             </li>
                         <?php } ?>
                     </ul>
+
                 </div>
             </li>
 
@@ -204,8 +202,7 @@
                                 </a>
                             </li>
                         <?php } ?>
-                    </ul>
-                    <ul class="m-menu__subnav">
+
                         <?php if (APP::has_permissao(28)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="#" class="m-menu__link ">
@@ -283,21 +280,7 @@
 
         var pathname = '<?php echo $rota['pathname']; ?>';
 
-        $(".m-menu__item").each(function () {
-            var item = $(this);
-            var href = item.find("a").attr("href");
-            if (item.parent(".m-menu__subnav").length > 0) {
-                var subnav = item.parent(".m-menu__subnav");
-                if (href == pathname) {
-                    subnav.parent().parent().addClass("m-menu__item--open");
-                    subnav.parent().show();
-                }
-            } else {
-                if (href == pathname) {
-                    item.addClass("active_menu");
-                }
-            }
-        });
+
 
 
         $(".m-menu__subnav").each(function () {
@@ -314,6 +297,24 @@
             var items = $("li[menu=" + menu + "]");
             if (items.length === 0) {
                 section.hide();
+            }
+        });
+
+        $(".m-menu__item").each(function () {
+            var item = $(this);
+            var href = item.find("a").attr("href");
+            if (item.parent(".m-menu__subnav").length > 0) {
+                var subnav = item.parent(".m-menu__subnav");
+                var qtde_li = subnav.find("li").length;
+                subnav.parent().attr("m-hidden-height", qtde_li * 40)
+                if (href == pathname) {
+                    subnav.parent().parent().addClass("m-menu__item--open");
+                    subnav.parent().show();
+                }
+            } else {
+                if (href == pathname) {
+                    item.addClass("active_menu");
+                }
             }
         });
 
