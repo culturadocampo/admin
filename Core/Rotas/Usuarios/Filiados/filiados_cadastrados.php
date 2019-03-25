@@ -1,4 +1,8 @@
+<?php
+$o_filiado = new Filiado();
 
+$a_filiado = $o_filiado->select_todos_filiados_ativos();
+?>
 
 <div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
     <div class="m-portlet__head">
@@ -21,13 +25,21 @@
                     <td>Nome fantasia</td>
                     <td>CNPJ</td>
                     <td>Coletivo</td>
-                    <td>Propriedades rurais</td>
-                    <td>Editar</td>
-                    <td>Excluir</td>
                 </tr>
             </thead>
             <tbody>
+                <?php if ($a_filiado) { ?>
 
+                    <?php foreach ($a_filiado as $value) { ?>
+                        <tr>
+                            <td><?php echo $value['id_filiado']; ?></td>
+                            <td><?php echo $value['nome_fantasia']; ?></td>
+                            <td><?php echo $value['cnpj']; ?></td>
+                            <td><?php echo $value['coletivo']; ?></td>
+                        </tr>
+                    <?php } ?>
+
+                <?php } ?>
             </tbody>
         </table>
     </div>

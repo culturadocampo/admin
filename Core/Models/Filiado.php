@@ -60,10 +60,12 @@ class Filiado {
             SELECT 
                 id_filiado,
                 nome_fantasia,
-                cnpj
+                cnpj,
+                descricao AS coletivo
             FROM filiados
+            INNER JOIN coletivos ON fk_coletivo = id_coletivo
             WHERE TRUE
-                AND ativo = 1
+                AND filiados.ativo = 1
         ";
         return $this->conn->fetch_all($query);
     }
