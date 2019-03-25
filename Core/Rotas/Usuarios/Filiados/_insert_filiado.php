@@ -36,26 +36,26 @@ try {
     }
 
     /**
-     * Localização
+     * Localização/Endereço
      */
     $id_estado = $o_endereco->get_id_from_uf($_POST['estado']);
     $id_municipio = $o_endereco->get_id_from_nome_municipio($_POST['municipio']);
-
     if (!$id_estado) {
         APP::return_response(false, "Estado selecionado é inválido");
     }
-
     if (!$id_municipio) {
         APP::return_response(false, "Município selecionado é inválido");
     }
-
     $o_endereco->set_estado($id_estado);
     $o_endereco->set_municipio($id_municipio);
-    $o_endereco->set_bairro($_POST['bairro']);
-    $o_endereco->set_logradouro($_POST['logradouro']);
-    $o_endereco->set_numero($_POST['numero']);
-    $o_endereco->set_cep($_POST['cep']);
+    $o_endereco->set_lat($_POST['lat']);
+    $o_endereco->set_lng($_POST['lng']);
     $o_endereco->set_complemento($_POST['complemento']);
+    $o_endereco->set_bairro($_POST['bairro']);
+    $o_endereco->set_cep($_POST['cep'], false);
+    $o_endereco->set_logradouro($_POST['logradouro'], false);
+    $o_endereco->set_numero($_POST['numero'], false);
+    $o_endereco->set_comunidade($_POST['comunidade']);
     $id_endereco = $o_endereco->insertEndereco();
 
     /**

@@ -67,6 +67,8 @@
 
     function preencher_endereco(endereco) {
         if (endereco.status == 1) {
+            $("#reset_geolocation").attr("disabled", false);
+
             $("#include_estado_municipio").slideUp();
             $("#include_estado_municipio select").prop("disabled", true);
             $('#include_estado_municipio .selectpicker').selectpicker('refresh');

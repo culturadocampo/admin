@@ -11,6 +11,7 @@ class Endereco {
     private $estado;
     private $lat;
     private $lng;
+    private $comunidade;
 
     function __construct() {
         $this->conn = DB::get_instance();
@@ -68,7 +69,8 @@ class Endereco {
                 numero,
                 complemento,
                 lat,
-                lng
+                lng,
+                comunidade
             )
             VALUES (
                 '{$this->get_estado()}',
@@ -79,13 +81,12 @@ class Endereco {
                 '{$this->get_numero()}',
                 '{$this->get_complemento()}',
                 '{$this->get_lat()}',
-                '{$this->get_lng()}'
+                '{$this->get_lng()}',
+                '{$this->get_comunidade()}'
              )";
         $this->conn->execute($query);
         return $this->conn->last_id();
     }
-
-    
 
     function get_lat() {
         return $this->lat;
@@ -123,8 +124,8 @@ class Endereco {
         return $this->estado;
     }
 
-    function set_cep($cep) {
-        if ($cep) {
+    function set_cep($cep, $required = true) {
+        if ($required == false || $cep) {
             $this->cep = STRINGS::limpar($cep);
         } else {
             APP::return_response(false, "Favor informar o CEP");
@@ -147,8 +148,8 @@ class Endereco {
         }
     }
 
-    function set_numero($numero) {
-        if ($numero) {
+    function set_numero($numero, $required = true) {
+        if ($required == false || $numero) {
             $this->numero = STRINGS::limpar($numero);
         } else {
             APP::return_response(false, "Favor informar o número do imóvel");
@@ -159,8 +160,8 @@ class Endereco {
         $this->complemento = STRINGS::limpar($complemento);
     }
 
-    function set_logradouro($logradouro) {
-        if ($logradouro) {
+    function set_logradouro($logradouro, $required = true) {
+        if ($required == false || $logradouro) {
             $this->logradouro = STRINGS::limpar($logradouro);
         } else {
             APP::return_response(false, "Favor informar o LOGRADOURO");
@@ -185,6 +186,14 @@ class Endereco {
         } else {
             APP::return_response(false, "Favor informar o ESTADO");
         }
+    }
+
+    function get_comunidade() {
+        return $this->comunidade;
+    }
+
+    function set_comunidade($comunidade) {
+        $this->comunidade = STRINGS::limpar($comunidade);
     }
 
 }

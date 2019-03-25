@@ -43,7 +43,7 @@ $a_coletivos = $o_coletivo->select_todos_coletivos();
 </div>
 <?php include 'Core/Rotas/Usuarios/include_form_telefone.php'; ?>
 
-<?php include 'Core/Rotas/Endereco/include_endereco_completo.php'; ?>
+<?php include 'Core/Rotas/Endereco/include_maps_lat_lng.php'; ?>
 
 
 <script>

@@ -61,7 +61,12 @@ try {
     $o_endereco->set_municipio($id_municipio);
     $o_endereco->set_lat($_POST['lat']);
     $o_endereco->set_lng($_POST['lng']);
-    $o_endereco->set_complemento($_POST['comunidade']);
+    $o_endereco->set_complemento($_POST['complemento']);
+    $o_endereco->set_bairro($_POST['bairro']);
+    $o_endereco->set_cep($_POST['cep'], false);
+    $o_endereco->set_logradouro($_POST['logradouro'], false);
+    $o_endereco->set_numero($_POST['numero'], false);
+    $o_endereco->set_comunidade($_POST['comunidade']);
     $id_endereco = $o_endereco->insertEndereco();
 
     /**
