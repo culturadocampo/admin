@@ -141,12 +141,8 @@ class APP {
     }
 
     static function check_htaccess() {
-        $htaccess_hash = hash_file('md5', '.htaccess');
-        $latest_hash = file_get_contents('hash');
-        if ($htaccess_hash !== $latest_hash) {
-            $o_rota = new Rota();
-            $o_rota->rebuild_htaccess();
-        }
+        $o_rota = new Rota();
+        $o_rota->rebuild_htaccess();
     }
 
 }
