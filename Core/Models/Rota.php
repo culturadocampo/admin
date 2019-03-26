@@ -155,7 +155,7 @@ class Rota {
         $this->conn->execute($query);
     }
 
-    function save_on_htaccess($params = array()) {
+    function create_regex($params = array()) {
         $expressoes = "";
         $query_string = "";
         if (!empty($params)) {
@@ -179,9 +179,9 @@ class Rota {
             }
         }
         $regex_final = "^{$this->get_url()}{$expressoes}\/?$";
-        $data = PHP_EOL . "rewriteRule $regex_final ./index.php{$query_string} [NC]";
-        $fp = fopen('.htaccess', 'a');
-        fwrite($fp, $data);
+//        $data = PHP_EOL . "rewriteRule $regex_final ./index.php{$query_string} [NC]";
+//        $fp = fopen('.htaccess', 'a');
+//        fwrite($fp, $data);
         return $regex_final;
     }
 
@@ -215,6 +215,12 @@ class Rota {
         }
         fwrite($fp, PHP_EOL . "rewriteRule ^\/?$ .\/index.php [NC]" . PHP_EOL);
         fclose($fp);
+        $this->create_htaccess_hash_file();
+    }
+
+    function create_htaccess_hash_file() {
+        $hash = hash_file('md5', '.htaccess');
+        file_put_contents('hash', $hash);
     }
 
     function clear_htaccess() {

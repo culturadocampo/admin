@@ -75,4 +75,5 @@ function autoload($class) {
 }
 
 session_start();
+APP::check_htaccess();
 APP::start();

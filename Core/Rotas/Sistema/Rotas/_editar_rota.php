@@ -18,7 +18,7 @@ $o_rota->set_url($_POST['url']);
 $o_rota->set_publico($_POST['publico']);
 $o_rota->set_matriz($_POST['matriz']);
 
-$expressao = $o_rota->save_on_htaccess($_POST['params']);
+$expressao = $o_rota->create_regex($_POST['params']);
 
 
 $o_rota->set_expressao($expressao);

@@ -14,9 +14,9 @@ if ($_POST['url']) {
     if ($_POST['conteudo']) {
 
         if (isset($_POST['params']) && !empty($_POST['params'])) {
-            $expressao = $o_rota->save_on_htaccess($_POST['params']);
+            $expressao = $o_rota->create_regex($_POST['params']);
         } else {
-            $expressao = $o_rota->save_on_htaccess();
+            $expressao = $o_rota->create_regex();
         }
 
         $o_rota->set_expressao($expressao);
@@ -38,10 +38,13 @@ if ($_POST['url']) {
                 $o_permissao->insert_permissao_rota($id_permissao, $id_rota);
             }
         }
+        
+        $o_rota->rebuild_htaccess();
 
 
         $response['result'] = true;
         $response['message'] = "Rota cadastrada com sucesso";
+        
     } else {
         $response['result'] = false;
         $response['message'] = "Escolha um arquivo de conteúdo";
