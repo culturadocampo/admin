@@ -19,7 +19,7 @@ $issues = GITHUB::get_issues();
                     <td>
                         <span class="text-dark" style="font-size: 14px">
                             <a href="<?php echo $value['html_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></span>
-                          <?php if ($value['labels']) { ?>
+                        <?php if ($value['labels']) { ?>
                             <?php foreach ($value['labels'] as $label) { ?>
                                 <label class="badge" style="background-color: #<?php echo $label['color'] ?>"><?php echo $label['name']; ?></label>
                             <?php } ?>
@@ -32,7 +32,7 @@ $issues = GITHUB::get_issues();
                             por <strong><?php echo $value['user']['login']; ?></strong>
                         </small>
                     </td>
-             
+
                     <td>
                         <?php if ($value['assignees']) { ?>
                             <?php foreach ($value['assignees'] as $assignee) { ?>
@@ -55,8 +55,11 @@ $issues = GITHUB::get_issues();
                 </tr>
             <?php } ?>
 
-        <?php } ?>
-    </tbody>
+        <?php } else { ?>
+        <td colspan="4" class="text-center">Nada encontrado. Clique <u><a target="_blank" href="https://github.com/culturadocampo/admin/issues/new">aqui</a></u> para criar uma agora.</td>
+            <?php } ?>
+
+</tbody>
 </table>
 
 <?php

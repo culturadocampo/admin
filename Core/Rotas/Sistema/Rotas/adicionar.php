@@ -42,9 +42,7 @@
 
     function load_form() {
         $("#form_adicionar_rota").load("sistema/rotas/form/adicionar", {}, function () {
-//            mApp.unblock("#form_adicionar_rota");
             unblockPage();
-
         });
     }
 

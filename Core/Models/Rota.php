@@ -219,8 +219,8 @@ class Rota {
     }
 
     function create_htaccess_hash_file() {
-        $hash = hash_file('md5', '.htaccess');
-        file_put_contents('hash', $hash);
+//        $hash = hash_file('md5', '.htaccess');
+//        file_put_contents('hash', $hash);
     }
 
     function clear_htaccess() {
@@ -302,11 +302,19 @@ class Rota {
     }
 
     function set_url($url) {
-        $this->url = $url;
+        if ($url) {
+            $this->url = STRINGS::limpar($url);
+        } else {
+            APP::return_response(false, "Informe a URL base");
+        }
     }
 
     function set_conteudo($conteudo) {
-        $this->conteudo = $conteudo;
+        if ($conteudo) {
+            $this->conteudo = STRINGS::limpar($conteudo);
+        } else {
+            APP::return_response(false, "Escolha o arquivo conteúdo PHP");
+        }
     }
 
     function set_matriz($matriz) {

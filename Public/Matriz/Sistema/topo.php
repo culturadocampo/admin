@@ -37,11 +37,19 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                             <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                 <a class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        <label style="display: inline!important;" class="badge badge-pill badge-info    "> U<?php echo SESSION::get_id_usuario(); ?>-T<?php echo SESSION::get_id_tipo_usuario(); ?>-R<?php echo $rota['id_rota']; ?></label>
+                                        <label style="display: inline!important;" class="badge badge-info"> U<?php echo SESSION::get_id_usuario(); ?>-T<?php echo SESSION::get_id_tipo_usuario(); ?>-R<?php echo $rota['id_rota']; ?></label>
                                     </span>
                                 </a>
                             </li>
-
+                            <?php if (APP::has_permissao(35)) { ?>
+                                <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                                    <a class="m-nav__link m-dropdown__toggle">
+                                        <span class="m-topbar__userpic">
+                                            <button id="atualizar_arquivo_rotas" class="btn btn-outline-danger btn-sm"><i class=" flaticon-refresh "></i> Atualizar rotas</button>
+                                        </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
 
                             <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
@@ -59,7 +67,7 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                                                 </div>
                                                 <div class="m-card-user__details">
                                                     <span class="m-card-user__name m--font-weight-500"><?php echo SESSION::get_nome_usuario(); ?></span>
-                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?> #<?php // echo SESSION::get_id_usuario();  ?></a>
+                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?> #<?php // echo SESSION::get_id_usuario();     ?></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,10 +121,13 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
 
 <script>
     $(document).ready(function () {
-        $("#localizar_rota").on("blur", function () {
-            var string = $(this).val();
-            $.post("localizar/rota", {string: string}, function (response) {
 
+        $("#atualizar_arquivo_rotas").off("click");
+        $("#atualizar_arquivo_rotas").on("click", function () {
+            blockPage();
+            $.post("rotas/atualizar", {}, function (response) {
+                lerResposta(response);
+                unblockPage();
             });
         });
     });

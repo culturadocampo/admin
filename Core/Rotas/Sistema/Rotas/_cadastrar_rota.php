@@ -4,55 +4,53 @@
 $o_rota = new Rota();
 $o_parametro = new Parametro();
 $o_permissao = new Permissao();
-$o_rota->set_url($_POST['url']);
-$o_rota->set_conteudo($_POST['conteudo']);
-$o_rota->set_matriz($_POST['matriz']);
-$o_rota->set_publico($_POST['publico']);
 
 
-if ($_POST['url']) {
-    if ($_POST['conteudo']) {
+try {
+    $db = DB::get_instance();
+    $db->beginTransaction();
 
-        if (isset($_POST['params']) && !empty($_POST['params'])) {
-            $expressao = $o_rota->create_regex($_POST['params']);
-        } else {
-            $expressao = $o_rota->create_regex();
-        }
+    $o_rota->set_url($_POST['url']);
+    $o_rota->set_conteudo($_POST['conteudo']);
+    $o_rota->set_matriz($_POST['matriz']);
+    $o_rota->set_publico($_POST['publico']);
 
-        $o_rota->set_expressao($expressao);
-        $id_rota = $o_rota->insert_rota();
 
-        if (isset($_POST['params']) && !empty($_POST['params'])) {
-            foreach ($_POST['params'] as $key => $value) {
-                if ($value['categoria'] == "1") {
-                    $o_parametro->set_parametro($value['nome']);
-                    $o_parametro->set_tipo($value['expressao']);
-                    $o_parametro->set_indice($key + 1);
-                    $o_parametro->insert_parametro($id_rota);
-                }
+    if (isset($_POST['params']) && !empty($_POST['params'])) {
+        $expressao = $o_rota->create_regex($_POST['params']);
+    } else {
+        $expressao = $o_rota->create_regex();
+    }
+
+    $o_rota->set_expressao($expressao);
+    $id_rota = $o_rota->insert_rota();
+
+    if (isset($_POST['params']) && !empty($_POST['params'])) {
+        foreach ($_POST['params'] as $key => $value) {
+            if ($value['categoria'] == "1") {
+                $o_parametro->set_parametro($value['nome']);
+                $o_parametro->set_tipo($value['expressao']);
+                $o_parametro->set_indice($key + 1);
+                $o_parametro->insert_parametro($id_rota);
             }
         }
-
+    }
+    if ($_POST['publico'] != 1) {
         if (isset($_POST['permissoes']) && !empty($_POST['permissoes'])) {
             foreach ($_POST['permissoes'] as $key => $id_permissao) {
                 $o_permissao->insert_permissao_rota($id_permissao, $id_rota);
             }
         }
-        
-        $o_rota->rebuild_htaccess();
-
-
-        $response['result'] = true;
-        $response['message'] = "Rota cadastrada com sucesso";
-        
-    } else {
-        $response['result'] = false;
-        $response['message'] = "Escolha um arquivo de conteúdo";
     }
-} else {
-    $response['result'] = false;
-    $response['message'] = "Favor informar a URL base";
+
+
+    $db->commit();
+    $o_rota->rebuild_htaccess();
+    APP::return_response(true, "Rota cadastrada com sucesso");
+} catch (Exception $exc) {
+    $db->rollback();
 }
 
 
-echo json_encode($response);
+
+
