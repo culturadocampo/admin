@@ -10,6 +10,16 @@
                 </div>
                 <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
                     <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+                        <?php if (APP::has_permissao(37)) { ?>
+                            <li class="m-nav__item">
+                                <a href="http://culturadocampo.com.br/metronic/theme/classic/demos/default/" target="_blank" class="m-nav__link">
+                                    <span class="m-nav__link-text">
+                                        <u>Abrir tema</u>
+                                    </span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
                         <li class="m-nav__item">
                             <a class="m-nav__link">
                                 <span class="m-nav__link-text text-dark">
