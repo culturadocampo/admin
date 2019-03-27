@@ -9,7 +9,7 @@ try {
     $o_permissao->set_descricao($_POST['descricao']);
     $id_permissao = $o_permissao->insert_permissao();
     
-    if (count($_POST['tipo_usuario']) > 0) {
+    if (isset($_POST['tipo_usuario']) && is_array($_POST['tipo_usuario']) && count($_POST['tipo_usuario']) > 0) {
         foreach ($_POST['tipo_usuario'] as $tipo) {
             $o_permissao->insert_permissao_usuario($id_permissao, $tipo);
         }

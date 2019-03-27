@@ -1,7 +1,3 @@
-<?php
-$grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::get_email_usuario()))) . "?s=64";
-?>
-
 <header id="m_header" class="m-grid__item m-header " m-minimize-offset="200" m-minimize-mobile-offset="200" >
 
 
@@ -63,7 +59,7 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                                         <div class="m-dropdown__header m--align-center">
                                             <div class="m-card-user m-card-user--skin-light">
                                                 <div class="m-card-user__pic">
-                                                    <img src="<?php echo $grav_url; ?>" class="m--img-rounded img-thumbnail" alt="">
+                                                    <img src="<?php echo SESSION::get_gravatar(); ?>" class="m--img-rounded img-thumbnail" alt="">
                                                 </div>
                                                 <div class="m-card-user__details">
                                                     <span class="m-card-user__name m--font-weight-500"><?php echo SESSION::get_nome_usuario(); ?></span>
@@ -75,16 +71,14 @@ $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(SESSION::ge
                                         <div class="m-dropdown__body">
                                             <div class="m-dropdown__content">
                                                 <ul class="m-nav m-nav--skin-light">
-                                                    <li class="m-nav__section m--hide">
-                                                        <span class="m-nav__section-text">Section</span>
-                                                    </li>
+                                               
                                                     <?php if (APP::has_permissao(6)) { ?>
                                                         <li class="m-nav__item">
                                                             <a href="usuario/perfil" class="m-nav__link">
-                                                                <i class="m-nav__link-icon flaticon2-calendar-3 text-success"></i>
+                                                                <i class="m-nav__link-icon  flaticon-settings-1 "></i>
                                                                 <span class="m-nav__link-title">  
                                                                     <span class="m-nav__link-wrap">      
-                                                                        <span class="m-nav__link-text">Meu perfil</span>
+                                                                        <span class="m-nav__link-text">Configurações</span>
                                                                     </span>
                                                                 </span>
                                                             </a>

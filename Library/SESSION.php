@@ -100,4 +100,9 @@ class SESSION {
         return $o_coordenador->select_ids_tecnicos_coordenador();
     }
 
+    static function get_gravatar() {
+        $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(self::get_email_usuario()))) . "?s=256";
+        return $grav_url;
+    }
+
 }
