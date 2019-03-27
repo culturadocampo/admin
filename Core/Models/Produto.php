@@ -60,6 +60,43 @@ class Produto {
             APP::return_response(false, "O produto selecionado é inválido");
         }
     }
+    
+    function select_produtos_por_categoria($categoria) {
+        $query = "
+            SELECT
+                id_produto,
+                nome
+            FROM produtos
+            WHERE TRUE
+                AND fk_categoria = '$categoria'
+                AND ativo = 1
+        ";
+        return $this->conn->fetch_all($query);
+    }
+    
+    static function seta_medida_produto($medida){
+        if($medida == 1){
+            $medida = "Unidade";
+        }else if($medida == 2){
+            $medida = "KG";
+        }
+        
+        return $medida;
+    }
+    
+    function select_produto($id_produto){
+        $query = "
+            SELECT
+                nome
+            FROM 
+                produtos
+            WHERE
+                id_produto = '$id_produto'
+            AND 
+                ativo = '1' ";
+        
+        return $this->conn->fetch($query);
+    }
 
     function get_ncm_codigo() {
         return $this->ncm_codigo;

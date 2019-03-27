@@ -1,37 +1,25 @@
+<?php
+    $trabalhadorRural = new TrabalhadorRural();
+    $produtores = $trabalhadorRural->select_todos_trabalhadores_rurais($_SESSION['id_filiado']);
+    
+    $categoriasProd = new CategoriaProdutos();
+    $categorias = $categoriasProd->select_todas_categorias();
+?>
+                       
 <div class="col-md-12">
     <div class="form-group m-form__group row">
         <div class="col-lg-6">
-            <label for="nome_completo">Nome completo</label>
-            <input name="nome_completo" type="text" class="form-control m-input" placeholder="Nome do usuário">
-            <span class="m-form__help">Informe o nome completo</span>
-        </div>
-        <div class="col-lg-6">
-            <label for="cpf">CPF</label>
-            <input id="cpf" name="cpf" type="text" class="form-control m-input cpf" placeholder="CPF do responsável por esta conta">
-            <span class="m-form__help">Somente números</span>
-        </div>
+            <select data-live-search="true" data-style="btn-outline-info" name="id_agricultor" class="form-control selectpicker">
+                <?php if ($produtores) { ?>
+                    <option selected="" disabled=""> Agricultores </option>
+                    <?php foreach ($produtores as $value) { ?>
+                        <option  value="<?php echo $value['fk_usuario']; ?>"> <?php echo $value['nome'] . ' ' . $value['cpf']; ?> </option>
+                    <?php } ?>
+                <?php } ?>
+            </select>
+        </div>     
     </div>	 
-    <div class="form-group m-form__group row">
-        <div class="col-lg-6">
-            <label for="email">Endereço eletrônico</label>
-            <div class="m-input-icon m-input-icon--right">
-                <input name="email" type="email" class="form-control m-input" id="email" placeholder="E-mail do usuário">
-                <span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="la la-bookmark-o"></i></span></span>
-            </div>
-            <span class="m-form__help text-info">A senha de acesso será enviada a este e-mail</span>
-        </div>
-        
-        <div class="col-lg-6">
-            <label for="email">Associado</label>
-            <div class="m-input-icon m-input-icon--right">
-               
-            </div>
-        </div>
-        
-    </div>
 </div>
-
-<?php include 'Core/Rotas/Usuarios/include_form_telefone.php'; ?>
 
 <div class="m-portlet__head">
     <div class="m-portlet__head-caption">
@@ -40,7 +28,7 @@
                 <i class="la la-gear"></i>
             </span>
             <h3 class="m-portlet__head-text">
-                Cadastro de compra 
+                Produtos
             </h3>
         </div>
     </div>
@@ -49,54 +37,90 @@
 <div class="col-md-12">
     <div class="form-group m-form__group row">
         <div class="col-md-2">
-            <select data-style="btn-outline-info" name="id_usuario_coordenador" class="form-control selectpicker text-center">
-                <option selected disabled="true"> Selecione a categoria </option>
-                <option  value=""> </option>
+            <select name="categoria" id="categoria" class="form-control m-input selectpicker text-center">
+                <?php if ($categorias) { ?>
+                    <option selected="" name="categoria" disabled=""> Categorias </option>
+                    <?php foreach ($categorias as $value) { ?>
+                        <option value="<?php echo $value['id_categoria']; ?>"> <?php echo $value['nome']; ?> </option>
+                    <?php } ?>
+                <?php } ?>
             </select>
         </div>
 
-        <div class="col-md-2">
-            <select data-style="btn-outline-info" name="id_usuario_coordenador" class="form-control selectpicker text-center">
-                <option selected disabled="true"> Produto </option>
-                <option  value=""> </option>
-            </select>
+        <div class="col-md-2" id="produtos">
+            
         </div>
         
         <div class="col-md-2">
-            <input name="qtd" type="text" class="form-control m-input text-center" placeholder="Quantida">
+            <input name="qtd" id="qtd" type="text" class="form-control m-input text-center" placeholder="Quantidade">
         </div>
         
         <div class="col-md-2">
-            <select name="tipo" class="form-control m-input selectpicker text-center">
-                <option selected="true" disabled="true" value="">Escolha um tipo </option>
+            <select name="medida" id="medida" class="form-control m-input selectpicker text-center">
+                <option selected="true" disabled="true" value="">Medida </option>
                 <option value="1"> Unidade </option>
                 <option value="2"> KG </option>
             </select>
         </div>
         
         <div class="col-md-2">
-            <input name="valor" type="text" class="form-control m-input text-center" placeholder="Valor">
+            <input name="valor" id="valor" type="text" class="form-control m-input text-center valor_pro" placeholder="Valor">
         </div>
         
-        <button type="button" class="btn btn-primary"> <i class="la la-plus"></i> Adicionar </button>
+        <button type="button" id="adicionar_prod" class="btn btn-primary"> <i class="la la-plus"></i> Adicionar </button>
     </div>
-        <div id="compra_tabela">
-            
-            
-        </div>
+    <div id="compra_tabela">
+
+
+    </div>
 </div>
 
 
 <script>
-    function load_form() {
+    function load_tabela() {
         $("#compra_tabela").load("compra/tabela", {}, function () {
             unblockPage();
+        });
+        
+        $("#adicionar_prod").off("click");
+        $("#adicionar_prod").on("click", function () {
+            
+            let categoria = $("#categoria").val();
+            let produto = $("#produto").val();
+            let qtd = $("#qtd").val();
+            let medida = $("#medida").val();
+            let valor = $("#valor").val();
+            
+            array_produtos.push({categoria: categoria, produto: produto, qtd: qtd, medida: medida, valor: valor});
+            
+            $("#compra_tabela").load("compra/tabela", {array_produtos: array_produtos}, function () {
+                unblockPage();
+            });
+        });
+    }
+    
+    function buscar_produtos(){
+        $("#produtos").load("load/select/produtos", {}, function () {
+            unblockPage();
+        });
+        
+        $("#categoria").off("change");
+        $("#categoria").on("change", function () {
+            let categoria = $("#categoria").val();
+            
+            $("#produtos").load("load/select/produtos", {categoria: categoria}, function () {
+                unblockPage();
+            });
         });
     }
     
     $(document).ready(function () {
-        load_form();
+        array_produtos = [];
+        load_tabela();
+        buscar_produtos();
+        
         $(".selectpicker").selectpicker();
         $('.cpf').mask("000.000.000-00");
+        $('.valor_pro').maskMoney({decimal: '.', thousands: ''});
     });
 </script>

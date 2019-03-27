@@ -39,6 +39,21 @@ class TrabalhadorRural {
         ";
         return $this->conn->fetch($query);
     }
+    
+    function select_todos_trabalhadores_rurais($fk_filiado) {
+        $query = "SELECT
+                    fk_usuario,
+                    usuarios.nome,
+                    usuarios.cpf
+                 FROM
+                    xref_usuarios_filiados
+                 INNER JOIN
+                    usuarios ON id_usuario = fk_usuario
+                 WHERE 
+                    fk_filiado = '{$fk_filiado}'";
+                    
+        return $this->conn->fetch_all($query);
+    }
 
     function getCaepf() {
         return $this->caepf;
