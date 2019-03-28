@@ -66,7 +66,8 @@ class Usuario {
                 usuarios.nome,
                 email,
                 fk_tipo_usuario,
-                usuarios_tipo.nome AS tipo_usuario
+                usuarios_tipo.nome AS tipo_usuario,
+                cpf
             FROM usuarios 
             INNER JOIN usuarios_tipo ON id_tipo_usuario = fk_tipo_usuario
             WHERE TRUE 
@@ -145,6 +146,17 @@ class Usuario {
         ";
         $tipo = $this->conn->fetch($query);
         return strtoupper($tipo['nome']);
+    }
+    
+    function select_telefones_usuario($id_usuario){
+          $query = "
+            SELECT 
+                telefone,tipo_telefone
+            FROM usuarios_telefones 
+            WHERE TRUE 
+                AND fk_usuario = '{$id_usuario}'
+        ";
+        return $this->conn->fetch_all($query);
     }
 
     function get_nome() {

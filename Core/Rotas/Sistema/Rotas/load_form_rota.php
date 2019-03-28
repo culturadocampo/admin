@@ -26,7 +26,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
                     <?php } else { ?>
                         <label class="text-danger" for="confirm">Conteúdo</label>
                     <?php } ?>
-                    <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="conteudo" class="form-control selectpicker" id="select_conteudo">
+                    <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> <?php echo $arquivos_conteudo ? "" : 'disabled' ?> data-live-search="true" name="conteudo" class="form-control selectpicker" id="select_conteudo">
                         <?php if ($arquivos_conteudo) { ?>
                             <?php foreach ($arquivos_conteudo as $arquivo) { ?>
                                 <option><?php echo $arquivo; ?></option>
@@ -40,7 +40,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="password">Matriz *</label>
-                    <select <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control selectpicker" id="select_matriz">
+                    <select  <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control selectpicker" id="select_matriz" >
                         <option selected value="0">Arquivo load/ajax</option>
                         <?php if ($arquivos_base) { ?>
                             <?php foreach ($arquivos_base as $arquivo) { ?>
@@ -83,7 +83,7 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
         <div id="vinculo_permissoes_div" class="row m--padding-bottom-20">
             <div class="col-md-6">
                 <label class="">Vincular permissões (Opcional):</label>
-                <select id="vinculo_permissoes" name="permissoes[]" class="form-control m-input selectpicker" multiple>
+                <select data-live-search="true" id="vinculo_permissoes" name="permissoes[]" class="form-control m-input selectpicker" multiple>
                     <?php if ($arr_permissoes) { ?>
                         <?php foreach ($arr_permissoes as $value) { ?>
                             <option value='<?php echo $value['id_permissao']; ?>'><?php echo $value['descricao']; ?></option>

@@ -6,13 +6,13 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Cadastro de agricultor
+                    Cadastro de propriedade rural
                 </h3>
             </div>
         </div>
     </div>
-    <form id="form_agricultor" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
-        <div id="cadastro_agricultor" class="m-portlet__body">	
+    <form id="form_propriedade" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+        <div id="cadastro_propriedade" class="m-portlet__body">	
 
         </div>
         <br>    
@@ -42,16 +42,16 @@
     });
 
     function load_form() {
-        $("#cadastro_agricultor").load("usuario/form/agricultor", {}, unblockPage());
+        $("#cadastro_propriedade").load("propriedade/nova/form", {}, unblockPage());
     }
 
     function executar_cadastro() {
         hideNotify();
         blockPage();
-        var formData = $("#form_agricultor").serialize();
+        var formData = $("#form_propriedade").serialize();
         $.ajax({
             type: "post",
-            url: "usuario/insert/agricultor",
+            url: "propriedade/insert",
             data: formData,
             success: function (response) {
                 lerResposta(response, load_form);

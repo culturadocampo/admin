@@ -1,6 +1,7 @@
 <?php
-$o_agricultor = new Agricultor();
-$a_agricultores = $o_agricultor->select_agricultores_ativos();
+
+$o_propriedade = new PropriedadeRural();
+$a_propriedades = $o_propriedade->select_agricultores_ativos();
 ?>
 
 
@@ -18,21 +19,22 @@ $a_agricultores = $o_agricultor->select_agricultores_ativos();
         </div>
     </div>
     <div class="m-portlet__body">	
-        <table id="agricultores_table" class="table datatable table-hover" style="border: 1px solid rgba(0,0,0,.10)">
+        <table class="table datatable table-striped">
             <thead>
                 <tr>
-                    <td>Usuário</td>
-                    <td>Nome</td>
-                    <td>CPF</td>
+                    <td>ID</td>
+                    <td>Estado</td>
+                    <td>Municipio</td>
                 </tr>
             </thead>
             <tbody>
-                <?php if ($a_agricultores) { ?>
-                    <?php foreach ($a_agricultores as $value) { ?>
-                        <tr href="usuarios/agricultor/<?php echo $value['id_usuario']; ?>/info" class="pointer">
-                            <td><?php echo $value['id_usuario']; ?></td>
-                            <td><?php echo $value['nome']; ?></td>
-                            <td><?php echo $value['cpf']; ?></td>
+                <?php if ($a_propriedades) { ?>
+                    <?php foreach ($a_propriedades as $value) { ?>
+                        <tr>
+                            <td><?php echo $value['id_propriedade_rural']; ?></td>
+                            <td><?php echo $value['estado']; ?></td>
+                            <td><?php echo $value['municipio']; ?></td>
+                            <!--<td><a href="agricultor/<?php // echo $value['id_usuario']; ?>/cadastrar/producao" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></a></td>-->
                         </tr>
                     <?php } ?>
                 <?php } ?>
@@ -46,11 +48,5 @@ $a_agricultores = $o_agricultor->select_agricultores_ativos();
 <script>
     $(document).ready(function () {
         $(".datatable").DataTable();
-
-        $("#agricultores_table tbody").on("click", "tr", function () {
-            window.location = $(this).attr("href");
-        });
-
-
     });
 </script>

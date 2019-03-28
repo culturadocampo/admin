@@ -26,6 +26,38 @@
                 </li>
             <?php } ?>
 
+            <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-map-location "></i>
+                    <span class="m-menu__link-text  ">Propriedades</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(47)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="propriedade/nova" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Nova propriedade</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (APP::has_permissao(48)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="javascript:alert('Ainda não');" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Visão aérea</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
             <li id="2" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text  ">Usuários</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>
@@ -98,8 +130,8 @@
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon flaticon-map-location "></i>
-                    <span class="m-menu__link-text  ">Propriedades rurais</span>
+                    <i class="m-menu__link-icon  flaticon-network  "></i>
+                    <span class="m-menu__link-text  ">Agricultores</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
@@ -108,7 +140,7 @@
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuarios/cadastro/agricultor" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Nova propriedade</span>
+                                    </i><span class="m-menu__link-text ">Novo agricultor</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -116,7 +148,7 @@
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="usuarios/lista/agricultores" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Exibir todas</span>
+                                    </i><span class="m-menu__link-text ">Exibir todos</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -124,6 +156,8 @@
                     </ul>
                 </div>
             </li>
+
+
 
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">

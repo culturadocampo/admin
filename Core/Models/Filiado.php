@@ -47,10 +47,13 @@ class Filiado {
 
     function insert_vinculo_usuario_filiado($id_usuario, $id_filiado) {
         $query = "
-            INSERT INTO
-                xref_filiados_usuarios
-            (fk_filiado, fk_usuario)
-            VALUES('{$id_filiado}', '{$id_usuario}')
+            INSERT INTO 
+                xref_usuarios_filiados
+            (fk_usuario, fk_filiado)
+            VALUES(
+                '{$id_usuario}',
+                '{$id_filiado}'
+            )
         ";
         $this->conn->execute($query);
     }
@@ -79,7 +82,7 @@ class Filiado {
             SELECT
                 id_filiado, nome_fantasia
             FROM filiados
-            INNER JOIN xref_filiados_usuarios ON id_filiado = fk_filiado
+            INNER JOIN xref_usuarios_filiados ON id_filiado = fk_filiado
             WHERE TRUE
                 AND fk_usuario = '{$id_usuario}'
         ";

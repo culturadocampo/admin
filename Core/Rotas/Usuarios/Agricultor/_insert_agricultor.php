@@ -1,13 +1,10 @@
 <?php
 
-//ARRAYS::pre_print($_POST);
 $o_usuario = new Usuario();
 $o_telefone = new Telefone();
-$o_endereco = new Endereco();
-$o_propriedade = new PropriedadeRural();
-$o_certificacao = new Certificacao();
-$o_trabalhador = new TrabalhadorRural();
-
+$o_filiado = new Filiado();
+$o_agricultor = new Agricultor();
+//ARRAYS::pre_print($_POST);
 try {
     $db = DB::get_instance();
     $db->beginTransaction();
@@ -26,11 +23,11 @@ try {
     
     
     /**
-     * Trabalhador rural
+     * Agricultor
      */
-    $o_trabalhador->setCaepf($_POST['caepf']);
-    $o_trabalhador->setRg($_POST['rg']);
-    $o_trabalhador->insert_trabalhador_rural($id_usuario);
+    $o_agricultor->setCaepf($_POST['caepf']);
+    $o_agricultor->setRg($_POST['rg']);
+    $o_agricultor->insert_agricultor($id_usuario);
 
     /**
      * Telefones
@@ -45,43 +42,10 @@ try {
         APP::return_response(false, "Necessário informar ao menos 1 celular ou telefone");
     }
 
-
+    
     /**
-     * Localização/Endereço
+     * Vínculo filiado > usuário
      */
-    $id_estado = $o_endereco->get_id_from_uf($_POST['estado']);
-    $id_municipio = $o_endereco->get_id_from_nome_municipio($_POST['municipio']);
-    if (!$id_estado) {
-        APP::return_response(false, "Estado selecionado é inválido");
-    }
-    if (!$id_municipio) {
-        APP::return_response(false, "Município selecionado é inválido");
-    }
-    $o_endereco->set_estado($id_estado);
-    $o_endereco->set_municipio($id_municipio);
-    $o_endereco->set_lat($_POST['lat']);
-    $o_endereco->set_lng($_POST['lng']);
-    $o_endereco->set_complemento($_POST['complemento']);
-    $o_endereco->set_bairro($_POST['bairro']);
-    $o_endereco->set_cep($_POST['cep'], false);
-    $o_endereco->set_logradouro($_POST['logradouro'], false);
-    $o_endereco->set_numero($_POST['numero'], false);
-    $o_endereco->set_comunidade($_POST['comunidade']);
-    $id_endereco = $o_endereco->insertEndereco();
-
-    /**
-     * Propriedade
-     */
-    if (isset($_POST['id_tecnico'])) {
-        $id_tecnico = $_POST['id_tecnico'];
-    } else {
-        if (SESSION::get_id_tipo_usuario() == 5) {
-            $id_tecnico = $_SESSION['id_tecnico'];
-        } else {
-            APP::return_response(false, "Ocorreu um erro: Técnico inválido");
-        }
-    }
-
     if (isset($_POST['id_filiado'])) {
         $id_filiado = $_POST['id_filiado'];
     } else {
@@ -91,20 +55,12 @@ try {
             APP::return_response(false, "Ocorreu um erro: Filiado inválido");
         }
     }
-
-    $o_propriedade->setIntegrantesUpf($_POST['integrantes_upf']);
-    $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
-    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao(), $id_usuario);
-
-    if ($id_tecnico) {
-        $o_propriedade->insert_vinculo_propriedade_tecnico($id_propriedade, $id_tecnico);
-    }
+ 
     if ($id_filiado) {
-        $o_propriedade->insert_vinculo_usuario_filiado($id_usuario, $id_filiado);
+        $o_filiado->insert_vinculo_usuario_filiado($id_usuario, $id_filiado);
     }
     $db->commit();
     APP::return_response(true, "Agricultor cadastrado com sucesso");
 } catch (Exception $exc) {
     $db->rollback();
-    //gravar o erro no banco com o handling
 }

@@ -63,7 +63,7 @@
                                                 </div>
                                                 <div class="m-card-user__details">
                                                     <span class="m-card-user__name m--font-weight-500"><?php echo SESSION::get_nome_usuario(); ?></span>
-                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?> #<?php // echo SESSION::get_id_usuario();     ?></a>
+                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?> #<?php echo SESSION::get_id_usuario();     ?></a>
                                                 </div>
                                             </div>
                                         </div>
