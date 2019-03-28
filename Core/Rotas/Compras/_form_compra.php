@@ -1,17 +1,17 @@
 <?php
-    $trabalhadorRural = new TrabalhadorRural();
-    $produtores = $trabalhadorRural->select_todos_trabalhadores_rurais($_SESSION['id_filiado']);
-    
-    $categoriasProd = new CategoriaProdutos();
-    $categorias = $categoriasProd->select_todas_categorias();
+        $trabalhadorRural = new TrabalhadorRural();
+        $produtores = $trabalhadorRural->select_todos_trabalhadores_rurais($_SESSION['id_filiado']);
+
+        $categoriasProd = new CategoriaProdutos();
+        $categorias = $categoriasProd->select_todas_categorias();
 ?>
                        
 <div class="col-md-12">
     <div class="form-group m-form__group row">
         <div class="col-lg-6">
-            <select data-live-search="true" data-style="btn-outline-info" name="id_agricultor" class="form-control selectpicker">
+            <select data-live-search="true" data-style="btn-outline-info" name="id_agricultor" id="id_agricultor" class="form-control selectpicker">
                 <?php if ($produtores) { ?>
-                    <option selected="" disabled=""> Agricultores </option>
+                    <option selected="" disabled=""> Produtores </option>
                     <?php foreach ($produtores as $value) { ?>
                         <option  value="<?php echo $value['fk_usuario']; ?>"> <?php echo $value['nome'] . ' ' . $value['cpf']; ?> </option>
                     <?php } ?>
@@ -67,7 +67,7 @@
             <input name="valor" id="valor" type="text" class="form-control m-input text-center valor_pro" placeholder="Valor">
         </div>
         
-        <button type="button" id="adicionar_prod" class="btn btn-primary"> <i class="la la-plus"></i> Adicionar </button>
+        <button type="button" id="adicionar_produto" class="btn btn-primary"> <i class="la la-plus"></i> Adicionar </button>
     </div>
     <div id="compra_tabela">
 
@@ -82,8 +82,8 @@
             unblockPage();
         });
         
-        $("#adicionar_prod").off("click");
-        $("#adicionar_prod").on("click", function () {
+        $("#adicionar_produto").off("click");
+        $("#adicionar_produto").on("click", function () {
             
             let categoria = $("#categoria").val();
             let produto = $("#produto").val();
@@ -91,7 +91,7 @@
             let medida = $("#medida").val();
             let valor = $("#valor").val();
             
-            array_produtos.push({categoria: categoria, produto: produto, qtd: qtd, medida: medida, valor: valor});
+            array_produtos.push({categoria: categoria, produto: produto, medida: medida, qtd: qtd, valor: valor});
             
             $("#compra_tabela").load("compra/tabela", {array_produtos: array_produtos}, function () {
                 unblockPage();
@@ -114,10 +114,17 @@
         });
     }
     
-    $(document).ready(function () {
-        array_produtos = [];
-        load_tabela();
+    function select_produtor(){
+        $("#id_agricultor").off("change");
+        $("#id_agricultor").on("change", function () {
+            dados_extra['fk_produtor'] = $(this).val();
+        });
+    }
+    
+    $(document).ready(function () { 
         buscar_produtos();
+        load_tabela();
+        select_produtor();
         
         $(".selectpicker").selectpicker();
         $('.cpf').mask("000.000.000-00");

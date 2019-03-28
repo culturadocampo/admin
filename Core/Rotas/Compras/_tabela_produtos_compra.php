@@ -1,6 +1,7 @@
 <?php
     if(isset($_POST['array_produtos'])){
         $dados = $_POST['array_produtos'];
+        $count = 0;
     }else{
         $dados  = false;
     }
@@ -11,16 +12,17 @@
         <table class="table table-bordered table-hover table-bordered" id="rotas_table">
             <thead>
                 <tr>
+                    <th class="text-center"> - </th>
                     <th class="text-center">Categoria</th>
                     <th class="text-center">Produto</th>
-                    <th class="text-center">QTD</th>
                     <th class="text-center">Tipo</th>
+                    <th class="text-center">QTD</th>
                     <th class="text-center">Valor</th>
-                    <th class="text-center"> </th>
+                    <th class="text-center">Excluir Prod. </th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($dados as $value){ 
+                <?php foreach($dados as $value){
                     $o_nomeCategoria = new CategoriaProdutos();
                     $nomeCat = $o_nomeCategoria->select_categoria($value['categoria']);
                     
@@ -29,29 +31,73 @@
                 ?>
                     <tr>
                         <td class="text-center">  
+                            <p> <?php echo $count; ?> </p>
+                        </td>
+                        <td class="text-center">  
                             <p> <?php echo $nomeCat['nome']; ?> </p>
                         </td>
                         <td class="text-center">  
                            <p> <?php echo $nomeProd['nome']; ?> </p>
                         </td>
                         <td class="text-center">  
+                            <p> <?php echo MEDIDAS_PRODUTOS::getMedidasProd($value['medida']); ?> </p>
+                        </td>
+                        <td class="text-center">  
                            <p> <?php echo $value['qtd']; ?> </p>
                         </td>
                         <td class="text-center">  
-                          <p> <?php echo Produto::seta_medida_produto($value['medida']); ?> </p>
-                        </td>
-                        <td class="text-center">  
-                           <p> <?php echo $value['valor']; ?> </p>
+                           <p> R$ <?php echo $value['valor']; ?> </p>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-danger btn-sm" type="button"><span class="flaticon-delete" id="excluir_compra"></span></button>
+                            <button class="btn btn-danger btn-sm excluir_compra" id_compra="<?php echo $count; ?>" type="button"><span class="flaticon-delete"></span></button>
                         </td>
                     </tr>
-                <?php } ?>
+                <?php $count++; } ?>
             </tbody>
         </table>
+        <div id="valor_total_compra" class="text-right">
+          
+        </div>
     <?php } else { ?>
         <div class="alert alert-primary" role="alert">
             Nenhum produto foi adicionado até o momento !
         </div>
     <?php } ?>
+    
+    
+<script>
+    function excluir_produto(){
+        $(".excluir_compra").off("click");
+        $(".excluir_compra").on("click", function () {
+            let id_compra   = $(this).attr("id_compra");
+            
+            // Deleto o pedido selecionado
+            for(let i=0; i < array_produtos.length; i++) {
+                if(i == id_compra){
+                    array_produtos.splice(i, 1);
+                }
+            }
+            
+            $("#compra_tabela").load("compra/tabela", {array_produtos: array_produtos}, function () {});
+            return false;
+        });
+    }
+    
+    function soma_produtos(){
+        let valor_total = 0;
+        
+        for(let i=0; i < array_produtos.length; i++) {
+            valor_total = parseFloat(valor_total);
+            valor_total += parseFloat(array_produtos[i]['valor']);
+        }
+        valor_total = parseFloat(valor_total).toFixed(2);
+        dados_extra['valor_total'] = valor_total;
+        valor_total =  "TOTAL: R$ " + valor_total;
+        $("#valor_total_compra").html(valor_total);
+    }
+    
+    $(document).ready(function () {
+        excluir_produto();
+        soma_produtos();
+    });
+</script>

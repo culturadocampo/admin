@@ -8,13 +8,20 @@
 ?>
 
 <?php if ($produtos) { ?>
-    <select id="produto" name="produto" class="form-control m-input" data-live-search="true">
+     <select data-live-search="true" name="produto" id="produto" class="form-control m-input selectpicker text-center">
         <option selected="" disabled="">Produtos</option>
         <?php foreach ($produtos as $value) { ?>
             <option value="<?php echo $value['id_produto']; ?>"><?php echo $value['nome']; ?></option>
         <?php } ?>
     </select>
 <?php } else { ?>
-    <input disabled="" class="form-control m-input text-center" placeholder="Produtos">
+    <select disabled="" class="form-control m-input selectpicker text-center">
+        <option selected="" readonly="">Produtos</option>
+    </select>
 <?php } ?>
 
+<script>
+    $(document).ready(function () {
+        $(".selectpicker").selectpicker();
+    });
+</script>

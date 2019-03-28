@@ -20,8 +20,7 @@
             <div class="m-form__actions m-form__actions--solid">
                 <div class="row">
                     <div class="m--align-right col-md-12" style="position: initial;">
-                        <button id="cadastrar" type="button" class="btn btn-success">Salvar </button>
-                        <button type="reset" class="btn btn-secondary">Limpar</button>
+                        <button id="salvar_compra" type="button" class="btn btn-success">Salvar </button>
                     </div>
                 </div>
             </div>
@@ -32,18 +31,35 @@
 
 
 <script>
-
-    $(document).ready(function () {
-        blockPage();
-        load_form();
-        $("#cadastrar").on("click", function () {
-            executar_cadastro();
-        });
-    });
-
     function load_form() {
         $("#cadastro_compra").load("compra/nova/form", {}, function () {
             unblockPage();
         });
     }
+    
+    function salvar_compra(){
+        hideNotify();
+        blockPage();
+        
+        $.ajax({
+            type: "post",
+            url: "compra/nova/insert",
+            data: {dados: array_produtos, fk_produtor: dados_extra['fk_produtor'], valor_total: dados_extra['valor_total']},
+            success: function (response) {
+                lerResposta(response, load_form);
+            }
+        });
+    }
+
+    $(document).ready(function () {  
+        blockPage();
+        load_form();
+        array_produtos = [];
+        dados_extra = [];
+        
+        $("#salvar_compra").on("click", function () {
+            salvar_compra();
+        });
+    });
+
 </script>

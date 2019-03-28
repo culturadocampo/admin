@@ -42,6 +42,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESi5IIXd_jnpNizfj_HRYkrf7Fa_ZJ0w&callback=initMap&language=pt&region=BR"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
 
 

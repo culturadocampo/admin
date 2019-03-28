@@ -74,16 +74,6 @@ class Produto {
         return $this->conn->fetch_all($query);
     }
     
-    static function seta_medida_produto($medida){
-        if($medida == 1){
-            $medida = "Unidade";
-        }else if($medida == 2){
-            $medida = "KG";
-        }
-        
-        return $medida;
-    }
-    
     function select_produto($id_produto){
         $query = "
             SELECT
