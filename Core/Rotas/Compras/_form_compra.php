@@ -1,6 +1,6 @@
 <?php
-        $trabalhadorRural = new TrabalhadorRural();
-        $produtores = $trabalhadorRural->select_todos_trabalhadores_rurais($_SESSION['id_filiado']);
+        $o_agricultor = new Agricultor();
+        $produtores = $o_agricultor->select_todos_trabalhadores_rurais($_SESSION['id_filiado']);
 
         $categoriasProd = new CategoriaProdutos();
         $categorias = $categoriasProd->select_todas_categorias();
