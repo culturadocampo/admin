@@ -27,6 +27,7 @@ try {
      */
     $o_agricultor->setCaepf($_POST['caepf']);
     $o_agricultor->setRg($_POST['rg']);
+    $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
     $o_agricultor->insert_agricultor($id_usuario);
 
     /**

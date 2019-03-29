@@ -2,7 +2,6 @@
 
 class PropriedadeRural {
 
-    private $integrantesUpf;
     private $conn;
 
     function __construct() {
@@ -13,12 +12,11 @@ class PropriedadeRural {
         $query = "
             INSERT INTO 
                 propriedades_rurais
-            (fk_endereco, fk_certificacao_organica, fk_usuario_responsavel, integrantes_upf)
+            (fk_endereco, fk_certificacao_organica, fk_usuario_responsavel)
             VALUES(
                 '{$id_endereco}',
                 '{$id_certificacao}',
-                '{$id_usuario}',
-                '{$this->getIntegrantesUpf()}'
+                '{$id_usuario}'
             )
         ";
         $this->conn->execute($query);
@@ -71,16 +69,9 @@ class PropriedadeRural {
         return $this->conn->fetch_all($query);
     }
 
-    function getIntegrantesUpf() {
-        return $this->integrantesUpf;
-    }
-
     function getColetivo() {
         return $this->coletivo;
     }
 
-    function setIntegrantesUpf($integrantesUpf) {
-        $this->integrantesUpf = $integrantesUpf;
-    }
 
 }

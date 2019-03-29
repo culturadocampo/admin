@@ -16,6 +16,7 @@ class Agricultor {
     private $conn;
     private $caepf;
     private $rg;
+    private $integrantesUpf;
 
     function __construct() {
         $this->conn = DB::get_instance();
@@ -24,8 +25,13 @@ class Agricultor {
     function insert_agricultor($id_usuario) {
         $query = "
             INSERT INTO agricultores
-            (fk_usuario, caepf, rg)
-            VALUES('{$id_usuario}', '{$this->getCaepf()}', '{$this->getRg()}')
+            (fk_usuario, caepf, rg, integrantes_upf)
+            VALUES(
+                '{$id_usuario}',
+                '{$this->getCaepf()}',
+                '{$this->getRg()}',
+                '{$this->getIntegrantesUpf()}'
+            )
         ";
         $this->conn->execute($query);
         return $this->conn->last_id();
@@ -129,6 +135,18 @@ class Agricultor {
 
     function setRg($rg) {
         $this->rg = STRINGS::limpar($rg);
+    }
+
+    function getIntegrantesUpf() {
+        return $this->integrantesUpf;
+    }
+
+    function setIntegrantesUpf($integrantesUpf) {
+        if (is_numeric($integrantesUpf) && $integrantesUpf > 0) {
+            $this->integrantesUpf = $integrantesUpf;
+        } else {
+            APP::return_response(false, "Informe um número de integrantes válido");
+        }
     }
 
 }

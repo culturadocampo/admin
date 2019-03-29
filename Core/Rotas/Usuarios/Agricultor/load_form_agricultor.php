@@ -58,18 +58,7 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
             <label for="integrantes_upf">Número de integrantes da UPF</label>
             <input pattern="\d+" name="integrantes_upf" type="text" class="form-control m-input" placeholder="Informe a quantidade">
         </div>
-        <div class="col-lg-6">
-            <label for="id_certificacao">Certificação orgânica</label>
-            <select name="id_certificacao" class="form-control selectpicker" data-live-search="true">
-                <?php if ($a_certificacoes) { ?>
 
-                    <?php foreach ($a_certificacoes as $value) { ?>
-                        <option value="<?php echo $value['id_certificacao']; ?>"><?php echo $value['descricao']; ?></option>
-                    <?php } ?>
-
-                <?php } ?>
-            </select>
-        </div>
     </div>
 </div>
 
