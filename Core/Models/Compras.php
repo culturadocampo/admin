@@ -7,6 +7,7 @@ class Compras {
     private $operador;
     private $fk_produtor;
     private $valor_total;
+    private $status_compra;
 
     function __construct() {
         $this->conn = DB::get_instance();
@@ -23,6 +24,10 @@ class Compras {
     
     function get_valor_total() {
         return $this->valor_total;
+    }
+    
+    function get_status_compra() {
+        return $this->status_compra;
     }
     
     function set_fk_operador() {
@@ -49,20 +54,37 @@ class Compras {
         }
     }
     
+    function set_status_compra($status) {
+        if (isset($status) && !empty($status)) {
+            if($status == "1"){
+                $this->status_compra = "2";
+            }else{
+                $this->status_compra = "0";
+            }
+        } else {
+            APP::return_response(false, "Por favor, selecione buscar o produto 'Sim' ou 'Não' ");
+        }
+    }
+    
     function insert_nova_compra() {
         $query = "
             INSERT INTO
                 compras
-            (fk_operador, fk_produtor, valor_total)
+            (fk_operador, fk_produtor, valor_total, status)
             VALUES 
             (
                 '{$this->get_fk_operador()}',
                 '{$this->get_fk_produtor()}',
-                '{$this->get_valor_total()}'
+                '{$this->get_valor_total()}',
+                '{$this->get_status_compra()}'
             )
         ";
         $this->conn->execute($query);
         return $this->conn->last_id();
+    }
+    
+    function select_todas_compras_filiada(){
+        
     }
 
 

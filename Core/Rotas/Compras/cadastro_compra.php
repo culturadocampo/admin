@@ -1,3 +1,11 @@
+<style>
+    #valor_total_compra{
+        font-size: 15px;
+        font-weight: bold;
+        color: green;
+    }
+</style>
+
 <div class="m-portlet">
     <div class="m-portlet__head">
         <div class="m-portlet__head-caption">
@@ -6,7 +14,7 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Dados Vendedor
+                    Nova Compra
                 </h3>
             </div>
         </div>
@@ -44,7 +52,7 @@
         $.ajax({
             type: "post",
             url: "compra/nova/insert",
-            data: {dados: array_produtos, fk_produtor: dados_extra['fk_produtor'], valor_total: dados_extra['valor_total']},
+            data: {dados: array_produtos, fk_produtor: dados_extra['fk_produtor'], valor_total: dados_extra['valor_total'], status_compra: dados_extra['status_compra']},
             success: function (response) {
                 lerResposta(response, load_form);
             }

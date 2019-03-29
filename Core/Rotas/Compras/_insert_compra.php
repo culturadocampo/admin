@@ -1,30 +1,50 @@
 <?php
-    $o_compra = new Compras();
-    $o_pedido = new Pedidos();
-    
-    $dados = $_POST['dados'];
-    
-    if(!isset($_POST['fk_produtor'])){
-        $_POST['fk_produtor'] = false;
-    }
-    
-    if(!isset($_POST['valor_total'])){
-        $_POST['valor_total'] = false;
-    }
-    
-    
+        $o_compra = new Compras();
+        $o_pedido = new Pedidos();
+        
     try {
+        
+        if(!isset($_POST['fk_produtor']) || empty($_POST['fk_produtor'])){
+            APP::return_response(false, "Por favor, selecione um agricultor");
+        }
+
+        if(!isset($_POST['status_compra']) || empty($_POST['status_compra'])){
+            APP::return_response(false, "Por favor, selecione buscar o produto 'Sim' ou 'Não'");
+        }
+
+        if(!isset($_POST['dados']) || empty($_POST['dados'])){
+           APP::return_response(false, "Por favor, adicione algum produto a sua compra");
+        }else{
+            $dados = $_POST['dados'];
+        }
+
+        if(!isset($_POST['valor_total']) || empty($_POST['valor_total'])){
+            APP::return_response(false, "Ocorreu algum problema na compra, tente novamente");
+        }
+    
         $db = DB::get_instance();
         $db->beginTransaction();
         
-        //Compra
+        /* 
+        COMPRA
+            Status
+            0 - Compra feita (Aguardando confirmação de entrada em estoque)
+            1 - Compra confirmada mas precisa buscar os produtos
+            2 - Compra confirmada e transferida para o estoque 
+         *  3 - Compra cancelada (Estornada)
+        */
         $o_compra->set_fk_operador();
         $o_compra->set_fk_produtor($_POST['fk_produtor']);
         $o_compra->set_valor_total($_POST['valor_total']);
+        $o_compra->set_status_compra($_POST['status_compra']);
         $id_compra = $o_compra->insert_nova_compra();
         
         
-        //Pedido
+        /*
+        PEDIDOS
+            0 - Pedido cancelado (Eornado)
+            1 - Pedido ativo
+        */
         foreach($dados as $value){
             $o_pedido->set_fk_compra($id_compra);
             $o_pedido->set_fk_categoria($value['categoria']);

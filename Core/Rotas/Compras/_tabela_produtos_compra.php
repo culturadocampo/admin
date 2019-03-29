@@ -56,11 +56,7 @@
             </tbody>
         </table>
         <div id="valor_total_compra" class="text-right">
-          
-        </div>
-    <?php } else { ?>
-        <div class="alert alert-primary" role="alert">
-            Nenhum produto foi adicionado até o momento !
+            
         </div>
     <?php } ?>
     

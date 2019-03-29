@@ -17,7 +17,14 @@
                     <?php } ?>
                 <?php } ?>
             </select>
-        </div>     
+        </div>  
+        <div class="col-lg-6">
+            <select data-style="btn-outline-info" name="status_compra" id="status_compra" class="form-control selectpicker">
+                <option selected="" disabled=""> Buscar Produto </option>
+                <option  value="1"> Sim </option>
+                <option  value="2"> Não </option>
+            </select>
+        </div>
     </div>	 
 </div>
 
@@ -27,8 +34,8 @@
             <span class="m-portlet__head-icon m--hide">
                 <i class="la la-gear"></i>
             </span>
-            <h3 class="m-portlet__head-text">
-                Produtos
+            <apan class="m-portlet__head-text">
+                Lista de Produtos
             </h3>
         </div>
     </div>
@@ -52,15 +59,15 @@
         </div>
         
         <div class="col-md-2">
-            <input name="qtd" id="qtd" type="text" class="form-control m-input text-center" placeholder="Quantidade">
-        </div>
-        
-        <div class="col-md-2">
             <select name="medida" id="medida" class="form-control m-input selectpicker text-center">
                 <option selected="true" disabled="true" value="">Medida </option>
                 <option value="1"> Unidade </option>
                 <option value="2"> KG </option>
             </select>
+        </div>
+        
+        <div class="col-md-2">
+            <input name="qtd" disabled="true" id="qtd" type="text" class="form-control m-input text-center" placeholder="Quantidade">
         </div>
         
         <div class="col-md-2">
@@ -91,11 +98,13 @@
             let medida = $("#medida").val();
             let valor = $("#valor").val();
             
-            array_produtos.push({categoria: categoria, produto: produto, medida: medida, qtd: qtd, valor: valor});
-            
-            $("#compra_tabela").load("compra/tabela", {array_produtos: array_produtos}, function () {
-                unblockPage();
-            });
+            if(categoria && produto && qtd && medida && valor){
+                array_produtos.push({categoria: categoria, produto: produto, medida: medida, qtd: qtd, valor: valor});
+
+                $("#compra_tabela").load("compra/tabela", {array_produtos: array_produtos}, function () {
+                    unblockPage();
+                });
+            }
         });
     }
     
@@ -121,10 +130,35 @@
         });
     }
     
+    function select_buscar_produto(){
+        $("#status_compra").off("change");
+        $("#status_compra").on("change", function () {
+            dados_extra['status_compra'] = $(this).val();
+        });
+    }
+    
+    function select_medida(){
+        $("#medida").off("change");
+        $("#medida").on("change", function () {
+            $("#qtd").attr("disabled", false);
+            $("#qtd").val("");
+            var medida = $(this).val();
+            
+            if(medida == "1"){
+               $('#qtd').mask("#", {reverse: true});
+            }else{
+                $('#qtd').mask("000.000.000.000", {reverse: true});
+            }
+        });
+    }
+    
+    
     $(document).ready(function () { 
         buscar_produtos();
         load_tabela();
         select_produtor();
+        select_buscar_produto();
+        select_medida();
         
         $(".selectpicker").selectpicker();
         $('.cpf').mask("000.000.000-00");

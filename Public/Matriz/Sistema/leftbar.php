@@ -208,7 +208,7 @@
                         <?php } ?>
                         <?php if (APP::has_permissao(27)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
-                                <a href="#" class="m-menu__link ">
+                                <a href="listagem/compras" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
                                     </i><span class="m-menu__link-text ">Lista de Compras</span>
                                 </a>

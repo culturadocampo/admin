@@ -84,6 +84,7 @@ function lerResposta(response, callback) {
                 callback();
             }
             notify(data.message, 'alert-success');
+            window.location.reload();
         } else {
             unblockPage();
             notify(data.message, 'alert-danger');
