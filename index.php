@@ -11,7 +11,7 @@ spl_autoload_register("autoload");
 date_default_timezone_set(CONFIG::$TIMEZONE);
 
 function error_handler($errno, $errstr, $errfile, $errline) {
-    
+
     if (!(error_reporting() & $errno)) {
         // This error code is not included in error_reporting, so let it fall
         // through to the standard PHP error handler
@@ -74,6 +74,12 @@ function autoload($class) {
     }
 }
 
+/**
+ * (re)cria o .htaccess caso não exista
+ */
+if (!is_file(".htaccess")) {
+    APP::check_htaccess();
+}
+
 session_start();
-//APP::check_htaccess();
 APP::start();
