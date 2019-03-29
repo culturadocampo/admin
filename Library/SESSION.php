@@ -62,6 +62,14 @@ class SESSION {
             return false;
         }
     }
+    
+    static function get_id_filiado() {
+        if (isset($_SESSION['id_filiado']) && is_numeric($_SESSION['id_filiado'])) {
+            return STRINGS::limpar($_SESSION['id_filiado']);
+        } else {
+            return false;
+        }
+    }
 
     static function get_email_usuario() {
         if (isset($_SESSION['email_usuario'])) {

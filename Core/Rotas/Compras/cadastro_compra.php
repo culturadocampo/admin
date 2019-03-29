@@ -54,7 +54,15 @@
             url: "compra/nova/insert",
             data: {dados: array_produtos, fk_produtor: dados_extra['fk_produtor'], valor_total: dados_extra['valor_total'], status_compra: dados_extra['status_compra']},
             success: function (response) {
-                lerResposta(response, load_form);
+                var res;
+                res = lerResposta(response, load_form);
+                
+                if(res){
+                    array_produtos.length = 0;    
+                    dados_extra.length = 0;
+                }else{
+                    swal("nao entrou noif");
+                }
             }
         });
     }

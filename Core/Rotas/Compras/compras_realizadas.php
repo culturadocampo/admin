@@ -4,7 +4,8 @@
     echo "</pre>";
     
     $o_compras = new Compras();
-    $compras   = $o_compras->select_todas_compras_filiado();
+    $id_filiado = SESSION::get_id_filiado();
+    $compras   = $o_compras->select_todas_compras_filiado($id_filiado);
 ?>
 
 <div class="col-md-12">

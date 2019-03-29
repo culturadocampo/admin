@@ -3,6 +3,8 @@
         $o_pedido = new Pedidos();
         
     try {
+        $db = DB::get_instance();
+        $db->beginTransaction();
         
         if(!isset($_POST['fk_produtor']) || empty($_POST['fk_produtor'])){
             APP::return_response(false, "Por favor, selecione um agricultor");
@@ -22,8 +24,6 @@
             APP::return_response(false, "Ocorreu algum problema na compra, tente novamente");
         }
     
-        $db = DB::get_instance();
-        $db->beginTransaction();
         
         /* 
         COMPRA
@@ -33,11 +33,9 @@
             2 - Compra confirmada e transferida para o estoque 
          *  3 - Compra cancelada (Estornada)
         */
-        $o_compra->set_fk_operador();
-        $o_compra->set_fk_produtor($_POST['fk_produtor']);
         $o_compra->set_valor_total($_POST['valor_total']);
         $o_compra->set_status_compra($_POST['status_compra']);
-        $id_compra = $o_compra->insert_nova_compra();
+        $id_compra = $o_compra->insert_nova_compra($_POST['fk_produtor']);
         
         
         /*

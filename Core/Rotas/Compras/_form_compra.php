@@ -1,6 +1,7 @@
 <?php
         $o_agricultor = new Agricultor();
-        $produtores = $o_agricultor->select_todos_trabalhadores_rurais($_SESSION['id_filiado']);
+        $fk_filiado = SESSION::get_id_filiado();
+        $produtores = $o_agricultor->select_todos_agricultores_filiado($fk_filiado);
 
         $categoriasProd = new CategoriaProdutos();
         $categorias = $categoriasProd->select_todas_categorias();
@@ -11,16 +12,16 @@
         <div class="col-lg-6">
             <select data-live-search="true" data-style="btn-outline-info" name="id_agricultor" id="id_agricultor" class="form-control selectpicker">
                 <?php if ($produtores) { ?>
-                    <option selected="" disabled=""> Produtores </option>
+                    <option selected="" disabled=""> Agricultores </option>
                     <?php foreach ($produtores as $value) { ?>
-                        <option  value="<?php echo $value['fk_usuario']; ?>"> <?php echo $value['nome'] . ' ' . $value['cpf']; ?> </option>
+                        <option  value="<?php echo $value['fk_usuario']; ?>"> <?php echo $value['nome'] . ' | ' . $value['cpf']; ?> </option>
                     <?php } ?>
                 <?php } ?>
             </select>
         </div>  
         <div class="col-lg-6">
             <select data-style="btn-outline-info" name="status_compra" id="status_compra" class="form-control selectpicker">
-                <option selected="" disabled=""> Buscar Produto </option>
+                <option selected="" disabled=""> Transporte </option>
                 <option  value="1"> Sim </option>
                 <option  value="2"> Não </option>
             </select>
