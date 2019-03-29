@@ -104,6 +104,8 @@
                 $("#compra_tabela").load("compra/tabela", {array_produtos: array_produtos}, function () {
                     unblockPage();
                 });
+            }else{
+                swal("Por favor, preecha todos os campo");
             }
         });
     }
@@ -147,7 +149,7 @@
             if(medida == "1"){
                $('#qtd').mask("#", {reverse: true});
             }else{
-                $('#qtd').mask("000.000.000.000", {reverse: true});
+                $('#qtd').mask("000.000.000", {reverse: true});
             }
         });
     }
@@ -161,7 +163,6 @@
         select_medida();
         
         $(".selectpicker").selectpicker();
-        $('.cpf').mask("000.000.000-00");
         $('.valor_pro').maskMoney({decimal: '.', thousands: ''});
     });
 </script>

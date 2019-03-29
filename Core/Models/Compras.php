@@ -8,6 +8,7 @@ class Compras {
     private $fk_produtor;
     private $valor_total;
     private $status_compra;
+    private $fk_filiado;
 
     function __construct() {
         $this->conn = DB::get_instance();
@@ -16,6 +17,11 @@ class Compras {
     function get_fk_operador() {
         $this->operador = $_SESSION['id_usuario'];
         return $this->operador;
+    }
+    
+    function get_fk_filiado() {
+        $this->fk_filiado = $_SESSION['id_filiado'];
+        return $this->fk_filiado;
     }
     
     function get_fk_produtor() {
@@ -33,6 +39,14 @@ class Compras {
     function set_fk_operador() {
         if (isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])) {
             $this->operador = $_SESSION['id_usuario'];
+        } else {
+            APP::return_response(false, "Erro: Por favor relogue do sistema");
+        }
+    }
+    
+    function set_fk_filiado() {
+        if (isset($_SESSION['id_filiado']) && !empty($_SESSION['id_filiado'])) {
+            $this->fk_filiada = $_SESSION['id_filiado'];
         } else {
             APP::return_response(false, "Erro: Por favor relogue do sistema");
         }
@@ -70,11 +84,12 @@ class Compras {
         $query = "
             INSERT INTO
                 compras
-            (fk_operador, fk_produtor, valor_total, status)
+            (fk_operador, fk_produtor, fk_filiada, valor_total, status)
             VALUES 
             (
                 '{$this->get_fk_operador()}',
                 '{$this->get_fk_produtor()}',
+                '{$this->get_fk_filiada()}',
                 '{$this->get_valor_total()}',
                 '{$this->get_status_compra()}'
             )
@@ -83,8 +98,19 @@ class Compras {
         return $this->conn->last_id();
     }
     
-    function select_todas_compras_filiada(){
-        
+    function select_todas_compras_filiado(){
+        //  [id_filiado] => 4
+        //  [id_usuario] => 168
+        $query = "
+            SELECT
+                *
+            FROM compras
+            WHERE TRUE
+                AND fk_filiado = '{$_SESSION['id_filiado']}'
+            ORDER BY
+               id_compra
+        ";
+        return $this->conn->fetch_all($query);
     }
 
 
