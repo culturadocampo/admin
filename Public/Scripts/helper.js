@@ -84,13 +84,14 @@ function lerResposta(response, callback) {
                 callback();
             }
             notify(data.message, 'alert-success');
-            return true;
         } else {
             unblockPage();
             notify(data.message, 'alert-danger');
         }
+        return data.result;
     } else {
         unblockPage();
         notify("Resposta inesperada do servidor", 'alert-danger');
+        return false;
     }
 }
