@@ -28,11 +28,19 @@ class Compras {
     }
     
     function set_status_compra($status) {
+        /* 
+        COMPRA
+            Status
+            1 - Compra feita e confirmada
+            2 - Compra confirmada mas precisa buscar os produtos
+         *  0 - Compra cancelada (Estornada)
+        */
+        
         if (isset($status) && !empty($status)) {
             if($status == "1"){
                 $this->status_compra = "2";
             }else{
-                $this->status_compra = "0";
+                $this->status_compra = "1";
             }
         } else {
             APP::return_response(false, "Por favor, selecione buscar o produto 'Sim' ou 'Não' ");

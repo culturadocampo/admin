@@ -27,11 +27,10 @@
         
         /* 
         COMPRA
-            Status
-            0 - Compra feita (Aguardando confirmação de entrada em estoque)
-            1 - Compra confirmada mas precisa buscar os produtos
-            2 - Compra confirmada e transferida para o estoque 
-         *  3 - Compra cancelada (Estornada)
+        Status
+        1 - Compra feita e confirmada
+        2 - Compra confirmada mas precisa buscar os produtos
+        3 - Compra cancelada (Estornada)
         */
         $o_compra->set_valor_total($_POST['valor_total']);
         $o_compra->set_status_compra($_POST['status_compra']);
