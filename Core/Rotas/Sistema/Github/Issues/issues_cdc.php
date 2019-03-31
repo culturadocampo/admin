@@ -10,7 +10,14 @@
                 </h3>
             </div>
         </div>
-     
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a target="_blank" href="https://github.com/culturadocampo/admin/issues/new" class="m-portlet__nav-link m-portlet__nav-link--icon"><i style="color:white" class=" la la-plus "></i></a>
+                </li>
+
+            </ul>
+        </div>
     </div>
     <div id="tabela_issues" class="m-portlet__body">	
 
@@ -21,9 +28,7 @@
 
 <script>
     $(document).ready(function () {
-        $(".datatable").DataTable({
-            paging: false
-        });
+      
 
         blockPage();
         $("#tabela_issues").load("sistema/issues/tabela", {}, function () {

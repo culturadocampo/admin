@@ -15,13 +15,13 @@ $issues = GITHUB::get_issues();
         <?php if ($issues) { ?>
 
             <?php foreach ($issues as $value) { ?>
-                <tr style="border-bottom: 1px solid black!important; background: #fefefe">
+                <tr style="background: #fefefe">
                     <td>
                         <span class="text-dark" style="font-size: 14px">
                             <a href="<?php echo $value['html_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></span>
                         <?php if ($value['labels']) { ?>
                             <?php foreach ($value['labels'] as $label) { ?>
-                                <label class="badge" style="background-color: #<?php echo $label['color'] ?>"><?php echo $label['name']; ?></label>
+                                <label class="badge" style="color: white; background-color: #<?php echo $label['color'] ?>"><?php echo $label['name']; ?></label>
                             <?php } ?>
                         <?php } ?>
 
@@ -62,5 +62,10 @@ $issues = GITHUB::get_issues();
 </tbody>
 </table>
 
-<?php
-//ARRAYS::pre_print($issues, false);
+<script>
+    $(document).ready(function () {
+        $(".datatable").DataTable({
+            paging: false
+        });
+    });
+</script>
