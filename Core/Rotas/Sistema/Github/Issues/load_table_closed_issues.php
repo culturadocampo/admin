@@ -1,8 +1,8 @@
 <?php
-$issues = GITHUB::get_opened_issues();
+$issues = GITHUB::get_closed_issues();
 ?> 
 
-<table id="table_opened_issues" class="table table-hover animated fadeIn" style="border: 1px solid #ECEFF1;">
+<table id="table_closed_issues" class="table table-hover animated fadeIn" style="border: 1px solid #ECEFF1;">
     <thead style="display: none">
         <tr>
             <td>Título</td>
@@ -18,18 +18,18 @@ $issues = GITHUB::get_opened_issues();
                 <tr style="background: #fefefe">
                     <td>
                         <span class="text-dark" style="font-size: 14px">
-                            <a href="<?php echo $value['html_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></span>
+                            <a style="text-decoration:line-through;" href="<?php echo $value['html_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></span>
                         <?php if ($value['labels']) { ?>
                             <?php foreach ($value['labels'] as $label) { ?>
-                                <label class="badge" style="color: white; background-color: #<?php echo $label['color'] ?>"><?php echo $label['name']; ?></label>
+                                <!--<label class="badge" style="color: white; background-color: #<?php // echo $label['color'] ?>"><?php // echo $label['name']; ?></label>-->
                             <?php } ?>
                         <?php } ?>
 
                         <br>
                         <small class="text-muted">
                             #<?php echo $value['number']; ?> 
-                            aberto no dia <?php echo strftime("%d de %b, %Y", strtotime($value['created_at'])); ?>
-                            por <strong><?php echo $value['user']['login']; ?></strong>
+                            <strong>fechado</strong> no dia <?php echo strftime("%d de %b, %Y", strtotime($value['closed_at'])); ?>
+                            
                         </small>
                     </td>
 
@@ -57,8 +57,8 @@ $issues = GITHUB::get_opened_issues();
 
         <?php } else { ?>
             <tr>
-                <td colspan="4" class="text-center">Nada encontrado. Clique <u><a target="_blank" href="https://github.com/culturadocampo/admin/issues/new">aqui</a></u> para criar uma agora.</td>
-            </tr>          
+                <td colspan="4" class="text-center">Nenhuma issues fechada.</td>
+            </tr>
         <?php } ?>
 
     </tbody>
@@ -66,7 +66,7 @@ $issues = GITHUB::get_opened_issues();
 
 <script>
     $(document).ready(function () {
-        $("#table_opened_issues").DataTable({
+        $("#table_closed_issues").DataTable({
             paging: false
         });
     });

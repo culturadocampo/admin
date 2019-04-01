@@ -34,11 +34,19 @@ body{
 
 .m-portlet--blue .m-portlet__head .m-portlet__head-text{
     color: white!important;
-
 }
 .m-portlet--blue .m-portlet__head{
     background-color: #007AFF!important; 
     border-color: #007AFF!important;
+    height: 50px!important;
+}
+
+.m-portlet--green .m-portlet__head .m-portlet__head-text{
+    color: white!important;
+}
+.m-portlet--green .m-portlet__head{
+    background-color: #32B600!important; 
+    border-color: #32B600!important;
     height: 50px!important;
 }
 

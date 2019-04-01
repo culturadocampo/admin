@@ -40,6 +40,21 @@ function unblockPage() {
     mApp.unblockPage();
 }
 
+function blockElement(element) {
+    mApp.block(element, {
+        overlayColor: '"#4CAF50"',
+        type: 'loader',
+        state: 'primary',
+        message: 'Carregando...'
+    });
+
+}
+function unblockElement(element) {
+    mApp.unblock(element);
+}
+
+
+
 function loadingBar(boolean) {
     if (boolean) {
         $("#my-page").addClass("animate_bar");
