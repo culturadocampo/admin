@@ -80,6 +80,8 @@
                     {estado_long: endereco.state, estado_short: endereco.state, municipio: endereco.city}, function () {
                 $("#load_input_estado_municipio").slideDown();
             });
+            var geocoding_address = "Brazil " + endereco.state + " " + endereco.city + " " + endereco.district + " " + endereco.address;
+            geocoding(geocoding_address, 15);
         } else {
             $("#endereco_from_cep input").val('');
             notify("CEP não encontrado", "alert-danger");

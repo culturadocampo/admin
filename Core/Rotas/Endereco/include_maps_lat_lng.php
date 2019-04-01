@@ -3,7 +3,7 @@
         <div class="col-md-12">
 
             <div class="btn-group mr-2" role="group" aria-label="Second group">
-                <button type="button" id="me_encontre" class="btn btn-info"><span class="flaticon-map-location m--margin-right-10"></span>Tente me encontrar no mapa</button>
+                <button type="button" id="me_encontre" class="btn btn-dark"><span class="flaticon-map-location m--margin-right-10"></span>Usar geolocalização</button>
                 <button type="button" id="reset_geolocation" class="btn btn-danger" disabled><span class="fa  fa-times "></span></button>
             </div>
             <br>

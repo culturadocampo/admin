@@ -1,8 +1,8 @@
 <?php
 $o_certificacao = new Certificacao();
+$a_certificacoes = $o_certificacao->select_todas_certificacoes();
 
 $id_tipo_usuario = SESSION::get_id_tipo_usuario();
-$a_certificacoes = $o_certificacao->select_todas_certificacoes();
 ?>
 
 <?php if ($id_tipo_usuario <> 5 && $id_tipo_usuario <> 3) { ?>
