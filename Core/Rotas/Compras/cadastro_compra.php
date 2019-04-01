@@ -60,8 +60,6 @@
                 if(res){
                     array_produtos.length = 0;    
                     dados_extra.length = 0;
-                }else{
-                    swal("nao entrou noif");
                 }
             }
         });

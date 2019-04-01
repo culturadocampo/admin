@@ -164,6 +164,6 @@
         select_medida();
         
         $(".selectpicker").selectpicker();
-        $('.valor_pro').maskMoney({decimal: '.', thousands: ''});
+        $('.valor_pro').maskMoney({decimal: ',', thousands: '.'});
     });
 </script>

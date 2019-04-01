@@ -120,6 +120,18 @@ class Agricultor {
 	";
         return $this->conn->fetch_all($query);
     }
+    
+    function select_agricultor_filial($id_agricultor) {
+        $query = "
+            SELECT 
+                nome
+            FROM 
+                usuarios
+            WHERE 
+                id_usuario = '$id_agricultor'
+        ";
+        return $this->conn->fetch($query);
+    }
 
     function getCaepf() {
         return $this->caepf;

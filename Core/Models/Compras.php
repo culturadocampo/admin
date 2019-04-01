@@ -80,6 +80,16 @@ class Compras {
         ";
         return $this->conn->fetch_all($query);
     }
+    
+    function efetivar_compra($id_compra){
+        $query = "
+            UPDATE compras
+            SET
+                status = '1'
+            WHERE id_compra = '{$id_compra}'
+        ";
+        $this->conn->execute($query);
+    }
 
 
 }
