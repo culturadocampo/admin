@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div id="tabela_compras" class="pointer">
+        <div id="tabela_compras">
             
         </div>
         

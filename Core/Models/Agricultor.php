@@ -48,13 +48,13 @@ class Agricultor {
 
     function select_todos_agricultores_filiado($fk_filiado) {
         $query = "SELECT
-                    fk_usuario,
+                    fk_agricultor,
                     usuarios.nome,
                     usuarios.cpf
                  FROM
                     xref_agricultores_filiados
                  INNER JOIN
-                    usuarios ON id_usuario = fk_usuario
+                    usuarios ON id_usuario = fk_agricultor
                  WHERE 
                     fk_filiado = '{$fk_filiado}'";
 

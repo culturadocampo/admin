@@ -20,14 +20,14 @@ class Pedidos {
         return $this->conn->fetch_all($query);
     }
     
-    function insert_novo_pedido() {
+    function insert_novo_pedido($id_compra) {
         $query = "
             INSERT INTO
                 pedidos
             (fk_compra, fk_categoria, fk_produto, produto_medida, qtd, valor)
             VALUES 
             (
-                '{$this->get_fk_compra()}',
+                '{$id_compra}',
                 '{$this->get_fk_categoria()}',
                 '{$this->get_fk_produto()}',
                 '{$this->get_produto_medida()}',

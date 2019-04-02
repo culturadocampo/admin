@@ -2,7 +2,7 @@
         $o_agricultor = new Agricultor();
         $fk_filiado = SESSION::get_id_filiado();
         $produtores = $o_agricultor->select_todos_agricultores_filiado($fk_filiado);
-
+        
         $categoriasProd = new CategoriaProdutos();
         $categorias = $categoriasProd->select_todas_categorias();
 ?>
@@ -14,7 +14,7 @@
                 <?php if ($produtores) { ?>
                     <option selected="" disabled=""> Agricultores </option>
                     <?php foreach ($produtores as $value) { ?>
-                        <option  value="<?php echo $value['fk_usuario']; ?>"> <?php echo $value['nome'] . ' | ' . $value['cpf']; ?> </option>
+                        <option  value="<?php echo $value['fk_agricultor']; ?>"> <?php echo $value['nome'] . ' | ' . $value['cpf']; ?> </option>
                     <?php } ?>
                 <?php } ?>
             </select>

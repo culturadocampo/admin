@@ -15,6 +15,7 @@
     <thead>
         <tr>
             <th class="text-center"> ID </th>
+            <th class="text-center"> Detalhe </th>
             <th class="text-center"> Status </th>
             <th class="text-center"> Produtor </th>
             <th class="text-center"> Valor Total </th>
@@ -28,9 +29,12 @@
                 $nome_agricultor = $o_agricultor->select_agricultor_filial($compra['fk_produtor']);
 
             ?>
-                <tr class="tr_compras_realizadas" id_compra="<?php echo $compra['id_compra']; ?>">
+                <tr class="tr_compras_realizadas">
                     <td class="text-center">  
                         <?php echo $compra['id_compra']; ?>
+                    </td>
+                    <td class="text-center">  
+                        <button type="button" id_compra="<?php echo $compra['id_compra']; ?>" class="btn btn-primary btn-sm detalhe"> <span class="flaticon-medical btn-sm"> </span></button>
                     </td>
                     <td class="text-center">  
                         <?php 
@@ -41,15 +45,17 @@
                             }else{
                                 echo "Compra cancelada";
                             }
-
                         ?>
                     </td>
+                    
                     <td class="text-center">  
                         <?php echo $nome_agricultor['nome']; ?>
                     </td>
+                    
                     <td class="text-center">  
-                        <?php echo "R$ " . MOEDA::moeda_eua_para_br($compra['valor_total']); ?>
+                        <?php echo "R$ " . MOEDA::moeda_mysql_para_br($compra['valor_total']); ?>
                     </td>
+                    
                     <td class="text-center">  
                         <?php if(!$compra['nf']){ ?>
                             <button type="button" id="adicionar_produto" class="btn btn-primary btn-sm"> Gerar  </button>
@@ -58,6 +64,7 @@
                             <button type="button" id="adicionar_produto" class="btn btn-danger btn-sm"> <span class="flaticon2-delete btn-sm"> </span></button>
                         <?php } ?>
                     </td>
+                    
                     <td class="text-center">  
                         <?php if($compra['status'] == 2){ ?> 
                             <button type="button" id="efetivar_compra" class="btn btn-primary btn-sm" id_compra="<?php echo $compra['id_compra']; ?>"> Efetivar </button>
@@ -67,7 +74,6 @@
                             <button type="button" class="btn btn-success btn-sm"> Recibo </button>
                         <?php } ?>
                     </td>
-
                 </tr>
             <?php } ?>
     </tbody>
@@ -93,15 +99,14 @@
     }
     
     function abrir_compra_detalhada(){
-        $("#table_compras_realizadas tbody").off("click", ".tr_compras_realizadas");
-        $("#table_compras_realizadas tbody").on("click", ".tr_compras_realizadas", function () {
+        $(".detalhe").on("click", function () {
             var id_compra = $(this).attr('id_compra');
+            console.log(id_compra);
       
-            
-             window.open (
+            window.open (
                 'detalhe/compra/'+id_compra,
                 'detalhe',
-                "width=1024, height=624, top=250, left=250, scrollbars=yes"
+                "width=1024, height=624, top=250, left=250"
             );
         });
     }

@@ -81,6 +81,17 @@ class Compras {
         return $this->conn->fetch_all($query);
     }
     
+    function select_compra_especificada($id_compra){
+        $query = "
+            SELECT
+                *
+            FROM compras
+            WHERE TRUE
+                AND id_compra = '{$id_compra}'
+        ";
+        return $this->conn->fetch($query);
+    }
+    
     function efetivar_compra($id_compra){
         $query = "
             UPDATE compras

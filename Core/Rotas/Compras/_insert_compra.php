@@ -11,7 +11,7 @@
         }
 
         if(!isset($_POST['status_compra']) || empty($_POST['status_compra'])){
-            APP::return_response(false, "Por favor, selecione buscar o produto 'Sim' ou 'Não'");
+            APP::return_response(false, "Por favor, selecione transporte 'Sim' ou 'Não'");
         }
 
         if(!isset($_POST['dados']) || empty($_POST['dados'])){
@@ -43,13 +43,14 @@
             1 - Pedido ativo
         */
         foreach($dados as $value){
+            $value['valor'] = MOEDA::moeda_br_para_mysql($value['valor']);
             $o_pedido->set_fk_compra($id_compra);
             $o_pedido->set_fk_categoria($value['categoria']);
             $o_pedido->set_fk_produto($value['produto']);
             $o_pedido->set_produto_medida($value['medida']);
             $o_pedido->set_qtd($value['qtd']);
             $o_pedido->set_valor($value['valor']);
-            $o_pedido->insert_novo_pedido();
+            $o_pedido->insert_novo_pedido($id_compra);
         }
         
         $db->commit();
