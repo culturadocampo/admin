@@ -120,7 +120,7 @@ class Agricultor {
 	";
         return $this->conn->fetch_all($query);
     }
-    
+
     function select_agricultor_filial($id_agricultor) {
         $query = "
             SELECT 
@@ -131,6 +131,19 @@ class Agricultor {
                 id_usuario = '$id_agricultor'
         ";
         return $this->conn->fetch($query);
+    }
+
+    function insert_vinculo_agricultor_filiado($id_agricultor, $id_filiado) {
+        $query = "
+            INSERT INTO 
+                xref_agricultores_filiados
+            (fk_agricultor, fk_filiado)
+            VALUES(
+                '{$id_agricultor}',
+                '{$id_filiado}'
+            )
+        ";
+        $this->conn->execute($query);
     }
 
     function getCaepf() {

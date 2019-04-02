@@ -32,6 +32,9 @@ try {
                         $o_cookie->insert_cookie($token, $id_usuario);
                         setcookie("REMEMBER_ME", $token, time() + CONFIG::$LOGIN_COOKIE_LIFETIME, "/");
                     }
+                    /**
+                     * Adicionar aqui mais 1 retorno com a url base, caso a request anterior nao exista
+                     */
                     APP::return_response(true, "Aguarde...");
                 } else {
                     $o_usuario->insert_failed_login_attempt($o_usuario->get_senha(), $ip);

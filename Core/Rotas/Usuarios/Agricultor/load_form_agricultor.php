@@ -1,7 +1,12 @@
 <?php
 $o_certificacao = new Certificacao();
+$o_estado_civil = new EstadoCivil();
+$o_comunhao = new ComunhaoBens();
+
 $id_tipo_usuario = SESSION::get_id_tipo_usuario();
 $a_certificacoes = $o_certificacao->select_todas_certificacoes();
+$a_estado_civil = $o_estado_civil->select_todos_estados_civis();
+$a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
 ?>
 
 <form id="form_agricultor" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
@@ -56,12 +61,12 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
 
 
                 <div class="form-group m-form__group row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label for="rg">RG</label>
                         <input name="rg" type="text" class="form-control m-input" placeholder="RG do usuário">
                         <span class="m-form__help">Somente números</span>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
 
                         <label for="caepf">CAEPF</label>
                         <input name="caepf" type="text" class="form-control m-input caepf" placeholder="Cadastro de Atividade Econômica da Pessoa Física">
@@ -70,7 +75,7 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label for="integrantes_upf">Número de integrantes da UPF</label>
                         <input pattern="\d+" name="integrantes_upf" type="text" class="form-control m-input" placeholder="Informe a quantidade">
                     </div>
@@ -89,7 +94,7 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
                         <i class="la la-gear"></i>
                     </span>
                     <h3 class="m-portlet__head-text">
-                        2. Cadastro de propriedade
+                        2. Sociedade conjugal
                     </h3>
                 </div>
             </div>
@@ -97,7 +102,55 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
         <div  class="m-portlet__body">
             <div class="col-md-12">
                 <div class="form-group m-form__group row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
+                        <label for="id_estado_civil">Estado civil</label>
+                        <select id="estado_civil" data-style="btn-outline-info"  name="id_estado_civil" class="form-control" data-live-search="true">
+                            <?php if ($a_estado_civil) { ?>
+                                <?php foreach ($a_estado_civil as $value) { ?>
+                                    <option value="<?php echo $value['id_estado_civil']; ?>"><?php echo $value['estado_civil']; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row" id="informacoes_conjuge" style="display: none">
+                    <div class="col-md-6">
+                        <label for="nome_conjuge">Nome do cônjuge</label>
+                        <input name="nome_conjuge" type="text" class="form-control m-input" placeholder="Nome completo do cônjuge">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="comunhao_bens">Comunhão de bens</label>
+                        <select data-style="btn-outline-info"  name="comunhao_bens" class="form-control selectpicker" data-live-search="true">
+                            <?php if ($a_comunhao_bens) { ?>
+                                <?php foreach ($a_comunhao_bens as $value) { ?>
+                                    <option value="<?php echo $value['id_comunhao']; ?>"><?php echo $value['comunhao_bens']; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon m--hide">
+                        <i class="la la-gear"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        3. Cadastro de propriedade
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div  class="m-portlet__body">
+            <div class="col-md-12">
+                <div class="form-group m-form__group row">
+                    <div class="col-md-6">
                         <label for="id_certificacao">Certificação orgânica</label>
                         <select data-style="btn-outline-info"  name="id_certificacao" class="form-control selectpicker" data-live-search="true">
                             <?php if ($a_certificacoes) { ?>
@@ -136,6 +189,21 @@ $a_certificacoes = $o_certificacao->select_todas_certificacoes();
             executar_cadastro();
         });
         $(".caepf").mask("000.000.000/000-00");
+
+
+        $("#estado_civil").selectpicker();
+        $("#estado_civil").off("change");
+        $("#estado_civil").on("change", function () {
+            var estadoCivil = $(this).val();
+            if (estadoCivil == 2) {
+                $("#informacoes_conjuge").slideDown();
+            } else {
+                $("#informacoes_conjuge").slideUp();
+            }
+            $("#estado_civil").selectpicker('destroy');
+            $("#estado_civil").selectpicker();
+
+        });
     });
 
     function executar_cadastro() {

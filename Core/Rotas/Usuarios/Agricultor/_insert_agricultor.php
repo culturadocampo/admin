@@ -31,7 +31,7 @@ try {
     $o_agricultor->setCaepf($_POST['caepf']);
     $o_agricultor->setRg($_POST['rg']);
     $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
-    $o_agricultor->insert_agricultor($id_usuario_agricultor);
+    $id_agricultor = $o_agricultor->insert_agricultor($id_usuario_agricultor);
 
     /**
      * Telefones
@@ -48,7 +48,7 @@ try {
 
 
     /**
-     * Vínculo filiado > usuário
+     * Vínculo agricultor > filiado
      */
     if (isset($_POST['id_filiado'])) {
         $id_filiado = $_POST['id_filiado'];
@@ -61,7 +61,7 @@ try {
     }
 
     if ($id_filiado) {
-        $o_filiado->insert_vinculo_usuario_filiado($id_usuario_agricultor, $id_filiado);
+        $o_agricultor->insert_vinculo_agricultor_filiado($id_agricultor, $id_filiado);
     }
 
 
