@@ -5,56 +5,7 @@
     <!-- BEGIN: Aside Menu -->
     <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
         <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow list-unstyled">
-            <li id="3" class="m-menu__section m-menu__section--first">
-                <h4 class="m-menu__section-text">Sistema</h4>
-                <i class="m-menu__section-icon flaticon-more-v2"></i>
-            </li>
-            <?php if (APP::has_permissao(31)) { ?>
-                <li class="m-menu__item " menu="3">
-                    <a href="sistema/github/issues" class="m-menu__link ">
-                        <i class=" m-menu__link-icon   flaticon-book  "></i>
-                        <span class="m-menu__link-text  ">GitHub Issues</span>
-                    </a>
-                </li>
-            <?php } ?>
-            <li menu="3" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon  flaticon-infinity    "></i>
-                    <span class="m-menu__link-text  ">Rotas de acesso</span>
-                    <i class="m-menu__ver-arrow la la-angle-right"></i>
-                </a>
-                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
-                     m-hidden-height="80"><span class="m-menu__arrow"></span>
-                    <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(1)) { ?>
-                            <li class="m-menu__item" aria-haspopup="true">
-                                <a href="sistema/rotas/adicionar" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Nova rota</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                        <?php if (APP::has_permissao(17)) { ?>
 
-                            <li class="m-menu__item " aria-haspopup="true">
-                                <a href="sistema/rotas/lista" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Todas as rotas</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-
-                    </ul>
-                </div>
-            </li>
-            <?php if (APP::has_permissao(7)) { ?>
-                <li class="m-menu__item " menu="3">
-                    <a href="sistema/permissoes" class="m-menu__link ">
-                        <i class=" m-menu__link-icon  flaticon-lock "></i>
-                        <span class="m-menu__link-text  ">Permissões de acesso</span>
-                    </a>
-                </li>
-            <?php } ?>
 
             <li id="1" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text  ">Controle</h4>
@@ -106,6 +57,64 @@
                 </div>
             </li>
 
+            <li id="3" class="m-menu__section m-menu__section--first">
+                <h4 class="m-menu__section-text">Sistema</h4>
+                <i class="m-menu__section-icon flaticon-more-v2"></i>
+            </li>
+            <?php if (APP::has_permissao(31)) { ?>
+                <li class="m-menu__item " menu="3">
+                    <a href="sistema/github/issues" class="m-menu__link ">
+                        <i class=" m-menu__link-icon   flaticon-book  "></i>
+                        <span class="m-menu__link-text  ">Github Issues</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <li menu="3" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon  flaticon-infinity    "></i>
+                    <span class="m-menu__link-text  ">Rotas de acesso</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(1)) { ?>
+                            <li class="m-menu__item" aria-haspopup="true">
+                                <a href="sistema/rotas/adicionar" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Nova rota</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (APP::has_permissao(17)) { ?>
+
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="sistema/rotas/lista" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Todas as rotas</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
+                    </ul>
+                </div>
+            </li>
+            <?php if (APP::has_permissao(7)) { ?>
+                <li class="m-menu__item " menu="3">
+                    <a href="sistema/permissoes" class="m-menu__link ">
+                        <i class=" m-menu__link-icon  flaticon-lock "></i>
+                        <span class="m-menu__link-text  ">Permissões de acesso</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php if (APP::has_permissao(52)) { ?>
+                <li class="m-menu__item " menu="3">
+                    <a href="sistema/docs" class="m-menu__link ">
+                        <i class=" m-menu__link-icon flaticon-file "></i>
+                        <span class="m-menu__link-text  ">Documentação</span>
+                    </a>
+                </li>
+            <?php } ?>
 
 
 

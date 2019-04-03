@@ -14,7 +14,7 @@ try {
             $o_cookie = new Cookie();
             $failed_attempts = $o_usuario->count_failed_login_attemps($ip);
 
-            if ($failed_attempts['total'] >= CONFIG::$LOGIN_NUMBER_ATTEMPS_DELAY) {
+            if ($failed_attempts['total'] >= CONFIG::$LOGIN_MAX_FAILED_ATTEMPTS) {
                 $micro_seconds = (CONFIG::$LOGIN_SLEEP_BASE_DELAY * $failed_attempts['total']) * 500000;
                 usleep($micro_seconds);
             }
