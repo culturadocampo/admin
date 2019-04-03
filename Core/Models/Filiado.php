@@ -17,6 +17,9 @@ class Filiado {
     private $nomeFantasia;
     private $razaoSocial;
     private $cnpj;
+    private $descontoFundoRural;
+    private $fundoCapital;
+    private $cotaCapital;
 
     function __construct() {
         $this->conn = DB::get_instance();
@@ -31,14 +34,20 @@ class Filiado {
                 fk_coletivo,
                 nome_fantasia,
                 razao_social,
-                cnpj
+                cnpj,
+                desconto_fundo_rural,
+                cota_capital,
+                fundo_capital
             )
             VALUES (
                 '{$id_endereco}',
                 '{$id_coletivo}',
                 '{$this->getNomeFantasia()}',
                 '{$this->getRazaoSocial()}',
-                '{$this->getCnpj()}'
+                '{$this->getCnpj()}',
+                '{$this->getDescontoFundoRural()}',
+                '{$this->getCotaCapital()}',
+                '{$this->getFundoCapital()}'
             )
         ";
         $this->conn->execute($query);
@@ -122,6 +131,42 @@ class Filiado {
             $this->cnpj = $cnpj;
         } else {
             APP::return_response(false, "Informe um CNPJ válido");
+        }
+    }
+
+    function getDescontoFundoRural() {
+        return $this->descontoFundoRural;
+    }
+
+    function getFundoCapital() {
+        return $this->fundoCapital;
+    }
+
+    function getCotaCapital() {
+        return $this->cotaCapital;
+    }
+
+    function setDescontoFundoRural($descontoFundoRural) {
+        if (is_numeric($descontoFundoRural) && $descontoFundoRural > 0) {
+            $this->descontoFundoRural = $descontoFundoRural;
+        } else {
+            APP::return_response(false, "FUNDO RURAL deve ser maior que zero");
+        }
+    }
+
+    function setFundoCapital($fundoCapital) {
+        if (is_numeric($fundoCapital) && $fundoCapital >= 0) {
+            $this->fundoCapital = $fundoCapital;
+        } else {
+            APP::return_response(false, "FUNDO CAPITAL deve ser igual ou maior que zero");
+        }
+    }
+
+    function setCotaCapital($cotaCapital) {
+        if ($cotaCapital) {
+            $this->cotaCapital = MOEDA::reais_to_centavos($cotaCapital);
+        } else {
+            APP::return_response(false, "Informe a COTA CAPITAL");
         }
     }
 

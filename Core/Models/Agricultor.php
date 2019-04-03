@@ -22,12 +22,13 @@ class Agricultor {
         $this->conn = DB::get_instance();
     }
 
-    function insert_agricultor($id_usuario) {
+    function insert_agricultor($id_usuario, $id_estado_civil) {
         $query = "
             INSERT INTO agricultores
-            (fk_usuario, caepf, rg, integrantes_upf)
+            (fk_usuario, fk_estado_civil, caepf, rg, integrantes_upf)
             VALUES(
                 '{$id_usuario}',
+                '{$id_estado_civil}',
                 '{$this->getCaepf()}',
                 '{$this->getRg()}',
                 '{$this->getIntegrantesUpf()}'

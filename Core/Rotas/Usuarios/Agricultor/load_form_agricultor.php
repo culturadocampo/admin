@@ -29,14 +29,14 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
                 <div class="col-md-12">
                     <div class="form-group m-form__group row">
                         <div class="col-md-12">
-                            <label for="rg">Associar à cooperativa/associação</label>
+                            <label for="rg">Associar à cooperativa/associação/grupo</label>
 
                             <?php
                             $o_filiado = new Filiado();
                             $a_filiado = $o_filiado->select_todos_filiados_ativos();
                             ?>
-                            <select data-live-search="" data-style="btn-outline-info" name="id_filiado" class="form-control selectpicker">
-                                <option value="">Não associar a nenhuma cooperativa/associação</option>
+                            <select data-live-search="true" data-style="btn-outline-info" name="id_filiado" class="form-control selectpicker">
+                                <option value="">Não associar a nenhuma cooperativa/associação/grupo</option>
 
                                 <?php if ($a_filiado) { ?>
                                     <?php foreach ($a_filiado as $value) { ?>
@@ -54,7 +54,36 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
             <?php include 'Core/Rotas/Usuarios/include_form_usuario.php'; ?>
             <?php include 'Core/Rotas/Usuarios/include_form_telefone.php'; ?>
 
-
+            <div class="col-md-12">
+                <div class="form-group m-form__group row">
+                    <div class="col-md-6">
+                        <label for="id_estado_civil">Estado civil</label>
+                        <select id="estado_civil" data-style="btn-outline-info"  name="id_estado_civil" class="form-control">
+                            <?php if ($a_estado_civil) { ?>
+                                <?php foreach ($a_estado_civil as $value) { ?>
+                                    <option value="<?php echo $value['id_estado_civil']; ?>"><?php echo $value['estado_civil']; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row" id="informacoes_conjuge" style="display: none">
+                    <div class="col-md-6">
+                        <label for="nome_conjuge">Nome do cônjuge</label>
+                        <input name="nome_conjuge" type="text" class="form-control m-input" placeholder="Nome completo do cônjuge">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="comunhao_bens">Comunhão de bens</label>
+                        <select data-style="btn-outline-info"  name="id_comunhao_bens" class="form-control selectpicker" data-live-search="true">
+                            <?php if ($a_comunhao_bens) { ?>
+                                <?php foreach ($a_comunhao_bens as $value) { ?>
+                                    <option value="<?php echo $value['id_comunhao']; ?>"><?php echo $value['comunhao_bens']; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-md-12">
 
@@ -62,8 +91,8 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
 
                 <div class="form-group m-form__group row">
                     <div class="col-md-6">
-                        <label for="rg">RG</label>
-                        <input name="rg" type="text" class="form-control m-input" placeholder="RG do usuário">
+                        <label for="rg">RG do agricultor</label>
+                        <input name="rg" type="text" class="form-control m-input" placeholder="Registro geral">
                         <span class="m-form__help">Somente números</span>
                     </div>
                     <div class="col-md-6">
@@ -82,57 +111,12 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
 
                 </div>
             </div>
+
         </div>
         <br>
     </div>
 
-    <div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
-        <div class="m-portlet__head">
-            <div class="m-portlet__head-caption">
-                <div class="m-portlet__head-title">
-                    <span class="m-portlet__head-icon m--hide">
-                        <i class="la la-gear"></i>
-                    </span>
-                    <h3 class="m-portlet__head-text">
-                        2. Sociedade conjugal
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <div  class="m-portlet__body">
-            <div class="col-md-12">
-                <div class="form-group m-form__group row">
-                    <div class="col-md-6">
-                        <label for="id_estado_civil">Estado civil</label>
-                        <select id="estado_civil" data-style="btn-outline-info"  name="id_estado_civil" class="form-control" data-live-search="true">
-                            <?php if ($a_estado_civil) { ?>
-                                <?php foreach ($a_estado_civil as $value) { ?>
-                                    <option value="<?php echo $value['id_estado_civil']; ?>"><?php echo $value['estado_civil']; ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group m-form__group row" id="informacoes_conjuge" style="display: none">
-                    <div class="col-md-6">
-                        <label for="nome_conjuge">Nome do cônjuge</label>
-                        <input name="nome_conjuge" type="text" class="form-control m-input" placeholder="Nome completo do cônjuge">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="comunhao_bens">Comunhão de bens</label>
-                        <select data-style="btn-outline-info"  name="comunhao_bens" class="form-control selectpicker" data-live-search="true">
-                            <?php if ($a_comunhao_bens) { ?>
-                                <?php foreach ($a_comunhao_bens as $value) { ?>
-                                    <option value="<?php echo $value['id_comunhao']; ?>"><?php echo $value['comunhao_bens']; ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div>
 
     <div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
         <div class="m-portlet__head">
@@ -142,7 +126,7 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
                         <i class="la la-gear"></i>
                     </span>
                     <h3 class="m-portlet__head-text">
-                        3. Cadastro de propriedade
+                        2. Cadastro de propriedade
                     </h3>
                 </div>
             </div>

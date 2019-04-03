@@ -7,6 +7,7 @@ $o_agricultor = new Agricultor();
 $o_endereco = new Endereco();
 $o_propriedade = new PropriedadeRural();
 $o_certificacao = new Certificacao();
+$o_conjuge = new Conjuge();
 
 try {
     $db = DB::get_instance();
@@ -31,8 +32,13 @@ try {
     $o_agricultor->setCaepf($_POST['caepf']);
     $o_agricultor->setRg($_POST['rg']);
     $o_agricultor->setIntegrantesUpf($_POST['integrantes_upf']);
-    $id_agricultor = $o_agricultor->insert_agricultor($id_usuario_agricultor);
+    $id_estado_civil = $_POST['id_estado_civil'];
+    $id_agricultor = $o_agricultor->insert_agricultor($id_usuario_agricultor, $id_estado_civil);
 
+    if ($id_estado_civil == 2) {
+        $o_conjuge->setNome($_POST['nome_conjuge']);
+        $o_conjuge->insert_conjuge($id_agricultor, $_POST['id_comunhao_bens']);
+    }
     /**
      * Telefones
      */

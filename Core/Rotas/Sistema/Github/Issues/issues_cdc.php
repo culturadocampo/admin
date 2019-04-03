@@ -6,7 +6,7 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Issues pendetes
+                    Issues abertas
                 </h3>
             </div>
         </div>
@@ -33,7 +33,7 @@
                     <i class="la la-gear"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    Issues finalizadas
+                    Issues fechadas
                 </h3>
             </div>
         </div>

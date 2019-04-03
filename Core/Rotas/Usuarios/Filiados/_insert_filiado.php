@@ -65,6 +65,11 @@ try {
     $o_filiado->setNomeFantasia($_POST['nome_fantasia']);
     $o_filiado->setRazaoSocial($_POST['razao_social']);
     $o_filiado->setCnpj($_POST['cnpj']);
+    
+    $o_filiado->setDescontoFundoRural($_POST['fundo_rural']);
+    $o_filiado->setFundoCapital($_POST['fundo_capital']);
+    $o_filiado->setCotaCapital($_POST['cota_capital']);
+    
     $id_filiado = $o_filiado->insert_filiado($o_coletivo->getIdColetivo(), $id_endereco);
     $o_filiado->insert_vinculo_usuario_filiado($id_usuario_filiado, $id_filiado);
 
