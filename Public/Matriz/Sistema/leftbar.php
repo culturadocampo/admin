@@ -14,11 +14,32 @@
             <?php if (APP::has_permissao(8)) { ?>
                 <li class="m-menu__item " menu="1">
                     <a href="inicio" class="m-menu__link ">
-                        <i class=" m-menu__link-icon   flaticon-presentation-1  "></i>
+                        <i class=" m-menu__link-icon  flaticon-dashboard   "></i>
                         <span class="m-menu__link-text  ">Início</span>
                     </a>
                 </li>
             <?php } ?>
+
+            <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon  flaticon-share  "></i>
+                    <span class="m-menu__link-text  ">Associação</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(53)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="associacao/criar" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Criar associação</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </li>
+
             <?php if (APP::has_permissao(13)) { ?>
                 <li class="m-menu__item " menu="1">
                     <a href="producao/cadastro" class="m-menu__link ">
@@ -27,6 +48,7 @@
                     </a>
                 </li>
             <?php } ?>
+
 
             <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
@@ -190,7 +212,7 @@
 
             <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon  flaticon-network  "></i>
+                    <i class="m-menu__link-icon   flaticon-avatar   "></i>
                     <span class="m-menu__link-text  ">Agricultores</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
