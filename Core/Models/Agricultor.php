@@ -78,9 +78,10 @@ class Agricultor {
     function select_todos_agricultores() {
         $query = "
             SELECT 
-                id_usuario, nome, cpf
+                id_agricultor, id_usuario, nome, cpf
             FROM 
                 usuarios
+            INNER JOIN agricultores ON fk_usuario = id_usuario
             WHERE TRUE
                 AND fk_tipo_usuario = 6
                 AND ativo = 1";

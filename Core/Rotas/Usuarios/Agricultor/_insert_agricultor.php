@@ -54,24 +54,6 @@ try {
 
 
     /**
-     * Vínculo agricultor > filiado
-     */
-    if (isset($_POST['id_filiado'])) {
-        $id_filiado = $_POST['id_filiado'];
-    } else {
-        if (SESSION::get_id_tipo_usuario() == 3) {
-            $id_filiado = $_SESSION['id_filiado'];
-        } else {
-            APP::return_response(false, "Ocorreu um erro: Filiado inválido");
-        }
-    }
-
-    if ($id_filiado) {
-        $o_agricultor->insert_vinculo_agricultor_filiado($id_agricultor, $id_filiado);
-    }
-
-
-    /**
      * Localização/Endereço
      */
     $id_estado = $o_endereco->get_id_from_uf($_POST['estado']);

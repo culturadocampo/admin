@@ -25,30 +25,7 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
             </div>
         </div>
         <div  class="m-portlet__body">	
-            <?php if ($id_tipo_usuario <> 5 && $id_tipo_usuario <> 3) { ?>
-                <div class="col-md-12">
-                    <div class="form-group m-form__group row">
-                        <div class="col-md-12">
-                            <label for="rg">Associar à cooperativa/associação/grupo</label>
-
-                            <?php
-                            $o_filiado = new Filiado();
-                            $a_filiado = $o_filiado->select_todos_filiados_ativos();
-                            ?>
-                            <select data-live-search="true" data-style="btn-outline-info" name="id_filiado" class="form-control selectpicker">
-                                <option value="">Não associar a nenhuma cooperativa/associação/grupo</option>
-
-                                <?php if ($a_filiado) { ?>
-                                    <?php foreach ($a_filiado as $value) { ?>
-                                        <option  value="<?php echo $value['id_filiado']; ?>"><?php echo $value['nome_fantasia']; ?></option>
-                                    <?php } ?>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-            <?php } ?>
+        
 
 
             <?php include 'Core/Rotas/Usuarios/include_form_usuario.php'; ?>

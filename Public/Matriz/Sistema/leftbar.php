@@ -23,7 +23,7 @@
             <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon  flaticon-share  "></i>
-                    <span class="m-menu__link-text  ">Associação</span>
+                    <span class="m-menu__link-text  ">Associados</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
@@ -32,7 +32,7 @@
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="associacao/criar" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Criar associação</span>
+                                    </i><span class="m-menu__link-text ">Cadastrar</span>
                                 </a>
                             </li>
                         <?php } ?>
