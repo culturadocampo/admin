@@ -15,7 +15,6 @@
     <thead>
         <tr>
             <th class="text-center"> ID </th>
-            <th class="text-center"> Detalhe </th>
             <th class="text-center"> Status </th>
             <th class="text-center"> Produtor </th>
             <th class="text-center"> Valor Total </th>
@@ -32,9 +31,6 @@
                 <tr class="tr_compras_realizadas">
                     <td class="text-center">  
                         <?php echo $compra['id_compra']; ?>
-                    </td>
-                    <td class="text-center">  
-                        <button type="button" id_compra="<?php echo $compra['id_compra']; ?>" class="btn btn-primary btn-sm detalhe"> <span class="flaticon-medical btn-sm"> </span></button>
                     </td>
                     <td class="text-center">  
                         <?php 
@@ -98,20 +94,7 @@
         });
     }
     
-    function abrir_compra_detalhada(){
-        $(".detalhe").on("click", function () {
-            var id_compra = $(this).attr('id_compra');
-      
-            window.open (
-                'detalhe/compra/'+id_compra,
-                'detalhe'+id_compra,
-                "width=1024, height=624, top=250, left=250, scrollbars=ye,"
-            );
-        });
-    }
-    
     $(document).ready(function () { 
         efetivar_compra();
-        abrir_compra_detalhada();
     });
 </script>
