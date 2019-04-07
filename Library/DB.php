@@ -52,7 +52,6 @@ class DB {
             return $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
             LOG::writeLog($query);
-
             APP::return_response(false, $exc->getMessage());
         }
     }
@@ -63,7 +62,21 @@ class DB {
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
             LOG::writeLog($query);
+            APP::return_response(false, $exc->getMessage());
+        }
+    }
 
+    public function fetch_attr($query, $attribute) {
+        try {
+            $sth = $this->link->query($query);
+            $result = $sth->fetch(PDO::FETCH_ASSOC);
+            if (isset($result[$attribute])) {
+                return $result[$attribute];
+            } else {
+                throw new Exception("Atributo {$attribute} não encontrado");
+            }
+        } catch (PDOException $exc) {
+            LOG::writeLog($query);
             APP::return_response(false, $exc->getMessage());
         }
     }

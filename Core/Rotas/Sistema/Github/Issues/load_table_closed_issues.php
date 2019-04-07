@@ -18,7 +18,7 @@ $issues = GITHUB::get_closed_issues();
                 <tr style="background: #fefefe">
                     <td>
                         <span class="text-dark" style="font-size: 14px">
-                            <a style="text-decoration:line-through;" href="<?php echo $value['html_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></span>
+                            <a style="text-decoration:line-through;" href="<?php echo $value['html_url']; ?>" target="_blank" class="text-dark"><?php echo $value['title']; ?></a></span>
                         <?php if ($value['labels']) { ?>
                             <?php foreach ($value['labels'] as $label) { ?>
                                 <!--<label class="badge" style="color: white; background-color: #<?php // echo $label['color'] ?>"><?php // echo $label['name']; ?></label>-->

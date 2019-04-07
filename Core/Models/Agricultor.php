@@ -53,7 +53,7 @@ class Agricultor {
                     usuarios.nome,
                     usuarios.cpf
                  FROM
-                    xref_agricultores_filiados
+                    associados
                  INNER JOIN
                     usuarios ON id_usuario = fk_agricultor
                  WHERE 
@@ -103,7 +103,7 @@ class Agricultor {
     function insert_vinculo_agricultor_filiado($id_agricultor, $id_filiado) {
         $query = "
             INSERT INTO 
-                xref_agricultores_filiados
+                associados
             (fk_agricultor, fk_filiado)
             VALUES(
                 '{$id_agricultor}',
@@ -111,6 +111,20 @@ class Agricultor {
             )
         ";
         $this->conn->execute($query);
+    }
+    
+    function localizar_agricultor_por_cpf($term) {
+        $query = "
+            SELECT 
+                id_agricultor, usuarios.nome, caepf
+            FROM 
+                usuarios
+            INNER JOIN agricultores ON fk_usuario = id_usuario
+            WHERE TRUE
+                AND fk_tipo_usuario = 6
+                AND cpf = '{$term}'
+                AND usuarios.ativo = 1 LIMIT 1";
+        return $this->conn->fetch($query);
     }
 
     function getCaepf() {

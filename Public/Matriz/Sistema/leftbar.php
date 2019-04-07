@@ -14,7 +14,7 @@
             <?php if (APP::has_permissao(8)) { ?>
                 <li class="m-menu__item " menu="1">
                     <a href="inicio" class="m-menu__link ">
-                        <i class=" m-menu__link-icon  flaticon-dashboard   "></i>
+                        <i class=" m-menu__link-icon  flaticon-dashboard"></i>
                         <span class="m-menu__link-text  ">Início</span>
                     </a>
                 </li>
@@ -30,9 +30,9 @@
                     <ul class="m-menu__subnav">
                         <?php if (APP::has_permissao(53)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
-                                <a href="associacao/criar" class="m-menu__link ">
+                                <a href="associados/novo" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Cadastrar</span>
+                                    </i><span class="m-menu__link-text ">Novo associado</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -43,7 +43,7 @@
             <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon flaticon-file-1"></i>
-                    <span class="m-menu__link-text  ">Cadastro de Produtos</span>
+                    <span class="m-menu__link-text  ">Produtos</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
@@ -52,7 +52,7 @@
                             <li class="m-menu__item " aria-haspopup="true">
                                 <a href="vincula/produto" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Vincular Produtos </span>
+                                    </i><span class="m-menu__link-text ">Novo produto</span>
                                 </a>
                             </li>
                         <?php } ?>
@@ -96,6 +96,64 @@
                             </li>
                         <?php } ?>
 
+                    </ul>
+                </div>
+            </li>
+                <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-cart"></i>
+                    <span class="m-menu__link-text  ">Compras</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(27)) { ?>
+                            <li class="m-menu__item" aria-haspopup="true">
+                                <a href="compra/nova" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Realizar Compra</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (APP::has_permissao(27)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="listagem/compras" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Lista de Compras</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+
+                </div>
+            </li>
+                   <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-bag"></i>
+                    <span class="m-menu__link-text  ">Vendas</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(28)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="venda" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Realizar Venda</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if (APP::has_permissao(28)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="#" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Lista de Vendas</span>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </li>
@@ -292,65 +350,9 @@
                 </div>
             </li>
 
-            <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon flaticon-cart"></i>
-                    <span class="m-menu__link-text  ">Compras</span>
-                    <i class="m-menu__ver-arrow la la-angle-right"></i>
-                </a>
-                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
-                     m-hidden-height="80"><span class="m-menu__arrow"></span>
-                    <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(27)) { ?>
-                            <li class="m-menu__item" aria-haspopup="true">
-                                <a href="compra/nova" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Realizar Compra</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                        <?php if (APP::has_permissao(27)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
-                                <a href="listagem/compras" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Lista de Compras</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
+        
 
-                </div>
-            </li>
-
-            <li menu="2" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon flaticon-bag"></i>
-                    <span class="m-menu__link-text  ">Vendas</span>
-                    <i class="m-menu__ver-arrow la la-angle-right"></i>
-                </a>
-                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
-                     m-hidden-height="80"><span class="m-menu__arrow"></span>
-                    <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(28)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
-                                <a href="venda" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Realizar Venda</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-
-                        <?php if (APP::has_permissao(28)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
-                                <a href="#" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Lista de Vendas</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </li>
+     
 
 
 

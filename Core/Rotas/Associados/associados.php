@@ -42,7 +42,7 @@
     });
 
     function load_form() {
-        $("#cadastro_associacao").load("associacao/form", {}, unblockPage());
+        $("#cadastro_associacao").load("associados/form", {}, unblockPage());
     }
 
     function executar_cadastro() {
@@ -51,7 +51,7 @@
         var formData = $("#form_associacao").serialize();
         $.ajax({
             type: "post",
-            url: "associacao/insert",
+            url: "associados/insert",
             data: formData,
             success: function (response) {
                 lerResposta(response, load_form);

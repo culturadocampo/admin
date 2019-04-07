@@ -4,8 +4,6 @@
         <div id="telefone_repeater" >
             <div data-repeater-list="telefones">
                 <div data-repeater-item class="row align-items-center m--margin-bottom-10 telefone_fields">
-
-
                     <div class="col-md-4">
                         <select name="tipo_telefone" class="form-control tipo_telefone selectpicker">
                             <option value="1">Celular/WhatsApp</option>

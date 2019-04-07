@@ -98,6 +98,17 @@ class Filiado {
         return $this->conn->fetch($query);
     }
 
+    function get_cota_capital_atual($id_filiado) {
+        $query = "
+            SELECT
+                cota_capital
+            FROM filiados
+            WHERE TRUE
+                AND id_filiado = '{$id_filiado}'
+        ";
+        return $this->conn->fetch_attr($query, 'cota_capital');
+    }
+
     function getNomeFantasia() {
         return $this->nomeFantasia;
     }

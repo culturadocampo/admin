@@ -180,7 +180,7 @@ class Usuario {
     }
 
     function set_cpf($cpf, $unique = false) {
-        if (VALIDA::cpf($_POST['cpf']) != true) {
+        if (VALIDA::cpf($cpf) != true) {
             APP::return_response(false, "Por favor, preencha o campo CPF corretamente.");
         }
         if ($unique) {

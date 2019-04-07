@@ -69,6 +69,17 @@ class APP {
         }
     }
 
+    static function return_data($array) {
+        $response['result'] = $array ? true : false;
+        $response['dados'] = $array;
+        echo json_encode($response);
+        if ($response['result']) {
+            exit;
+        } else {
+            throw new Exception;
+        }
+    }
+
     static function get_base_url() {
         $host = $_SERVER['HTTP_HOST'];
         if ($host == "localhost") {

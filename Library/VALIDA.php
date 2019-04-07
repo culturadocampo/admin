@@ -200,4 +200,21 @@ class VALIDA {
         }
     }
 
+    /*
+     * Return true se a data_inicio for menor que a data_fim,
+     * false caso contrário
+     */
+
+    static function periodo_data($data_inicio, $data_fim) {
+        try {
+            if (strtotime($data_inicio) < strtotime($data_fim)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $exc) {
+           return false;
+        }
+    }
+
 }
