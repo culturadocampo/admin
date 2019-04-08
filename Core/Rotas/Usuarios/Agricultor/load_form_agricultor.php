@@ -25,7 +25,7 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
             </div>
         </div>
         <div  class="m-portlet__body">	
-        
+
 
 
             <?php include 'Core/Rotas/Usuarios/include_form_usuario.php'; ?>
@@ -93,7 +93,75 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
         <br>
     </div>
 
+    <div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon m--hide">
+                        <i class="la la-gear"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        2. Dependentes
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div  class="m-portlet__body">
+            <div id="dependentes_repeater">
+                <div data-repeater-list="dependentes" >
+                    <div class="form-group m-form__group" >
 
+                        <div data-repeater-create class="btn btn btn-sm btn-success m-btn m-btn--icon m-btn--wide">
+                            <span>
+                                <i class="la la-plus"></i>
+                                <span>Adicionar dependentes</span>
+                            </span>
+                        </div>
+                        <span style='margin-left: 16px;'>  Clique para adicionar os dependentes do agricultor</span>
+                    </div>
+                    <div data-repeater-item class="form-group m-form__group" style='padding-bottom: 10px;'>
+
+                        <div class="m-portlet m-portlet--grey m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_2">
+                            <div class="m-portlet__head">
+                                <div class="m-portlet__head-caption">
+                                    <div class="m-portlet__head-title">
+                                        <span class="m-portlet__head-icon">
+                                            <i class="la la-plus"></i>
+                                        </span>
+                                        <h3 class="m-portlet__head-text">
+                                            Novo dependente
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__head-tools">
+                                    <ul class="m-portlet__nav">
+                                        <li class="m-portlet__nav-item">
+                                            <a data-repeater-delete="" m-portlet-tool="toggle" class="pointer m-portlet__nav-link m-portlet__nav-link--icon" aria-describedby="tooltip_u8x7mgl56i"><i class="la la-close"></i></a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="m-portlet__body form-group m-form__group">
+                                <div class="row" >
+                                    <div class="col-md-8">
+                                        <label for="nome_dependente">Nome do dependente</label>
+                                        <input name="nome_dependente" type="text" class="form-control m-input" placeholder="Nome completo do dependente">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="data_nascimento_dependente">Data de nascimento</label>
+                                        <input  name="data_nascimento_dependente" type="text" class="form-control m-input data" placeholder="dd/mm/yyyy">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="m-portlet m-portlet--blue m-portlet--head-solid-bg m-portlet--head-sm" >
         <div class="m-portlet__head">
@@ -103,7 +171,7 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
                         <i class="la la-gear"></i>
                     </span>
                     <h3 class="m-portlet__head-text">
-                        2. Cadastro de propriedade
+                        3. Cadastro de propriedade
                     </h3>
                 </div>
             </div>
@@ -150,6 +218,7 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
             executar_cadastro();
         });
         $(".caepf").mask("000.000.000/000-00");
+        $(".data").mask("99/99/9999");
 
 
         $("#estado_civil").selectpicker();
@@ -165,6 +234,26 @@ $a_comunhao_bens = $o_comunhao->select_todas_comunhao_bens();
             $("#estado_civil").selectpicker();
 
         });
+
+
+        $('#dependentes_repeater').repeater({
+            initEmpty: true,
+
+            defaultValues: {
+                'text-input': 'foo'
+            },
+
+            show: function () {
+                $(this).slideDown();
+                initMask();
+            },
+
+            hide: function (deleteElement) {
+                $(this).slideUp(deleteElement);
+            },
+            isFirstItemUndeletable: false
+        });
+
     });
 
     function executar_cadastro() {

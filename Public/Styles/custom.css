@@ -41,6 +41,15 @@ body{
     height: 50px!important;
 }
 
+.m-portlet--grey .m-portlet__head .m-portlet__head-text{
+    color: #464646!important;
+}
+.m-portlet--grey .m-portlet__head{
+    background-color: #eeeeee!important; 
+    border-color: #eeeeee!important;
+    height: 50px!important;
+}
+
 .m-portlet--green .m-portlet__head .m-portlet__head-text{
     color: white!important;
 }

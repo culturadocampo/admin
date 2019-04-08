@@ -56,7 +56,7 @@
             </div>
             <div data-repeater-item class="form-group m-form__group" style='padding-bottom: 10px;'>
 
-                <div class="m-portlet m-portlet--primary m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_2">
+                <div class="m-portlet m-portlet--grey m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_2">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">

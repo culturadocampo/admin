@@ -8,6 +8,7 @@ $o_endereco = new Endereco();
 $o_propriedade = new PropriedadeRural();
 $o_certificacao = new Certificacao();
 $o_conjuge = new Conjuge();
+$o_dependente = new Dependente();
 
 try {
     $db = DB::get_instance();
@@ -50,6 +51,19 @@ try {
         }
     } else {
         APP::return_response(false, "Necessário informar ao menos 1 celular ou telefone");
+    }
+    
+    
+    /**
+     * Dependentes
+     */
+    
+    if (isset($_POST['dependentes']) && is_array($_POST['dependentes'])) {
+        foreach ($_POST['dependentes'] as $dependente) {
+           $o_dependente->setNomeDependente($dependente['nome_dependente']);
+           $o_dependente->setDataNascimento($dependente['data_nascimento_dependente']);
+           $o_dependente->insert_dependente($id_agricultor);
+        }
     }
 
 
