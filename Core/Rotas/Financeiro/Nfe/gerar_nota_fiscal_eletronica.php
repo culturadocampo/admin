@@ -33,7 +33,7 @@ $std->verProc = 1;
 $nfe->tagide($std);
 
 $std = new stdClass();
-$std->xNome = 'Empresa teste';
+$std->xNome = 'Empresa Sácarai';
 $std->IE = '6564344535';
 $std->CRT = 3;
 $std->CNPJ = '78767865000156';
@@ -44,8 +44,8 @@ $std->xLgr = "Rua Teste";
 $std->nro = '203';
 $std->xBairro = 'Centro';
 $std->cMun = '4317608';
-$std->xMun = 'Porto Alegre';
-$std->UF = 'RS';
+$std->xMun = 'Palmeira';
+$std->UF = 'PR';
 $std->CEP = '955500-000';
 $std->cPais = '1058';
 $std->xPais = 'BRASIL';
@@ -63,8 +63,8 @@ $std->xLgr = "Rua Teste";
 $std->nro = '203';
 $std->xBairro = 'Centro';
 $std->cMun = '4317608';
-$std->xMun = 'Porto Alegre';
-$std->UF = 'RS';
+$std->xMun = 'Palmeira';
+$std->UF = 'PR';
 $std->CEP = '955500-000';
 $std->cPais = '1058';
 $std->xPais = 'BRASIL';
@@ -152,7 +152,7 @@ $std = new stdClass();
 $std->item = 1;
 $std->qVol = 2;
 $std->esp = 'caixa';
-$std->marca = 'OLX';
+$std->marca = 'SÁCARAI';
 $std->nVol = '11111';
 $std->pesoL = 10.00;
 $std->pesoB = 11.00;
@@ -172,4 +172,25 @@ $nfe->tagdup($std);
 
 $xml = $nfe->getXML();
 
-echo $xml;
+///
+
+
+require_once 'Library/Danfe/vendor/autoload.php';
+use NFePHP\DA\NFe\Danfe;
+//use NFePHP\DA\Legacy\FilesFolders;
+//$xml = 'xml/mod55-nfe.xml';
+$docxml = $xml;
+$logo = 'data://text/plain;base64,'. base64_encode(file_get_contents('Public/Images/Logo/nfe.jpg'));
+try {
+    $danfe = new Danfe($docxml, 'P', 'A4', $logo, 'I', '');
+    $id = $danfe->montaDANFE();
+    $pdf = $danfe->render();
+    //o pdf porde ser exibido como view no browser
+    //salvo em arquivo
+    //ou setado para download forçado no browser 
+    //ou ainda gravado na base de dados
+    header('Content-Type: application/pdf');
+    echo $pdf;
+} catch (InvalidArgumentException $e) {
+    echo "Ocorreu um erro durante o processamento :" . $e->getMessage();
+}   
