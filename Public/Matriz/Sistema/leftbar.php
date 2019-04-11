@@ -39,27 +39,6 @@
                     </ul>
                 </div>
             </li>
-            
-            <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon flaticon-file-1"></i>
-                    <span class="m-menu__link-text  ">Produtos</span>
-                    <i class="m-menu__ver-arrow la la-angle-right"></i>
-                </a>
-                <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="80"><span class="m-menu__arrow"></span>
-                    <ul class="m-menu__subnav">
-                        <?php if (APP::has_permissao(54)) { ?>
-                            <li class="m-menu__item " aria-haspopup="true">
-                                <a href="vincula/produto" class="m-menu__link ">
-                                    <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Novo produto</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-
-            </li>
 
             <?php if (APP::has_permissao(13)) { ?>
                 <li class="m-menu__item " menu="1">

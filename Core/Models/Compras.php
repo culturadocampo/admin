@@ -30,10 +30,10 @@ class Compras {
     function set_status_compra($status) {
         /* 
         COMPRA
-            Status
-            1 - Compra feita e confirmada
-            2 - Compra confirmada mas precisa buscar os produtos
-         *  0 - Compra cancelada (Estornada)
+        Status
+        1 - Compra feita e confirmada
+        2 - Compra confirmada mas precisa buscar os produtos
+        3 - Compra cancelada (Estornada)
         */
         
         if (isset($status) && !empty($status)) {
@@ -100,6 +100,7 @@ class Compras {
             WHERE id_compra = '{$id_compra}'
         ";
         $this->conn->execute($query);
+        return true;
     }
 
 

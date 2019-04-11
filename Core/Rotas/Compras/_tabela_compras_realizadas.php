@@ -104,7 +104,7 @@
       
             window.open (
                 'detalhe/compra/'+id_compra,
-                'detalhe'+id_compra,
+                'detalhe',
                 "width=1024, height=624, top=250, left=250, scrollbars=ye,"
             );
         });

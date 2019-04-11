@@ -240,5 +240,19 @@ class Usuario {
             APP::return_response(false, "Usuário inválido");
         }
     }
+    
+    function select_nome_usuario($id_usuario){
+        $query = "
+            SELECT
+                nome
+            FROM 
+                usuarios
+            WHERE
+                id_usuario = '$id_usuario'
+            AND 
+                ativo = '1' ";
+        
+        return $this->conn->fetch($query);
+    }
 
 }

@@ -6,15 +6,17 @@
        $compra   = $o_compra->select_compra_especificada($id_compra);
        
         if(!$compra){ ?>
-           <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger" role="alert">
             <div class="alert-icon"><i class="flaticon-warning"></i></div>
-            <div class="alert-text">Número de tratamento não encontrato !</div>
+            <div class="alert-text"> Compra não encontrada ! </div>
         </div>
-       <?php }
+       <?php }else{ ?>
+            <input id="id_compra" type="hidden" value="<?php echo $id_compra; ?>">
+      <?php }
    }else{ ?>
         <div class="alert alert-danger" role="alert">
             <div class="alert-icon"><i class="flaticon-warning"></i></div>
-            <div class="alert-text">Número de tratamento não encontrato !</div>
+            <div class="alert-text"> Compra não encontrada ! </div>
         </div>
 <?php  } ?>
    
@@ -41,7 +43,9 @@
 
 <script>    
    function listar_compras(){  
-        $("#tabela_detalhe_compra").load("tabela/detalhe/compra", {}, function () {
+        id_compra = $("#id_compra").val();
+        
+        $("#tabela_detalhe_compra").load("tabela/detalhe/compra", {id_compra: id_compra}, function () {
             unblockPage();
         });
    }

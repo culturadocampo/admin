@@ -110,6 +110,16 @@ class Pedidos {
             APP::return_response(false, "Por favor, preecha o valor do produto");
         }
     }
-
+    
+    function select_todos_produtos_compra($fk_compra){
+        $query = "
+            SELECT
+                *
+            FROM pedidos
+            WHERE TRUE
+                AND fk_compra = '{$fk_compra}'
+        ";
+        return $this->conn->fetch_all($query);
+    }
 
 }

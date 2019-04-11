@@ -10,6 +10,7 @@
 <div class="col-md-12">
     <div class="form-group m-form__group row">
         <div class="col-lg-6">
+            <label for="example-date-input" class=" col-form-label"> Fornecedor </label>
             <select data-live-search="true" data-style="btn-outline-info" name="id_agricultor" id="id_agricultor" class="form-control selectpicker">
                 <?php if ($produtores) { ?>
                     <option selected="" disabled=""> Agricultores </option>
@@ -20,11 +21,27 @@
             </select>
         </div>  
         <div class="col-lg-6">
-            <select data-style="btn-outline-info" name="status_compra" id="status_compra" class="form-control selectpicker">
-                <option selected="" disabled=""> Transporte </option>
+            <label for="example-date-input" class=" col-form-label"> Buscar Produto </label>
+            <select data-style="btn-outline-info" name="buscar_prod" id="buscar_prod" class="form-control selectpicker">
+                <option selected="" value="0" disabled=""> Transporte </option>
                 <option  value="1"> Sim </option>
                 <option  value="2"> Não </option>
             </select>
+        </div>
+        
+        <div class="col-lg-6">
+            <label for="example-date-input" class=" col-form-label">Data Pagamento</label>
+            <input class="form-control" type="date" value="" name="data_pagamento" id="data_pagamento">
+        </div>
+        
+        <div class="col-lg-6 div_buscar d-none">
+            <label for="example-date-input" class=" col-form-label">Data de Busca</label>
+            <input class="form-control" type="date" value="" disabled="" name="data_busca" id="data_busca">
+        </div>
+        
+        <div class="col-lg-6">
+            <label for="exampleTextarea"> Obs. pagamento </label>
+            <textarea class="form-control" id="obs_pagamento" name="obs_pagamento" rows="3"></textarea>
         </div>
     </div>	 
 </div>
@@ -133,13 +150,6 @@
         });
     }
     
-    function select_buscar_produto(){
-        $("#status_compra").off("change");
-        $("#status_compra").on("change", function () {
-            dados_extra['status_compra'] = $(this).val();
-        });
-    }
-    
     function select_medida(){
         $("#medida").off("change");
         $("#medida").on("change", function () {
@@ -151,6 +161,21 @@
                $('#qtd').mask("#", {reverse: true});
             }else{
                 $('#qtd').mask("000.000.000", {reverse: true});
+            }
+        });
+    }
+    
+    function select_buscar_produto(){
+        $("#buscar_prod").on("change", function (){
+            transporte = $("#buscar_prod").val();
+            dados_extra['buscar_prod'] = transporte;
+            
+            if(transporte == 1){
+                $(".div_buscar").removeClass("d-none");
+                $("#data_busca").attr("disabled", false);
+            }else{
+                $(".div_buscar").addClass("d-none");
+                $("#data_busca").attr("disabled", true);
             }
         });
     }
