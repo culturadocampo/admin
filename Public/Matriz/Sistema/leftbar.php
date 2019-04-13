@@ -78,7 +78,7 @@
                     </ul>
                 </div>
             </li>
-                <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+            <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon flaticon-cart"></i>
                     <span class="m-menu__link-text  ">Compras</span>
@@ -155,7 +155,37 @@
                     </ul>
                 </div>
             </li>
+            
+            <li menu="1" class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-user-add"></i>
+                    <span class="m-menu__link-text  ">Fornecedores</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                     m-hidden-height="80"><span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <?php if (APP::has_permissao(56)) { ?>
+                            <li class="m-menu__item" aria-haspopup="true">
+                                <a href="fornecedor" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Cadastra</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (APP::has_permissao(56)) { ?>
+                            <li class="m-menu__item " aria-haspopup="true">
+                                <a href="#" class="m-menu__link ">
+                                    <i class="m-menu__link-bullet"><span></span>
+                                    </i><span class="m-menu__link-text ">Listar</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
 
+                </div>
+            </li>
+            
             <li id="3" class="m-menu__section m-menu__section--first">
                 <h4 class="m-menu__section-text">Sistema</h4>
                 <i class="m-menu__section-icon flaticon-more-v2"></i>

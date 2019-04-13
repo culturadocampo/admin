@@ -79,6 +79,28 @@ class VALIDA {
             return false;
         }
     }
+    
+    static function existe_cnpj_fornecedor($cnpj) {
+        $fk_filiado = SESSION::get_id_filiado();
+        
+        $conn = DB::get_instance();
+        $query = "
+            SELECT 
+                cnpj
+            FROM 
+                fornecedores
+            WHERE TRUE
+                AND cnpj = '{$cnpj}'
+                AND fk_filiado = '{$fk_filiado}'   
+        ";
+        $row = $conn->row_count($query);
+
+        if ($row != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     static function existe_email($email) {
         $conn = DB::get_instance();
