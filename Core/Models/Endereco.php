@@ -87,6 +87,27 @@ class Endereco {
         $this->conn->execute($query);
         return $this->conn->last_id();
     }
+    
+    function updateEndereco($id_endereco) {    
+        $query = "
+            UPDATE enderecos
+              SET
+                fk_estado = '{$this->get_estado()}',
+                fk_municipio = '{$this->get_municipio()}',
+                cep = '{$this->get_cep()}',
+                bairro = '{$this->get_bairro()}',
+                logradouro = '{$this->get_logradouro()}',
+                numero = '{$this->get_numero()}',
+                complemento = '{$this->get_complemento()}',
+                lat = '{$this->get_lat()}',
+                lng = '{$this->get_lng()}',
+                comunidade = '{$this->get_comunidade()}'
+            WHERE TRUE
+                AND id_endereco = '$id_endereco'
+                AND ativo = '1'
+            ";
+        $this->conn->execute($query);
+    }
 
     function get_lat() {
         return $this->lat;
@@ -195,5 +216,17 @@ class Endereco {
     function set_comunidade($comunidade) {
         $this->comunidade = STRINGS::limpar($comunidade);
     }
-
+    
+    function select_endereco($id_endereco){
+        $query = "
+            SELECT 
+                * 
+            FROM 
+                enderecos 
+            WHERE TRUE 
+                AND id_endereco = '{$id_endereco}' 
+                AND ATIVO = '1' 
+        ";
+        return $this->conn->fetch($query);
+    }
 }

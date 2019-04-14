@@ -56,4 +56,32 @@ class ContaBancaria {
         ";
         $this->conn->execute($query);
     }
+    
+    function updateContaBancaria($id_conta_bancaria){
+        $query = "
+            UPDATE 
+                contas_bancarias
+            SET
+                banco = '{$this->getBanco()}', 
+                agencia = '{$this->getAgencia()}',
+                conta = '{$this->getConta()}'
+            WHERE TRUE
+                AND id_conta_bancaria = '$id_conta_bancaria'
+                AND ativo = '1'
+        ";
+        $this->conn->execute($query);
+    }
+    
+    function select_conta_bancaria($fk_fornecedor){
+        $query = "
+            SELECT 
+                * 
+            FROM 
+                contas_bancarias 
+            WHERE TRUE 
+                AND fk_fornecedor = '{$fk_fornecedor}' 
+                AND ATIVO = '1' 
+        ";
+        return $this->conn->fetch($query);
+    }
 }

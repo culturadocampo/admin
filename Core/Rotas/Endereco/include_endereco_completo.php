@@ -2,7 +2,7 @@
     <div class="form-group m-form__group row">
         <div class="col-md-6">
             <label for="cep">CEP</label>
-            <input id="cep" name="cep" type="text" class="form-control m-input" placeholder="Código de endereçamento postal">
+            <input id="cep" name="cep" value="<?php if(isset($endereco['cep'])){ echo $endereco['cep']; }?>" type="text" class="form-control m-input" placeholder="Código de endereçamento postal">
             <span class="m-form__help">Informe para autocompletar</span>
         </div>
     </div>
@@ -16,17 +16,17 @@
     <div id='endereco_from_cep' class="form-group m-form__group row">
         <div class="col-md-4">
             <label for="bairro">Bairro</label>
-            <input name="bairro" type="text" class="form-control m-input" placeholder="Informe o bairro">
+            <input name="bairro" type="text" value="<?php if(isset($endereco['bairro'])){ echo $endereco['bairro']; }?>" class="form-control m-input" placeholder="Informe o bairro">
             <!--<span class="m-form__help">Informe o nome completo</span>-->
         </div>
         <div class="col-md-6">
             <label for="logradouro">Logradouro</label>
-            <input name="logradouro" type="text" class="form-control m-input" placeholder="Logradouro">
+            <input name="logradouro" type="text" value="<?php if(isset($endereco['logradouro'])){ echo $endereco['logradouro']; }?>" class="form-control m-input" placeholder="Logradouro">
             <!--<span class="m-form__help">Somente números</span>-->
         </div>
         <div class="col-md-2">
             <label for="numero">Número</label>
-            <input name="numero" type="text" class="form-control m-input" placeholder="Número do imóvel">
+            <input name="numero" type="text" class="form-control m-input" value="<?php if(isset($endereco['numero'])){ echo $endereco['numero']; }?>" placeholder="Número do imóvel">
             <!--<span class="m-form__help">Informe o nome completo</span>-->
         </div>
     </div>	 
@@ -34,7 +34,7 @@
         <div class="col-md-12">
             <label for="complemento">Complemento (Opcional)</label>
             <div class="m-input-icon m-input-icon--right">
-                <input name="complemento" type="text" class="form-control m-input" id="usuario" placeholder="Bloco, apto, andar, etc.">
+                <input name="complemento" type="text" class="form-control m-input" id="usuario" value="<?php if(isset($endereco['complemento'])){ echo $endereco['complemento']; }?>" placeholder="Bloco, apto, andar, etc.">
                 <span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="la la-user"></i></span></span>
             </div>
             <!--<span class="m-form__help">Somente letras e números. Sem espaço.</span>-->

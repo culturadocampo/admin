@@ -53,5 +53,18 @@ class FornecedorTelefone {
             APP::return_response(false, "Tipo de telefone inválido");
         }
     }
+    
+    function select_telefone($fk_fornecedor){
+        $query = "
+            SELECT 
+                * 
+            FROM 
+                fornecedores_telefones 
+            WHERE TRUE 
+                AND fk_fornecedor = '{$fk_fornecedor}' 
+                AND ATIVO = '1' 
+        ";
+        return $this->conn->fetch_all($query);
+    }
 
 }

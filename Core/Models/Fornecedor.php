@@ -80,4 +80,81 @@ class Fornecedor {
         $this->conn->execute($query);
         return $this->conn->last_id();
     }
+    
+    function updateFornecedor($id_fornecedor) {    
+        $query = "
+            UPDATE 
+                fornecedores
+            SET
+                nome_fantasia = '{$this->getNomeFantasia()}', 
+                razao_social = '{$this->getRazaoSocial()}'
+            WHERE TRUE
+                AND id_fornecedor = '$id_fornecedor'
+                AND ativo = '1'
+            ";
+        $this->conn->execute($query);
+    }
+    
+    function select_todos_fornecedores($filiado){
+        $query = "
+            SELECT 
+                id_fornecedor, nome_fantasia, razao_social, cnpj
+            FROM fornecedores
+            WHERE TRUE
+               AND fk_filiado = '{$filiado}'
+               AND ativo = 1";
+               
+        return $this->conn->fetch_all($query);
+    }
+    
+    function select_fornecedor($id_fornecedor){
+        $query = "
+            SELECT 
+                *
+            FROM fornecedores
+            WHERE TRUE
+                AND id_fornecedor = '{$id_fornecedor}'
+                AND ATIVO = '1'
+        ";       
+        return $this->conn->fetch($query);
+    }
+    
+    function inativar_fornecedor($id_fornecedor, $fk_filiado, $fk_endereco){
+        // Fornecedor
+        $q = "
+            UPDATE fornecedores
+            SET ativo = '0'
+            WHERE TRUE
+                AND id_fornecedor = '{$id_fornecedor}'
+                AND fk_filiado = '{$fk_filiado}'
+        ";
+        $this->conn->execute($q);
+        
+        // Telefones
+        $q2 = "
+            UPDATE fornecedores_telefones
+            SET ativo = '0'
+            WHERE TRUE
+                AND fk_fornecedor = '{$id_fornecedor}'
+        ";
+        $this->conn->execute($q2);
+        
+        // Endereço
+        $q3 = "
+            UPDATE enderecos
+            SET ativo = '0'
+            WHERE TRUE
+                AND id_endereco = '{$fk_endereco}'
+        ";
+        $this->conn->execute($q3);
+        
+        // Contas Bancarias
+        $q4 = "
+            UPDATE contas_bancarias
+            SET ativo = '0'
+            WHERE TRUE
+                AND fk_fornecedor = '{$id_fornecedor}'
+        ";
+        $this->conn->execute($q4);
+    }
 }

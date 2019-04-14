@@ -169,13 +169,13 @@
                             <li class="m-menu__item" aria-haspopup="true">
                                 <a href="fornecedor" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
-                                    </i><span class="m-menu__link-text ">Cadastra</span>
+                                    </i><span class="m-menu__link-text ">Cadastro</span>
                                 </a>
                             </li>
                         <?php } ?>
                         <?php if (APP::has_permissao(56)) { ?>
                             <li class="m-menu__item " aria-haspopup="true">
-                                <a href="#" class="m-menu__link ">
+                                <a href="listar/fornecedor" class="m-menu__link ">
                                     <i class="m-menu__link-bullet"><span></span>
                                     </i><span class="m-menu__link-text ">Listar</span>
                                 </a>
