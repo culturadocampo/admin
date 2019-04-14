@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <h3 class="m-widget1__title">Suporte</h3>
-                                            <span class="m-widget1__desc">Entre em contato conosco</span>
+                                            <span class="m-widget1__desc">Entre em contato</span>
                                         </div>
                                     </div>
                                 </div>
@@ -80,50 +80,44 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-9 col-lg-8">
-        <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
-
-            <div class="tab-content">
-                <div class="tab-pane active show" id="m_user_profile_tab_1">
-                    <div id="config_container" class="m-portlet__body">
-
-
-
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
+    <div class="col-xl-9 col-lg-8" id="config_container">
+        
     </div>
 </div>
 
 
 <script>
     $(document).ready(function () {
-        blockPage();
-        $("#config_container").load("usuario/configuracoes/perfil", {}, unblockPage);
+        blockElement("#config_container");
+        $("#config_container").load("usuario/configuracoes/perfil", {}, function () {
+            unblockElement("#config_container");
+
+        });
 
 
         $("#dados_perfil").off("click");
         $("#dados_perfil").on("click", function () {
-            blockPage();
-            $("#config_container").load("usuario/configuracoes/perfil", {}, unblockPage);
+            blockElement("#config_container");
+            $("#config_container").load("usuario/configuracoes/perfil", {}, function () {
+                unblockElement("#config_container");
+            });
         });
 
         $("#seguranca").off("click");
         $("#seguranca").on("click", function () {
-            blockPage();
-            $("#config_container").load("usuario/configuracoes/seguranca", {}, unblockPage);
+            blockElement("#config_container");
+            $("#config_container").load("usuario/configuracoes/seguranca", {}, function () {
+                unblockElement("#config_container");
+
+            });
         });
 
         $("#suporte").off("click");
         $("#suporte").on("click", function () {
-            blockPage();
-            $("#config_container").load("usuario/configuracoes/suporte", {}, unblockPage);
+            blockElement("#config_container");
+            $("#config_container").load("usuario/configuracoes/suporte", {}, function () {
+                unblockElement("#config_container");
+            });
         });
     });
 </script>

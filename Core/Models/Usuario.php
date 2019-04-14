@@ -67,7 +67,8 @@ class Usuario {
                 email,
                 fk_tipo_usuario,
                 usuarios_tipo.nome AS tipo_usuario,
-                cpf
+                cpf,
+                usuarios.data AS data_cadastro
             FROM usuarios 
             INNER JOIN usuarios_tipo ON id_tipo_usuario = fk_tipo_usuario
             WHERE TRUE 
