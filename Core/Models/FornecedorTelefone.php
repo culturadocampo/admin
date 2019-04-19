@@ -66,5 +66,18 @@ class FornecedorTelefone {
         ";
         return $this->conn->fetch_all($query);
     }
+    
+    function desativa_telefone($fk_fornecedor){
+        $query = "
+            UPDATE 
+                fornecedores_telefones
+            SET
+                ativo = '0'
+            WHERE TRUE
+                AND fk_fornecedor = '$fk_fornecedor'
+                AND ativo = '1'
+        ";
+        $this->conn->execute($query);
+    }
 
 }

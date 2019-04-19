@@ -60,7 +60,7 @@
         $(".editar").on("click", function(){
             let id_fornecedor = $(this).parent().attr("id_fornecedor");
             
-            $("#lista_fornecedores").load("cadastro/fornecedor", {editar_fornecedor:id_fornecedor}, function () {
+            $("#lista_fornecedores").load("form/update/fornecedor", {editar_fornecedor:id_fornecedor}, function () {
                 unblockPage();
             });
         });

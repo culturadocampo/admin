@@ -13,6 +13,14 @@
         /*
         * Endereço
         */
+        if(!isset($_POST['estado']) || empty($_POST['estado'])){
+            $_POST['estado'] = false;
+        }
+        
+        if(!isset($_POST['municipio']) || empty($_POST['municipio'])){
+            $_POST['municipio'] = false;
+        }
+        
         $id_estado = $o_endereco->get_id_from_uf($_POST['estado']);
         $id_municipio = $o_endereco->get_id_from_nome_municipio($_POST['municipio']);
         if (!$id_estado) {

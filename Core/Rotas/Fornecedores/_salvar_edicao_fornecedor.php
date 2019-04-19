@@ -1,5 +1,5 @@
 <?php
-
+    
     $o_telefone       = new FornecedorTelefone();
     $o_endereco       = new Endereco();
     $o_conta_bancaria = new ContaBancaria();
@@ -48,36 +48,18 @@
         
         
         // Telefone
-        if(!isset($_POST['telefones']) || empty($_POST['telefones'])){
-            $telefones = false;
-        }else{
+        if(isset($_POST['telefones'][0]['telefone']) && !empty($_POST['telefones'][0]['telefone'])){
             $telefones = $_POST['telefones'];
-        }
-        
-        /*if($telefones){
+            
+            /* Caso seja digitado algum numero de telefone na edição
+                eu desativo todos os numeros existente no banco deste fornecedor */
+            $o_telefone->desativa_telefone($_POST['id_fornecedor']);
+            
             foreach($telefones as $telefone){
                 $o_telefone->setTipoTelefone($telefone['tipo_telefone']);
                 $o_telefone->setTelefone($telefone['telefone']);
                 $o_telefone->insert_telefone($_POST['id_fornecedor']);
             }
-        }*/
-        
-        // Telefone antigo dou uptade
-        if(isset($_POST['telefone_antigo']) && !empty($_POST['telefone_antigo'])){
-            foreach($_POST['telefone_antigo'] as $telefone){
-                // Tipo, ID , Telefone
-               // $array = count($telefone);
-                
-                
-                echo "<pre>";
-                print_r($telefone);
-                echo "</pre>";
-                die();
-            }
-           
-            
-           
-
         }
 
         $db->commit();

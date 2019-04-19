@@ -1,35 +1,6 @@
 <hr>
 <div class="col-md-12 ">
     <div class="form-group m-form__group">
-        
-        <?php if(isset($telefones) && !empty($telefones)){
-                $count = 0;
-            ?>
-            <?php foreach($telefones as $telefone){
-                $count++;
-            ?>
-                <div class="row align-items-center m--margin-bottom-10 telefone_fields">
-                    <div class="col-md-4">
-                        <select name="telefone_antigo[<?php echo $count ?>]['tipo']" class="form-control tipo_telefone selectpicker">
-                            <?php if($telefone['tipo_telefone'] == 1){ ?>
-                                <option value="1">Celular/WhatsApp</option>
-                                <option value="2">Telefone fixo</option>
-                            <?php } else { ?>    
-                                <option value="2">Telefone fixo</option>
-                                <option value="1">Celular/WhatsApp</option>
-                            <?php } ?> 
-                        </select>
-                    </div>
-                    <input type="hidden" value="<?php echo $telefone['id_fornecedor_telefone']; ?>" name="telefone_antigo[<?php echo $count ?>]['id']">
-                    <div class="col-md-8">
-                        <div>
-                            <input name="telefone_antigo[<?php echo $count; ?>]['telefone']" type="text" value="<?php echo $telefone['telefone']; ?>" class="form-control celular phone" placeholder="(xx) xxxxx-xxxx">
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        <?php } ?>
-           
         <div id="telefone_repeater" >
             <div data-repeater-list="telefones">
                 <div data-repeater-item class="row align-items-center m--margin-bottom-10 telefone_fields">
@@ -84,9 +55,6 @@
 
             }
         });
-
-
-
 
         $('#telefone_repeater').repeater({
             initEmpty: false,
