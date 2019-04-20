@@ -32,6 +32,7 @@
                 <tr class="tr_compras_realizadas">
                     <td class="text-center">  
                         <?php echo $compra['id_compra']; ?>
+                        <input type="hidden" name="id_compra_hidden" id="id_compra_hidden" value="<?php echo $compra['id_compra']; ?>" >
                     </td>
                     <td class="text-center">  
                         <button type="button" id_compra="<?php echo $compra['id_compra']; ?>" class="btn btn-primary btn-sm detalhe"> <span class="flaticon-medical btn-sm"> </span></button>
@@ -71,7 +72,7 @@
                         <?php } ?>
                         <?php if($compra['status'] != 0){ ?> 
                             <button type="button" class="btn btn-danger btn-sm"> Estornar </button>
-                            <button type="button" class="btn btn-success btn-sm"> Recibo </button>
+                            <button type="button" class="btn btn-success btn-sm" id="imprimir_recibo"> Recibo </button>
                         <?php } ?>
                     </td>
                 </tr>
@@ -110,8 +111,16 @@
         });
     }
     
+    function imprimir_recibo(){
+        $("#imprimir_recibo").on("click", function () {
+            let id_compra = $("#id_compra_hidden").val();
+            window.location.href="recibo/"+id_compra;
+        });
+    }
+    
     $(document).ready(function () { 
         efetivar_compra();
         abrir_compra_detalhada();
+        imprimir_recibo();
     });
 </script>
