@@ -20,6 +20,7 @@ class SESSION {
                 $a_filiado = $o_filiado->select_filiado_usuario($id_usuario);
                 $_SESSION['id_filiado'] = $a_filiado['id_filiado'];
                 $_SESSION['nome_fantasia'] = $a_filiado['nome_fantasia'];
+                $_SESSION['id_endereco'] = $o_filiado->get_id_endereco_filiado($a_filiado['id_filiado']);
             }
             /**
              * Técnico
@@ -62,7 +63,7 @@ class SESSION {
             return false;
         }
     }
-    
+
     static function get_id_filiado() {
         if (isset($_SESSION['id_filiado']) && is_numeric($_SESSION['id_filiado'])) {
             return STRINGS::limpar($_SESSION['id_filiado']);
@@ -111,6 +112,18 @@ class SESSION {
     static function get_gravatar() {
         $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(self::get_email_usuario()))) . "?s=256";
         return $grav_url;
+    }
+
+    /**
+     * Só funciona com usuários que possuem endereço (obviamente)
+     * Somente filiados e proprietários.
+     */
+    static function get_meu_id_endereco() {
+        if (isset($_SESSION['id_endereco'])) {
+            return $_SESSION['id_endereco'];
+        } else {
+            return false;
+        }
     }
 
 }

@@ -109,6 +109,17 @@ class Filiado {
         return $this->conn->fetch_attr($query, 'cota_capital');
     }
 
+    function get_id_endereco_filiado($id_filiado) {
+        $query = "
+            SELECT
+                fk_endereco
+            FROM filiados
+            WHERE TRUE
+                AND id_filiado = '{$id_filiado}'
+        ";
+        return $this->conn->fetch_attr($query, 'fk_endereco');
+    }
+
     function getNomeFantasia() {
         return $this->nomeFantasia;
     }

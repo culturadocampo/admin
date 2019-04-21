@@ -43,11 +43,30 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <i class=" flaticon-internet text-danger"></i>
+                                            <i class=" flaticon-internet text-success"></i>
                                         </div>
                                         <div class="col-md-10">
                                             <h3 class="m-widget1__title">Segurança</h3>
                                             <span class="m-widget1__desc">Acessos ao sistema</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (APP::has_permissao(61)) { ?>
+
+                        <div id="endereco" class="m-widget1__item pointer">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <i class=" flaticon-map-location text-success"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h3 class="m-widget1__title">Endereço</h3>
+                                            <span class="m-widget1__desc">Localização do cadastro</span>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +82,7 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <i class=" flaticon-chat-1  text-info"></i>
+                                            <i class=" flaticon-chat-1  text-success"></i>
                                         </div>
                                         <div class="col-md-10">
                                             <h3 class="m-widget1__title">Suporte</h3>
@@ -81,7 +100,7 @@
         </div>
     </div>
     <div class="col-xl-9 col-lg-8" id="config_container">
-        
+
     </div>
 </div>
 
@@ -116,6 +135,14 @@
         $("#suporte").on("click", function () {
             blockElement("#config_container");
             $("#config_container").load("usuario/configuracoes/suporte", {}, function () {
+                unblockElement("#config_container");
+            });
+        });
+
+        $("#endereco").off("click");
+        $("#endereco").on("click", function () {
+            blockElement("#config_container");
+            $("#config_container").load("usuario/configuracoes/endereco", {}, function () {
                 unblockElement("#config_container");
             });
         });

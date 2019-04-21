@@ -87,8 +87,8 @@ class Endereco {
         $this->conn->execute($query);
         return $this->conn->last_id();
     }
-    
-    function updateEndereco($id_endereco) {    
+
+    function updateEndereco($id_endereco) {
         $query = "
             UPDATE enderecos
               SET
@@ -108,6 +108,7 @@ class Endereco {
             ";
         $this->conn->execute($query);
     }
+
 
     function get_lat() {
         return $this->lat;
@@ -216,17 +217,26 @@ class Endereco {
     function set_comunidade($comunidade) {
         $this->comunidade = STRINGS::limpar($comunidade);
     }
-    
-    function select_endereco($id_endereco){
+
+    function select_endereco($id_endereco) {
         $query = "
             SELECT 
-                * 
+                cep,
+                bairro,
+                logradouro,
+                numero,
+                complemento,
+                estados.nome AS estado,
+                municipios.nome AS municipio
             FROM 
                 enderecos 
+            INNER JOIN estados ON fk_estado = id_estado
+            INNER JOIN municipios ON fk_municipio = id_municipio
             WHERE TRUE 
                 AND id_endereco = '{$id_endereco}' 
-                AND ATIVO = '1' 
+                AND ativo = '1' 
         ";
         return $this->conn->fetch($query);
     }
+
 }
