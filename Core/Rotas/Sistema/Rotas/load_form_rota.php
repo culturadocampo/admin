@@ -41,12 +41,13 @@ $arr_permissoes = $o_permissao->select_all_permissoes();
                 <div class="form-group">
                     <label for="password">Matriz *</label>
                     <select  <?php echo $arquivos_conteudo ? "" : 'disabled' ?> name="matriz" class="form-control selectpicker" id="select_matriz" >
-                        <option selected value="0">Arquivo load/ajax</option>
                         <?php if ($arquivos_base) { ?>
                             <?php foreach ($arquivos_base as $arquivo) { ?>
-                                <option value="<?php echo $arquivo['arquivo']; ?>"><?php echo $arquivo['nome']; ?></option>
+                                <option <?php echo $arquivo['selected'] ?? "selected"; ?> value="<?php echo $arquivo['arquivo']; ?>"><?php echo $arquivo['nome']; ?></option>
                             <?php } ?>
                         <?php } ?>
+                        <option value="0">Arquivo load/ajax</option>
+
                     </select>
 
                 </div>

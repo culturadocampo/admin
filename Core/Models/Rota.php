@@ -83,10 +83,12 @@ class Rota {
                 $arquivo['arquivo'] = $base;
 
                 if ($base == "base_interface.php") {
-                    $arquivo['nome'] = "Página de administração";
+                    $arquivo['nome'] = "Template completo (Topo, menu, rodapé)";
+                    $arquivo['selected'] = true;
                     $arquivos_base[$key] = $arquivo;
-                } else if ($base == "base_geral.php") {
-                    $arquivo['nome'] = "Página do site";
+                } else if ($base == "base_popup.php") {
+                    $arquivo['nome'] = "Página em formato popup";
+                    $arquivo['selected'] = false;
                     $arquivos_base[$key] = $arquivo;
                 } else {
                     unset($arquivos_base[$key]);
