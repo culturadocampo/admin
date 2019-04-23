@@ -1,6 +1,6 @@
 <?php
     $obj_estoque = new Estoque();
-    if($_SESSION['id_filiado']){
+    if(isset($_SESSION['id_filiado'])){
         $estoque_array = $obj_estoque->list_estoque_filial($_SESSION['id_filiado']);
     }else{
         $estoque_array = false;
