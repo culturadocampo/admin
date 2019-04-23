@@ -7,19 +7,23 @@ class Compras {
     private $valor_total;
     private $status_compra;
 
-    function __construct() {
+    function __construct() 
+    {
         $this->conn = DB::get_instance();
     }
     
-    function get_valor_total() {
+    function get_valor_total() 
+    {
         return $this->valor_total;
     }
     
-    function get_status_compra() {
+    function get_status_compra() 
+    {
         return $this->status_compra;
     } 
     
-    function set_valor_total($valor_total) {
+    function set_valor_total($valor_total) 
+    {
         if (isset($valor_total) && !empty($valor_total)) {
             $this->valor_total = $valor_total;
         } else {
@@ -27,7 +31,8 @@ class Compras {
         }
     }
     
-    function set_status_compra($status) {
+    function set_status_compra($status) 
+    {
         /* 
         COMPRA
         Status
@@ -47,7 +52,8 @@ class Compras {
         }
     }
     
-    function insert_nova_compra($fk_produtor) {
+    function insert_nova_compra($fk_produtor) 
+    {
         $fk_operador = SESSION::get_id_usuario();
         $fk_filiada  = SESSION::get_id_filiado();
         
@@ -68,7 +74,8 @@ class Compras {
         return $this->conn->last_id();
     }
     
-    function select_todas_compras_filiado($id_filiado){
+    function select_todas_compras_filiado($id_filiado)
+    {
         $query = "
             SELECT
                 *
@@ -81,7 +88,8 @@ class Compras {
         return $this->conn->fetch_all($query);
     }
     
-    function select_compra_especificada($id_compra){
+    function select_compra_especificada($id_compra)
+    {
         $query = "
             SELECT
                 *
@@ -92,7 +100,8 @@ class Compras {
         return $this->conn->fetch($query);
     }
     
-    function efetivar_compra($id_compra){
+    function efetivar_compra($id_compra)
+    {
         $query = "
             UPDATE compras
             SET
@@ -102,6 +111,6 @@ class Compras {
         $this->conn->execute($query);
         return true;
     }
-
+    
 
 }

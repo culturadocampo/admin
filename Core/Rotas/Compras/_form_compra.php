@@ -40,7 +40,7 @@
         </div>
         
         <div class="col-lg-6">
-            <label for="exampleTextarea"> Obs. pagamento </label>
+            <label for="exampleTextarea" class=" col-form-label"> Obs. pagamento </label>
             <textarea class="form-control" id="obs_pagamento" name="obs_pagamento" rows="3"></textarea>
         </div>
     </div>	 

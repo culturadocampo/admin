@@ -2,7 +2,9 @@
     $o_compra       = new Compras();
     $o_pedido       = new Pedidos();
     $o_pagamento    = new PagamentoAgricultor();
-        
+    $o_estoque      = new Estoque();
+    $o_produto      = new Produto();
+    
     try {
         $db = DB::get_instance();
         $db->beginTransaction();
@@ -51,6 +53,25 @@
             $o_pedido->set_qtd($value['qtd']);
             $o_pedido->set_valor($value['valor']);
             $o_pedido->insert_novo_pedido($id_compra);
+            
+            
+            // Verifico se o produto existe no estoque antes de colocar para não duplicar e se é do mesmo tipo de unidade KG ou unidade
+            $fk_filiado = SESSION::get_id_filiado();
+            $prod_estoque = $o_estoque->verifica_existe_prod_estoque($value['produto'], $fk_filiado);
+            
+            if($prod_estoque){
+                if($prod_estoque['fk_medida'] == $value['medida']){
+                    // Verifico se existe o prod. no estoque e realizo a soma da qtd
+                    $qtd_atualizado = $prod_estoque['quantidade'] + $value['qtd'];
+                    $o_estoque->update_compra_estoque($prod_estoque['id_estoque_filiado'], $qtd_atualizado);
+                }else{
+                    $nome_prod = $o_produto->select_produto($value['produto']);
+                    $medida_prod = MEDIDAS_PRODUTOS::getMedidasProd($prod_estoque['fk_medida']);
+                    APP::return_response(false, "O produto {$nome_prod['nome']} deve ser do tipo $medida_prod pois o produto já existe no estoque");
+                }
+            }else{
+                $o_estoque->insert_compra_estoque($fk_filiado, $value['produto'], $value['medida'], $value['qtd']);
+            }
         }
         
         /* 

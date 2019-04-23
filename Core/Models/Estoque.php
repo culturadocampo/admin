@@ -36,4 +36,49 @@ class Estoque {
         return $this->conn->fetch_all($query);
     }
     
+    function verifica_existe_prod_estoque($fk_produto, $fk_filiado)
+    {
+        $query = "
+            SELECT 
+                id_estoque_filiado,
+                quantidade, 
+                fk_medida 
+            FROM 
+                estoque_filiado 
+            WHERE TRUE 
+                AND fk_filiado  = '$fk_filiado'
+                AND fk_produto  = '$fk_produto'
+                AND ativo       = '1'    
+        ";
+        return $this->conn->fetch($query);
+    }
+    
+    function update_compra_estoque($id_estoque_filiado, $quantidade){
+        $query = "
+            UPDATE estoque_filiado
+            SET
+                quantidade = '{$quantidade}'
+            WHERE TRUE
+                AND id_estoque_filiado = '{$id_estoque_filiado}'
+        ";
+        $this->conn->execute($query);
+        return true;
+    }
+    
+    function insert_compra_estoque($fk_filiado, $fk_produto, $fk_medida, $quantidade){
+        $query = "
+            INSERT INTO 
+                estoque_filiado
+            (fk_filiado, fk_produto, fk_medida, quantidade)
+            VALUES(
+                '{$fk_filiado}',
+                '{$fk_produto}',
+                '{$fk_medida}',
+                '{$quantidade}'
+            )
+        ";
+        $this->conn->execute($query);
+        return true;
+    }
+    
 }
