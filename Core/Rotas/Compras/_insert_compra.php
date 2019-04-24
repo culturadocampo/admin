@@ -70,7 +70,7 @@
                     APP::return_response(false, "O produto {$nome_prod['nome']} deve ser do tipo $medida_prod pois o produto já existe no estoque");
                 }
             }else{
-                $o_estoque->insert_compra_estoque($fk_filiado, $value['produto'], $value['medida'], $value['qtd']);
+                $o_estoque->insert_compra_estoque($fk_filiado, $value['produto'], $value['medida'], $value['qtd'], $value['valor']);
             }
         }
         

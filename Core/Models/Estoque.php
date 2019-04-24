@@ -65,16 +65,17 @@ class Estoque {
         return true;
     }
     
-    function insert_compra_estoque($fk_filiado, $fk_produto, $fk_medida, $quantidade){
+    function insert_compra_estoque($fk_filiado, $fk_produto, $fk_medida, $quantidade, $valor){
         $query = "
             INSERT INTO 
                 estoque_filiado
-            (fk_filiado, fk_produto, fk_medida, quantidade)
+            (fk_filiado, fk_produto, fk_medida, quantidade, preco_unidade)
             VALUES(
                 '{$fk_filiado}',
                 '{$fk_produto}',
                 '{$fk_medida}',
-                '{$quantidade}'
+                '{$quantidade}',
+                '{$valor}'
             )
         ";
         $this->conn->execute($query);
