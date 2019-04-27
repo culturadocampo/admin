@@ -26,7 +26,7 @@
     <tbody>
             <?php foreach($compras as $compra){ 
                 $o_agricultor = new Agricultor();
-                $nome_agricultor = $o_agricultor->select_agricultor_filial($compra['fk_produtor']);
+                $nome_agricultor = $o_agricultor->select_agricultor_especificado($compra['fk_produtor']);
 
             ?>
                 <tr class="tr_compras_realizadas">

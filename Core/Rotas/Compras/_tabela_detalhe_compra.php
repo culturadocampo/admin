@@ -8,7 +8,7 @@
     $pedidos   = $o_pedidos->select_todos_produtos_compra($id_compra);
     
     $o_agricultor = new Agricultor();
-    $nome_agricultor = $o_agricultor->select_agricultor_filial($compra['fk_produtor']);
+    $nome_agricultor = $o_agricultor->select_agricultor_especificado($compra['fk_produtor']);
     
     $o_pagamento = new PagamentoAgricultor();
     $pagamento   = $o_pagamento->select_pagamento_especifico($id_compra);

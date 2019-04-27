@@ -38,11 +38,12 @@ class Agricultor {
         return $this->conn->last_id();
     }
 
-    function select_agricultor($id_usuario) {
+    function select_agricultor_especificado($id_agricultor) {
         $query = "
-            SELECT id_agricultor, caepf, rg
+            SELECT  nome, caepf, rg
             FROM agricultores
-            WHERE fk_usuario = '{$id_usuario}'
+            INNER JOIN usuarios ON id_usuario = fk_usuario
+            WHERE id_agricultor = '{$id_agricultor}'
         ";
         return $this->conn->fetch($query);
     }
