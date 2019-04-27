@@ -8,15 +8,15 @@ class PropriedadeRural {
         $this->conn = DB::get_instance();
     }
 
-    function insert_propriedade_rural($id_endereco, $id_certificacao, $id_usuario) {
+    function insert_propriedade_rural($id_endereco, $id_certificacao, $id_agricultor) {
         $query = "
             INSERT INTO 
                 propriedades_rurais
-            (fk_endereco, fk_certificacao_organica, fk_usuario_responsavel)
+            (fk_endereco, fk_certificacao_organica, fk_agricultor)
             VALUES(
                 '{$id_endereco}',
                 '{$id_certificacao}',
-                '{$id_usuario}'
+                '{$id_agricultor}'
             )
         ";
         $this->conn->execute($query);
@@ -40,34 +40,34 @@ class PropriedadeRural {
      * Usado durante o login para descobrir
      * qual é a propriedade do usuário que está logando
      */
-    function select_propriedades_usuario_light($id_usuario) {
-        $query = "
-            SELECT
-                id_propriedade_rural
-            FROM propriedades_rurais
-            WHERE TRUE
-                AND fk_usuario_responsavel = '{$id_usuario}'
-        ";
-        return $this->conn->fetch_all($query);
-    }
+//    function select_propriedades_usuario_light($id_usuario) {
+//        $query = "
+//            SELECT
+//                id_propriedade_rural
+//            FROM propriedades_rurais
+//            WHERE TRUE
+//                AND fk_usuario_responsavel = '{$id_usuario}'
+//        ";
+//        return $this->conn->fetch_all($query);
+//    }
 
-    function select_propriedades_usuario($id_usuario) {
-        $query = "
-            SELECT
-                id_propriedade_rural,
-                lat,
-                lng,
-                estados.nome AS estado,
-                municipios.nome AS municipio
-            FROM propriedades_rurais
-            INNER JOIN enderecos ON fk_endereco = id_endereco
-            INNER JOIN estados ON fk_estado = id_estado
-            INNER JOIN municipios ON fk_municipio = id_municipio
-            WHERE TRUE
-                AND fk_usuario_responsavel = '{$id_usuario}'
-        ";
-        return $this->conn->fetch_all($query);
-    }
+//    function select_propriedades_usuario($id_usuario) {
+//        $query = "
+//            SELECT
+//                id_propriedade_rural,
+//                lat,
+//                lng,
+//                estados.nome AS estado,
+//                municipios.nome AS municipio
+//            FROM propriedades_rurais
+//            INNER JOIN enderecos ON fk_endereco = id_endereco
+//            INNER JOIN estados ON fk_estado = id_estado
+//            INNER JOIN municipios ON fk_municipio = id_municipio
+//            WHERE TRUE
+//                AND fk_usuario_responsavel = '{$id_usuario}'
+//        ";
+//        return $this->conn->fetch_all($query);
+//    }
 
     function getColetivo() {
         return $this->coletivo;

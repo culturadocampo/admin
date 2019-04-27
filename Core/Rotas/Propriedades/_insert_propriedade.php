@@ -38,11 +38,11 @@ try {
     /**
      * Propriedade
      */
-    if (isset($_POST['id_usuario_agricultor'])) {
-        $id_usuario_agricultor = $_POST['id_usuario_agricultor'];
+    if (isset($_POST['id_agricultor'])) {
+        $id_agricultor = $_POST['id_agricultor'];
     } else {
         if (SESSION::get_id_tipo_usuario() == 6) {
-            $id_usuario_agricultor = $_SESSION['id_usuario'];
+            $id_agricultor = $_SESSION['id_agricultor'];
         } else {
             APP::return_response(false, "Ocorreu um erro: Agricultor inválido");
         }
@@ -59,7 +59,7 @@ try {
 
 
     $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
-    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao(), $id_usuario_agricultor);
+    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao(), $id_agricultor);
 
     if ($id_tecnico) {
         $o_propriedade->insert_vinculo_propriedade_tecnico($id_propriedade, $id_tecnico);

@@ -34,12 +34,12 @@ class SESSION {
              * Agricultor/Propriedade Rural
              */
             if ($usuario['fk_tipo_usuario'] == 6) {
-                $o_trabalhador = new TrabalhadorRural();
-                $o_propriedade = new PropriedadeRural();
-                $a_trabalhador = $o_trabalhador->select_trabalhador_usuario($id_usuario);
-                $a_propriedade = $o_propriedade->select_propriedades_usuario_light($id_usuario);
-                $_SESSION['propriedades_rurais'] = $a_propriedade;
-                $_SESSION['id_trabalhador'] = $a_trabalhador['id_trabalhador'];
+//                $o_trabalhador = new TrabalhadorRural();
+//                $o_propriedade = new PropriedadeRural();
+//                $a_trabalhador = $o_trabalhador->select_trabalhador_usuario($id_usuario);
+//                $a_propriedade = $o_propriedade->select_propriedades_usuario_light($id_usuario);
+//                $_SESSION['propriedades_rurais'] = $a_propriedade;
+//                $_SESSION['id_agricultor'] = $a_trabalhador['id_agricultor'];
             }
 
             return true;

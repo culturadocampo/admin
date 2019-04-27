@@ -59,7 +59,7 @@
                     
                     <td class="text-center">  
                         <?php if(!$compra['nf']){ ?>
-                            <button type="button" id="adicionar_produto" class="btn btn-primary btn-sm"> Gerar  </button>
+                            <a href="financeiro/nfe/compra/<?php echo $compra['id_compra']; ?>" target="_blank" class="btn btn-primary btn-sm"> Gerar  </a>
                         <?php }else{ ?>
                             <button type="button" id="adicionar_produto" class="btn btn-primary btn-sm"> <span class="flaticon-technology btn-sm"> </span></button>
                             <button type="button" id="adicionar_produto" class="btn btn-danger btn-sm"> <span class="flaticon2-delete btn-sm"> </span></button>

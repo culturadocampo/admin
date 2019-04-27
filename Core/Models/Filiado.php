@@ -66,6 +66,22 @@ class Filiado {
         ";
         $this->conn->execute($query);
     }
+    
+    
+    function select_informacoes_filiado_especificado($id_filiado){
+         $query = "
+            SELECT 
+                id_filiado,
+                nome_fantasia,
+                cnpj,
+                descricao AS coletivo,
+                fk_endereco
+            FROM filiados
+            WHERE TRUE
+                AND id_filiado = '{$id_filiado}'
+        ";
+        return $this->conn->fetch($query);
+    }
 
     function select_todos_filiados_ativos() {
         $query = "

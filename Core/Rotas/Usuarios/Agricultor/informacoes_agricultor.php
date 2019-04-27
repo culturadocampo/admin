@@ -2,7 +2,7 @@
 $o_usuario = new Usuario();
 $o_agricultor = new Agricultor();
 $o_propriedade = new PropriedadeRural();
-
+die('Manutenção');
 $id_usuario_agricultor = $_GET['id_usuario_agricultor'];
 
 $usuario = $o_usuario->select_usuario_from_id($id_usuario_agricultor);

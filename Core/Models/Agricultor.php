@@ -63,16 +63,16 @@ class Agricultor {
     }
 
     function select_agricultores_ativos() {
-        $id_tipo_usuario = SESSION::get_id_tipo_usuario();
-        if ($id_tipo_usuario == 1) {
+//        $id_tipo_usuario = SESSION::get_id_tipo_usuario();
+//        if ($id_tipo_usuario == 1) {
             return $this->select_todos_agricultores();
-        } else if ($id_tipo_usuario == 2) {
-//            return $this->select_agricultores_do_coordenador();
-        } else if ($id_tipo_usuario == 5) {
-//            return $this->select_agricultores_do_tecnico();
-        } else {
-            return array();
-        }
+//        } else if ($id_tipo_usuario == 2) {
+////            return $this->select_agricultores_do_coordenador();
+//        } else if ($id_tipo_usuario == 5) {
+////            return $this->select_agricultores_do_tecnico();
+//        } else {
+//            return array();
+//        }
     }
 
     function select_todos_agricultores() {

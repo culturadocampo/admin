@@ -92,7 +92,14 @@ class Compras {
     {
         $query = "
             SELECT
-                *
+                id_compra,
+                fk_operador,
+                fk_produtor,
+                fk_filiado,
+                valor_total,
+                status,
+                data,
+                ativo
             FROM compras
             WHERE TRUE
                 AND id_compra = '{$id_compra}'

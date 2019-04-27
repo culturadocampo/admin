@@ -9,7 +9,7 @@ $std->versao = '3.10';
 $nfe->taginfNFe($std);
 
 $std = new stdClass();
-$std->cUF = 35;
+$std->cUF = 41;
 $std->cNF = '80070008';
 $std->natOp = 'VENDA';
 $std->indPag = 0;
@@ -18,7 +18,7 @@ $std->serie = 1;
 $std->nNF = 2;
 $std->dhEmi = '2018-02-06T20:48:00-02:00';
 $std->dhSaiEnt = '2018-02-06T20:48:00-02:00';
-$std->tpNF = 1;
+$std->tpNF = 0;
 $std->idDest = 1;
 $std->cMunFG = 3518800;
 $std->tpImp = 1;
@@ -182,7 +182,7 @@ use NFePHP\DA\NFe\Danfe;
 $docxml = $xml;
 $logo = 'data://text/plain;base64,'. base64_encode(file_get_contents('Public/Images/Logo/nfe.jpg'));
 try {
-    $danfe = new Danfe($docxml, 'P', 'A4', $logo, 'I', '');
+    $danfe = new Danfe($docxml, 'P', 'A4', "", 'I', '');
     $id = $danfe->montaDANFE();
     $pdf = $danfe->render();
     //o pdf porde ser exibido como view no browser

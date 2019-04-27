@@ -92,7 +92,7 @@ try {
 
 
     $o_certificacao->setIdCertificacao($_POST['id_certificacao']);
-    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao(), $id_usuario_agricultor);
+    $id_propriedade = $o_propriedade->insert_propriedade_rural($id_endereco, $o_certificacao->getIdCertificacao(), $id_agricultor);
 
     $db->commit();
     APP::return_response(true, "Agricultor cadastrado com sucesso");

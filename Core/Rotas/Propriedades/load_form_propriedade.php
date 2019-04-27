@@ -16,11 +16,11 @@ $id_tipo_usuario = SESSION::get_id_tipo_usuario();
                 $o_agricultor = new Agricultor();
                 $a_agricultores = $o_agricultor->select_agricultores_ativos();
                 ?>
-                <select data-live-search="true" data-style="btn-outline-info" name="id_usuario_agricultor" class="form-control selectpicker">
+                <select data-live-search="true" data-style="btn-outline-info" name="id_agricultor" class="form-control selectpicker">
                     <option value="">[Selecione o agricultor responsável]</option>
                     <?php if ($a_agricultores) { ?>
                         <?php foreach ($a_agricultores as $value) { ?>
-                            <option  value="<?php echo $value['id_usuario']; ?>"><?php echo $value['nome']; ?></option>
+                            <option  value="<?php echo $value['id_agricultor']; ?>"><?php echo $value['nome']; ?></option>
                         <?php } ?>
                     <?php } ?>
 
