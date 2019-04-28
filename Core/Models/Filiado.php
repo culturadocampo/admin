@@ -74,8 +74,8 @@ class Filiado {
                 id_filiado,
                 nome_fantasia,
                 cnpj,
-                descricao AS coletivo,
-                fk_endereco
+                fk_endereco,
+                inscricao_estadual
             FROM filiados
             WHERE TRUE
                 AND id_filiado = '{$id_filiado}'

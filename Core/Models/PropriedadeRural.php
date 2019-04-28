@@ -36,6 +36,17 @@ class PropriedadeRural {
         $this->conn->execute($query);
     }
 
+    function select_endereco_primeira_propriedade_agricultor(){
+        $query = "
+            SELECT
+                fk_endereco
+            FROM propriedades_rurais
+            WHERE TRUE
+                AND fk_agricultor = 21
+            LIMIT 1
+        ";
+        $this->conn->fetch_attr($query, 'fk_endereco');
+    }
     /**
      * Usado durante o login para descobrir
      * qual é a propriedade do usuário que está logando

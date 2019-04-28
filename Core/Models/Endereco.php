@@ -227,7 +227,11 @@ class Endereco {
                 numero,
                 complemento,
                 estados.nome AS estado,
-                municipios.nome AS municipio
+                municipios.nome AS municipio,
+                codigo_uf,
+                municipios.codigo AS codigo_municipio,
+                estados.uf AS sigla_estado,
+                cep
             FROM 
                 enderecos 
             INNER JOIN estados ON fk_estado = id_estado

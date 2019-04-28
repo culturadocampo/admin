@@ -77,7 +77,10 @@ class Produto {
     function select_produto($id_produto){
         $query = "
             SELECT
-                nome
+                nome,
+                ncm_codigo,
+                ncm_descricao,
+                fk_medida
             FROM 
                 produtos
             WHERE

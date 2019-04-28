@@ -40,7 +40,7 @@ class Agricultor {
 
     function select_agricultor_especificado($id_agricultor) {
         $query = "
-            SELECT  nome, caepf, rg
+            SELECT  id_agricultor, nome, caepf, rg
             FROM agricultores
             INNER JOIN usuarios ON id_usuario = fk_usuario
             WHERE id_agricultor = '{$id_agricultor}'
