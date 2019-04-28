@@ -1,15 +1,18 @@
 <?php
 
-class APP {
+class APP
+{
 
-    static function start() {
+    static function start()
+    {
         $request = self::get_request();
         ROUTER::include_file($request);
     }
 
-    private static function get_request() {
+    private static function get_request()
+    {
         if (isset($_SERVER['REDIRECT_URL'])) {
-            $host = $_SERVER['HTTP_HOST'];
+            $host    = $_SERVER['HTTP_HOST'];
             $request = explode("/", $_SERVER['REDIRECT_URL']);
             if ($host == "localhost") {
                 $request = $request[2] ? $request[2] : self::rota_default(true);
@@ -21,16 +24,16 @@ class APP {
         }
         return $request;
     }
-
     /*
      * Verifica se a sessão do usuário é válida
      * Caso false, redireciona para o login
      */
 
-    static function is_logged() {
+    static function is_logged()
+    {
         if (isset($_SESSION['id_usuario']) && isset($_SESSION['nome_usuario'])) {
             if ($_SESSION['id_usuario'] > 0 && !empty($_SESSION['nome_usuario'])) {
-                $o_permissao = new Permissao();
+                $o_permissao            = new Permissao();
                 /**
                  * Foi colocado aqui para que seja em tempo real.
                  */
@@ -44,7 +47,8 @@ class APP {
         }
     }
 
-    static function rota_default($base_only = false) {
+    static function rota_default($base_only = false)
+    {
         if (SESSION::get_id_tipo_usuario() == "1") {
             $request = 'sistema/github/issues';
         } else {
@@ -58,8 +62,9 @@ class APP {
         }
     }
 
-    static function return_response($result, $message) {
-        $response['result'] = $result;
+    static function return_response($result, $message)
+    {
+        $response['result']  = $result;
         $response['message'] = $message;
         echo json_encode($response);
         if ($result) {
@@ -69,9 +74,10 @@ class APP {
         }
     }
 
-    static function return_data($array) {
+    static function return_data($array)
+    {
         $response['result'] = $array ? true : false;
-        $response['dados'] = $array;
+        $response['dados']  = $array;
         echo json_encode($response);
         if ($response['result']) {
             exit;
@@ -80,7 +86,8 @@ class APP {
         }
     }
 
-    static function get_base_url() {
+    static function get_base_url()
+    {
         $host = $_SERVER['HTTP_HOST'];
         if ($host == "localhost") {
             return "http://localhost/admin";
@@ -89,7 +96,8 @@ class APP {
         }
     }
 
-    static function get_origem_request() {
+    static function get_origem_request()
+    {
         if (array_key_exists('HTTP_REFERER', $_SERVER)) {
             $origem = $_SERVER['HTTP_REFERER'];
         } else {
@@ -98,12 +106,13 @@ class APP {
         return $origem;
     }
 
-    private static function check_for_cookie() {
+    private static function check_for_cookie()
+    {
         if (!isset($_COOKIE["REMEMBER_ME"])) {
             return false;
         } else {
             $o_cookie = new Cookie();
-            $usuario = $o_cookie->get_usuario_from_cookie($_COOKIE["REMEMBER_ME"]);
+            $usuario  = $o_cookie->get_usuario_from_cookie($_COOKIE["REMEMBER_ME"]);
             if (empty($usuario)) {
                 $o_cookie->delete_cookie($_COOKIE["REMEMBER_ME"]);
                 return false;
@@ -113,13 +122,14 @@ class APP {
         }
     }
 
-    static function gen_token($length) {
-        $o_cookie = new Cookie();
-        $token = "";
+    static function gen_token($length)
+    {
+        $o_cookie     = new Cookie();
+        $token        = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
         $codeAlphabet .= "0123456789";
-        $max = strlen($codeAlphabet); // edited
+        $max          = strlen($codeAlphabet); // edited
         for ($i = 0; $i < $length; $i++) {
             $token .= $codeAlphabet[random_int(0, $max - 1)];
         }
@@ -131,7 +141,8 @@ class APP {
         }
     }
 
-    static function has_permissao($id_permissao) {
+    static function has_permissao($id_permissao)
+    {
         if (in_array($id_permissao, SESSION::get_permissoes())) {
             return true;
         } else {
@@ -142,7 +153,8 @@ class APP {
     /**
      * Não funciona 100%, nao vai ficar desta forma
      */
-    static function gravar_erro($arquivo, $tipo, $mensagem, $linha) {
+    static function gravar_erro($arquivo, $tipo, $mensagem, $linha)
+    {
         $db = DB::get_instance(true);
 
         $db->beginTransaction();
@@ -151,9 +163,19 @@ class APP {
         $db->commit();
     }
 
-    static function check_htaccess() {
+    static function check_htaccess()
+    {
         $o_rota = new Rota();
         $o_rota->rebuild_htaccess();
     }
 
+    static function is_localhost()
+    {
+        $host = $_SERVER['HTTP_HOST'];
+        if ($host == "localhost") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
