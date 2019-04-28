@@ -30,6 +30,17 @@
                         <ul class="m-topbar__nav m-nav m-nav--inline">
 
 
+                            <?php
+                            if (APP::has_permissao(52) || APP::is_localhost()) {
+                                ?>
+                                <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                                    <a href="https://docs.google.com/document/d/1Gjq6E1rRLl0L_kiO49rNYwXCFr3ucvs5NZ4b4-o8VLg" target="_blank" class="m-nav__link">
+                                        <span class="m-topbar__userpic">
+                                            <u>Documentação <strong>Marlon</strong></u>
+                                        </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                             <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                 <a class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
@@ -63,7 +74,7 @@
                                                 </div>
                                                 <div class="m-card-user__details">
                                                     <span class="m-card-user__name m--font-weight-500"><?php echo SESSION::get_nome_usuario(); ?></span>
-                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?> #<?php echo SESSION::get_id_usuario();     ?></a>
+                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo SESSION::get_tipo_usuario(); ?> #<?php echo SESSION::get_id_usuario(); ?></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,13 +82,13 @@
                                         <div class="m-dropdown__body">
                                             <div class="m-dropdown__content">
                                                 <ul class="m-nav m-nav--skin-light">
-                                               
+
                                                     <?php if (APP::has_permissao(6)) { ?>
                                                         <li class="m-nav__item">
                                                             <a href="usuario/perfil" class="m-nav__link">
                                                                 <i class="m-nav__link-icon  flaticon-settings-1 "></i>
-                                                                <span class="m-nav__link-title">  
-                                                                    <span class="m-nav__link-wrap">      
+                                                                <span class="m-nav__link-title">
+                                                                    <span class="m-nav__link-wrap">
                                                                         <span class="m-nav__link-text">Configurações</span>
                                                                     </span>
                                                                 </span>

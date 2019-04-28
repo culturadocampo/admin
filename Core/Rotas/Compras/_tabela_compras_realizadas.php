@@ -30,8 +30,8 @@ $compras    = $o_compras->select_todas_compras_filiado($id_filiado);
             $nome_agricultor = $o_agricultor->select_agricultor_especificado($compra['fk_produtor']);
             ?>
             <tr class="tr_compras_realizadas">
-                <td class="text-center">
-                    <?php echo $compra['id_compra']; ?>
+                <td class="text-center font-weight-bold">
+                    #<?php echo $compra['id_compra']; ?>
                     <input type="hidden" name="id_compra_hidden" id="id_compra_hidden" value="<?php echo $compra['id_compra']; ?>" >
                 </td>
     <!--                <td class="text-center">-->
@@ -78,7 +78,7 @@ $compras    = $o_compras->select_todas_compras_filiado($id_filiado);
                     <?php echo STRINGS::proper_case($nome_agricultor['nome']); ?>
                 </td>
 
-                <td class="text-center">
+                <td class="text-center" style='color: blue'>
                     <?php echo "R$ ".MOEDA::moeda_mysql_para_br($compra['valor_total']); ?>
                 </td>
 
