@@ -8,6 +8,15 @@ body{
     padding: 8px!important;
 }
 
+.fixed_footer{
+    position:relative;
+}
+.fixed_footer .m-portlet__foot{
+    position:absolute;
+    width:100%;
+    bottom:0;
+}
+
 .ptable{
     border: 1px solid rgba(0,0,0,.07)!important;
 }

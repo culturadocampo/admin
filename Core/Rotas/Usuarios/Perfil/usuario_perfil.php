@@ -3,11 +3,11 @@
         <div class="m-portlet m-portlet--full-height  ">
             <div class="m-portlet__body">
                 <div class="m-card-profile">
-                    <div class="m-card-profile__pic">
-                        <div class="m-card-profile__pic-wrapper">
-                            <img src="<?php echo SESSION::get_gravatar(); ?>" alt="">
-                        </div>
-                    </div>
+                    <!--                    <div class="m-card-profile__pic">
+                                            <div class="m-card-profile__pic-wrapper">
+                                                <img src="<?php // echo SESSION::get_gravatar();   ?>" alt="">
+                                            </div>
+                                        </div>-->
                     <div class="m-card-profile__details">
                         <span class="m-card-profile__name"><?php echo SESSION::get_nome_usuario(); ?></span>
                         <a href="" class="m-card-profile__email m-link"><?php echo SESSION::get_tipo_usuario(); ?></a>
@@ -48,6 +48,25 @@
                                         <div class="col-md-10">
                                             <h3 class="m-widget1__title">Segurança</h3>
                                             <span class="m-widget1__desc">Acessos ao sistema</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (APP::has_permissao(63)) { ?>
+
+                        <div id="matriz_fiscal" class="m-widget1__item pointer">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <i class=" flaticon-file-2  text-success"></i>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h3 class="m-widget1__title">Matriz Fiscal</h3>
+                                            <span class="m-widget1__desc">Dados fiscais da empresa</span>
                                         </div>
                                     </div>
                                 </div>
@@ -146,5 +165,18 @@
                 unblockElement("#config_container");
             });
         });
+        $("#matriz_fiscal").off("click");
+        $("#matriz_fiscal").on("click", function () {
+            carregar_matriz_fiscal();
+        });
+
+
     });
+
+    function carregar_matriz_fiscal() {
+        blockElement("#config_container");
+        $("#config_container").load("usuario/configuracoes/fiscal", {}, function () {
+            unblockElement("#config_container");
+        });
+    }
 </script>

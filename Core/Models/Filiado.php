@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,8 +10,8 @@
  *
  * @author Notheros
  */
-class Filiado {
-
+class Filiado
+{
     private $conn;
     private $nomeFantasia;
     private $razaoSocial;
@@ -21,11 +20,13 @@ class Filiado {
     private $fundoCapital;
     private $cotaCapital;
 
-    function __construct() {
+    function __construct()
+    {
         $this->conn = DB::get_instance();
     }
 
-    function insert_filiado($id_coletivo, $id_endereco) {
+    function insert_filiado($id_coletivo, $id_endereco)
+    {
         $query = "
             INSERT INTO
                 filiados
@@ -54,7 +55,8 @@ class Filiado {
         return $this->conn->last_id();
     }
 
-    function insert_vinculo_usuario_filiado($id_usuario, $id_filiado) {
+    function insert_vinculo_usuario_filiado($id_usuario, $id_filiado)
+    {
         $query = "
             INSERT INTO 
                 xref_usuarios_filiados
@@ -66,16 +68,17 @@ class Filiado {
         ";
         $this->conn->execute($query);
     }
-    
-    
-    function select_informacoes_filiado_especificado($id_filiado){
-         $query = "
+
+    function select_informacoes_filiado_especificado($id_filiado)
+    {
+        $query = "
             SELECT 
                 id_filiado,
                 nome_fantasia,
                 cnpj,
                 fk_endereco,
-                inscricao_estadual
+                inscricao_estadual,
+                razao_social
             FROM filiados
             WHERE TRUE
                 AND id_filiado = '{$id_filiado}'
@@ -83,7 +86,8 @@ class Filiado {
         return $this->conn->fetch($query);
     }
 
-    function select_todos_filiados_ativos() {
+    function select_todos_filiados_ativos()
+    {
         $query = "
             SELECT 
                 id_filiado,
@@ -102,7 +106,8 @@ class Filiado {
      * Usado durante o login para descobrir
      * qual é o filiado do usuário que está logando
      */
-    function select_filiado_usuario($id_usuario) {
+    function select_filiado_usuario($id_usuario)
+    {
         $query = "
             SELECT
                 id_filiado, nome_fantasia
@@ -114,7 +119,8 @@ class Filiado {
         return $this->conn->fetch($query);
     }
 
-    function get_cota_capital_atual($id_filiado) {
+    function get_cota_capital_atual($id_filiado)
+    {
         $query = "
             SELECT
                 cota_capital
@@ -125,7 +131,8 @@ class Filiado {
         return $this->conn->fetch_attr($query, 'cota_capital');
     }
 
-    function get_id_endereco_filiado($id_filiado) {
+    function get_id_endereco_filiado($id_filiado)
+    {
         $query = "
             SELECT
                 fk_endereco
@@ -136,19 +143,35 @@ class Filiado {
         return $this->conn->fetch_attr($query, 'fk_endereco');
     }
 
-    function getNomeFantasia() {
+    function update_nome_razao_filiado($id_filiado)
+    {
+        $query = "
+            UPDATE filiados
+            SET
+                nome_fantasia = '{$this->getNomeFantasia()}',
+                razao_social = '{$this->getRazaoSocial()}'
+            WHERE id_filiado = '{$id_filiado}'
+        ";
+        return $this->conn->execute($query);
+    }
+
+    function getNomeFantasia()
+    {
         return $this->nomeFantasia;
     }
 
-    function getRazaoSocial() {
+    function getRazaoSocial()
+    {
         return $this->razaoSocial;
     }
 
-    function getCnpj() {
+    function getCnpj()
+    {
         return $this->cnpj;
     }
 
-    function setNomeFantasia($nomeFantasia) {
+    function setNomeFantasia($nomeFantasia)
+    {
         if ($nomeFantasia) {
             $this->nomeFantasia = $nomeFantasia;
         } else {
@@ -156,7 +179,8 @@ class Filiado {
         }
     }
 
-    function setRazaoSocial($razaoSocial) {
+    function setRazaoSocial($razaoSocial)
+    {
         if ($razaoSocial) {
             $this->razaoSocial = $razaoSocial;
         } else {
@@ -164,7 +188,8 @@ class Filiado {
         }
     }
 
-    function setCnpj($cnpj) {
+    function setCnpj($cnpj)
+    {
         if (VALIDA::isCNPJ($cnpj)) {
             $this->cnpj = $cnpj;
         } else {
@@ -172,19 +197,23 @@ class Filiado {
         }
     }
 
-    function getDescontoFundoRural() {
+    function getDescontoFundoRural()
+    {
         return $this->descontoFundoRural;
     }
 
-    function getFundoCapital() {
+    function getFundoCapital()
+    {
         return $this->fundoCapital;
     }
 
-    function getCotaCapital() {
+    function getCotaCapital()
+    {
         return $this->cotaCapital;
     }
 
-    function setDescontoFundoRural($descontoFundoRural) {
+    function setDescontoFundoRural($descontoFundoRural)
+    {
         if (is_numeric($descontoFundoRural) && $descontoFundoRural > 0) {
             $this->descontoFundoRural = $descontoFundoRural;
         } else {
@@ -192,7 +221,8 @@ class Filiado {
         }
     }
 
-    function setFundoCapital($fundoCapital) {
+    function setFundoCapital($fundoCapital)
+    {
         if (is_numeric($fundoCapital) && $fundoCapital >= 0) {
             $this->fundoCapital = $fundoCapital;
         } else {
@@ -200,12 +230,12 @@ class Filiado {
         }
     }
 
-    function setCotaCapital($cotaCapital) {
+    function setCotaCapital($cotaCapital)
+    {
         if ($cotaCapital) {
             $this->cotaCapital = MOEDA::reais_to_centavos($cotaCapital);
         } else {
             APP::return_response(false, "Informe a COTA CAPITAL");
         }
     }
-
 }
