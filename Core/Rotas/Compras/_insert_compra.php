@@ -61,9 +61,14 @@
             
             if($prod_estoque){
                 if($prod_estoque['fk_medida'] == $value['medida']){
+                    
+                    //calcula a média pondera do valor de estoque.
+                    $valor_dec = $value['valor'] * 100;
+                    $preco_unidade_atualizado = $o_estoque->calcular_valor_estoque($prod_estoque['quantidade'], $prod_estoque['preco_unidade'], $value['qtd'], $valor_dec);
+                    
                     // Verifico se existe o prod. no estoque e realizo a soma da qtd
                     $qtd_atualizado = $prod_estoque['quantidade'] + $value['qtd'];
-                    $o_estoque->update_compra_estoque($prod_estoque['id_estoque_filiado'], $qtd_atualizado);
+                    $o_estoque->update_compra_estoque($prod_estoque['id_estoque_filiado'], $qtd_atualizado, $preco_unidade_atualizado);
                 }else{
                     $nome_prod = $o_produto->select_produto($value['produto']);
                     $medida_prod = MEDIDAS_PRODUTOS::getMedidasProd($prod_estoque['fk_medida']);

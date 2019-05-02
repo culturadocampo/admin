@@ -42,6 +42,7 @@ class Estoque {
             SELECT 
                 id_estoque_filiado,
                 quantidade, 
+                preco_unidade,
                 fk_medida 
             FROM 
                 estoque_filiado 
@@ -53,11 +54,13 @@ class Estoque {
         return $this->conn->fetch($query);
     }
     
-    function update_compra_estoque($id_estoque_filiado, $quantidade){
+    function update_compra_estoque($id_estoque_filiado, $quantidade, $preco_unidade){
         $query = "
-            UPDATE estoque_filiado
+            UPDATE 
+                estoque_filiado
             SET
-                quantidade = '{$quantidade}'
+                quantidade = '{$quantidade}',
+                preco_unidade = '{$preco_unidade}'
             WHERE TRUE
                 AND id_estoque_filiado = '{$id_estoque_filiado}'
         ";
@@ -82,4 +85,12 @@ class Estoque {
         return true;
     }
     
+    function calcular_valor_estoque($qtd_estoque,$preco_uni_estoque,$qtd_compra,$preco_unid_compra){
+        $estoque_preco_total = $qtd_estoque * $preco_uni_estoque;
+        $compra_preco_total = $qtd_compra * $preco_unid_compra;
+   
+        $result = ($estoque_preco_total + $compra_preco_total) / ($qtd_estoque + $qtd_compra);
+    
+        return intval($result);
+    } 
 }

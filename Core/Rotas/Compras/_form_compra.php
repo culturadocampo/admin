@@ -89,7 +89,7 @@
         </div>
         
         <div class="col-md-2">
-            <input name="valor" id="valor" type="text" class="form-control m-input text-center valor_pro" placeholder="Valor">
+            <input name="valor" id="valor" type="text" class="form-control m-input text-center valor_pro" placeholder="Valor p/ unid. ou KG">
         </div>
         
         <button type="button" id="adicionar_produto" class="btn btn-primary"> <i class="la la-plus"></i> Adicionar </button>
