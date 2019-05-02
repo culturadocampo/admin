@@ -143,13 +143,14 @@ class Filiado
         return $this->conn->fetch_attr($query, 'fk_endereco');
     }
 
-    function update_nome_razao_filiado($id_filiado)
+    function update_nome_razao_cnpj_filiado($id_filiado)
     {
         $query = "
             UPDATE filiados
             SET
                 nome_fantasia = '{$this->getNomeFantasia()}',
-                razao_social = '{$this->getRazaoSocial()}'
+                razao_social = '{$this->getRazaoSocial()}',
+                cnpj = '{$this->getCnpj()}'
             WHERE id_filiado = '{$id_filiado}'
         ";
         return $this->conn->execute($query);

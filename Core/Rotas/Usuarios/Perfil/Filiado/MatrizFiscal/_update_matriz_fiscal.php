@@ -12,7 +12,8 @@ try {
 
     $o_filiado->setNomeFantasia($_POST['nome_fantasia']);
     $o_filiado->setRazaoSocial($_POST['razao_social']);
-    $o_filiado->update_nome_razao_filiado($_SESSION['id_filiado']);
+    $o_filiado->setCnpj($_POST['cnpj']);
+    $o_filiado->update_nome_razao_cnpj_filiado($_SESSION['id_filiado']);
 
     $db->commit();
     APP::return_response(true, "Sucesso! MATRIZ FISCAL atualizada com sucesso");
