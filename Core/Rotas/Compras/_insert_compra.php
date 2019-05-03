@@ -63,7 +63,7 @@
                 if($prod_estoque['fk_medida'] == $value['medida']){
                     
                     //calcula a média pondera do valor de estoque.
-                    $valor_dec = $value['valor'] * 100;
+                    $valor_dec = MOEDA::reais_to_centavos($value['valor']);
                     $preco_unidade_atualizado = $o_estoque->calcular_valor_estoque($prod_estoque['quantidade'], $prod_estoque['preco_unidade'], $value['qtd'], $valor_dec);
                     
                     // Verifico se existe o prod. no estoque e realizo a soma da qtd
