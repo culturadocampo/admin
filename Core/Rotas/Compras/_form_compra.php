@@ -29,17 +29,29 @@
             </select>
         </div>
         
-        <div class="col-lg-6">
-            <label for="example-date-input" class=" col-form-label">Data Pagamento</label>
+        <div class="col-lg-3 form-group">
+            <label for="example-date-input" class="col-form-label">Data Pagamento</label>
             <input class="form-control" type="date" value="" name="data_pagamento" id="data_pagamento">
         </div>
+        
+         <div class="col-lg-3">
+                <label for="exampleSelect1" class=" col-form-label">Parcelas</label>
+                <select class="form-control m-input" name="parcelas" id="parcelas">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+         </div>
         
         <div class="col-lg-6 div_buscar d-none">
             <label for="example-date-input" class=" col-form-label">Data de Busca</label>
             <input class="form-control" type="date" value="" disabled="" name="data_busca" id="data_busca">
         </div>
         
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <label for="exampleTextarea" class=" col-form-label"> Obs. pagamento </label>
             <textarea class="form-control" id="obs_pagamento" name="obs_pagamento" rows="3"></textarea>
         </div>
@@ -189,6 +201,6 @@
         select_medida();
         
         $(".selectpicker").selectpicker();
-        $('.valor_pro').maskMoney({decimal: ',', thousands: '.'});
+        $('.valor_pro').maskMoney({decimal: '.', thousands: ''});
     });
 </script>

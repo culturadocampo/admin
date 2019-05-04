@@ -17,7 +17,8 @@
                     <th class="text-center">Produto</th>
                     <th class="text-center">Tipo</th>
                     <th class="text-center">QTD</th>
-                    <th class="text-center">Valor</th>
+                    <th class="text-center">Valor p/ Unid. ou KG</th>
+                    <th class="text-center">Valor Total</th>
                     <th class="text-center">Excluir Prod. </th>
                 </tr>
             </thead>
@@ -47,6 +48,9 @@
                         </td>
                         <td class="text-center">  
                            <p> R$ <?php echo $value['valor']; ?> </p>
+                        </td>
+                        <td class="text-center">  
+                           <p> R$ <?php echo MOEDA::int_to_mysql($value['valor'] * $value['qtd']); ?> </p>
                         </td>
                         <td class="text-center">
                             <button class="btn btn-danger btn-sm excluir_compra" id_compra="<?php echo $count; ?>" type="button"><span class="flaticon-delete"></span></button>
@@ -80,15 +84,16 @@
     }
     
     function soma_produtos(){
-        let valor_total = 0;
+        var valor_total = 0;
         
-        for(let i=0; i < array_produtos.length; i++) {
-            valor_total = parseFloat(valor_total);
-            valor_total += parseFloat(array_produtos[i]['valor']);
+        for(let i=0; i < array_produtos.length; i++) {  
+            valor  = parseFloat(array_produtos[i]['valor']);
+            valor2 = parseFloat(valor_total);
+            valor_total = valor2 + (valor * array_produtos[i]['qtd']);
         }
-        valor_total = parseFloat(valor_total).toFixed(2);
+        
         dados_extra['valor_total'] = valor_total;
-        valor_total =  "TOTAL: R$ " + valor_total;
+        valor_total =  "TOTAL: R$ " + valor_total.toFixed(2);
         $("#valor_total_compra").html(valor_total);
     }
     

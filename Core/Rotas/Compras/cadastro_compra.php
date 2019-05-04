@@ -48,13 +48,15 @@
     function salvar_compra(){
         hideNotify();
         blockPage();
+        dados_extra['n_parcelas'] = $("#parcelas").val();
         dados_extra['data_pagamento'] = $("#data_pagamento").val();
         dados_extra['obs'] = $("#obs_pagamento").val();
+        dados_extra['data_busca'] = $("#data_busca").val();
         
         $.ajax({
             type: "post",
             url: "compra/nova/insert",
-            data: {dados: array_produtos, fk_produtor: dados_extra['fk_produtor'], valor_total: dados_extra['valor_total'], buscar_prod: dados_extra['buscar_prod'], data_pagamento: dados_extra['data_pagamento'], obs: dados_extra['obs']},
+            data: {dados: array_produtos, fk_produtor: dados_extra['fk_produtor'], valor_total: dados_extra['valor_total'], buscar_prod: dados_extra['buscar_prod'], data_pagamento: dados_extra['data_pagamento'], obs: dados_extra['obs'], parcela: dados_extra['n_parcelas'], data_busca: dados_extra['data_busca']},
             success: function (response) {
                 var res;
                 res = lerResposta(response, load_form);

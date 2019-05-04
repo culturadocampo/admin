@@ -34,24 +34,37 @@ class PagamentoAgricultor {
         }
     }
     
-    function insert_pagamento_agricultor($fk_compra, $valor_total){
-        $fk_filiado  = SESSION::get_id_filiado();
-        
-        $query = "
-            INSERT INTO
-                pagamentos_agricultores
-            (fk_filiado, fk_compra, data_pagamento, obs, valor_total, valor_atual)
-            VALUES 
-            (
-                '{$fk_filiado}',
-                '{$fk_compra}',
-                '{$this->get_data_pagamento()}',
-                '{$this->get_obs_pagamento()}',
-                '{$valor_total}',
-                '{$valor_total}'
-            )
-        ";
-        $this->conn->execute($query);
+    function insert_pagamento_agricultor($fk_compra, $parcelas, $valor_total){
+        $fk_filiado         = SESSION::get_id_filiado();
+        $valor_parcela      = MOEDA::converte_moeda_para_bigint($valor_total / $parcelas);
+        $valor_total_final  = MOEDA::converte_moeda_para_bigint($valor_total);
+                
+        for($i=1; $i <= $parcelas; $i++){
+            if($i == "1"){
+                $data_pagamento = $this->get_data_pagamento();
+            }else{
+                $mes = ($i - 1);
+                $data_pagamento = date('Y-m-d', strtotime("+ $mes month", strtotime($this->get_data_pagamento())));
+            }
+            
+            $query = "
+                INSERT INTO
+                    pagamentos_agricultores
+                (fk_filiado, fk_compra, n_parcela ,data_pagamento, obs, valor_parcela, valor_total)
+                VALUES 
+                (
+                    '{$fk_filiado}',
+                    '{$fk_compra}',
+                    '{$i}',
+                    '{$data_pagamento}',
+                    '{$this->get_obs_pagamento()}',
+                    '{$valor_parcela}',
+                    '{$valor_total_final}'
+                )
+            ";
+                    
+            $this->conn->execute($query);
+        }
         return true;
     }
     

@@ -25,7 +25,7 @@ class Compras {
     function set_valor_total($valor_total) 
     {
         if (isset($valor_total) && !empty($valor_total)) {
-            $this->valor_total = $valor_total;
+            $this->valor_total = MOEDA::converte_moeda_para_bigint($valor_total);
         } else {
             APP::return_response(false, "Erro: Sem valor total");
         }

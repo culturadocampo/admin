@@ -1,4 +1,9 @@
 <?php
+    /*echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    die();*/
+
     $o_compra       = new Compras();
     $o_pedido       = new Pedidos();
     $o_pagamento    = new PagamentoAgricultor();
@@ -27,6 +32,24 @@
             APP::return_response(false, "Ocorreu algum problema na compra, tente novamente");
         }
         
+        if(!isset($_POST['data_pagamento']) || empty($_POST['data_pagamento'])){
+            APP::return_response(false, "Por favor, selecione uma data de pagamento");
+        }else{
+            if($_POST['data_pagamento'] <  date('Y-m-d')){  
+                APP::return_response(false, "A data de pagamento é invalida");
+            }
+        }
+        
+        if($_POST['buscar_prod'] == "1"){
+            if(!isset($_POST['data_busca']) || empty($_POST['data_busca'])){
+                APP::return_response(false, "Por favor, selecione uma data para buscar o produto");
+            }else{
+                if($_POST['data_busca'] <  date('Y-m-d')){  
+                    APP::return_response(false, "A data para buscar o produto é invalida");
+                }
+            }
+        }
+        
         /* 
         COMPRA
         Status
@@ -41,11 +64,10 @@
         
         /*
         PEDIDOS
-            0 - Pedido cancelado (Eornado)
+            0 - Pedido cancelado (Estornado)
             1 - Pedido ativo
         */
         foreach($dados as $value){
-            $value['valor'] = MOEDA::moeda_br_para_mysql($value['valor']);
             $o_pedido->set_fk_compra($id_compra);
             $o_pedido->set_fk_categoria($value['categoria']);
             $o_pedido->set_fk_produto($value['produto']);
@@ -82,9 +104,12 @@
         /* 
         PAGAMENTOS AGRICULTORES
         */
+        // Setar as datas de pg de acordo com as parcelas
+        // Setar as parcelas
+        
         $o_pagamento->set_data_pagamento($_POST['data_pagamento']);
         $o_pagamento->set_obs_pagamento($_POST['obs']);
-        $o_pagamento->insert_pagamento_agricultor($id_compra, $_POST['valor_total']);
+        $o_pagamento->insert_pagamento_agricultor($id_compra, $_POST['parcela'], $_POST['valor_total']);
         
         $db->commit();
         APP::return_response(true, "Compra realizada com sucesso");

@@ -105,7 +105,7 @@ class Pedidos {
     
     function set_valor($valor_prod) {
         if (isset($valor_prod) && !empty($valor_prod)) {
-            $this->valor = $valor_prod;
+            $this->valor = MOEDA::converte_moeda_para_bigint($valor_prod);
         } else {
             APP::return_response(false, "Por favor, preecha o valor do produto");
         }
