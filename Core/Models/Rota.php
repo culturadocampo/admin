@@ -1,7 +1,7 @@
 <?php
 
-class Rota {
-
+class Rota
+{
     private $id_rota;
     private $url;
     private $conteudo;
@@ -9,11 +9,13 @@ class Rota {
     private $publico;
     private $expressao;
 
-    function __construct() {
+    function __construct()
+    {
         $this->conn = DB::get_instance();
     }
 
-    function select_rota() {
+    function select_rota()
+    {
         $query = "
             SELECT
                 id_rota,
@@ -29,7 +31,8 @@ class Rota {
         return $this->conn->fetch_all($query);
     }
 
-    function select_rota_from_id() {
+    function select_rota_from_id()
+    {
         $query = "
             SELECT
                 id_rota,
@@ -47,7 +50,8 @@ class Rota {
         return $this->conn->fetch($query);
     }
 
-    function select_all_rotas($order = 'DESC') {
+    function select_all_rotas($order = 'DESC')
+    {
         $query = "
             SELECT 
                 id_rota,
@@ -65,11 +69,12 @@ class Rota {
         return $this->conn->fetch_all($query);
     }
 
-    function get_arquivos_base() {
-        $dir = "Public/Matriz/";
+    function get_arquivos_base()
+    {
+        $dir      = "Public/Matriz/";
         $filelist = scandir($dir);
         foreach ($filelist as $key => $file) {
-            if (!is_file($dir . $file)) {
+            if (!is_file($dir.$file)) {
                 unset($filelist[$key]);
             }
         }
@@ -77,17 +82,18 @@ class Rota {
         return $this->organize_matriz_array($filelist);
     }
 
-    function organize_matriz_array($arquivos_base) {
+    function organize_matriz_array($arquivos_base)
+    {
         if ($arquivos_base) {
             foreach ($arquivos_base as $key => $base) {
                 $arquivo['arquivo'] = $base;
 
                 if ($base == "base_interface.php") {
-                    $arquivo['nome'] = "Template completo (Topo, menu, rodapé)";
+                    $arquivo['nome']     = "Template completo (Topo, menu, rodapé)";
                     $arquivo['selected'] = true;
                     $arquivos_base[$key] = $arquivo;
                 } else if ($base == "base_popup.php") {
-                    $arquivo['nome'] = "Página em formato popup";
+                    $arquivo['nome']     = "Página em formato popup";
                     $arquivo['selected'] = false;
                     $arquivos_base[$key] = $arquivo;
                 } else {
@@ -99,9 +105,10 @@ class Rota {
         return $arquivos_base;
     }
 
-    function get_arquivos_conteudo() {
+    function get_arquivos_conteudo()
+    {
         $conteudo = array();
-        $dir = "Core/Rotas/";
+        $dir      = "Core/Rotas/";
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
         foreach ($iterator as $file) {
             if ($file->isDir()) {
@@ -116,7 +123,8 @@ class Rota {
         return $conteudo;
     }
 
-    function select_conteudo() {
+    function select_conteudo()
+    {
         $query = "
             SELECT
                 id_rota
@@ -128,7 +136,8 @@ class Rota {
         return $this->conn->fetch($query);
     }
 
-    function insert_rota() {
+    function insert_rota()
+    {
         $query = "
             INSERT INTO rotas
             (url, matriz, conteudo, publico, expressao)
@@ -144,7 +153,8 @@ class Rota {
         return $this->conn->last_id();
     }
 
-    function update_rota() {
+    function update_rota()
+    {
         $query = "
             UPDATE rotas
             SET
@@ -157,8 +167,9 @@ class Rota {
         $this->conn->execute($query);
     }
 
-    function create_regex($params = array()) {
-        $expressoes = "";
+    function create_regex($params = array())
+    {
+        $expressoes   = "";
         $query_string = "";
         if (!empty($params)) {
             $query_index = 1;
@@ -172,8 +183,8 @@ class Rota {
                     }
 
                     $query_string = empty($query_string) ? "?" : "{$query_string}&";
-                    $expressoes .= "\/{$param['expressao']}";
-                    $query_string .= $param['nome'] . '=$' . ($query_index);
+                    $expressoes   .= "\/{$param['expressao']}";
+                    $query_string .= $param['nome'].'=$'.($query_index);
                     $query_index++;
                 } else {
                     $expressoes .= "\/{$param['nome']}";
@@ -187,51 +198,55 @@ class Rota {
         return $regex_final;
     }
 
-    function rebuild_htaccess() {
+    function rebuild_htaccess()
+    {
         $o_parametro = new Parametro();
-        $all_rotas = $this->select_all_rotas('ASC');
+        $all_rotas   = $this->select_all_rotas('ASC');
         $this->clear_htaccess();
-        $fp = fopen('.htaccess', 'a');
-        fwrite($fp, "rewriteEngine on" . PHP_EOL);
-        fwrite($fp, "rewriteEngine on" . PHP_EOL);
-        fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-f" . PHP_EOL);
-        fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-d" . PHP_EOL);
-        fwrite($fp, "Options -Indexes" . PHP_EOL);
-        fwrite($fp, "ErrorDocument 404 /404.php" . PHP_EOL);
+        $fp          = fopen('.htaccess', 'a');
+        fwrite($fp, "rewriteEngine on".PHP_EOL);
+        fwrite($fp, "rewriteEngine on".PHP_EOL);
+        fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-f".PHP_EOL);
+        fwrite($fp, "rewriteCond %{SCRIPT_FILENAME} !-d".PHP_EOL);
+        fwrite($fp, "Options -Indexes".PHP_EOL);
+        fwrite($fp, "ErrorDocument 404 /404.php".PHP_EOL);
 
         foreach ($all_rotas as $rota) {
-            $parametros = $o_parametro->select_parametros($rota['id_rota']);
+            $parametros   = $o_parametro->select_parametros($rota['id_rota']);
             $query_string = "";
             if ($parametros) {
                 $query_string = array();
                 foreach ($parametros as $key => $value) {
                     $index = $key + 1;
-                    array_push($query_string, "{$value['nome']}=$" . $index);
+                    array_push($query_string, "{$value['nome']}=$".$index);
                 }
                 $query_string = implode("&", $query_string);
             }
 
             $regex_final = "{$rota['expressao']}";
-            $data = PHP_EOL . "rewriteRule $regex_final ./index.php?{$query_string} [NC]";
+            $data        = PHP_EOL."rewriteRule $regex_final ./index.php?{$query_string} [NC]";
             fwrite($fp, $data);
         }
-        fwrite($fp, PHP_EOL . "rewriteRule ^\/?$ .\/index.php [NC]" . PHP_EOL);
+        fwrite($fp, PHP_EOL."rewriteRule ^\/?$ .\/index.php [NC]".PHP_EOL);
         fclose($fp);
         $this->create_htaccess_hash_file();
     }
 
-    function create_htaccess_hash_file() {
+    function create_htaccess_hash_file()
+    {
 //        $hash = hash_file('md5', '.htaccess');
 //        file_put_contents('hash', $hash);
     }
 
-    function clear_htaccess() {
+    function clear_htaccess()
+    {
         $fp = fopen('.htaccess', 'w');
         fwrite($fp, "");
         fclose($fp);
     }
 
-    function alterar_status_rota() {
+    function alterar_status_rota()
+    {
         $query = "
             UPDATE rotas 
             SET ativo = !ativo 
@@ -241,7 +256,8 @@ class Rota {
         $this->conn->execute($query);
     }
 
-    function desativar_rota() {
+    function desativar_rota()
+    {
         $query = "
             UPDATE rotas
             SET ativo = 0
@@ -251,8 +267,9 @@ class Rota {
         $this->conn->execute($query);
     }
 
-    function has_permissao_acesso_rota($id_rota, $id_tipo_usuario) {
-        $query = "
+    function has_permissao_acesso_rota($id_rota, $id_tipo_usuario)
+    {
+        $query  = "
             SELECT
                 permissoes_rotas.fk_permissao
             FROM
@@ -267,8 +284,9 @@ class Rota {
         return $result;
     }
 
-    function find_rota($string) {
-        $query = "
+    function find_rota($string)
+    {
+        $query  = "
             SELECT 
                 * 
             FROM rotas 
@@ -279,31 +297,51 @@ class Rota {
         return $result;
     }
 
-    function get_id_rota() {
+    function find_rota_or_conteudo($string)
+    {
+        $query  = "
+            SELECT
+                *
+            FROM rotas
+            WHERE TRUE
+                AND (REPLACE(expressao,'\\\','') LIKE '%{$string}%' OR conteudo LIKE '%{$string}%')
+        ";
+        $result = $this->conn->fetch_all($query);
+        return $result;
+    }
+
+    function get_id_rota()
+    {
         return $this->id_rota;
     }
 
-    function set_id_rota($id_rota) {
+    function set_id_rota($id_rota)
+    {
         $this->id_rota = $id_rota;
     }
 
-    function get_url() {
+    function get_url()
+    {
         return $this->url;
     }
 
-    function get_conteudo() {
+    function get_conteudo()
+    {
         return $this->conteudo;
     }
 
-    function get_matriz() {
+    function get_matriz()
+    {
         return $this->matriz;
     }
 
-    function get_publico() {
+    function get_publico()
+    {
         return $this->publico;
     }
 
-    function set_url($url) {
+    function set_url($url)
+    {
         if ($url) {
             $this->url = STRINGS::limpar($url);
         } else {
@@ -311,7 +349,8 @@ class Rota {
         }
     }
 
-    function set_conteudo($conteudo) {
+    function set_conteudo($conteudo)
+    {
         if ($conteudo) {
             $this->conteudo = STRINGS::limpar($conteudo);
         } else {
@@ -319,20 +358,23 @@ class Rota {
         }
     }
 
-    function set_matriz($matriz) {
+    function set_matriz($matriz)
+    {
         $this->matriz = $matriz;
     }
 
-    function set_publico($publico) {
+    function set_publico($publico)
+    {
         $this->publico = $publico;
     }
 
-    function get_expressao() {
+    function get_expressao()
+    {
         return $this->expressao;
     }
 
-    function set_expressao($expressao) {
+    function set_expressao($expressao)
+    {
         $this->expressao = STRINGS::limpar($expressao);
     }
-
 }

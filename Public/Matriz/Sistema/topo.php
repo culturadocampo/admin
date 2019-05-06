@@ -52,7 +52,7 @@
                                 <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                     <a class="m-nav__link m-dropdown__toggle">
                                         <span class="m-topbar__userpic">
-                                            <button id="atualizar_arquivo_rotas" class="btn btn-outline-danger btn-sm"><i class=" flaticon-refresh "></i> Atualizar rotas</button>
+                                            <button id="atualizar_arquivo_rotas" class="btn btn-outline-danger btn-sm"><i class=" flaticon-refresh "></i></button>
                                         </span>
                                     </a>
                                 </li>

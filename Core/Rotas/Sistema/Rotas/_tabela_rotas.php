@@ -12,11 +12,8 @@ foreach ($rotas as $key => $rota) {
         $rota['matriz'] = "Ajax/Load";
     }
 
-    $rota['expressao'] = str_replace("^", "", $rota['expressao']);
-    $rota['expressao'] = str_replace("\/", "/", $rota['expressao']);
-    $rota['expressao'] = str_replace("?$", "", $rota['expressao']);
-    $rota['expressao'] = str_replace("(\d+)", "{int}", $rota['expressao']);
-    $rota['expressao'] = str_replace("([a-zA-Z\-]+)", "{string}", $rota['expressao']);
+    $rota['expressao'] = STRINGS::regex_to_url($rota['expressao']);
+
 
     $rotas[$key] = $rota;
 }
